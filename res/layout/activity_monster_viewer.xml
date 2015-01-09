@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    <TextView 
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:padding="15dp"
+        android:text="Bingles Jingleheimer"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="#474747" />
+    
+    <View
+        android:id="@+id/botLayerOneColor"
+        android:layout_width="160dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true" />
+    
+    <ImageView 
+        android:id="@+id/botLayerTwoBody"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/body0"
+        android:layout_centerHorizontal="true" />
+    
+    <ImageView 
+        android:id="@+id/botLayerThreeFace"
+        android:layout_width="160dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/face0"
+        android:layout_centerHorizontal="true" />
+        
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="500dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="280dp"
+        android:padding="15dp"
+        android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
+        android:gravity="center"
+        android:textSize="9sp"
+        android:textColor="#474747" />
+    
+    <Button
+        android:id="@+id/cmdChange"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="240dp"
+        android:textSize="10sp"
+        android:text="Change" />
+        
+    <ImageButton
+        android:id="@+id/cmdSMS"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/text_share" />
+    
+    <ImageButton
+        android:id="@+id/cmdMail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="110dp"
+        android:background="@drawable/email_share" />
+    
+    <ImageButton
+        android:id="@+id/cmdTwitter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="200dp"
+        android:background="@drawable/twitter_share" />
+    
+    <ImageButton
+        android:id="@+id/cmdFB"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="290dp"
+        android:background="@drawable/facebook_share" />
+    
+    <TextView 
+        android:id="@+id/txtURL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="#474747" />
+    
+</RelativeLayout>
+    

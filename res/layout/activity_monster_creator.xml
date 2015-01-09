@@ -1,0 +1,165 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    
+    <TextView 
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Let's create your Branchster"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="#474747" />
+    
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="14sp"
+        android:layout_below="@+id/txtTitle"
+        android:hint="Pick a name"
+        android:textColor="#474747" />
+    
+    <View
+        android:id="@+id/botLayerOneColor"
+        android:layout_width="198dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true" />
+    
+    <ImageView 
+        android:id="@+id/botLayerTwoBody"
+        android:layout_width="200dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/body0"
+        android:layout_centerHorizontal="true" />
+    
+    <ImageView 
+        android:id="@+id/botLayerThreeFace"
+        android:layout_width="200dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/face0"
+        android:layout_centerHorizontal="true" />
+        
+    <ImageButton
+        android:id="@+id/cmdUp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/up" />
+
+    <ImageButton
+        android:id="@+id/cmdRight"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="280dp"
+        android:background="@drawable/right" />
+    
+    <ImageButton
+        android:id="@+id/cmdDown"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="380dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/down" />
+    
+    <ImageButton
+        android:id="@+id/cmdLeft"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/left" />
+    
+    <Button
+        android:id="@+id/cmdColor0"
+        android:tag="0"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="60dp" />
+    
+    <Button
+        android:id="@+id/cmdColor1"
+        android:tag="1"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="90dp" />
+    
+    <Button
+        android:id="@+id/cmdColor2"
+        android:tag="2"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="120dp" />
+    
+    <Button
+        android:id="@+id/cmdColor3"
+        android:tag="3"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="150dp" />
+    
+    <Button
+        android:id="@+id/cmdColor4"
+        android:tag="4"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="180dp" />
+    
+    <Button
+        android:id="@+id/cmdColor5"
+        android:tag="5"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="210dp" />
+    
+    <Button
+        android:id="@+id/cmdColor6"
+        android:tag="6"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="240dp" />
+    
+    <Button
+        android:id="@+id/cmdColor7"
+        android:tag="7"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="270dp" />
+    
+    <Button
+        android:id="@+id/cmdDone"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:textSize="14sp"
+        android:layout_centerHorizontal="true"
+        android:text="Done" />
+    
+</RelativeLayout>
+    
