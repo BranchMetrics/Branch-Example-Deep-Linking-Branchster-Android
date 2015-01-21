@@ -5,8 +5,8 @@ Branchster-Android
 
 After you register your app, your app key can be retrieved on the [Settings](https://dashboard.branch.io/#/settings) page of the dashboard. Now you need to add it to your project.
 
-1. Open your res/values/strings.xml file
-2. Add a new string entry with the name "bnc_app_key" and value as your app key
+1 Open your res/values/strings.xml file
+2 Add a new string entry with the name "bnc_app_key" and value as your app key
 ```xml
 <resources>
     <!-- Other existing resources -->
@@ -15,8 +15,8 @@ After you register your app, your app key can be retrieved on the [Settings](htt
     <string name="bnc_app_key">"your app key"</string>
 </resources>
 ```
-3. Open your AndroidManifest.xml file
-4. Add the following new meta-data
+3 Open your AndroidManifest.xml file
+4 Add the following new meta-data
 ```xml
 <application>
     <!-- Other existing entries -->
