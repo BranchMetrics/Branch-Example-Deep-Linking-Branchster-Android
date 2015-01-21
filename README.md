@@ -7,14 +7,14 @@ After you register your app, your app key can be retrieved on the [Settings](htt
 
 1. Open your res/values/strings.xml file
 2. Add a new string entry with the name "bnc_app_key" and value as your app key
-```xml
-<resources>
+    ```xml
+    <resources>
     <!-- Other existing resources -->
 
     <!-- Add this string resource below, and change "your app key" to your app key -->
     <string name="bnc_app_key">"your app key"</string>
-</resources>
-```
+    </resources>
+    ```
 3. Open your AndroidManifest.xml file
 4. Add the following new meta-data
 ```xml
