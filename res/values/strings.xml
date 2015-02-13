@@ -5,4 +5,7 @@
     
     <color name="white">#FFFFFF</color>
 
+    <!-- Defaults -->
+    <string name="monster_name">Bingles Jingleheimer</string>
+
 </resources>

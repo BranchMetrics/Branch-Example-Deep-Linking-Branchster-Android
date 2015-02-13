@@ -128,7 +128,7 @@ public class MonsterCreatorActivity extends Activity {
 				if (editName.getText().toString().length() > 0) {
 			        prefs.setMonsterName(editName.getText().toString());
 			    } else {
-			    	prefs.setMonsterName("Bingles Jingleheimer");
+			    	prefs.setMonsterName(getString(R.string.monster_name));
 			    }
 				
 				Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
