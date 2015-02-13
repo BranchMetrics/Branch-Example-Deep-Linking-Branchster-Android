@@ -10,4 +10,8 @@
     <dimen name="branchster_height">270dp</dimen>
     <dimen name="name_font_size">24sp</dimen>
 
+    <!-- Colour selector -->
+    <dimen name="selector_tub_padding">6dp</dimen>
+    <dimen name="radio_button_padding">3dp</dimen>
+
 </resources>

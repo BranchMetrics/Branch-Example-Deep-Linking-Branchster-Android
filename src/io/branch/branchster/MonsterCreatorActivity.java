@@ -2,12 +2,14 @@ package io.branch.branchster;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MonsterCreatorActivity extends Activity {
 
@@ -20,6 +22,7 @@ public class MonsterCreatorActivity extends Activity {
 	ImageView botLayerTwoBody;
 	ImageView botLayerThreeFace;
 	Button[] cmdColors;
+    LinearLayout[] cmdColorTubs;
 	Button cmdDone;
 	
 	MonsterPreferences prefs;
@@ -51,6 +54,16 @@ public class MonsterCreatorActivity extends Activity {
 				(Button) findViewById(R.id.cmdColor6),
 				(Button) findViewById(R.id.cmdColor7)
 		};
+        cmdColorTubs = new LinearLayout[]{
+                (LinearLayout) findViewById(R.id.cmdColorTub0),
+                (LinearLayout) findViewById(R.id.cmdColorTub1),
+                (LinearLayout) findViewById(R.id.cmdColorTub2),
+                (LinearLayout) findViewById(R.id.cmdColorTub3),
+                (LinearLayout) findViewById(R.id.cmdColorTub4),
+                (LinearLayout) findViewById(R.id.cmdColorTub5),
+                (LinearLayout) findViewById(R.id.cmdColorTub6),
+                (LinearLayout) findViewById(R.id.cmdColorTub7)
+        };
 		
 		prefs = MonsterPreferences.getInstance(getApplicationContext());
 		factory = MonsterPartsFactory.getInstance(getApplicationContext());
@@ -66,6 +79,8 @@ public class MonsterCreatorActivity extends Activity {
 					int idx = Integer.parseInt((String)v.getTag());
 					prefs.setColorIndex(idx);
 					botLayerOneColor.setBackgroundColor(factory.colorForIndex(idx));
+                    setSelectedColourButton(idx);
+
 				}
 			});
 		}
@@ -145,10 +160,25 @@ public class MonsterCreatorActivity extends Activity {
 		botLayerTwoBody.setImageBitmap(factory.imageForBody(prefs.getBodyIndex()));
 		botLayerThreeFace.setImageBitmap(factory.imageForFace(prefs.getFaceIndex()));
 		editName.setText(prefs.getMonsterName());
+
+        // Colour selector button initial state.
+        setSelectedColourButton(prefs.getColorIndex());
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
 	}
+
+    private void setSelectedColourButton(int idx){
+
+        // Deselect all colour buttons.
+        for (int j = 0; j < cmdColors.length; j++) {
+            cmdColorTubs[j].setBackground(getResources().getDrawable(R.drawable.colour_button_off));
+        }
+
+        // Re-select the chosen colour button.
+        cmdColorTubs[idx].setBackground(getResources().getDrawable(R.drawable.colour_button_on));
+
+    }
 }

@@ -1,0 +1,32 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- On (Window Focused) -->
+    <item android:state_checked="true" android:state_window_focused="false"
+          android:drawable="@drawable/colour_button_on" />
+
+    <!-- Off (Window Focused) -->
+    <item android:state_checked="false" android:state_window_focused="false"
+          android:drawable="@drawable/colour_button_off" />
+
+    <!-- On Pressed -->
+    <item android:state_checked="true" android:state_pressed="true"
+          android:drawable="@drawable/colour_button_on" />
+
+    <!-- Off Pressed -->
+    <item android:state_checked="false" android:state_pressed="true"
+          android:drawable="@drawable/colour_button_off" />
+
+    <!-- On Selected -->
+    <item android:state_checked="true" android:state_focused="true"
+          android:drawable="@drawable/colour_button_on" />
+
+    <!-- Off Selected -->
+    <item android:state_checked="false" android:state_focused="true"
+          android:drawable="@drawable/colour_button_off" />
+
+    <!-- Off -->
+    <item android:state_checked="false" android:drawable="@drawable/colour_button_off" />
+
+    <!-- On -->
+    <item android:state_checked="true" android:drawable="@drawable/colour_button_on" />
+</selector>
