@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 
 public class MonsterPartsFactory { 
 	private int[] colorArray;
@@ -27,47 +28,24 @@ public class MonsterPartsFactory {
 		
 		BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = false;
-//        options.inSampleSize = 10;
-        
-		InputStream bis0 = context.getResources().openRawResource(R.drawable.body0);
-		InputStream bis1 = context.getResources().openRawResource(R.drawable.body1);
-		InputStream bis2 = context.getResources().openRawResource(R.drawable.body2);
-		InputStream bis3 = context.getResources().openRawResource(R.drawable.body3);
-		InputStream bis4 = context.getResources().openRawResource(R.drawable.body4);
-        
-		InputStream fis0 = context.getResources().openRawResource(R.drawable.face0);
-		InputStream fis1 = context.getResources().openRawResource(R.drawable.face1);
-		InputStream fis2 = context.getResources().openRawResource(R.drawable.face2);
-		InputStream fis3 = context.getResources().openRawResource(R.drawable.face3);
-		InputStream fis4 = context.getResources().openRawResource(R.drawable.face4);
-		
+        //options.inSampleSize = 2;
+
         bodyArray = new Bitmap[]{
-        	BitmapFactory.decodeStream(bis0, null, options),
-        	BitmapFactory.decodeStream(bis1, null, options),
-        	BitmapFactory.decodeStream(bis2, null, options),
-        	BitmapFactory.decodeStream(bis3, null, options),
-        	BitmapFactory.decodeStream(bis4, null, options)
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.body0),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.body1),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.body2),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.body3),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.body4)
         };
         
         faceArray = new Bitmap[]{
-            	BitmapFactory.decodeStream(fis0, null, options),
-            	BitmapFactory.decodeStream(fis1, null, options),
-            	BitmapFactory.decodeStream(fis2, null, options),
-            	BitmapFactory.decodeStream(fis3, null, options),
-            	BitmapFactory.decodeStream(fis4, null, options)
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.face0),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.face1),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.face2),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.face3),
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.face4),
             };
-        
-//		bodyArray = new Bitmap[]{	context.getResources().getDrawable(R.drawable.body0), 
-//									context.getResources().getDrawable(R.drawable.body1), 
-//									context.getResources().getDrawable(R.drawable.body2), 
-//									context.getResources().getDrawable(R.drawable.body3), 
-//									context.getResources().getDrawable(R.drawable.body4) };
-		
-//		faceArray = new Bitmap[]{	context.getResources().getDrawable(R.drawable.face0), 
-//									context.getResources().getDrawable(R.drawable.face1), 
-//									context.getResources().getDrawable(R.drawable.face2), 
-//									context.getResources().getDrawable(R.drawable.face3), 
-//									context.getResources().getDrawable(R.drawable.face4) };
+
 		
 		descriptionArray = new String[]
 		{
