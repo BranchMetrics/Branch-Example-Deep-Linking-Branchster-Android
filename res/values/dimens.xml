@@ -9,6 +9,7 @@
     <dimen name="branchster_width">270dp</dimen>
     <dimen name="branchster_height">270dp</dimen>
     <dimen name="name_font_size">24sp</dimen>
+    <dimen name="description_font_size">14sp</dimen>
 
     <!-- Colour selector -->
     <dimen name="selector_tub_padding">6dp</dimen>

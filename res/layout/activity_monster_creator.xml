@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"

@@ -3,106 +3,192 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-    
-    <TextView 
-        android:id="@+id/txtName"
+
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/branchsterContainer"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/cmdChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:text="Change" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/monster_name"
+                android:gravity="center"
+                android:textSize="@dimen/name_font_size"
+                android:textColor="#474747" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/branchsterContainer"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:paddingRight="34dp"
+        android:paddingLeft="34dp"
+        android:layout_height="@dimen/branchster_container_height">
+
+        <View
+            android:layout_alignTop="@+id/botLayerThreeFace"
+
+            android:id="@+id/botLayerOneColor"
+            android:layout_width="@dimen/branchster_width"
+            android:layout_height="@dimen/branchster_height"
+            android:layout_alignLeft="@+id/botLayerTwoBody"
+            android:layout_centerHorizontal="true" />
+
+
+        <ImageView
+            android:id="@+id/botLayerTwoBody"
+            android:layout_width="@dimen/branchster_width"
+            android:layout_height="@dimen/branchster_height"
+            android:src="@drawable/body0"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/botLayerThreeFace"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/branchster_height"
+            android:src="@drawable/face0"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:padding="15dp"
-        android:text="@string/monster_name"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="#474747" />
-    
-    <View
-        android:id="@+id/botLayerOneColor"
-        android:layout_width="160dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="70dp"
-        android:layout_centerHorizontal="true" />
-    
-    <ImageView 
-        android:id="@+id/botLayerTwoBody"
-        android:layout_width="160dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="55dp"
-        android:src="@drawable/body0"
-        android:layout_centerHorizontal="true" />
-    
-    <ImageView 
-        android:id="@+id/botLayerThreeFace"
-        android:layout_width="160dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="55dp"
-        android:src="@drawable/face0"
-        android:layout_centerHorizontal="true" />
-        
-    <TextView
-        android:id="@+id/txtDescription"
-        android:layout_width="500dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="280dp"
-        android:padding="15dp"
-        android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
-        android:gravity="center"
-        android:textSize="9sp"
-        android:textColor="#474747" />
-    
-    <Button
-        android:id="@+id/cmdChange"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="240dp"
-        android:textSize="10sp"
-        android:text="Change" />
-        
-    <ImageButton
-        android:id="@+id/cmdSMS"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/text_share" />
-    
-    <ImageButton
-        android:id="@+id/cmdMail"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="110dp"
-        android:background="@drawable/email_share" />
-    
-    <ImageButton
-        android:id="@+id/cmdTwitter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="200dp"
-        android:background="@drawable/twitter_share" />
-    
-    <ImageButton
-        android:id="@+id/cmdFB"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="290dp"
-        android:background="@drawable/facebook_share" />
-    
-    <TextView 
-        android:id="@+id/txtURL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="#474747" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/description_background"
+            android:padding="15dp"
+            android:layout_weight="2"
+            android:id="@+id/txtDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
+            android:gravity="center"
+            android:textSize="@dimen/description_font_size"
+            android:textColor="#474747" />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/txtURL"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="#474747" />
+
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:layout_weight="2"
+            android:layout_height="fill_parent"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_margin="8dp"
+                    android:id="@+id/cmdSMS"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/text_share" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_margin="8dp"
+                    android:id="@+id/cmdMail"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/email_share" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_margin="8dp"
+                    android:id="@+id/cmdTwitter"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/twitter_share" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_margin="8dp"
+                    android:id="@+id/cmdFB"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/facebook_share" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
     
 </RelativeLayout>
     
