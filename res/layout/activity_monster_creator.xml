@@ -87,7 +87,7 @@
             android:layout_marginTop="0dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/up" />
+            android:background="@drawable/up_arrow_selector" />
 
         <ImageButton
             android:id="@+id/cmdRight"
@@ -95,14 +95,14 @@
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/right" />
+            android:background="@drawable/right_arrow_selector" />
 
         <ImageButton
             android:id="@+id/cmdLeft"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/left" />
+            android:background="@drawable/left_arrow_selector" />
 
         <ImageButton
             android:id="@+id/cmdDown"
@@ -111,7 +111,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="0dp"
-            android:background="@drawable/down" />
+            android:background="@drawable/down_arrow_selector" />
 
     </RelativeLayout>
 
