@@ -19,7 +19,7 @@
             android:layout_marginTop="10dp"
             android:text="Let's create your Branchster"
             android:gravity="center"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textColor="#474747" />
 
         <LinearLayout
@@ -54,7 +54,7 @@
 
         <View
             android:layout_alignTop="@+id/botLayerThreeFace"
-            
+
             android:id="@+id/botLayerOneColor"
             android:layout_width="@dimen/branchster_width"
             android:layout_height="@dimen/branchster_height"
