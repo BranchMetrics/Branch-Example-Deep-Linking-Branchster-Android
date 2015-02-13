@@ -134,7 +134,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@drawable/text_share" />
+                    android:background="@drawable/share_text_selector" />
 
             </LinearLayout>
 
@@ -150,7 +150,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@drawable/email_share" />
+                    android:background="@drawable/share_email_selector" />
 
             </LinearLayout>
 
@@ -166,7 +166,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@drawable/twitter_share" />
+                    android:background="@drawable/share_twitter_selector" />
 
             </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
-                    android:background="@drawable/facebook_share" />
+                    android:background="@drawable/share_facebook_selector" />
 
             </LinearLayout>
 
