@@ -28,6 +28,7 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:1.3.0@aar') {
         transitive = true;
     }
+    compile 'com.facebook.android:facebook-android-sdk:3.21.1'
 }
 
 android {
