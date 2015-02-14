@@ -58,15 +58,18 @@ public class MonsterViewerActivity extends Activity {
 		} catch (JSONException ex) {
 			ex.printStackTrace();
 		}
-		
+
+        // TextView that will contain the Link URL.
+        txtUrl = (TextView) findViewById(R.id.txtURL);
+
 		// track that the user viewed the monster view page
 	    Branch.getInstance(getApplicationContext()).userCompletedAction("monster_view", monsterMetadata);
-	    
+
 	    // load a URL just for display on the viewer page
 	    Branch.getInstance(getApplicationContext()).getContentUrl("viewer", monsterMetadata, new BranchLinkCreateListener() {
 			@Override
 			public void onLinkCreate(String url, BranchError error) {
-				txtUrl.setText(url);
+                txtUrl.setText(url);
 			}
 		});
 		
@@ -82,8 +85,6 @@ public class MonsterViewerActivity extends Activity {
 		cmdTwitter = (ImageButton) findViewById(R.id.cmdTwitter);
 		cmdFacebook = (ImageButton) findViewById(R.id.cmdFB);
 
-		txtUrl = (TextView) findViewById(R.id.txtURL);
-		
 		cmdChange.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
