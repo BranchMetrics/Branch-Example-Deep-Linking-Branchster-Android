@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="9"
         android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -40,8 +40,11 @@
 
         <meta-data
             android:name="com.crashlytics.ApiKey"
-            android:value="YOUR TWITTER API KEY" />
+            android:value="YOUR TWITTER APP ID" />
 
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="YOUR FACEBOOK APP ID" />
     </application>
 
 </manifest>
