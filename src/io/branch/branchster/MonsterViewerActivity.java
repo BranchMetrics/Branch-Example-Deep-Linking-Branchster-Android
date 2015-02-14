@@ -3,14 +3,17 @@ package io.branch.branchster;
 import io.branch.referral.Branch;
 import io.branch.referral.Branch.BranchLinkCreateListener;
 import io.branch.referral.BranchError;
+import io.fabric.sdk.android.Fabric;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +21,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MonsterViewerActivity extends Activity {
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+
+public class MonsterViewerActivity extends FragmentActivity {
 
 	TextView txtName;
 	TextView txtDescription;
@@ -92,8 +99,9 @@ public class MonsterViewerActivity extends Activity {
 				startActivity(i);
 			}
 		});
-		
-		cmdMessage.setOnClickListener(new OnClickListener() {
+
+        // Share via SMS.
+    		cmdMessage.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Branch.getInstance(getApplicationContext()).getContentUrl("sms", prepareBranchDict(), new BranchLinkCreateListener() {
@@ -107,7 +115,8 @@ public class MonsterViewerActivity extends Activity {
 				});
 			}
 		});
-		
+
+        // Share via Email.
 		cmdMail.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -123,6 +132,23 @@ public class MonsterViewerActivity extends Activity {
 				});
 			}
 		});
+
+        // Share via Twitter.
+        Fabric.with(this, new TweetComposer());
+        final Context context = this;
+        cmdTwitter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Branch.getInstance(getApplicationContext()).getContentUrl("sms", prepareBranchDict(), new BranchLinkCreateListener() {
+                    @Override
+                    public void onLinkCreate(String url, BranchError error) {
+                        TweetComposer.Builder builder = new TweetComposer.Builder(context)
+                                .text("Check out my Branchster named " + monsterName + " at " + url);
+                        builder.show();
+                    }
+                });
+            }
+        });
 	}
 	
 	@Override

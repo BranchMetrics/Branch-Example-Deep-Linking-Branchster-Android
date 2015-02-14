@@ -1,9 +1,12 @@
 package io.branch.branchster;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.branch.referral.Branch;
 import io.branch.referral.Branch.BranchReferralInitListener;
 import io.branch.referral.BranchError;
 
+import io.fabric.sdk.android.Fabric;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +18,10 @@ import android.widget.TextView;
 
 public class SplashActivity extends Activity {
 
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "YOUR TWITTER KEY";
+    private static final String TWITTER_SECRET = "YOUR TWITTER SECRET";
+
 	TextView txtLoading;
 	int messageIndex;
 	String[] loadingMessages;
@@ -23,6 +30,8 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+		Fabric.with(this, new Twitter(authConfig));
 		setContentView(R.layout.activity_splash);
 		
 		loadingMessages = new String[]{"Loading Branchster parts", "Loading Branchster parts.", "Loading Branchster parts..", "Loading Branchster parts..."};

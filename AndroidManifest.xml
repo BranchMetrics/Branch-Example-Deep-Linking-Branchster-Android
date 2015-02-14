@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="20" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     
@@ -37,6 +37,11 @@
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity">
         </activity>
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="YOUR TWITTER API KEY" />
+
     </application>
 
 </manifest>
