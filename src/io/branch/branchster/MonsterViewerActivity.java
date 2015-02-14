@@ -74,7 +74,7 @@ public class MonsterViewerActivity extends Activity {
 		});
 		
 		txtName = (TextView) findViewById(R.id.txtName);
-		botLayerOneColor = (View) findViewById(R.id.botLayerOneColor);
+		botLayerOneColor = findViewById(R.id.botLayerOneColor);
 		botLayerTwoBody = (ImageView) findViewById(R.id.botLayerTwoBody);
 		botLayerThreeFace = (ImageView) findViewById(R.id.botLayerThreeFace);
 		txtDescription = (TextView) findViewById(R.id.txtDescription);
