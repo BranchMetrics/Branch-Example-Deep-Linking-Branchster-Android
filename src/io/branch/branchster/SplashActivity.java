@@ -18,10 +18,6 @@ import android.widget.TextView;
 
 public class SplashActivity extends Activity {
 
-    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "YOUR TWITTER KEY";
-    private static final String TWITTER_SECRET = "YOUR TWITTER SECRET";
-
 	TextView txtLoading;
 	int messageIndex;
 	String[] loadingMessages;
@@ -30,7 +26,12 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+
+        // Configure your Twitter Key and Secret as a string resource.
+        String twitter_key = getResources().getString(R.string.twitter_key);
+        String twitter_secret = getResources().getString(R.string.twitter_secret);
+
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(twitter_key, twitter_secret);
 		Fabric.with(this, new Twitter(authConfig));
 		setContentView(R.layout.activity_splash);
 		
