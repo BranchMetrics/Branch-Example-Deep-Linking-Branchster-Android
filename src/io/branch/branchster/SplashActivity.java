@@ -34,8 +34,9 @@ public class SplashActivity extends Activity {
         TwitterAuthConfig authConfig = new TwitterAuthConfig(twitter_key, twitter_secret);
 		Fabric.with(this, new Twitter(authConfig));
 		setContentView(R.layout.activity_splash);
-		
-		loadingMessages = new String[]{"Loading Branchster parts", "Loading Branchster parts.", "Loading Branchster parts..", "Loading Branchster parts..."};
+
+        // Get loading messages from XML definitions.
+		loadingMessages = getResources().getStringArray(R.array.loading_messages);
 		
 		txtLoading = (TextView) findViewById(R.id.txtLoading);
 	}
@@ -60,12 +61,15 @@ public class SplashActivity extends Activity {
 						prefs.setColorIndex(referringParams.getInt("color_index"));
 
 						i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
+
 			        } else {
+
 			            if (prefs.getMonsterName() == null) {
 			                prefs.setMonsterName("");
 			                
 			                i = new Intent(getApplicationContext(), MonsterCreatorActivity.class);
-			            // If no name has been saved, this user is new, so load the monster maker screen
+			                // If no name has been saved, this user is new, so load the monster maker screen
+
 			            } else {
 			            	i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
 			            }

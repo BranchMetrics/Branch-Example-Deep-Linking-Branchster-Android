@@ -8,4 +8,12 @@
     <!-- Defaults -->
     <string name="monster_name">Bingles Jingleheimer</string>
 
+    <!-- Loading Messages -->
+    <string-array name="loading_messages">
+        <item>Loading Branchster parts</item>
+        <item>Loading Branchster parts.</item>
+        <item>Loading Branchster parts..</item>
+        <item>Loading Branchster parts...</item>
+    </string-array>
+
 </resources>
