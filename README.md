@@ -21,7 +21,7 @@ To set up your own API keys and get rid of this error:
     <!--
     Your Branch App Key Goes Here
     If you don't have one, see the Branch Android Quick-Start for how to get one:
-    https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md#step-0---sign-up--setup
+    https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md
     -->
     <string name="branch_app_key">- Your Branch App Key -</string>
 
