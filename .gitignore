@@ -1,0 +1,16 @@
+# Eclipse
+*.class
+gen/*
+bin/*
+
+# Android Studio
+.idea
+*.iml
+local.properties
+build/
+Branch-SDK/build/
+Branch-SDK-TestBed/build/
+
+# Gradle
+build/*
+.gradle/*
