@@ -47,7 +47,7 @@ To set up your own API keys and get rid of this error:
 
 Twitter's Fabric framework doesn't currently allow the *com.crashlytics.ApiKey* meta-data to be specified as a String resource in the *ApplicationManifest.xml* file. If you try to add the key as a *@string/..* reference you will get a *Crashlytics Developer Tools error* at build time.
 
-So to get Twitter integration working, you will need to embed the Crashyltics key directly in *AndroidManifest.xml* like so:
+So to get Twitter integration working, you will need to insert your Crashyltics key directly in *AndroidManifest.xml* like so:
 
 ```XML
 <manifest .. >
@@ -58,6 +58,8 @@ So to get Twitter integration working, you will need to embed the Crashyltics ke
     <meta-data 
       android:name="com.crashlytics.ApiKey"
       android:value="YOUR FABRIC/CRASHLYTICS ApiKey" />
+      
+      --
       
   </application>
 </manifest>
