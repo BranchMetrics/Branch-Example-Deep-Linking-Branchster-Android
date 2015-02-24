@@ -57,7 +57,7 @@ So to get Twitter integration working, you will need to embed the Crashyltics ke
 
     <meta-data 
       android:name="com.crashlytics.ApiKey"
-      android:value="Yout Fabric/Crashlytics ApiKey" />
+      android:value="YOUR FABRIC/CRASHLYTICS ApiKey" />
       
   </application>
 </manifest>
