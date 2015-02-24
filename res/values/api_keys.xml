@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    Your Branch App Key Goes Here
+    If you don't have one, see the Branch Android Quick-Start for how to get one:
+    https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md
+    -->
+    <string name="bnc_app_key">YOUR BRANCH APP KEY</string>
+
+    <!--
+    Your Your Facebook App ID Goes Here
+    If you don't have one, see the Facebook SDK for Android documentation:
+    https://developers.facebook.com/docs/android
+    -->
+    <string name="facebook_app_id">YOUR FACEBOOK APP ID</string>
+
+    <!--
+    Your Twitter Key and Secret Goes Here
+    If you don't have these, see the Twitter Kit for Android documentation:
+    https://dev.twitter.com/twitter-kit/android
+    -->
+    <string name="twitter_key">YOUR TWITTER APP KEY</string>
+    <string name="twitter_secret">YOUR TWITTER APP SECRET</string>
+
+</resources>
