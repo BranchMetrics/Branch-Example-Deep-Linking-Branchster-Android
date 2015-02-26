@@ -24,10 +24,16 @@ buildscript {
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
+
+    // Branch SDK
     compile 'io.branch.sdk.android:library:1.3.5'
+
+    // Twitter SDK
     compile('com.twitter.sdk.android:twitter:1.3.0@aar') {
         transitive = true;
     }
+
+    // Facebook SDK
     compile 'com.facebook.android:facebook-android-sdk:3.21.1'
 }
 

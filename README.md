@@ -10,8 +10,8 @@ Error: .. No resource found that matches the given name (at 'value' with value '
 
 To set up your own API keys and get rid of this error:
 
-1. Create an XML file called **api_keys.xml** within the */res/values* folder.
-2. Copy-paste the following XML snippet into that file.
+1. Open up **api_keys.xml** which exists in the */res/values* folder.
+2. Insert your Branch App Key, Facebook ID and Twitter key/secret in this file.
 3. Clean/Rebuild your project.
 
 ```XML
@@ -23,22 +23,22 @@ To set up your own API keys and get rid of this error:
     If you don't have one, see the Branch Android Quick-Start for how to get one:
     https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md
     -->
-    <string name="branch_app_key">- Your Branch App Key -</string>
+    <string name="bnc_app_key">YOUR BRANCH APP KEY</string>
 
     <!--
     Your Your Facebook App ID Goes Here
     If you don't have one, see the Facebook SDK for Android documentation:
     https://developers.facebook.com/docs/android
     -->
-    <string name="facebook_app_id">- Facebook App Id -</string>
+    <string name="facebook_app_id">YOUR FACEBOOK APP ID</string>
 
     <!--
     Your Twitter Key and Secret Goes Here
     If you don't have these, see the Twitter Kit for Android documentation:
     https://dev.twitter.com/twitter-kit/android
     -->
-    <string name="twitter_key">- Your Twitter Key -</string>
-    <string name="twitter_secret">- Your Twitter Secret -</string>
+    <string name="twitter_key">YOUR TWITTER APP KEY</string>
+    <string name="twitter_secret">YOUR TWITTER APP SECRET</string>
 
 </resources>
 ```
@@ -47,7 +47,7 @@ To set up your own API keys and get rid of this error:
 
 Twitter's Fabric framework doesn't currently allow the *com.crashlytics.ApiKey* meta-data to be specified as a String resource in the *ApplicationManifest.xml* file. If you try to add the key as a *@string/..* reference you will get a *Crashlytics Developer Tools error* at build time.
 
-So to get Twitter integration working, you will need to embed the Crashyltics key directly in *AndroidManifest.xml* like so:
+So to get Twitter integration working, you will need to insert your Crashyltics key directly in *AndroidManifest.xml* like so:
 
 ```XML
 <manifest .. >
@@ -57,7 +57,9 @@ So to get Twitter integration working, you will need to embed the Crashyltics ke
 
     <meta-data 
       android:name="com.crashlytics.ApiKey"
-      android:value="Yout Fabric/Crashlytics ApiKey" />
+      android:value="YOUR FABRIC/CRASHLYTICS ApiKey" />
+      
+      --
       
   </application>
 </manifest>
