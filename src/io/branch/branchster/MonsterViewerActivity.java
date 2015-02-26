@@ -129,20 +129,20 @@ public class MonsterViewerActivity extends FragmentActivity {
 
         // Share via Email.
 		cmdMail.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Branch.getInstance(getApplicationContext()).getContentUrl("email", prepareBranchDict(), new BranchLinkCreateListener() {
-					@Override
-					public void onLinkCreate(String url, BranchError error) {
-						Intent intent = new Intent(Intent.ACTION_SEND);
-						intent.putExtra(Intent.EXTRA_SUBJECT, "Check out my Branchster named " + monsterName); 
-						intent.putExtra(Intent.EXTRA_TEXT, "I just created this Branchster named " + monsterName + " in the Branch Monster Factory.\n\nSee it here:\n" + url);  
-						intent.setType ("text/plain");  
-						startActivity(Intent.createChooser(intent, "Choose Email Client"));
-					}
-				});
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                Branch.getInstance(getApplicationContext()).getContentUrl("email", prepareBranchDict(), new BranchLinkCreateListener() {
+                    @Override
+                    public void onLinkCreate(String url, BranchError error) {
+                        Intent intent = new Intent(Intent.ACTION_SEND);
+                        intent.putExtra(Intent.EXTRA_SUBJECT, "Check out my Branchster named " + monsterName);
+                        intent.putExtra(Intent.EXTRA_TEXT, "I just created this Branchster named " + monsterName + " in the Branch Monster Factory.\n\nSee it here:\n" + url);
+                        intent.setType ("text/plain");
+                        startActivity(Intent.createChooser(intent, "Choose Email Client"));
+                    }
+                });
+            }
+        });
 
         // Share via Twitter.
         Fabric.with(this, new TweetComposer());
@@ -150,7 +150,7 @@ public class MonsterViewerActivity extends FragmentActivity {
         cmdTwitter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Branch.getInstance(getApplicationContext()).getContentUrl("sms", prepareBranchDict(), new BranchLinkCreateListener() {
+                Branch.getInstance(getApplicationContext()).getContentUrl("twitter", prepareBranchDict(), new BranchLinkCreateListener() {
                     @Override
                     public void onLinkCreate(String url, BranchError error) {
                         TweetComposer.Builder builder = new TweetComposer.Builder(context)
@@ -167,7 +167,7 @@ public class MonsterViewerActivity extends FragmentActivity {
         cmdFacebook.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Branch.getInstance(getApplicationContext()).getContentUrl("sms", prepareBranchDict(), new BranchLinkCreateListener() {
+                Branch.getInstance(getApplicationContext()).getContentUrl("facebook", prepareBranchDict(), new BranchLinkCreateListener() {
                     @Override
                     public void onLinkCreate(String url, BranchError error) {
                         shareViaFacebook(url, "Check out my Branchster named " + monsterName);
