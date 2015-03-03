@@ -11,22 +11,46 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+/**
+ * This class is where the user can create their own monster. It is the first that the user sees if
+ * they are opening the app for the first time, assuming that they haven't installed the app as a
+ * result of being sent a deep link.
+ */
 public class MonsterCreatorActivity extends Activity {
 
+    //
 	EditText editName;
+
+    // These are the direction button chevrons that surround the monster.
 	ImageButton cmdUp;
 	ImageButton cmdRight;
 	ImageButton cmdDown;
 	ImageButton cmdLeft;
+
+    // This generic View is what changes colour when the user changes that aspect of the monster.
 	View botLayerOneColor;
+
+    // This ImageView appears above the color view, and masks off the shape of the monster.
 	ImageView botLayerTwoBody;
+
+    // The face is laid on top of the body mask graphic.
 	ImageView botLayerThreeFace;
+
+    // The buttons
 	Button[] cmdColors;
+
+    /* The color tubs contain one colour button each. They are slightly bigger than the Button
+    * that they contain, and the background is the outline that is seen around a selected color. */
     LinearLayout[] cmdColorTubs;
+
+    // The user hits this button to indicate that they have finished editing their monster.
 	Button cmdDone;
-	
+
+    /* This MonsterPreferences is populated either by the user's actions as they customise their
+    monster, or when data is received with the a deep link dictionary attached. */
 	MonsterPreferences prefs;
 	MonsterPartsFactory factory;
+
 	int faceIndex;
 	int bodyIndex;
 	
@@ -34,7 +58,8 @@ public class MonsterCreatorActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_monster_creator);
-		
+
+        // Assign UI items to variables for manipulation later on.
 		editName = (EditText) findViewById(R.id.editName);
 		botLayerOneColor = (View) findViewById(R.id.botLayerOneColor);
 		botLayerTwoBody = (ImageView) findViewById(R.id.botLayerTwoBody);
@@ -44,6 +69,7 @@ public class MonsterCreatorActivity extends Activity {
 		cmdRight = (ImageButton) findViewById(R.id.cmdRight);
 		cmdDown = (ImageButton) findViewById(R.id.cmdDown);
 		cmdLeft = (ImageButton) findViewById(R.id.cmdLeft);
+
 		cmdColors = new Button[]{
 				(Button) findViewById(R.id.cmdColor0),
 				(Button) findViewById(R.id.cmdColor1),
@@ -54,6 +80,7 @@ public class MonsterCreatorActivity extends Activity {
 				(Button) findViewById(R.id.cmdColor6),
 				(Button) findViewById(R.id.cmdColor7)
 		};
+
         cmdColorTubs = new LinearLayout[]{
                 (LinearLayout) findViewById(R.id.cmdColorTub0),
                 (LinearLayout) findViewById(R.id.cmdColorTub1),
@@ -64,15 +91,17 @@ public class MonsterCreatorActivity extends Activity {
                 (LinearLayout) findViewById(R.id.cmdColorTub6),
                 (LinearLayout) findViewById(R.id.cmdColorTub7)
         };
-		
+
+        // Assign the prefs file.
 		prefs = MonsterPreferences.getInstance(getApplicationContext());
 		factory = MonsterPartsFactory.getInstance(getApplicationContext());
-		
-		for (int i = 0; i < cmdColors.length; i++) {
-			Button cmdColor = cmdColors[i];
-			cmdColor.setBackgroundColor(factory.colorForIndex(i));
-//			cmdColor.setLeft((cmdColors.length / 2 - i) * 30
 
+        // Iterate through the color buttons and set their color based on the predefined options.
+		for (int i = 0; i < cmdColors.length; i++) {
+            Button cmdColor = cmdColors[i];
+			cmdColor.setBackgroundColor(factory.colorForIndex(i));
+
+            // Assign a click listener for each.
 			cmdColor.setOnClickListener(new Button.OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -84,7 +113,8 @@ public class MonsterCreatorActivity extends Activity {
 				}
 			});
 		}
-		
+
+        // Go to the previous face when the user clicks the up arrow.
 		cmdUp.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -97,7 +127,8 @@ public class MonsterCreatorActivity extends Activity {
 			    botLayerThreeFace.setImageBitmap(factory.imageForFace(faceIndex));
 			}
 		});
-		
+
+        // Go to the next face when the user clicks the down arrow.
 		cmdDown.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -110,7 +141,8 @@ public class MonsterCreatorActivity extends Activity {
 			    botLayerThreeFace.setImageBitmap(factory.imageForFace(faceIndex));
 			}
 		});
-		
+
+        // Go to the previous body when the user clicks the left arrow.
 		cmdLeft.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -123,7 +155,8 @@ public class MonsterCreatorActivity extends Activity {
 			    botLayerTwoBody.setImageBitmap(factory.imageForBody(bodyIndex));
 			}
 		});
-		
+
+        // Go to the next body when the user clicks the right arrow.
 		cmdRight.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -136,7 +169,8 @@ public class MonsterCreatorActivity extends Activity {
 			    botLayerTwoBody.setImageBitmap(factory.imageForBody(bodyIndex));
 			}
 		});
-		
+
+        // Save the monster name to prefs object, then open the MonsterViewerActivity.
 		cmdDone.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -155,7 +189,8 @@ public class MonsterCreatorActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		
+
+        // Get the values from the monster prefs.
 		botLayerOneColor.setBackgroundColor(factory.colorForIndex(prefs.getColorIndex()));
 		botLayerTwoBody.setImageBitmap(factory.imageForBody(prefs.getBodyIndex()));
 		botLayerThreeFace.setImageBitmap(factory.imageForFace(prefs.getFaceIndex()));
