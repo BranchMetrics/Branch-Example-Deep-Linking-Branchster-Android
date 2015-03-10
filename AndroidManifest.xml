@@ -39,12 +39,11 @@
         </activity>
 
         <meta-data
-            android:name="com.crashlytics.ApiKey"
-            android:value="YOUR TWITTER APP ID" />
-
-        <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a5689371c7d402061ef8dd47b44a89f0515ca4a7" />
     </application>
 
 </manifest>

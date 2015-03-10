@@ -6,14 +6,14 @@
     If you don't have one, see the Branch Android Quick-Start for how to get one:
     https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md
     -->
-    <string name="bnc_app_key">YOUR BRANCH APP KEY</string>
+    <string name="bnc_app_key">36930236817866882</string>
 
     <!--
     Your Your Facebook App ID Goes Here
     If you don't have one, see the Facebook SDK for Android documentation:
     https://developers.facebook.com/docs/android
     -->
-    <string name="facebook_app_id">YOUR FACEBOOK APP ID</string>
+    <string name="facebook_app_id">288726397999326</string>
 
     <!--
     Your Twitter Key and Secret Goes Here
