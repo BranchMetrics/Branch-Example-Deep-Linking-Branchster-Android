@@ -1,5 +1,6 @@
 package io.branch.branchster;
 
+import io.branch.referral.Branch;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -189,6 +190,7 @@ public class MonsterCreatorActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		Branch.getInstance(getApplicationContext()).initSession();
 
         // Get the values from the monster prefs.
 		botLayerOneColor.setBackgroundColor(factory.colorForIndex(prefs.getColorIndex()));
@@ -203,6 +205,7 @@ public class MonsterCreatorActivity extends Activity {
 	@Override
 	protected void onStop() {
 		super.onStop();
+		Branch.getInstance(getApplicationContext()).closeSession();
 	}
 
     private void setSelectedColourButton(int idx){

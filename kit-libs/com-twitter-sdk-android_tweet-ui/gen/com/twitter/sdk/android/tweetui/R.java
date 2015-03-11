@@ -164,25 +164,25 @@ containing a value of this type.
         public static int tw__transparent=0x7f020011;
     }
     public static final class id {
-        public static int height=0x7f0a0000;
-        public static int imageView=0x7f0a0004;
-        public static int tw__allow_btn=0x7f0a0007;
-        public static int tw__author_attribution=0x7f0a0012;
-        public static int tw__not_now_btn=0x7f0a0006;
-        public static int tw__share_email_desc=0x7f0a0005;
-        public static int tw__spinner=0x7f0a0003;
-        public static int tw__tweet_author_avatar=0x7f0a000a;
-        public static int tw__tweet_author_full_name=0x7f0a000b;
-        public static int tw__tweet_author_screen_name=0x7f0a000e;
-        public static int tw__tweet_author_verified=0x7f0a000c;
-        public static int tw__tweet_media=0x7f0a0009;
-        public static int tw__tweet_share=0x7f0a0011;
-        public static int tw__tweet_text=0x7f0a0010;
-        public static int tw__tweet_timestamp=0x7f0a000f;
-        public static int tw__tweet_view=0x7f0a0008;
-        public static int tw__twitter_logo=0x7f0a000d;
-        public static int tw__web_view=0x7f0a0002;
-        public static int width=0x7f0a0001;
+        public static int height=0x7f090000;
+        public static int imageView=0x7f090004;
+        public static int tw__allow_btn=0x7f090007;
+        public static int tw__author_attribution=0x7f090012;
+        public static int tw__not_now_btn=0x7f090006;
+        public static int tw__share_email_desc=0x7f090005;
+        public static int tw__spinner=0x7f090003;
+        public static int tw__tweet_author_avatar=0x7f09000a;
+        public static int tw__tweet_author_full_name=0x7f09000b;
+        public static int tw__tweet_author_screen_name=0x7f09000e;
+        public static int tw__tweet_author_verified=0x7f09000c;
+        public static int tw__tweet_media=0x7f090009;
+        public static int tw__tweet_share=0x7f090011;
+        public static int tw__tweet_text=0x7f090010;
+        public static int tw__tweet_timestamp=0x7f09000f;
+        public static int tw__tweet_view=0x7f090008;
+        public static int tw__twitter_logo=0x7f09000d;
+        public static int tw__web_view=0x7f090002;
+        public static int width=0x7f090001;
     }
     public static final class layout {
         public static int tw__activity_oauth=0x7f030000;
@@ -191,9 +191,9 @@ containing a value of this type.
         public static int tw__tweet_compact=0x7f030003;
     }
     public static final class plurals {
-        public static int tw__time_hours=0x7f090000;
-        public static int tw__time_mins=0x7f090001;
-        public static int tw__time_secs=0x7f090002;
+        public static int tw__time_hours=0x7f0a0000;
+        public static int tw__time_mins=0x7f0a0001;
+        public static int tw__time_secs=0x7f0a0002;
     }
     public static final class raw {
         public static int tw__cacerts=0x7f040000;
@@ -274,7 +274,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.twitter.sdk.android.tweetui:tw__image_aspect_ratio
         */
-        public static int tw__AspectRatioImageView_tw__image_aspect_ratio = 0;
+        public static final int tw__AspectRatioImageView_tw__image_aspect_ratio = 0;
         /**
           <p>This symbol is the offset where the {@link com.twitter.sdk.android.tweetui.R.attr#tw__image_dimension_to_adjust}
           attribute's value can be found in the {@link #tw__AspectRatioImageView} array.
@@ -291,7 +291,7 @@ containing a value of this type.
 </table>
           @attr name com.twitter.sdk.android.tweetui:tw__image_dimension_to_adjust
         */
-        public static int tw__AspectRatioImageView_tw__image_dimension_to_adjust = 1;
+        public static final int tw__AspectRatioImageView_tw__image_dimension_to_adjust = 1;
         /** Attributes that can be used with a tw__TweetView.
            <p>Includes the following attributes:</p>
            <table>
@@ -325,7 +325,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.twitter.sdk.android.tweetui:tw__action_color
         */
-        public static int tw__TweetView_tw__action_color = 3;
+        public static final int tw__TweetView_tw__action_color = 3;
         /**
           <p>This symbol is the offset where the {@link com.twitter.sdk.android.tweetui.R.attr#tw__container_bg_color}
           attribute's value can be found in the {@link #tw__TweetView} array.
@@ -340,7 +340,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.twitter.sdk.android.tweetui:tw__container_bg_color
         */
-        public static int tw__TweetView_tw__container_bg_color = 1;
+        public static final int tw__TweetView_tw__container_bg_color = 1;
         /**
           <p>This symbol is the offset where the {@link com.twitter.sdk.android.tweetui.R.attr#tw__primary_text_color}
           attribute's value can be found in the {@link #tw__TweetView} array.
@@ -355,7 +355,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.twitter.sdk.android.tweetui:tw__primary_text_color
         */
-        public static int tw__TweetView_tw__primary_text_color = 2;
+        public static final int tw__TweetView_tw__primary_text_color = 2;
         /**
           <p>This symbol is the offset where the {@link com.twitter.sdk.android.tweetui.R.attr#tw__tweet_id}
           attribute's value can be found in the {@link #tw__TweetView} array.
@@ -369,6 +369,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.twitter.sdk.android.tweetui:tw__tweet_id
         */
-        public static int tw__TweetView_tw__tweet_id = 0;
+        public static final int tw__TweetView_tw__tweet_id = 0;
     };
 }

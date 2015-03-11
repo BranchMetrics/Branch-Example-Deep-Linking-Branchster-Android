@@ -266,6 +266,7 @@ public class MonsterViewerActivity extends FragmentActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		Branch.getInstance(getApplicationContext()).initSession();
 		
 		botLayerOneColor.setBackgroundColor(factory.colorForIndex(prefs.getColorIndex()));
 		botLayerTwoBody.setImageBitmap(factory.imageForBody(prefs.getBodyIndex()));
@@ -277,6 +278,7 @@ public class MonsterViewerActivity extends FragmentActivity {
 	@Override
 	protected void onStop() {
 		super.onStop();
+		Branch.getInstance(getApplicationContext()).closeSession();
 	}
 	
 	private JSONObject prepareBranchDict() {

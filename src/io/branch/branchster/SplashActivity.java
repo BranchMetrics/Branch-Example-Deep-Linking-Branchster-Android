@@ -39,13 +39,9 @@ public class SplashActivity extends Activity {
 		loadingMessages = getResources().getStringArray(R.array.loading_messages);
 		
 		txtLoading = (TextView) findViewById(R.id.txtLoading);
-	}
-	
-	@Override
-	protected void onStart() {
-		super.onStart();
-
+		
 		branch = Branch.getInstance(this.getApplicationContext(), getResources().getString(R.string.bnc_app_key));
+		branch.setDebug();
 		branch.initSession(new BranchReferralInitListener() {
 			@Override
 			public void onInitFinished(JSONObject referringParams, BranchError error) {
@@ -73,8 +69,8 @@ public class SplashActivity extends Activity {
 			            } else {
 			            	i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
 			            }
-			            startActivity(i);
 			        }
+					startActivity(i);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -93,15 +89,16 @@ public class SplashActivity extends Activity {
 	                        	txtLoading.setText(loadingMessages[messageIndex]);
 	                        }
 	                    });
-	                    Thread.sleep(300);
+	                    Thread.sleep(1000);
 	                } catch (InterruptedException e) {
 	                    e.printStackTrace();
 	                }
 	            }
 	        }
 	    }.start();
-	}
 
+	}
+	
 	@Override
 	protected void onStop() {
 		super.onStop();

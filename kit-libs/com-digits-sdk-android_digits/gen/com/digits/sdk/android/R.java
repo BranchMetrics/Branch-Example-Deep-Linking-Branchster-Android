@@ -247,7 +247,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.digits.sdk.android:dgts__StateButtonStyle
         */
-        public static int StateButton_dgts__StateButtonStyle = 3;
+        public static final int StateButton_dgts__StateButtonStyle = 3;
         /**
           <p>This symbol is the offset where the {@link com.digits.sdk.android.R.attr#finishStateText}
           attribute's value can be found in the {@link #StateButton} array.
@@ -261,7 +261,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.digits.sdk.android:finishStateText
         */
-        public static int StateButton_finishStateText = 0;
+        public static final int StateButton_finishStateText = 0;
         /**
           <p>This symbol is the offset where the {@link com.digits.sdk.android.R.attr#progressStateText}
           attribute's value can be found in the {@link #StateButton} array.
@@ -275,7 +275,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.digits.sdk.android:progressStateText
         */
-        public static int StateButton_progressStateText = 1;
+        public static final int StateButton_progressStateText = 1;
         /**
           <p>This symbol is the offset where the {@link com.digits.sdk.android.R.attr#startStateText}
           attribute's value can be found in the {@link #StateButton} array.
@@ -289,6 +289,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.digits.sdk.android:startStateText
         */
-        public static int StateButton_startStateText = 2;
+        public static final int StateButton_startStateText = 2;
     };
 }
