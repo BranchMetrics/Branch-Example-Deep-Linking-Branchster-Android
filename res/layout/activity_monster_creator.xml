@@ -29,6 +29,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:singleLine="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:id="@+id/editName"
