@@ -6,7 +6,6 @@
 
     <!-- This defines the height of the branchster window in the middle of the monster creator. -->
     <dimen name="branchster_container_height">300dp</dimen>
-    <dimen name="branchster_height">240dp</dimen>
     <dimen name="name_font_size">24sp</dimen>
 
 </resources>
