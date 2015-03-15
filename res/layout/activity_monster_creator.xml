@@ -29,6 +29,7 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:inputType="textCapSentences"
                 android:singleLine="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -37,8 +38,9 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/name_font_size"
                 android:gravity="center"
-                android:layout_below="@+id/txtTitle"
+                android:layout_below="@+id/txtTi    tle"
                 android:hint="Pick a name"
+                android:textColorHint="#80505154"
                 android:textColor="#474747" />
 
         </LinearLayout>
