@@ -43,15 +43,8 @@ public class MonsterPartsFactory {
                 BitmapFactory.decodeResource(context.getResources(), R.drawable.face4),
             };
 
-		
-		descriptionArray = new String[]
-		{
-	         "%@ is a social butterfly. She’s a loyal friend, ready to give you a piggyback ride at a moments notice or greet you with a face lick and wiggle.",
-	         "Creative and contagiously happy, %@ has boundless energy and an appetite for learning about new things. He is vivacious and popular, and is always ready for the next adventure.",
-	         "%@ prefers to work alone and is impatient with hierarchies and politics.  Although he’s not particularly social, he has a razor sharp wit (and claws), and is actually very fun to be around.",
-	         "Independent and ferocious, %@ experiences life at 100 mph. Not interested in maintaining order, he is a fierce individual who is highly effective, successful, and incredibly powerful.",
-	         "Peaceful, shy, and easygoing, %@ takes things at his own pace and lives moment to moment. She is considerate, pleasant, caring, and introspective. She’s a bit nerdy and quiet -- but that’s why everyone loves him."
-		};
+        descriptionArray = context.getResources().getStringArray(R.array.description_array);
+
 	}
 	
 	public static MonsterPartsFactory getInstance(Context context) {
