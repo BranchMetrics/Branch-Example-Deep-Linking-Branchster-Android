@@ -35,6 +35,10 @@ dependencies {
     compile('com.twitter.sdk.android:twitter:1.3.0@aar') {
         transitive = true;
     }
+
+    // Picasso is required for Twitter share as only local images are supported in the Intent.
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
     // Facebook SDK
     compile 'com.facebook.android:facebook-android-sdk:3.21.1'
 

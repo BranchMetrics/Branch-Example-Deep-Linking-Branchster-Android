@@ -8,10 +8,12 @@ import io.fabric.sdk.android.Fabric;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
@@ -27,9 +29,15 @@ import com.facebook.FacebookOperationCanceledException;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.WebDialog;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 import com.facebook.Session;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Random;
 
 public class MonsterViewerActivity extends FragmentActivity {
 
@@ -37,6 +45,8 @@ public class MonsterViewerActivity extends FragmentActivity {
 
     // Facebook
     private UiLifecycleHelper uiHelper;
+
+    Target branchsterTarget;
 
 	TextView txtName;
 	TextView txtDescription;
@@ -144,18 +154,18 @@ public class MonsterViewerActivity extends FragmentActivity {
             }
         });
 
+
+
         // Share via Twitter.
         Fabric.with(this, new TweetComposer());
-        final Context context = this;
         cmdTwitter.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Branch.getInstance(getApplicationContext()).getContentUrl("twitter", prepareBranchDict(), new BranchLinkCreateListener() {
                     @Override
                     public void onLinkCreate(String url, BranchError error) {
-                        TweetComposer.Builder builder = new TweetComposer.Builder(context)
-                                .text("Check out my Branchster named " + monsterName + " at " + url);
-                        builder.show();
+                        String image_uri = "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short)prefs.getColorIndex() + (short)prefs.getBodyIndex() + (short)prefs.getFaceIndex() + ".png";
+                        getShareableImageForTwitter(image_uri, url);
                     }
                 });
             }
@@ -176,6 +186,76 @@ public class MonsterViewerActivity extends FragmentActivity {
             }
         });
 	}
+
+    private void getShareableImageForTwitter(String image_url, final String branch_url){
+
+        if (branchsterTarget == null) branchsterTarget = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                handleBranchsterImage(bitmap, branch_url);
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+
+        };
+
+        Picasso.with(this).load(image_url).into(branchsterTarget);
+    }
+
+    public void handleBranchsterImage(Bitmap b, String branch_url) {
+        Log.v(TAG,"Branchster image downloaded.");
+
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text("Check out my Branchster named " + monsterName + " at " + branch_url);
+
+        File file;
+        File shareImgDir = new File(Environment.getExternalStorageDirectory().toString() + "/branchster");
+
+        // If branchster temp directory exists, delete it and all contents - prevents accumulation over time.
+        if (shareImgDir.isDirectory()) {
+            String[] children = shareImgDir.list();
+            for (int i = 0; i < children.length; i++) {
+                new File(shareImgDir, children[i]).delete();
+            }
+        }
+
+        // Create directory for temporary image.
+        shareImgDir.mkdirs();
+
+        // Create a random number to append to filename to prevent collisions & caching.
+        Random generator = new Random();
+
+        // Range of random number.
+        int n = 10000;
+        n = generator.nextInt(n);
+
+        // Create the filename of the image to share.
+        String shareImgName = "share-" + n + ".jpg";
+        file = new File(shareImgDir, shareImgName);
+        if (file.exists()) file.delete();
+
+        // Write the file to external storage.
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            b.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        builder.image(Uri.parse(file.getAbsolutePath()));
+        builder.show();
+
+    }
 
     private void shareViaFacebook(String url, String description){
 
@@ -291,7 +371,7 @@ public class MonsterViewerActivity extends FragmentActivity {
 			monsterMetadata.put("monster", "true");
 			monsterMetadata.put("og_title", "My Branchster: " + monsterName);
 			monsterMetadata.put("og_description", monsterDescription);
-			monsterMetadata.put("og_image_url", "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short)prefs.getColorIndex() + (short)prefs.getBodyIndex() + (short)prefs.getFaceIndex() + ".png");      
+			monsterMetadata.put("og_image_url", "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short)prefs.getColorIndex() + (short)prefs.getBodyIndex() + (short)prefs.getFaceIndex() + ".png");
 		} catch (JSONException ex) {
 			ex.printStackTrace();
 		}
