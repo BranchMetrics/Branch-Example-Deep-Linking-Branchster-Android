@@ -369,9 +369,9 @@ public class MonsterViewerActivity extends FragmentActivity {
 			monsterMetadata.put("face_index", prefs.getFaceIndex());
 			monsterMetadata.put("monster_name", prefs.getMonsterName());
 			monsterMetadata.put("monster", "true");
-			monsterMetadata.put("og_title", "My Branchster: " + monsterName);
-			monsterMetadata.put("og_description", monsterDescription);
-			monsterMetadata.put("og_image_url", "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short)prefs.getColorIndex() + (short)prefs.getBodyIndex() + (short)prefs.getFaceIndex() + ".png");
+			monsterMetadata.put("$og_title", "My Branchster: " + monsterName);
+			monsterMetadata.put("$og_description", monsterDescription);
+			monsterMetadata.put("$og_image_url", "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short)prefs.getColorIndex() + (short)prefs.getBodyIndex() + (short)prefs.getFaceIndex() + ".png");
 		} catch (JSONException ex) {
 			ex.printStackTrace();
 		}

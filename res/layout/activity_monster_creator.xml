@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/name_font_size"
                 android:gravity="center"
-                android:layout_below="@+id/txtTi    tle"
+                android:layout_below="@+id/txtTitle"
                 android:hint="Pick a name"
                 android:textColorHint="#80505154"
                 android:textColor="#474747" />
