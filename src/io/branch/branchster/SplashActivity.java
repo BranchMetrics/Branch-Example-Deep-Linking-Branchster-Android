@@ -69,35 +69,46 @@ public class SplashActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        branch = Branch.getInstance(mApplicationContext, getResources().getString(R.string.bnc_app_key));
+        branch = Branch.getInstance(mApplicationContext);
         branch.initSession(new BranchReferralInitListener() {
             @Override
             public void onInitFinished(JSONObject referringParams, BranchError error) {
-            Intent i;
-            Log.i(TAG, "Branch init complete!");
-            try {
-                MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                if (referringParams.has("monster")) {
-                    prefs.setMonsterName(referringParams.getString("monster_name"));
-                    prefs.setFaceIndex(referringParams.getInt("face_index"));
-                    prefs.setBodyIndex(referringParams.getInt("body_index"));
-                    prefs.setColorIndex(referringParams.getInt("color_index"));
-                    i = new Intent(mApplicationContext, MonsterViewerActivity.class);
-                } else {
-                    if (prefs.getMonsterName() == null) {
-                        prefs.setMonsterName("");
-                        i = new Intent(mApplicationContext, MonsterCreatorActivity.class);
-                    } else {
-                        i = new Intent(mApplicationContext, MonsterViewerActivity.class);
+                if (error == null) {
+                    Intent i;
+                    Log.i(TAG, "Branch init complete!");
+                    try {
+                        MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                        if (referringParams.has("monster")) {
+                            prefs.setMonsterName(referringParams.getString("monster_name"));
+                            prefs.setFaceIndex(referringParams.getInt("face_index"));
+                            prefs.setBodyIndex(referringParams.getInt("body_index"));
+                            prefs.setColorIndex(referringParams.getInt("color_index"));
+                            i = new Intent(mApplicationContext, MonsterViewerActivity.class);
+                        } else {
+                            if (prefs.getMonsterName() == null) {
+                                prefs.setMonsterName("");
+                                i = new Intent(mApplicationContext, MonsterCreatorActivity.class);
+                            } else {
+                                i = new Intent(mApplicationContext, MonsterViewerActivity.class);
+                            }
+                        }
+                        startActivity(i);
+                    } catch (JSONException e) {
+                        Log.e(TAG, "Error handling Branch response.", e);
+                        startActivity(new Intent(mApplicationContext, MonsterCreatorActivity.class));
                     }
                 }
-                startActivity(i);
-            } catch (JSONException e) {
-                Log.e(TAG, "Error with Branch.", e);
-                startActivity(new Intent(mApplicationContext, MonsterCreatorActivity.class));
-            }
+                else {
+                    Log.e(TAG, "Branch service down = " + error.getMessage());
+                    startActivity(new Intent(mApplicationContext, MonsterCreatorActivity.class));
+                }
             }
         }, this.getIntent().getData(), this);
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        this.setIntent(intent);
     }
 
 	@Override
