@@ -46,6 +46,8 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="a5689371c7d402061ef8dd47b44a89f0515ca4a7" />
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
+        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_key_test" />
     </application>
 
 </manifest>
