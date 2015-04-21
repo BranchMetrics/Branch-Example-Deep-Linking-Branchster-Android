@@ -39,43 +39,7 @@ public class SplashActivity extends Activity {
 		loadingMessages = getResources().getStringArray(R.array.loading_messages);
 		
 		txtLoading = (TextView) findViewById(R.id.txtLoading);
-		
-		branch = Branch.getInstance(this.getApplicationContext(), getResources().getString(R.string.bnc_app_key));
-		branch.setDebug();
-		branch.initSession(new BranchReferralInitListener() {
-			@Override
-			public void onInitFinished(JSONObject referringParams, BranchError error) {
-				Log.i("Branchster", "branch init complete!");
-				try {
-					MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-					Intent i;
-					if (referringParams.has("monster")) {
-						
-						prefs.setMonsterName(referringParams.getString("monster_name"));
-						prefs.setFaceIndex(referringParams.getInt("face_index"));
-						prefs.setBodyIndex(referringParams.getInt("body_index"));
-						prefs.setColorIndex(referringParams.getInt("color_index"));
 
-						i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
-
-			        } else {
-
-			            if (prefs.getMonsterName() == null) {
-			                prefs.setMonsterName("");
-			                
-			                i = new Intent(getApplicationContext(), MonsterCreatorActivity.class);
-			                // If no name has been saved, this user is new, so load the monster maker screen
-
-			            } else {
-			            	i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
-			            }
-			        }
-					startActivity(i);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			}
-		}, this.getIntent().getData(), this);
 		
 		new Thread() {
 	        public void run() {
@@ -98,7 +62,47 @@ public class SplashActivity extends Activity {
 	    }.start();
 
 	}
-	
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        branch = Branch.getInstance(this.getApplicationContext(), getResources().getString(R.string.bnc_app_key));
+        branch.initSession(new BranchReferralInitListener() {
+            @Override
+            public void onInitFinished(JSONObject referringParams, BranchError error) {
+                Log.i("Branchster", "branch init complete!");
+                try {
+                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                    Intent i;
+                    if (referringParams.has("monster")) {
+
+                        prefs.setMonsterName(referringParams.getString("monster_name"));
+                        prefs.setFaceIndex(referringParams.getInt("face_index"));
+                        prefs.setBodyIndex(referringParams.getInt("body_index"));
+                        prefs.setColorIndex(referringParams.getInt("color_index"));
+
+                        i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
+
+                    } else {
+
+                        if (prefs.getMonsterName() == null) {
+                            prefs.setMonsterName("");
+
+                            i = new Intent(getApplicationContext(), MonsterCreatorActivity.class);
+                            // If no name has been saved, this user is new, so load the monster maker screen
+
+                        } else {
+                            i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
+                        }
+                    }
+                    startActivity(i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, this.getIntent().getData(), this);
+    }
+
 	@Override
 	protected void onStop() {
 		super.onStop();
