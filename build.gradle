@@ -30,7 +30,7 @@ dependencies {
     // But ignore the Facebook and Branch *.jar files, as they're only for Eclipse use.
 
     // Branch SDK
-    compile 'io.branch.sdk.android:library:1.5.0'
+    compile 'io.branch.sdk.android:library:1.5.5'
     // Twitter SDK
     compile('com.twitter.sdk.android:twitter:1.3.0@aar') {
         transitive = true;

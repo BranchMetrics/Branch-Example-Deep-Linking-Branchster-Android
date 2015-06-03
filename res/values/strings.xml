@@ -25,4 +25,7 @@
         <item>Peaceful, shy, and easygoing, %@ takes things at his own pace and lives moment to moment. She is considerate, pleasant, caring, and introspective. She’s a bit nerdy and quiet -- but that’s why everyone loves him.</item>
     </string-array>
 
+    <string name="branch_info_first_paragraph">This app showcases one feature of Branch links: content sharing. Branch content sharing drives conversions by taking users to the right page with every link click - even users who have to download your app are automatically taken to that page inside the app after install.</string>
+    <string name="branch_info_second_paragraph">Branch link technology is the foundation of our free, powerful linking and tracking platform that offers install attribution, user referral programs, content sharing, download banners and more to drive app engagement and growth. Sign up and see what you can build!</string>
+
 </resources>
