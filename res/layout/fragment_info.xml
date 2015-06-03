@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="io.branch.branchster.fragment.InfoFragment"
     android:clickable="true"
+    android:tag="info_container"
     android:background="@android:color/background_light">
 
     <TextView

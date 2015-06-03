@@ -202,7 +202,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
             public void onClick(View v) {
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
-                InfoFragment infoFragment = new InfoFragment();
+                InfoFragment infoFragment = InfoFragment.newInstance();
                 ft.replace(R.id.container, infoFragment).addToBackStack("info_container").commit();
             }
         });
@@ -428,32 +428,34 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         // Required for Facebook.
         uiHelper.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
-
-        // TODO; check to see if fragment visible.
-        new AlertDialog.Builder(this)
-                .setTitle("Exit")
-                .setMessage("Are you sure you want to exit?")
-                .setNegativeButton(android.R.string.no, null)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        intent.addCategory(Intent.CATEGORY_HOME);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
-                }).create().show();
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0 ) {
+            fm.popBackStack();
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit")
+                    .setMessage("Are you sure you want to exit?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_HOME);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }
+                    }).create().show();
+        }
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onFragmentInteraction() {
+        // no-op;
     }
 }
