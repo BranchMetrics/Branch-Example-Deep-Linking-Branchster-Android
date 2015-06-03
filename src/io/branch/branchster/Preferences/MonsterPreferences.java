@@ -1,8 +1,10 @@
-package io.branch.branchster;
+package io.branch.branchster.Preferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+
+import io.branch.branchster.MonsterPartsFactory;
 
 
 public class MonsterPreferences {

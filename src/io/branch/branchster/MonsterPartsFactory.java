@@ -17,9 +17,8 @@ public class MonsterPartsFactory {
 
         colorArray = context.getResources().getIntArray(R.array.colors);
 
-		BitmapFactory.Options options = new BitmapFactory.Options();
+        BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = false;
-        //options.inSampleSize = 2;
 
         bodyArray = new Bitmap[]{
                 BitmapFactory.decodeResource(context.getResources(), R.drawable.body0),

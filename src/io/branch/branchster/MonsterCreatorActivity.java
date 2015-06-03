@@ -1,11 +1,11 @@
 package io.branch.branchster;
 
+import io.branch.branchster.Preferences.MonsterPreferences;
 import io.branch.referral.Branch;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;

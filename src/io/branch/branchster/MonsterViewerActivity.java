@@ -1,5 +1,7 @@
 package io.branch.branchster;
 
+import io.branch.branchster.Preferences.MonsterPreferences;
+import io.branch.branchster.fragment.InfoFragment;
 import io.branch.referral.Branch;
 import io.branch.referral.Branch.BranchLinkCreateListener;
 import io.branch.referral.BranchError;
@@ -9,6 +11,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,7 +45,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
 
-public class MonsterViewerActivity extends FragmentActivity {
+public class MonsterViewerActivity extends FragmentActivity implements InfoFragment.OnFragmentInteractionListener {
 
     private static String TAG = MonsterViewerActivity.class.getSimpleName();
 
@@ -58,6 +62,7 @@ public class MonsterViewerActivity extends FragmentActivity {
 	ImageButton cmdFacebook;
 	TextView txtUrl;
 	Button cmdChange;
+    Button mInfoButton;
 	View botLayerOneColor;
 	ImageView botLayerTwoBody;
 	ImageView botLayerThreeFace;
@@ -114,6 +119,8 @@ public class MonsterViewerActivity extends FragmentActivity {
 		cmdMail = (ImageButton) findViewById(R.id.cmdMail);
 		cmdTwitter = (ImageButton) findViewById(R.id.cmdTwitter);
 		cmdFacebook = (ImageButton) findViewById(R.id.cmdFB);
+
+        // TODO : refactor callbacks
 
 		cmdChange.setOnClickListener(new OnClickListener() {
 			@Override
@@ -187,6 +194,19 @@ public class MonsterViewerActivity extends FragmentActivity {
                 });
             }
         });
+
+        // More info
+        mInfoButton = (Button)findViewById(R.id.infoButton);
+        mInfoButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                InfoFragment infoFragment = new InfoFragment();
+                ft.replace(R.id.container, infoFragment).addToBackStack("info_container").commit();
+            }
+        });
+
 	}
 
     private void getShareableImageForTwitter(String image_url, final String branch_url){
@@ -415,6 +435,8 @@ public class MonsterViewerActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
+
+        // TODO; check to see if fragment visible.
         new AlertDialog.Builder(this)
                 .setTitle("Exit")
                 .setMessage("Are you sure you want to exit?")
@@ -428,5 +450,10 @@ public class MonsterViewerActivity extends FragmentActivity {
                         startActivity(intent);
                     }
                 }).create().show();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
