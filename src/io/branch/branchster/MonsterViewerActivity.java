@@ -1,13 +1,5 @@
 package io.branch.branchster;
 
-import io.branch.referral.Branch;
-import io.branch.referral.Branch.BranchLinkCreateListener;
-import io.branch.referral.BranchError;
-import io.fabric.sdk.android.Fabric;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,6 +20,7 @@ import android.widget.Toast;
 
 import com.facebook.FacebookException;
 import com.facebook.FacebookOperationCanceledException;
+import com.facebook.Session;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.FacebookDialog;
 import com.facebook.widget.WebDialog;
@@ -35,11 +28,19 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
-import com.facebook.Session;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
+
+import io.branch.referral.Branch;
+import io.branch.referral.Branch.BranchLinkCreateListener;
+import io.branch.referral.BranchContentUrlBuilder;
+import io.branch.referral.BranchError;
+import io.branch.referral.indexing.RegisterViewBuilder;
+import io.fabric.sdk.android.Fabric;
 
 public class MonsterViewerActivity extends FragmentActivity {
 
@@ -96,14 +97,20 @@ public class MonsterViewerActivity extends FragmentActivity {
 	    Branch.getInstance(getApplicationContext()).userCompletedAction("monster_view", monsterMetadata);
 
 	    // load a URL just for display on the viewer page
-	    Branch.getInstance(getApplicationContext()).getContentUrl("viewer", monsterMetadata, new BranchLinkCreateListener() {
-			@Override
-			public void onLinkCreate(String url, BranchError error) {
-                txtUrl.setText(url);
-			}
-		});
-		
-		txtName = (TextView) findViewById(R.id.txtName);
+        new BranchContentUrlBuilder(this, "viewer")
+                .addParameters("color_index", "" + prefs.getColorIndex())
+                .addParameters("body_index", "" + prefs.getBodyIndex())
+                .addParameters("face_index", "" + prefs.getFaceIndex())
+                .addParameters("monster_name", monsterName)
+                .setContentId(monsterName)
+                .generateContentUrl(new BranchLinkCreateListener() {
+                    @Override
+                    public void onLinkCreate(String url, BranchError error) {
+                        txtUrl.setText(url);
+                    }
+                });
+
+        txtName = (TextView) findViewById(R.id.txtName);
 		botLayerOneColor = findViewById(R.id.botLayerOneColor);
 		botLayerTwoBody = (ImageView) findViewById(R.id.botLayerTwoBody);
 		botLayerThreeFace = (ImageView) findViewById(R.id.botLayerThreeFace);
@@ -124,20 +131,20 @@ public class MonsterViewerActivity extends FragmentActivity {
 		});
 
         // Share via SMS.
-    		cmdMessage.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Branch.getInstance(getApplicationContext()).getContentUrl("sms", prepareBranchDict(), new BranchLinkCreateListener() {
-					@Override
-					public void onLinkCreate(String url, BranchError error) {
-						Uri uri = Uri.parse("smsto:");  
-						Intent intent = new Intent(Intent.ACTION_SENDTO, uri);  
-						intent.putExtra("sms_body", "Check out my Branchster named " + monsterName + " at " + url);  
-						startActivity(intent);
-					}
-				});
-			}
-		});
+        cmdMessage.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Branch.getInstance(getApplicationContext()).getContentUrl("sms", prepareBranchDict(), new BranchLinkCreateListener() {
+                    @Override
+                    public void onLinkCreate(String url, BranchError error) {
+                        Uri uri = Uri.parse("smsto:");
+                        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+                        intent.putExtra("sms_body", "Check out my Branchster named " + monsterName + " at " + url);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
 
         // Share via Email.
 		cmdMail.setOnClickListener(new OnClickListener() {
@@ -149,7 +156,7 @@ public class MonsterViewerActivity extends FragmentActivity {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.putExtra(Intent.EXTRA_SUBJECT, "Check out my Branchster named " + monsterName);
                         intent.putExtra(Intent.EXTRA_TEXT, "I just created this Branchster named " + monsterName + " in the Branch Monster Factory.\n\nSee it here:\n" + url);
-                        intent.setType ("text/plain");
+                        intent.setType("text/plain");
                         startActivity(Intent.createChooser(intent, "Choose Email Client"));
                     }
                 });
@@ -187,7 +194,16 @@ public class MonsterViewerActivity extends FragmentActivity {
                 });
             }
         });
-	}
+
+        new RegisterViewBuilder(monsterName, "My_monster", "Custom created monster", "https://s3-us-west-1.amazonaws.com/branchhost/mosaic_og.png")
+                .addExtra("color_index", "" + prefs.getColorIndex())
+                .addExtra("body_index", "" + prefs.getBodyIndex())
+                .addExtra("face_index", "" + prefs.getFaceIndex())
+                 //Since Branchster uses Non Auto session
+                .setContainerActivity(this)
+                .setContentPath("BranchMonsterApp/MonsterView/")
+                .register();
+    }
 
     private void getShareableImageForTwitter(String image_url, final String branch_url){
 
