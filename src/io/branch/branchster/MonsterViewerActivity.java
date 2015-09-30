@@ -195,7 +195,7 @@ public class MonsterViewerActivity extends FragmentActivity {
             }
         });
 
-        new RegisterViewBuilder("My_monster", "Custom created monster", "https://s3-us-west-1.amazonaws.com/branchhost/mosaic_og.png")
+        new RegisterViewBuilder(monsterName, monsterDescription, "https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short)prefs.getColorIndex() + (short)prefs.getBodyIndex() + (short)prefs.getFaceIndex() + ".png")
                 .addExtra("color_index", "" + prefs.getColorIndex())
                 .addExtra("body_index", "" + prefs.getBodyIndex())
                 .addExtra("face_index", "" + prefs.getFaceIndex())
