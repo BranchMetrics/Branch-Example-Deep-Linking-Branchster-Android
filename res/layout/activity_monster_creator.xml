@@ -55,33 +55,13 @@
         android:paddingLeft="34dp"
         android:layout_height="@dimen/branchster_container_height">
 
-        <View
-            android:layout_alignTop="@+id/botLayerThreeFace"
-
-            android:id="@+id/botLayerOneColor"
-            android:layout_width="@dimen/branchster_width"
-            android:layout_height="@dimen/branchster_height"
-            android:layout_alignLeft="@+id/botLayerTwoBody"
-            android:layout_centerHorizontal="true" />
-
-
-        <ImageView
-            android:id="@+id/botLayerTwoBody"
-            android:layout_width="@dimen/branchster_width"
-            android:layout_height="@dimen/branchster_height"
-            android:src="@drawable/body0"
+        <io.branch.branchster.util.MonsterImageView
+            android:id="@+id/monster_img_view"
+            android:layout_width="200dp"
+            android:layout_height="270dp"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"/>
-
-        <ImageView
-            android:id="@+id/botLayerThreeFace"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/branchster_height"
-            android:src="@drawable/face0"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true" />
+            android:src="@drawable/monster_drawable"/>
 
         <ImageButton
             android:id="@+id/cmdUp"

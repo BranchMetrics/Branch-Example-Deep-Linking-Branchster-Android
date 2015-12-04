@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="body_drawable_array">
+        <item>@drawable/body0</item>
+        <item>@drawable/body1</item>
+        <item>@drawable/body2</item>
+        <item>@drawable/body3</item>
+        <item>@drawable/body4</item>
+    </integer-array>
+
+    <integer-array name="face_drawable_array">
+        <item>@drawable/face0</item>
+        <item>@drawable/face1</item>
+        <item>@drawable/face2</item>
+        <item>@drawable/face3</item>
+        <item>@drawable/face4</item>
+    </integer-array>
+
+    <array name="colors">
+        <item>#ff24a4dd</item>
+        <item>#ffec6279</item>
+        <item>#ff29b471</item>
+        <item>#fff69938</item>
+        <item>#ff84268b</item>
+        <item>#ff24cada</item>
+        <item>#fffed521</item>
+        <item>#ff9e1623</item>
+    </array>
+
+</resources>
