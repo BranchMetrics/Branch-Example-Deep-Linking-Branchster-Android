@@ -40,6 +40,7 @@ public class MonsterPreferences {
     }
 
     public String getMonsterDescription() {
+
         return context_.getResources().getStringArray(R.array.description_array)[getFaceIndex()].replace("%@", getMonsterName());
     }
 
@@ -106,7 +107,7 @@ public class MonsterPreferences {
     }
 
     private Object readStringFromPrefs(String key) {
-        return prefHelper_.appSharedPrefs_.getString(key, null);
+        return prefHelper_.appSharedPrefs_.getString(key, "");
     }
 
     @SuppressWarnings("unused")

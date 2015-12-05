@@ -34,7 +34,7 @@ public class SplashActivity extends Activity {
             public void run() {
                 messageIndex = (messageIndex + 1) % loadingMessages.length;
                 txtLoading.setText(loadingMessages[messageIndex]);
-                textLoadHandler.postDelayed(this, 1000);
+                textLoadHandler.postDelayed(this, 500);
             }
         };
         textLoadHandler.post(txtLoader);
@@ -43,42 +43,15 @@ public class SplashActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Check for any deep linked parameters
         Branch.getInstance().initSession(new Branch.BranchUniversalReferralInitListener() {
             @Override
-            public void onInitFinished(BranchUniversalObject monsterObj, LinkProperties linkProperties, BranchError error) {
-                if (error == null) {
-                    Log.i(TAG, "Branch init complete!");
-                    Intent intent;
-
-                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                    if (monsterObj != null && monsterObj.getMetadata().containsKey("monster")) {
-                        prefs.saveMonster(monsterObj);
-
-                        intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-                        intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, monsterObj);
-
-                    } else {
-                        if (prefs.getMonsterName() == null) {
-                            prefs.setMonsterName("");
-                            intent = new Intent(SplashActivity.this, MonsterCreatorActivity.class);
-                        } else {
-                            // Create a default monster
-                            intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-                            intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                        }
-                    }
-                    startActivity(intent);
-                    finish();
-
-                } else {
-                    Log.e(TAG, "Branch service down = " + error.getMessage());
-                    startActivity(new Intent(SplashActivity.this, MonsterCreatorActivity.class));
-                    finish();
+            public void onInitFinished(BranchUniversalObject branchUniversalObject, LinkProperties linkProperties, BranchError branchError) {
+                //If not Launched by clicking Branch link
+                if (branchUniversalObject == null) {
+                    proceedToApp();
                 }
             }
         }, this.getIntent().getData(), this);
-
     }
 
     @Override
@@ -86,5 +59,26 @@ public class SplashActivity extends Activity {
         this.setIntent(intent);
     }
 
+    private void proceedToApp() {
+        MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+        Intent intent;
+        if (prefs.getMonsterName() == null || prefs.getMonsterName().length() == 0) {
+            prefs.setMonsterName("");
+            intent = new Intent(SplashActivity.this, MonsterCreatorActivity.class);
+        } else {
+            // Create a default monster
+            intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
+            intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+        }
+        startActivity(intent);
+        finish();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == getResources().getInteger(R.integer.AutoDeeplinkRequestCode)) {
+            finish();
+        }
+    }
 }

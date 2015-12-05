@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <data android:scheme="branchsters" android:host="open" />
+                <data android:scheme="branchsters" />
             	<action android:name="android.intent.action.VIEW" />
             	<category android:name="android.intent.category.DEFAULT" />
             	<category android:name="android.intent.category.BROWSABLE" />
@@ -36,6 +36,8 @@
         </activity>
         <activity
             android:name="io.branch.branchster.MonsterViewerActivity">
+            <meta-data android:name="io.branch.sdk.auto_link_path" android:value="monster/view/" />
+            <meta-data android:name="io.branch.sdk.auto_link_request_code" android:value="@integer/AutoDeeplinkRequestCode" />
         </activity>
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity">

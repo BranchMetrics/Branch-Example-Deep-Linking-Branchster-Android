@@ -1,9 +1,5 @@
 apply plugin: 'com.android.application'
 
-configurations {
-    all*.exclude group: 'com.android.support', module: 'support-v4'
-}
-
 allprojects {
     repositories {
         mavenCentral()
@@ -14,11 +10,9 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
-        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.+'
-        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 
@@ -27,20 +21,9 @@ dependencies {
     // Include the Android Support libraries.
     compile files('libs/android-support-v4.jar')
 
-    // But ignore the Facebook and Branch *.jar files, as they're only for Eclipse use.
-
     // Branch SDK
     compile 'io.branch.sdk.android:library:1.+'
-    // Twitter SDK
-    compile('com.twitter.sdk.android:twitter:1.3.0@aar') {
-        transitive = true;
-    }
 
-    // Picasso is required for Twitter share as only local images are supported in the Intent.
-    compile 'com.squareup.picasso:picasso:2.5.2'
-
-    // Facebook SDK
-    compile 'com.facebook.android:facebook-android-sdk:3.21.1'
 
 }
 
@@ -73,10 +56,3 @@ android {
     }
 }
 
-//Put Fabric plugin after Android plugin
-apply plugin: 'io.fabric'
-
-repositories {
-    jcenter()
-    maven { url 'https://maven.fabric.io/public' }
-}

@@ -1,12 +1,9 @@
 package io.branch.branchster.util;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
-import com.digits.sdk.android.ActivityClassManager;
 
 import io.branch.branchster.R;
 

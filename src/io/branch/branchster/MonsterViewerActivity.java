@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import java.util.prefs.PreferencesFactory;
+
 import io.branch.branchster.fragment.InfoFragment;
 import io.branch.branchster.util.MonsterImageView;
+import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
@@ -35,8 +38,14 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_viewer);
 
-        myMonsterObject_ = getIntent().getParcelableExtra(MY_MONSTER_OBJ_KEY);
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
+        if (Branch.getInstance().isAutoDeepLinkLaunch(this)) {
+            MonsterPreferences pref = MonsterPreferences.getInstance(this);
+            myMonsterObject_ = BranchUniversalObject.getReferredBranchUniversalObject();
+            pref.saveMonster(myMonsterObject_);
+        } else {
+            myMonsterObject_ = getIntent().getParcelableExtra(MY_MONSTER_OBJ_KEY);
+        }
 
         if (myMonsterObject_ != null) {
             ((TextView) findViewById(R.id.txtName)).setText(myMonsterObject_.getTitle());
@@ -87,7 +96,8 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                 .addTag("myMonsterTag1")
                         //.setAlias("myCustomMonsterLink") // In case you need to white label your link
                 .setFeature("myMonsterSharefeature1")
-                .setStage("1");
+                .setStage("1")
+                .addControlParameter("$android_deeplink_path", "monster/view/");
 
         String monsterName = myMonsterObject_.getTitle();
         String shareTitle = "Check out my Branchster named " + monsterName;
@@ -103,7 +113,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                 .addPreferredSharingOption(SharingHelper.SHARE_WITH.MESSAGE)
                 .addPreferredSharingOption(SharingHelper.SHARE_WITH.TWITTER);
 
-        myMonsterObject_.showShareSheet(MonsterViewerActivity.this, linkProperties, shareSheetStyle,null);
+        myMonsterObject_.showShareSheet(MonsterViewerActivity.this, linkProperties, shareSheetStyle, null);
 
     }
 
