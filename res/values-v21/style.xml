@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="ColourRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/colours_radio_button</item>
+    </style>
+
+    <style name="Theme.Default" parent="android:Theme.Material.Light.DarkActionBar"/>
+
+
+    <style name="Theme.Transparent" parent="android:style/Theme.Holo.NoActionBar.TranslucentDecor">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+</resources>

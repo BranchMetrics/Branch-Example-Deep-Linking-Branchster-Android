@@ -130,7 +130,7 @@ public class MonsterPreferences {
 
     public BranchUniversalObject getLatestMonsterObj() {
         BranchUniversalObject myMonsterObject = new BranchUniversalObject()
-                .setTitle("My Branchster: " + getMonsterName())
+                .setTitle(getMonsterName())
                 .setContentDescription(getMonsterDescription())
                 .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
                 .addContentMetadata("color_index", String.valueOf(getColorIndex()))

@@ -209,6 +209,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:src="@android:drawable/ic_menu_share"
+            android:background="@null"
             android:layout_gravity="center"/>
 
     </LinearLayout>
