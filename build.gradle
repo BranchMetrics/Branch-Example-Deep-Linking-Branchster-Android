@@ -24,11 +24,10 @@ dependencies {
     // Branch SDK
     compile 'io.branch.sdk.android:library:1.+'
 
-
 }
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "21.1.2"
 
     sourceSets {
