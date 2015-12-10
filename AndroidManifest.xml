@@ -51,13 +51,15 @@
 
         <activity
             android:name="io.branch.branchster.MonsterViewerActivity"
-            android:theme="@style/Theme.Default">
+            android:theme="@style/Theme.Default"
+            android:launchMode="singleInstance">
             <meta-data android:name="io.branch.sdk.auto_link_path" android:value="monster/view/" />
             <meta-data android:name="io.branch.sdk.auto_link_request_code" android:value="@integer/AutoDeeplinkRequestCode" />
         </activity>
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity"
-            android:theme="@style/Theme.Default">
+            android:theme="@style/Theme.Default"
+            android:launchMode="singleInstance">
         </activity>
 
         <meta-data
@@ -67,7 +69,7 @@
             android:name="io.fabric.ApiKey"
             android:value="a5689371c7d402061ef8dd47b44a89f0515ca4a7" />
 
-        <meta-data android:name="io.branch.sdk.TestMode" android:value="true" /> <!-- Set to true to use Branch_Test_Key -->
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" /> <!-- Set to true to use Branch_Test_Key -->
         <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
         <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_key_test" />
     </application>

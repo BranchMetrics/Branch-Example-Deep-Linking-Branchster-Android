@@ -122,7 +122,7 @@ public class MonsterPreferences {
 
     public void saveMonster(BranchUniversalObject monster) {
         HashMap<String, String> referringParams = monster.getMetadata();
-        setMonsterName(referringParams.get("monster_name"));
+        setMonsterName(monster.getTitle());
         setFaceIndex(referringParams.get("face_index"));
         setBodyIndex(referringParams.get("body_index"));
         setColorIndex(referringParams.get("color_index"));
@@ -136,7 +136,8 @@ public class MonsterPreferences {
                 .addContentMetadata("color_index", String.valueOf(getColorIndex()))
                 .addContentMetadata("body_index", String.valueOf(getBodyIndex()))
                 .addContentMetadata("face_index", String.valueOf(getFaceIndex()))
-                .addContentMetadata("monster", "true");
+                .addContentMetadata("monster", "true")
+                .addContentMetadata("monster_name",getMonsterName());
 
         return myMonsterObject;
     }
