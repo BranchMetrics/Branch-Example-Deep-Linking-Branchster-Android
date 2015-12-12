@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/color_drawable_item"
+        android:drawable="@android:color/transparent"/>
+
+    <item
+        android:id="@+id/body_drawable_item"
+        android:drawable="@android:color/transparent"
+       />
+
+    <item
+        android:id="@+id/face_drawable_item"
+        android:drawable="@android:color/transparent"/>
+</layer-list>

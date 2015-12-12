@@ -1,108 +1,69 @@
 package io.branch.branchster;
 
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-
-import io.branch.branchster.Preferences.MonsterPreferences;
-import io.branch.referral.Branch;
-import io.branch.referral.Branch.BranchReferralInitListener;
-import io.branch.referral.BranchError;
-
-import io.fabric.sdk.android.Fabric;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import io.branch.branchster.util.MonsterPreferences;
+import io.branch.indexing.BranchUniversalObject;
+import io.branch.referral.Branch;
+import io.branch.referral.BranchError;
+import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
 
-	TextView txtLoading;
-	int messageIndex;
-	String[] loadingMessages;
-	Branch branch;
-    Context mApplicationContext;
+    TextView txtLoading;
+    int messageIndex;
     private static final String TAG = "SplashActivity";
+    ImageView imgSplash1, imgSplash2;
+    Context mContext;
+    final int ANIM_DURATION = 1500;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-        // Configure your Twitter Key and Secret as a string resource.
-        String twitter_key = getResources().getString(R.string.twitter_key);
-        String twitter_secret = getResources().getString(R.string.twitter_secret);
-
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(twitter_key, twitter_secret);
-		Fabric.with(this, new Twitter(authConfig));
-		setContentView(R.layout.activity_splash);
+        mContext = this;
 
         // Get loading messages from XML definitions.
-		loadingMessages = getResources().getStringArray(R.array.loading_messages);
-		txtLoading = (TextView) findViewById(R.id.txtLoading);
-        mApplicationContext = getApplicationContext();
+        final String[] loadingMessages = getResources().getStringArray(R.array.loading_messages);
+        txtLoading = (TextView) findViewById(R.id.txtLoading);
+        imgSplash1 = (ImageView) findViewById(R.id.imgSplashFactory1);
+        imgSplash2 = (ImageView) findViewById(R.id.imgSplashFactory2);
+        imgSplash2.setVisibility(View.INVISIBLE);
+        imgSplash1.setVisibility(View.INVISIBLE);
 
-
-		new Thread() {
-	        public void run() {
-	            while (true) {
-	                try {
-	                    runOnUiThread(new Runnable() {
-
-	                        @Override
-	                        public void run() {
-	                        	messageIndex = (messageIndex + 1) % loadingMessages.length;
-	                        	txtLoading.setText(loadingMessages[messageIndex]);
-	                        }
-	                    });
-	                    Thread.sleep(1000);
-	                } catch (InterruptedException e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        }
-	    }.start();
-
-	}
+        /*
+        final Handler textLoadHandler = new Handler();
+        Runnable txtLoader = new Runnable() {
+            @Override
+            public void run() {
+                messageIndex = (messageIndex + 1) % loadingMessages.length;
+                txtLoading.setText(loadingMessages[messageIndex]);
+                textLoadHandler.postDelayed(this, 500);
+            }
+        };
+        textLoadHandler.post(txtLoader);
+        */
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        branch = Branch.getInstance(mApplicationContext);
-        branch.initSession(new BranchReferralInitListener() {
+        Branch.getInstance().initSession(new Branch.BranchUniversalReferralInitListener() {
             @Override
-            public void onInitFinished(JSONObject referringParams, BranchError error) {
-                if (error == null) {
-                    Intent i;
-                    Log.i(TAG, "Branch init complete!");
-                    try {
-                        MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                        if (referringParams.has("monster")) {
-                            prefs.setMonsterName(referringParams.getString("monster_name"));
-                            prefs.setFaceIndex(referringParams.getInt("face_index"));
-                            prefs.setBodyIndex(referringParams.getInt("body_index"));
-                            prefs.setColorIndex(referringParams.getInt("color_index"));
-                            i = new Intent(mApplicationContext, MonsterViewerActivity.class);
-                        } else {
-                            if (prefs.getMonsterName() == null) {
-                                prefs.setMonsterName("");
-                                i = new Intent(mApplicationContext, MonsterCreatorActivity.class);
-                            } else {
-                                i = new Intent(mApplicationContext, MonsterViewerActivity.class);
-                            }
-                        }
-                        startActivity(i);
-                    } catch (JSONException e) {
-                        Log.e(TAG, "Error handling Branch response.", e);
-                        startActivity(new Intent(mApplicationContext, MonsterCreatorActivity.class));
-                    }
-                }
-                else {
-                    Log.e(TAG, "Branch service down = " + error.getMessage());
-                    startActivity(new Intent(mApplicationContext, MonsterCreatorActivity.class));
+            public void onInitFinished(BranchUniversalObject branchUniversalObject, LinkProperties linkProperties, BranchError branchError) {
+                //If not Launched by clicking Branch link
+                if (branchUniversalObject == null) {
+                    proceedToAppTransparent();
                 }
             }
         }, this.getIntent().getData(), this);
@@ -113,10 +74,63 @@ public class SplashActivity extends Activity {
         this.setIntent(intent);
     }
 
-	@Override
-	protected void onStop() {
-		super.onStop();
-		branch.closeSession();
-	}
+    private void proceedToApp() {
+        MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+        Intent intent;
+        if (prefs.getMonsterName() == null || prefs.getMonsterName().length() == 0) {
+            prefs.setMonsterName("");
+            intent = new Intent(SplashActivity.this, MonsterCreatorActivity.class);
+        } else {
+            // Create a default monster
+            intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
+            intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+        }
+        startActivity(intent);
+        finish();
+    }
 
+    private void proceedToAppTransparent() {
+        Animation animSlideIn = AnimationUtils.loadAnimation(mContext, R.anim.push_down_in);
+        animSlideIn.setDuration(ANIM_DURATION);
+        animSlideIn.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                Intent intent;
+                if (prefs.getMonsterName() == null || prefs.getMonsterName().length() == 0) {
+                    prefs.setMonsterName("");
+                    intent = new Intent(SplashActivity.this, MonsterCreatorActivity.class);
+                } else {
+                    // Create a default monster
+                    intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
+                    intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+                }
+                startActivity(intent);
+                finish();
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        imgSplash1.setVisibility(View.VISIBLE);
+        imgSplash2.setVisibility(View.VISIBLE);
+        imgSplash2.startAnimation(animSlideIn);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == getResources().getInteger(R.integer.AutoDeeplinkRequestCode)) {
+            finish();
+        }
+    }
 }

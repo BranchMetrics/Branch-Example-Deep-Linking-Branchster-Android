@@ -2,30 +2,43 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-    
-    <ImageView 
-        android:id="@+id/imgSplashFactory"
+    android:background="@null">
+
+    <ImageView
+        android:id="@+id/imgSplashFactory1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/splashfactory" />
-    
-    <ImageView 
+        android:background="@drawable/splashfactory1"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/imgSplashFactory2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/splashfactory2"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:visibility="invisible"
         android:id="@+id/imgBranchLogo"
         android:layout_width="160dp"
         android:layout_height="55dp"
         android:layout_alignParentRight="true"
         android:src="@drawable/branch250" />
-    
-    <ImageView 
+
+    <ImageView
+        android:visibility="invisible"
         android:id="@+id/imgBranchster"
         android:layout_width="240dp"
         android:layout_height="120dp"
         android:layout_marginTop="140dp"
         android:layout_marginLeft="80dp"
         android:src="@drawable/branchster" />
-    
-    <TextView 
+
+    <TextView
+        android:visibility="invisible"
         android:id="@+id/txtLoading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +47,6 @@
         android:text="Loading Branchster parts..."
         android:gravity="center_vertical|right"
         android:textColor="#474747" />
-    
+
 </RelativeLayout>
     
