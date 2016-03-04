@@ -18,12 +18,9 @@ buildscript {
 
 dependencies {
 
-    // Include the Android Support libraries.
-    compile files('libs/android-support-v4.jar')
-
     // Branch SDK
     compile 'io.branch.sdk.android:library:1.+'
-
+    compile 'com.google.android.gms:play-services:7.5.0'
 }
 
 android {
