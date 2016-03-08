@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tune.Tune;
+
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
@@ -30,6 +32,8 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        Tune.init(this, "877", "your_conversion_key");
 
         mContext = this;
 
@@ -67,6 +71,16 @@ public class SplashActivity extends Activity {
                 }
             }
         }, this.getIntent().getData(), this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Get source of open for app re-engagement
+        Tune.getInstance().setReferralSources(this);
+        // Attribution Analytics will not function unless the measureSession call is included
+        Tune.getInstance().measureSession();
     }
 
     @Override
