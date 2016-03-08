@@ -69,6 +69,11 @@ public class SplashActivity extends Activity {
                 if (branchUniversalObject == null) {
                     proceedToAppTransparent();
                 }
+                else if (!branchUniversalObject.getMetadata().containsKey("$android_deeplink_path")) {
+                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                    prefs.saveMonster(branchUniversalObject);
+                    proceedToAppTransparent();
+                }
             }
         }, this.getIntent().getData(), this);
     }
