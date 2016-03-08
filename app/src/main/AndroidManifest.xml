@@ -62,7 +62,7 @@
             android:launchMode="singleInstance">
         </activity>
 
-        <meta-data android:name="io.branch.sdk.TestMode" android:value="true" /> <!-- Set to true to use Branch_Test_Key -->
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" /> <!-- Set to true to use Branch_Test_Key -->
         <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
         <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_key_test" />
     </application>
