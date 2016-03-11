@@ -16,5 +16,4 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'io.branch.sdk.android:library:1.+'
     compile 'com.google.android.gms:play-services:7.5.0'
-    compile 'com.tune:tune-marketing-console-sdk:4.0.1'
 }

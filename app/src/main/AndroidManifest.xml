@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.branch.branchster"
-    android:versionCode="5"
+    android:versionCode="7"
     android:versionName="1.2.1" >
 
     <uses-sdk
@@ -43,8 +43,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/your_app_id_obtained form Branch dash board " /> -->
-                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="ALMc" /> <!-- Live App link-->
-                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="iwZc" /> <!-- Test App link-->
+                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/ALMc" /> <!-- Live App link-->
+                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/iwZc" /> <!-- Test App link-->
             </intent-filter>
 
         </activity>
@@ -65,6 +65,7 @@
         <meta-data android:name="io.branch.sdk.TestMode" android:value="false" /> <!-- Set to true to use Branch_Test_Key -->
         <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
         <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_key_test" />
+
     </application>
 
 </manifest>
