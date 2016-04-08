@@ -12,14 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import java.util.prefs.PreferencesFactory;
-
 import io.branch.branchster.fragment.InfoFragment;
 import io.branch.branchster.util.MonsterImageView;
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
-import io.branch.referral.BranchError;
 import io.branch.referral.SharingHelper;
 import io.branch.referral.util.LinkProperties;
 import io.branch.referral.util.ShareSheetStyle;
