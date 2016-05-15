@@ -9,12 +9,6 @@
     <string name="branch_key">key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>
     <string name="branch_key_test">key_test_lkhEVOq9sPU9FXgbSAoQthfhqsd5EVaV</string>
 
-    <!--
-    Your Your Facebook App ID Goes Here
-    If you don't have one, see the Facebook SDK for Android documentation:
-    https://developers.facebook.com/docs/android
-    -->
-    <string name="facebook_app_id">288726397999326</string>
 
     <!--
     Your Twitter Key and Secret Goes Here

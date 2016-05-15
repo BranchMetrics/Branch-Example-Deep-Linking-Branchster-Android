@@ -5,6 +5,8 @@
     
     <color name="white">#FFFFFF</color>
 
+    <string name="facebook_app_id">288726397999326</string>
+
     <!-- Defaults -->
     <string name="monster_name">Bingles Jingleheimer</string>
 
