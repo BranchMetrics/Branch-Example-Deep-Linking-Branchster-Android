@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -18,6 +19,10 @@ import io.branch.referral.util.LinkProperties;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.applinks.AppLinkData;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SplashActivity extends Activity {
 
@@ -33,6 +38,21 @@ public class SplashActivity extends Activity {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(getApplicationContext());
+
+        AppLinkData.fetchDeferredAppLinkData(getApplicationContext(), new AppLinkData.CompletionHandler() {
+            @Override
+            public void onDeferredAppLinkDataFetched(AppLinkData appLinkData) {
+                if (appLinkData != null && appLinkData.getArgumentBundle() != null) {
+                    JSONObject obj = new JSONObject();
+                    try {
+                        obj.put("applink", appLinkData.getArgumentBundle().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Branch.getInstance().userCompletedAction("fetched_app_link", obj);
+                }
+            }
+        });
 
         setContentView(R.layout.activity_splash);
 
