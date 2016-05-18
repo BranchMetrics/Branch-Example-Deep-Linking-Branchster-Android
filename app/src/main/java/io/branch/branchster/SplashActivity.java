@@ -11,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.branch.branchster.util.MonsterPreferences;
-import io.branch.indexing.BranchUniversalObject;
-import io.branch.referral.Branch;
-import io.branch.referral.BranchError;
-import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
 
@@ -24,6 +20,7 @@ public class SplashActivity extends Activity {
     ImageView imgSplash1, imgSplash2;
     Context mContext;
     final int ANIM_DURATION = 1500;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,61 +35,26 @@ public class SplashActivity extends Activity {
         imgSplash2 = (ImageView) findViewById(R.id.imgSplashFactory2);
         imgSplash2.setVisibility(View.INVISIBLE);
         imgSplash1.setVisibility(View.INVISIBLE);
-
-        /*
-        final Handler textLoadHandler = new Handler();
-        Runnable txtLoader = new Runnable() {
-            @Override
-            public void run() {
-                messageIndex = (messageIndex + 1) % loadingMessages.length;
-                txtLoading.setText(loadingMessages[messageIndex]);
-                textLoadHandler.postDelayed(this, 500);
-            }
-        };
-        textLoadHandler.post(txtLoader);
-        */
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Branch.getInstance().initSession(new Branch.BranchUniversalReferralInitListener() {
-            @Override
-            public void onInitFinished(BranchUniversalObject branchUniversalObject, LinkProperties linkProperties, BranchError branchError) {
-                //If not Launched by clicking Branch link
-                if (branchUniversalObject == null) {
-                    proceedToAppTransparent();
-                }
-                else if (!branchUniversalObject.getMetadata().containsKey("$android_deeplink_path")) {
-                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                    prefs.saveMonster(branchUniversalObject);
-                    proceedToAppTransparent();
-                }
-            }
-        }, this.getIntent().getData(), this);
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onNewIntent(Intent intent) {
-        this.setIntent(intent);
+        proceedToAppTransparent();
     }
 
     private void proceedToApp() {
         MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
         Intent intent;
+
         if (prefs.getMonsterName() == null || prefs.getMonsterName().length() == 0) {
             prefs.setMonsterName("");
             intent = new Intent(SplashActivity.this, MonsterCreatorActivity.class);
         } else {
-            // Create a default monster
             intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-            intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
         }
+
         startActivity(intent);
         finish();
     }
@@ -108,19 +70,7 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                Intent intent;
-                if (prefs.getMonsterName() == null || prefs.getMonsterName().length() == 0) {
-                    prefs.setMonsterName("");
-                    intent = new Intent(SplashActivity.this, MonsterCreatorActivity.class);
-                } else {
-                    // Create a default monster
-                    intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-                    intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                }
-                startActivity(intent);
-                finish();
-
+                proceedToApp();
             }
 
             @Override

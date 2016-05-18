@@ -3,11 +3,13 @@ package io.branch.branchster.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 import io.branch.branchster.R;
-import io.branch.indexing.BranchUniversalObject;
 
 
 public class MonsterPreferences {
@@ -40,7 +42,6 @@ public class MonsterPreferences {
     }
 
     public String getMonsterDescription() {
-
         return context_.getResources().getStringArray(R.array.description_array)[getFaceIndex()].replace("%@", getMonsterName());
     }
 
@@ -69,7 +70,6 @@ public class MonsterPreferences {
         } catch (NumberFormatException ignore) {
         }
     }
-
 
     public int getBodyIndex() {
         return this.readIntegerFromPrefs("body_index");
@@ -119,27 +119,34 @@ public class MonsterPreferences {
         return prefHelper_.appSharedPrefs_.getInt(key, 0);
     }
 
-
-    public void saveMonster(BranchUniversalObject monster) {
-        HashMap<String, String> referringParams = monster.getMetadata();
-        setMonsterName(monster.getTitle());
-        setFaceIndex(referringParams.get("face_index"));
-        setBodyIndex(referringParams.get("body_index"));
-        setColorIndex(referringParams.get("color_index"));
+    public void saveMonster(Map<String, String> monster) {
+        setMonsterName(monster.get("name"));
+        setFaceIndex(monster.get("face_index"));
+        setBodyIndex(monster.get("body_index"));
+        setColorIndex(monster.get("color_index"));
     }
 
-    public BranchUniversalObject getLatestMonsterObj() {
-        BranchUniversalObject myMonsterObject = new BranchUniversalObject()
-                .setTitle(getMonsterName())
-                .setContentDescription(getMonsterDescription())
-                .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
-                .addContentMetadata("color_index", String.valueOf(getColorIndex()))
-                .addContentMetadata("body_index", String.valueOf(getBodyIndex()))
-                .addContentMetadata("face_index", String.valueOf(getFaceIndex()))
-                .addContentMetadata("monster", "true")
-                .addContentMetadata("monster_name",getMonsterName());
+    public void resetMonster() {
+        Resources res = context_.getResources();
+        Random rand = new Random();
 
-        return myMonsterObject;
+        setMonsterName("");
+
+        setFaceIndex(rand.nextInt(res.obtainTypedArray(R.array.face_drawable_array).length()));
+        setBodyIndex(rand.nextInt(res.obtainTypedArray(R.array.body_drawable_array).length()));
+        setColorIndex(rand.nextInt(res.obtainTypedArray(R.array.colors).length()));
     }
 
+    public Map<String, String> getLatestMonsterObject() {
+        HashMap<String, String> monster = new HashMap<>();
+
+        monster.put("name", getMonsterName());
+        monster.put("description", getMonsterDescription());
+
+        monster.put("color_index", String.valueOf(getColorIndex()));
+        monster.put("body_index", String.valueOf(getBodyIndex()));
+        monster.put("face_index", String.valueOf(getFaceIndex()));
+
+        return monster;
+    }
 }

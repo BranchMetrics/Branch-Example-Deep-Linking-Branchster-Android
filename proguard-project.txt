@@ -24,6 +24,9 @@
 -keep public class com.google.android.gms.gcm.** { *; }
 -keep public class com.google.android.gms.common.** { *; }
 
+# mParticle (required)
+-keep class com.mparticle.** { *; }
+
 -keepclassmembers class ** {
     public void onEvent(**);
 }

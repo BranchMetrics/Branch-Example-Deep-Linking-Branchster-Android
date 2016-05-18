@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Map;
+
 import io.branch.branchster.util.ColorController;
 import io.branch.branchster.util.MonsterImageView;
 import io.branch.branchster.util.MonsterPreferences;
-import io.branch.indexing.BranchUniversalObject;
 
 /**
  * This class is where the user can create their own monster. It is the first that the user sees if
@@ -41,14 +42,16 @@ public class MonsterCreatorActivity extends Activity {
         setContentView(R.layout.activity_monster_creator);
 
         prefs = MonsterPreferences.getInstance(getApplicationContext());
-        BranchUniversalObject latestMonsterObj = prefs.getLatestMonsterObj();
+        Map<String, String> latestMonster = prefs.getLatestMonsterObject();
 
         // Assign UI items to variables for manipulation later on.
         editName = (EditText) findViewById(R.id.editName);
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
-        monsterImageView_.setMonster(latestMonsterObj);
-        editName.setText(latestMonsterObj.getTitle());
+        monsterImageView_.setMonster(latestMonster);
+        editName.setText(prefs.getMonsterName());
 
+        faceIndex = Integer.valueOf(latestMonster.get("face_index"));
+        bodyIndex = Integer.valueOf(latestMonster.get("body_index"));
 
         // Go to the previous face when the user clicks the up arrow.
         findViewById(R.id.cmdUp).setOnClickListener(new Button.OnClickListener() {
@@ -116,10 +119,7 @@ public class MonsterCreatorActivity extends Activity {
                     prefs.setMonsterName(getString(R.string.monster_name));
                 }
 
-                Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
-                i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                startActivity(i);
-                finish();
+                startActivity(new Intent(getApplicationContext(), MonsterViewerActivity.class));
             }
         });
 
@@ -136,7 +136,9 @@ public class MonsterCreatorActivity extends Activity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                      finish();
+                        MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                        prefs.resetMonster();
+                        finish();
                     }
                 }).create().show();
     }
