@@ -16,7 +16,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.android.gms:play-services:8.4.0'
 
-    compile 'com.mparticle:android-branch-kit:4.+'
+    compile 'com.mparticle:android-core:4.+'
 
     //Required for many attribution services
     compile "com.google.android.gms:play-services-ads:8.4.0"

@@ -4,17 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.mparticle.DeepLinkError;
-import com.mparticle.DeepLinkListener;
-import com.mparticle.DeepLinkResult;
-import com.mparticle.MParticle;
 
 import io.branch.branchster.util.MonsterPreferences;
 
@@ -47,21 +41,7 @@ public class SplashActivity extends Activity {
     protected void onStart() {
         super.onStart();
 
-        Log.d("Branchster", String.format("Branch %s enabled!", MParticle.getInstance().isProviderActive(MParticle.ServiceProviders.BRANCH_METRICS) ? "is" : "is not"));
-
-        MParticle.getInstance().checkForDeepLink(new DeepLinkListener() {
-            @Override
-            public void onResult(DeepLinkResult result) {
-                Log.d("Branchster", result.toString());
-                proceedToAppTransparent();
-            }
-
-            @Override
-            public void onError(DeepLinkError error) {
-                //if an integration has an error, it will be surfaced via a DeepLinkError.
-                Log.e("Branchster", error.toString());
-            }
-        });
+        proceedToAppTransparent();
     }
 
     public void onNewIntent(Intent intent) {

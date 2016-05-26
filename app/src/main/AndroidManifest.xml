@@ -53,21 +53,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Default" />
 
-        <receiver
-            android:name="com.mparticle.ReferrerReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
-            </intent-filter>
-        </receiver>
-
-        <meta-data
-            android:name="io.branch.sdk.BranchKey"
-            android:value="key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM" />
-        <meta-data
-            android:name="io.branch.sdk.BranchKey.test"
-            android:value="key_test_lkhEVOq9sPU9FXgbSAoQthfhqsd5EVaV" />
-
     </application>
 
 </manifest>
