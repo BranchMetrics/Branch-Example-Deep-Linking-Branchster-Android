@@ -35,27 +35,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(getApplicationContext());
-
-        AppLinkData.fetchDeferredAppLinkData(getApplicationContext(), new AppLinkData.CompletionHandler() {
-            @Override
-            public void onDeferredAppLinkDataFetched(AppLinkData appLinkData) {
-                if (appLinkData != null && appLinkData.getArgumentBundle() != null) {
-                    JSONObject obj = new JSONObject();
-                    try {
-                        obj.put("applink", appLinkData.getArgumentBundle().toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Branch.getInstance().userCompletedAction("fetched_app_link", obj);
-                }
-            }
-        });
-
         setContentView(R.layout.activity_splash);
-
         mContext = this;
 
         // Get loading messages from XML definitions.
@@ -66,18 +46,6 @@ public class SplashActivity extends Activity {
         imgSplash2.setVisibility(View.INVISIBLE);
         imgSplash1.setVisibility(View.INVISIBLE);
 
-        /*
-        final Handler textLoadHandler = new Handler();
-        Runnable txtLoader = new Runnable() {
-            @Override
-            public void run() {
-                messageIndex = (messageIndex + 1) % loadingMessages.length;
-                txtLoading.setText(loadingMessages[messageIndex]);
-                textLoadHandler.postDelayed(this, 500);
-            }
-        };
-        textLoadHandler.post(txtLoader);
-        */
     }
 
     @Override
