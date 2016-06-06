@@ -17,9 +17,11 @@ import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 import io.branch.referral.util.LinkProperties;
 
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.applinks.AppLinkData;
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
+import com.crashlytics.android.answers.InviteEvent;
+
+import io.fabric.sdk.android.Fabric;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +37,11 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Answers());
+
+        Answers a = Answers.getInstance();
+        CustomEvent ce = new CustomEvent();
+        ce.putCustomAttribute()
         setContentView(R.layout.activity_splash);
         mContext = this;
 
