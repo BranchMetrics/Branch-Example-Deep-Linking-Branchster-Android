@@ -3,6 +3,7 @@ package io.branch.branchster.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 
 import java.util.HashMap;
 
@@ -122,7 +123,16 @@ public class MonsterPreferences {
 
     public void saveMonster(BranchUniversalObject monster) {
         HashMap<String, String> referringParams = monster.getMetadata();
-        setMonsterName(monster.getTitle());
+        String monsterName = context_.getString(R.string.monster_name);
+        if (!TextUtils.isEmpty(monster.getTitle())) {
+            monsterName = monster.getTitle();
+        } else if (referringParams.containsKey("monster_name")) {
+            String name = referringParams.get("monster_name");
+            if (!TextUtils.isEmpty(name)) {
+                monsterName = name;
+            }
+        }
+        setMonsterName(monsterName);
         setFaceIndex(referringParams.get("face_index"));
         setBodyIndex(referringParams.get("body_index"));
         setColorIndex(referringParams.get("color_index"));
@@ -137,7 +147,7 @@ public class MonsterPreferences {
                 .addContentMetadata("body_index", String.valueOf(getBodyIndex()))
                 .addContentMetadata("face_index", String.valueOf(getFaceIndex()))
                 .addContentMetadata("monster", "true")
-                .addContentMetadata("monster_name",getMonsterName());
+                .addContentMetadata("monster_name", getMonsterName());
 
         return myMonsterObject;
     }

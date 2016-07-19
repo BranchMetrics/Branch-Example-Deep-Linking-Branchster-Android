@@ -7,10 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import java.util.prefs.PreferenceChangeEvent;
 
 import io.branch.branchster.fragment.InfoFragment;
 import io.branch.branchster.util.MonsterImageView;
@@ -45,8 +48,19 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         }
 
         if (myMonsterObject_ != null) {
-            ((TextView) findViewById(R.id.txtName)).setText(myMonsterObject_.getTitle());
-            ((TextView) findViewById(R.id.txtDescription)).setText(myMonsterObject_.getDescription());
+            String monsterName = getString(R.string.monster_name);
+            if (!TextUtils.isEmpty(myMonsterObject_.getTitle())) {
+                monsterName = myMonsterObject_.getTitle();
+            } else if (myMonsterObject_.getMetadata().containsKey("monster_name")) {
+                monsterName = myMonsterObject_.getMetadata().get("monster_name");
+            }
+            ((TextView) findViewById(R.id.txtName)).setText(monsterName);
+
+            String description = MonsterPreferences.getInstance(this).getMonsterDescription();
+            if (!TextUtils.isEmpty(myMonsterObject_.getDescription())) {
+                description = myMonsterObject_.getDescription();
+            }
+            ((TextView) findViewById(R.id.txtDescription)).setText(description);
 
             // set my monster image
             monsterImageView_.setMonster(myMonsterObject_);
