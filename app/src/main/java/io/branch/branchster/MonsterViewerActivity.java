@@ -153,4 +153,10 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     public void onFragmentInteraction() {
         //no-op
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
 }
