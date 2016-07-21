@@ -37,7 +37,10 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_viewer);
+        initUI();
+    }
 
+    private void initUI(){
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
         if (Branch.getInstance().isAutoDeepLinkLaunch(this)) {
             MonsterPreferences pref = MonsterPreferences.getInstance(this);
@@ -158,5 +161,6 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+        initUI();
     }
 }
