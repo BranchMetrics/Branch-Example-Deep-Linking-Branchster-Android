@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -18,7 +19,7 @@ import io.branch.indexing.BranchUniversalObject;
 /**
  * Created by sojanpr on 11/18/15.
  */
-public class MonsterImageView extends ImageView{
+public class MonsterImageView extends ImageView {
     Context context_;
     LayerDrawable monsterDrawable_;
 
@@ -42,13 +43,13 @@ public class MonsterImageView extends ImageView{
     public MonsterImageView updateColor(int colorIndex) {
         monsterDrawable_.setDrawableByLayerId(R.id.color_drawable_item, new ColorDrawable(context_.getResources().obtainTypedArray(R.array.colors).getColor(colorIndex, 0x00FF0000)));
         invalidateDrawable(monsterDrawable_);
-        return  this;
+        return this;
     }
 
     public MonsterImageView updateFace(int faceIndex) {
         monsterDrawable_.setDrawableByLayerId(R.id.face_drawable_item, context_.getResources().obtainTypedArray(R.array.face_drawable_array).getDrawable(faceIndex));
         invalidateDrawable(monsterDrawable_);
-        return  this;
+        return this;
     }
 
     public MonsterImageView updateBody(int bodyIndex) {
@@ -57,11 +58,23 @@ public class MonsterImageView extends ImageView{
         return this;
     }
 
-    public void setMonster(BranchUniversalObject monsterObj){
-        HashMap<String,String> monsterMetadata = monsterObj.getMetadata();
-        updateColor(Integer.parseInt(monsterMetadata.get("color_index")));
-        updateBody(Integer.parseInt(monsterMetadata.get("body_index")));
-        updateFace(Integer.parseInt(monsterMetadata.get("face_index")));
+    public void setMonster(BranchUniversalObject monsterObj) {
+        HashMap<String, String> monsterMetadata = monsterObj.getMetadata();
+        int colorIdx = 0;
+        int bodyIdx = 0;
+        int faceIdx = 0;
+        if (!TextUtils.isEmpty(monsterMetadata.get("color_index"))) {
+            colorIdx = Integer.parseInt(monsterMetadata.get("color_index"));
+        }
+        if (!TextUtils.isEmpty(monsterMetadata.get("body_index"))) {
+            bodyIdx = Integer.parseInt(monsterMetadata.get("body_index"));
+        }
+        if (!TextUtils.isEmpty(monsterMetadata.get("face_index"))) {
+            faceIdx = Integer.parseInt(monsterMetadata.get("face_index"));
+        }
+        updateColor(colorIdx);
+        updateBody(bodyIdx);
+        updateFace(faceIdx);
     }
 
 
