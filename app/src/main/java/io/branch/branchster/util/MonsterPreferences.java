@@ -122,20 +122,22 @@ public class MonsterPreferences {
 
 
     public void saveMonster(BranchUniversalObject monster) {
-        HashMap<String, String> referringParams = monster.getMetadata();
-        String monsterName = context_.getString(R.string.monster_name);
-        if (!TextUtils.isEmpty(monster.getTitle())) {
-            monsterName = monster.getTitle();
-        } else if (referringParams.containsKey("monster_name")) {
-            String name = referringParams.get("monster_name");
-            if (!TextUtils.isEmpty(name)) {
-                monsterName = name;
+        if(monster != null) {
+            HashMap<String, String> referringParams = monster.getMetadata();
+            String monsterName = context_.getString(R.string.monster_name);
+            if (!TextUtils.isEmpty(monster.getTitle())) {
+                monsterName = monster.getTitle();
+            } else if (referringParams.containsKey("monster_name")) {
+                String name = referringParams.get("monster_name");
+                if (!TextUtils.isEmpty(name)) {
+                    monsterName = name;
+                }
             }
+            setMonsterName(monsterName);
+            setFaceIndex(referringParams.get("face_index"));
+            setBodyIndex(referringParams.get("body_index"));
+            setColorIndex(referringParams.get("color_index"));
         }
-        setMonsterName(monsterName);
-        setFaceIndex(referringParams.get("face_index"));
-        setBodyIndex(referringParams.get("body_index"));
-        setColorIndex(referringParams.get("color_index"));
     }
 
     public BranchUniversalObject getLatestMonsterObj() {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.branch.branchster"
-    android:versionCode="13"
-    android:versionName="1.3.0" >
+    android:versionCode="14"
+    android:versionName="1.4.0" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -52,14 +52,16 @@
         <activity
             android:name="io.branch.branchster.MonsterViewerActivity"
             android:theme="@style/Theme.Default"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
             <meta-data android:name="io.branch.sdk.auto_link_path" android:value="monster/view/" />
             <meta-data android:name="io.branch.sdk.auto_link_request_code" android:value="@integer/AutoDeeplinkRequestCode" />
         </activity>
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity"
             android:theme="@style/Theme.Default"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
         </activity>
 
         <meta-data android:name="io.branch.sdk.TestMode" android:value="false" /> <!-- Set to true to use Branch_Test_Key -->

@@ -137,10 +137,8 @@ public class SplashActivity extends Activity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == getResources().getInteger(R.integer.AutoDeeplinkRequestCode)) {
-            finish();
-        }
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

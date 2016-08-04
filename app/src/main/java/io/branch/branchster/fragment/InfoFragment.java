@@ -2,6 +2,7 @@ package io.branch.branchster.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import io.branch.branchster.MonsterViewerActivity;
 import io.branch.branchster.R;
@@ -46,6 +48,13 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_info, container, false);
         mButton = (Button) v.findViewById(R.id.button);
         mButton.setOnClickListener(this);
+        try {
+            String versionName = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
+            ((TextView)v.findViewById(R.id.version_name_txt)).setText(String.format(getString(R.string.version_name),versionName));
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
         return v;
     }
 
