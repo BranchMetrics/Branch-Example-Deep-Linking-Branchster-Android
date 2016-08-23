@@ -6,8 +6,8 @@
     If you don't have one, see the Branch Android Quick-Start for how to get one:
     https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md
     -->
-    <string name="branch_key">key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>
-    <string name="branch_key_test">key_test_lkhEVOq9sPU9FXgbSAoQthfhqsd5EVaV</string>
+    <!--<string name="branch_key">key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>-->
+    <!--<string name="branch_key_test">key_test_lkhEVOq9sPU9FXgbSAoQthfhqsd5EVaV</string>-->
 
     <!--
     Your Your Facebook App ID Goes Here
