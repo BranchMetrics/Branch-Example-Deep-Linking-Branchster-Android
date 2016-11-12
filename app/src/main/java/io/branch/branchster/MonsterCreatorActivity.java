@@ -116,11 +116,17 @@ public class MonsterCreatorActivity extends Activity {
                     prefs.setMonsterName(getString(R.string.monster_name));
                 }
                 // List this monster on google search
-                prefs.getLatestMonsterObj().listOnGoogleSearch(MonsterCreatorActivity.this);
+                BranchUniversalObject monObj = prefs.getLatestMonsterObj();
+                monObj.listOnGoogleSearch(MonsterCreatorActivity.this);
                 Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
-                i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+                i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, monObj);
                 startActivity(i);
                 finish();
+                monObj.addKeyWord(editName.getText().toString());
+
+                //Share for local search
+                monObj.addToSharableContent();
+
             }
         });
 
@@ -137,7 +143,7 @@ public class MonsterCreatorActivity extends Activity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                      finish();
+                        finish();
                     }
                 }).create().show();
     }
