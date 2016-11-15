@@ -6,9 +6,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            //minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
         }
+    }
+    defaultConfig {
+        multiDexEnabled true
     }
 }
 
@@ -17,6 +21,7 @@ dependencies {
     //compile 'io.branch.sdk.android:library:2.+'
     compile(name:'Branch-SDK-release', ext:'aar')
     compile 'com.google.android.gms:play-services:6.5.87'
+    compile 'com.android.support:multidex:1.0.1'
 }
 
 repositories{
