@@ -122,7 +122,7 @@ public class MonsterPreferences {
 
 
     public void saveMonster(BranchUniversalObject monster) {
-        if(monster != null) {
+        if (monster != null) {
             HashMap<String, String> referringParams = monster.getMetadata();
             String monsterName = context_.getString(R.string.monster_name);
             if (!TextUtils.isEmpty(monster.getTitle())) {
@@ -143,6 +143,7 @@ public class MonsterPreferences {
     public BranchUniversalObject getLatestMonsterObj() {
         BranchUniversalObject myMonsterObject = new BranchUniversalObject()
                 .setTitle(getMonsterName())
+                .setCanonicalIdentifier(getMonsterName() + System.currentTimeMillis())
                 .setContentDescription(getMonsterDescription())
                 .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
                 .addContentMetadata("color_index", String.valueOf(getColorIndex()))
