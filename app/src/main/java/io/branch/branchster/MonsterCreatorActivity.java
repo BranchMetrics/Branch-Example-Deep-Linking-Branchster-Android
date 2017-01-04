@@ -110,11 +110,12 @@ public class MonsterCreatorActivity extends Activity {
         findViewById(R.id.cmdDone).setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String monsterName = getString(R.string.monster_name);
                 if (editName.getText().toString().length() > 0) {
-                    prefs.setMonsterName(editName.getText().toString());
-                } else {
-                    prefs.setMonsterName(getString(R.string.monster_name));
+                    monsterName = editName.getText().toString();
                 }
+                prefs.setMonsterName(monsterName);
+                prefs.setCanonicalId(monsterName + System.currentTimeMillis());
                 // List this monster on google search
                 BranchUniversalObject monObj = prefs.getLatestMonsterObj();
                 monObj.listOnGoogleSearch(MonsterCreatorActivity.this);

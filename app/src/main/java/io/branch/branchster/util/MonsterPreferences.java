@@ -36,8 +36,17 @@ public class MonsterPreferences {
         this.writeStringToPrefs("monster_name", name);
     }
 
+
     public String getMonsterName() {
         return (String) this.readStringFromPrefs("monster_name");
+    }
+
+    public void setCanonicalId(String canonicalId) {
+        this.writeStringToPrefs("canonical_id", canonicalId);
+    }
+
+    public String getCanonicalId() {
+        return (String) this.readStringFromPrefs("canonical_id");
     }
 
     public String getMonsterDescription() {
@@ -134,6 +143,7 @@ public class MonsterPreferences {
                 }
             }
             setMonsterName(monsterName);
+            setCanonicalId(monster.getCanonicalIdentifier());
             setFaceIndex(referringParams.get("face_index"));
             setBodyIndex(referringParams.get("body_index"));
             setColorIndex(referringParams.get("color_index"));
@@ -143,7 +153,7 @@ public class MonsterPreferences {
     public BranchUniversalObject getLatestMonsterObj() {
         BranchUniversalObject myMonsterObject = new BranchUniversalObject()
                 .setTitle(getMonsterName())
-                .setCanonicalIdentifier(getMonsterName() + System.currentTimeMillis())
+                .setCanonicalIdentifier(getCanonicalId())
                 .setContentDescription(getMonsterDescription())
                 .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
                 .addContentMetadata("color_index", String.valueOf(getColorIndex()))
