@@ -21,6 +21,7 @@ import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.SharingHelper;
+import io.branch.referral.util.BranchEvent;
 import io.branch.referral.util.LinkProperties;
 import io.branch.referral.util.ShareSheetStyle;
 
@@ -67,6 +68,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
 
             // set my monster image
             monsterImageView_.setMonster(myMonsterObject_);
+            myMonsterObject_.addUserInteraction(BranchEvent.VIEW);
         } else {
             Log.e(TAG, "Monster is null. Unable to view monster");
         }
@@ -128,6 +130,8 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                 .addPreferredSharingOption(SharingHelper.SHARE_WITH.TWITTER);
 
         myMonsterObject_.showShareSheet(MonsterViewerActivity.this, linkProperties, shareSheetStyle, null);
+
+        myMonsterObject_.addUserInteraction(BranchEvent.SHARE_COMPLETED);
 
     }
 
