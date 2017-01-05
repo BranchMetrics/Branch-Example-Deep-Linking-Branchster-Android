@@ -126,7 +126,7 @@ public class MonsterCreatorActivity extends Activity {
                 monObj.addKeyWord(editName.getText().toString());
 
                 //Share for local search
-                monObj.addToSharableContent();
+                monObj.listOnLocalIndex();
 
             }
         });
