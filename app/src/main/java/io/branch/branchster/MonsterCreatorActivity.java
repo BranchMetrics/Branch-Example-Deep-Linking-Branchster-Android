@@ -11,8 +11,8 @@ import android.widget.EditText;
 
 import io.branch.branchster.util.ColorController;
 import io.branch.branchster.util.MonsterImageView;
+import io.branch.branchster.util.MonsterObject;
 import io.branch.branchster.util.MonsterPreferences;
-import io.branch.indexing.BranchUniversalObject;
 
 /**
  * This class is where the user can create their own monster. It is the first that the user sees if
@@ -41,13 +41,13 @@ public class MonsterCreatorActivity extends Activity {
         setContentView(R.layout.activity_monster_creator);
 
         prefs = MonsterPreferences.getInstance(getApplicationContext());
-        BranchUniversalObject latestMonsterObj = prefs.getLatestMonsterObj();
+        MonsterObject latestMonsterObj = prefs.getLatestMonsterObj();
 
         // Assign UI items to variables for manipulation later on.
         editName = (EditText) findViewById(R.id.editName);
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
         monsterImageView_.setMonster(latestMonsterObj);
-        editName.setText(latestMonsterObj.getTitle());
+        editName.setText(latestMonsterObj.getMonsterName());
 
 
         // Go to the previous face when the user clicks the up arrow.
@@ -116,7 +116,6 @@ public class MonsterCreatorActivity extends Activity {
                     prefs.setMonsterName(getString(R.string.monster_name));
                 }
                 // List this monster on google search
-                prefs.getLatestMonsterObj().listOnGoogleSearch(MonsterCreatorActivity.this);
                 Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
                 i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
                 startActivity(i);

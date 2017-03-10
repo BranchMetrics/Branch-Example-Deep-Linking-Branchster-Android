@@ -14,6 +14,11 @@ import io.branch.indexing.BranchUniversalObject;
 public class MonsterPreferences {
     private static final String SHARED_PREF_FILE = "branchster_pref";
 
+    public static final String KEY_MONSTER_NAME = "monster_name";
+    public static final String KEY_FACE_INDEX = "face_index";
+    public static final String KEY_BODY_INDEX = "body_index";
+    public static final String KEY_COLOR_INDEX = "color_index";
+
     private static MonsterPreferences prefHelper_;
     private SharedPreferences appSharedPrefs_;
     private Editor prefsEditor_;
@@ -33,11 +38,11 @@ public class MonsterPreferences {
     }
 
     public void setMonsterName(String name) {
-        this.writeStringToPrefs("monster_name", name);
+        this.writeStringToPrefs(KEY_MONSTER_NAME, name);
     }
 
     public String getMonsterName() {
-        return (String) this.readStringFromPrefs("monster_name");
+        return (String) this.readStringFromPrefs(KEY_MONSTER_NAME);
     }
 
     public String getMonsterDescription() {
@@ -46,49 +51,49 @@ public class MonsterPreferences {
     }
 
     public void setFaceIndex(int index) {
-        this.writeIntegerToPrefs("face_index", index);
+        this.writeIntegerToPrefs(KEY_FACE_INDEX, index);
     }
 
     public void setFaceIndex(String index) {
         try {
-            this.writeIntegerToPrefs("face_index", Integer.parseInt(index));
+            this.writeIntegerToPrefs(KEY_FACE_INDEX, Integer.parseInt(index));
         } catch (NumberFormatException ignore) {
         }
     }
 
     public int getFaceIndex() {
-        return this.readIntegerFromPrefs("face_index");
+        return this.readIntegerFromPrefs(KEY_FACE_INDEX);
     }
 
     public void setBodyIndex(int index) {
-        this.writeIntegerToPrefs("body_index", index);
+        this.writeIntegerToPrefs(KEY_BODY_INDEX, index);
     }
 
     public void setBodyIndex(String index) {
         try {
-            this.writeIntegerToPrefs("body_index", Integer.parseInt(index));
+            this.writeIntegerToPrefs(KEY_BODY_INDEX, Integer.parseInt(index));
         } catch (NumberFormatException ignore) {
         }
     }
 
 
     public int getBodyIndex() {
-        return this.readIntegerFromPrefs("body_index");
+        return this.readIntegerFromPrefs(KEY_BODY_INDEX);
     }
 
     public void setColorIndex(int index) {
-        this.writeIntegerToPrefs("color_index", index);
+        this.writeIntegerToPrefs(KEY_COLOR_INDEX, index);
     }
 
     public void setColorIndex(String index) {
         try {
-            this.writeIntegerToPrefs("color_index", Integer.parseInt(index));
+            this.writeIntegerToPrefs(KEY_COLOR_INDEX, Integer.parseInt(index));
         } catch (NumberFormatException ignore) {
         }
     }
 
     public int getColorIndex() {
-        return this.readIntegerFromPrefs("color_index");
+        return this.readIntegerFromPrefs(KEY_COLOR_INDEX);
     }
 
     private void writeIntegerToPrefs(String key, int value) {
@@ -122,7 +127,7 @@ public class MonsterPreferences {
 
 
     public void saveMonster(BranchUniversalObject monster) {
-        if(monster != null) {
+        if (monster != null) {
             HashMap<String, String> referringParams = monster.getMetadata();
             String monsterName = context_.getString(R.string.monster_name);
             if (!TextUtils.isEmpty(monster.getTitle())) {
@@ -134,24 +139,36 @@ public class MonsterPreferences {
                 }
             }
             setMonsterName(monsterName);
-            setFaceIndex(referringParams.get("face_index"));
-            setBodyIndex(referringParams.get("body_index"));
-            setColorIndex(referringParams.get("color_index"));
+            setFaceIndex(referringParams.get(KEY_FACE_INDEX));
+            setBodyIndex(referringParams.get(KEY_BODY_INDEX));
+            setColorIndex(referringParams.get(KEY_COLOR_INDEX));
         }
     }
 
-    public BranchUniversalObject getLatestMonsterObj() {
-        BranchUniversalObject myMonsterObject = new BranchUniversalObject()
-                .setTitle(getMonsterName())
-                .setContentDescription(getMonsterDescription())
-                .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
-                .addContentMetadata("color_index", String.valueOf(getColorIndex()))
-                .addContentMetadata("body_index", String.valueOf(getBodyIndex()))
-                .addContentMetadata("face_index", String.valueOf(getFaceIndex()))
-                .addContentMetadata("monster", "true")
-                .addContentMetadata("monster_name", getMonsterName());
+    public MonsterObject getLatestMonsterObj() {
+        MonsterObject myMonsterObject = new MonsterObject();
+
+        myMonsterObject.setMonsterName(getMonsterName());
+        myMonsterObject.setMonsterDescription(getMonsterDescription());
+        myMonsterObject.setColorIndex(getColorIndex());
+        myMonsterObject.setBodyIndex(getBodyIndex());
+        myMonsterObject.setFaceIndex(getFaceIndex());
 
         return myMonsterObject;
     }
+
+//    public BranchUniversalObject getLatestMonsterObj() {
+//        BranchUniversalObject myMonsterObject = new BranchUniversalObject()
+//                .setTitle(getMonsterName())
+//                .setContentDescription(getMonsterDescription())
+//                .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
+//                .addContentMetadata(KEY_COLOR_INDEX, String.valueOf(getColorIndex()))
+//                .addContentMetadata(KEY_BODY_INDEX, String.valueOf(getBodyIndex()))
+//                .addContentMetadata(KEY_FACE_INDEX, String.valueOf(getFaceIndex()))
+//                .addContentMetadata("monster", "true")
+//                .addContentMetadata("monster_name", getMonsterName());
+//
+//        return myMonsterObject;
+//    }
 
 }

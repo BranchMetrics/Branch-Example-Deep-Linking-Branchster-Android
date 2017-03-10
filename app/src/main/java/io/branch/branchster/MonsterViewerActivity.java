@@ -12,17 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
-import java.util.prefs.PreferenceChangeEvent;
+import android.widget.Toast;
 
 import io.branch.branchster.fragment.InfoFragment;
 import io.branch.branchster.util.MonsterImageView;
+import io.branch.branchster.util.MonsterObject;
 import io.branch.branchster.util.MonsterPreferences;
-import io.branch.indexing.BranchUniversalObject;
-import io.branch.referral.Branch;
-import io.branch.referral.SharingHelper;
-import io.branch.referral.util.LinkProperties;
-import io.branch.referral.util.ShareSheetStyle;
 
 public class MonsterViewerActivity extends FragmentActivity implements InfoFragment.OnFragmentInteractionListener {
 
@@ -31,7 +26,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
 
 
     MonsterImageView monsterImageView_;
-    BranchUniversalObject myMonsterObject_;
+    MonsterObject myMonsterObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,33 +35,28 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         initUI();
     }
 
-    private void initUI(){
+    private void initUI() {
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
-        if (Branch.getInstance().isAutoDeepLinkLaunch(this)) {
-            MonsterPreferences pref = MonsterPreferences.getInstance(this);
-            myMonsterObject_ = BranchUniversalObject.getReferredBranchUniversalObject();
-            pref.saveMonster(myMonsterObject_);
-        } else {
-            myMonsterObject_ = getIntent().getParcelableExtra(MY_MONSTER_OBJ_KEY);
-        }
+        myMonsterObject = getIntent().getParcelableExtra(MY_MONSTER_OBJ_KEY);
 
-        if (myMonsterObject_ != null) {
+        if (myMonsterObject != null) {
             String monsterName = getString(R.string.monster_name);
-            if (!TextUtils.isEmpty(myMonsterObject_.getTitle())) {
-                monsterName = myMonsterObject_.getTitle();
-            } else if (myMonsterObject_.getMetadata().containsKey("monster_name")) {
-                monsterName = myMonsterObject_.getMetadata().get("monster_name");
-            }
-            ((TextView) findViewById(R.id.txtName)).setText(monsterName);
 
-            String description = MonsterPreferences.getInstance(this).getMonsterDescription();
-            if (!TextUtils.isEmpty(myMonsterObject_.getDescription())) {
-                description = myMonsterObject_.getDescription();
+            if (!TextUtils.isEmpty(myMonsterObject.getMonsterName())) {
+                monsterName = myMonsterObject.getMonsterName();
             }
+
+            ((TextView) findViewById(R.id.txtName)).setText(monsterName);
+            String description = MonsterPreferences.getInstance(this).getMonsterDescription();
+
+            if (!TextUtils.isEmpty(myMonsterObject.getMonsterDescription())) {
+                description = myMonsterObject.getMonsterDescription();
+            }
+
             ((TextView) findViewById(R.id.txtDescription)).setText(description);
 
             // set my monster image
-            monsterImageView_.setMonster(myMonsterObject_);
+            monsterImageView_.setMonster(myMonsterObject);
         } else {
             Log.e(TAG, "Monster is null. Unable to view monster");
         }
@@ -106,29 +96,13 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
      * Method to share my custom monster with sharing with Branch Share sheet
      */
     private void shareMyMonster() {
-        LinkProperties linkProperties = new LinkProperties()
-                .addTag("myMonsterTag1")
-                        //.setAlias("myCustomMonsterLink") // In case you need to white label your link
-                .setFeature("myMonsterSharefeature1")
-                .setStage("1")
-                .addControlParameter("$android_deeplink_path", "monster/view/");
-
-        String monsterName = myMonsterObject_.getTitle();
+        String monsterName = myMonsterObject.getMonsterName();
         String shareTitle = "Check out my Branchster named " + monsterName;
         String shareMessage = "I just created this Branchster named " + monsterName + " in the Branch Monster Factory.\n\nSee it here:\n";
         String copyUrlMessage = "Save " + monsterName + " url";
         String copiedUrlMessage = "Added " + monsterName + " url to clipboard";
 
-        ShareSheetStyle shareSheetStyle = new ShareSheetStyle(MonsterViewerActivity.this, shareTitle, shareMessage)
-                .setCopyUrlStyle(getResources().getDrawable(android.R.drawable.ic_menu_send), copyUrlMessage, copiedUrlMessage)
-                .setMoreOptionStyle(getResources().getDrawable(android.R.drawable.ic_menu_search), "More options")
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.FACEBOOK)
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.EMAIL)
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.MESSAGE)
-                .addPreferredSharingOption(SharingHelper.SHARE_WITH.TWITTER);
-
-        myMonsterObject_.showShareSheet(MonsterViewerActivity.this, linkProperties, shareSheetStyle, null);
-
+        Toast.makeText(this, "You need to implement this still!", Toast.LENGTH_SHORT).show();
     }
 
 

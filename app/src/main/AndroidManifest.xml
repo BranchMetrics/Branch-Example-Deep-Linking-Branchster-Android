@@ -16,8 +16,8 @@
         android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:name="io.branch.referral.BranchApp">
+        android:label="@string/app_name">
+
         <activity
             android:name="io.branch.branchster.SplashActivity"
             android:label="@string/app_name"
@@ -29,33 +29,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <intent-filter>
-                <data android:scheme="branchsters" />
-            	<action android:name="android.intent.action.VIEW" />
-            	<category android:name="android.intent.category.DEFAULT" />
-            	<category android:name="android.intent.category.BROWSABLE" />
-        	</intent-filter>
-
-            <!-- AppLink config -->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/your_app_id_obtained form Branch dash board " /> -->
-                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/ALMc" /> <!-- Live App link-->
-                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/iwZc" /> <!-- Test App link-->
-            </intent-filter>
-
         </activity>
-
         <activity
             android:name="io.branch.branchster.MonsterViewerActivity"
             android:theme="@style/Theme.Default"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
-            <meta-data android:name="io.branch.sdk.auto_link_path" android:value="monster/view/" />
-            <meta-data android:name="io.branch.sdk.auto_link_request_code" android:value="@integer/AutoDeeplinkRequestCode" />
         </activity>
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity"
@@ -63,11 +42,6 @@
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
         </activity>
-
-        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" /> <!-- Set to true to use Branch_Test_Key -->
-        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
-        <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_key_test" />
-
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 

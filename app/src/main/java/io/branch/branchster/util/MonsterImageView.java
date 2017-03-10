@@ -39,7 +39,6 @@ public class MonsterImageView extends ImageView {
         setBackground(monsterDrawable_);
     }
 
-
     public MonsterImageView updateColor(int colorIndex) {
         monsterDrawable_.setDrawableByLayerId(R.id.color_drawable_item, new ColorDrawable(context_.getResources().obtainTypedArray(R.array.colors).getColor(colorIndex, 0x00FF0000)));
         invalidateDrawable(monsterDrawable_);
@@ -58,24 +57,13 @@ public class MonsterImageView extends ImageView {
         return this;
     }
 
-    public void setMonster(BranchUniversalObject monsterObj) {
-        HashMap<String, String> monsterMetadata = monsterObj.getMetadata();
-        int colorIdx = 0;
-        int bodyIdx = 0;
-        int faceIdx = 0;
-        if (!TextUtils.isEmpty(monsterMetadata.get("color_index"))) {
-            colorIdx = Integer.parseInt(monsterMetadata.get("color_index"));
-        }
-        if (!TextUtils.isEmpty(monsterMetadata.get("body_index"))) {
-            bodyIdx = Integer.parseInt(monsterMetadata.get("body_index"));
-        }
-        if (!TextUtils.isEmpty(monsterMetadata.get("face_index"))) {
-            faceIdx = Integer.parseInt(monsterMetadata.get("face_index"));
-        }
+    public void setMonster(MonsterObject monsterObj) {
+        int colorIdx = monsterObj.getColorIndex();
+        int bodyIdx = monsterObj.getBodyIndex();
+        int faceIdx = monsterObj.getFaceIndex();
+
         updateColor(colorIdx);
         updateBody(bodyIdx);
         updateFace(faceIdx);
     }
-
-
 }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,17 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.branch.branchster.util.MonsterPreferences;
-import io.branch.indexing.BranchUniversalObject;
-import io.branch.referral.Branch;
-import io.branch.referral.BranchError;
-import io.branch.referral.util.LinkProperties;
-
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.applinks.AppLinkData;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SplashActivity extends Activity {
 
@@ -46,32 +34,12 @@ public class SplashActivity extends Activity {
         imgSplash2 = (ImageView) findViewById(R.id.imgSplashFactory2);
         imgSplash2.setVisibility(View.INVISIBLE);
         imgSplash1.setVisibility(View.INVISIBLE);
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Branch.getInstance().initSession(new Branch.BranchUniversalReferralInitListener() {
-            @Override
-            public void onInitFinished(BranchUniversalObject branchUniversalObject, LinkProperties linkProperties, BranchError branchError) {
-                //If not Launched by clicking Branch link
-                if (branchUniversalObject == null) {
-                    proceedToAppTransparent();
-                }
-                /* In case the clicked link has $android_deeplink_path the Branch will launch the MonsterViewer automatically since AutoDeeplinking feature is enabled.
-                 * Launch Monster viewer activity if a link clicked without $android_deeplink_path
-                 */
-                else if (!branchUniversalObject.getMetadata().containsKey("$android_deeplink_path")) {
-                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                    prefs.saveMonster(branchUniversalObject);
-                    Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-                    intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        }, this.getIntent().getData(), this);
+        proceedToAppTransparent();
     }
 
     @Override
