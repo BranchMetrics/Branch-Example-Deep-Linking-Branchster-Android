@@ -14,7 +14,9 @@ import io.branch.indexing.BranchUniversalObject;
 public class MonsterPreferences {
     private static final String SHARED_PREF_FILE = "branchster_pref";
 
-    public static final String KEY_MONSTER_NAME = "monster_name";
+    public static final String KEY_MONSTER_NAME = "$og_title";
+    public static final String KEY_MONSTER_DESCRIPTION = "$og_description";
+    public static final String KEY_MONSTER_IMAGE = "$og_image_url";
     public static final String KEY_FACE_INDEX = "face_index";
     public static final String KEY_BODY_INDEX = "body_index";
     public static final String KEY_COLOR_INDEX = "color_index";

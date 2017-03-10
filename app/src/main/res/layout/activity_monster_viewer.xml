@@ -5,51 +5,51 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/branchsterContainer"
+        android:layout_alignParentTop="true"
         android:orientation="vertical">
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/cmdChange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:textSize="18sp"
-                android:text="Change" />
+                android:text="Change"
+                android:textSize="18sp" />
 
             <Button
+                android:id="@+id/infoButton"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info"
-                android:id="@+id/infoButton" />
+                android:text="Info" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
 
             <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/monster_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:textSize="@dimen/name_font_size"
-                android:textColor="#474747" />
+                android:text="@string/monster_name"
+                android:textColor="#474747"
+                android:textSize="@dimen/name_font_size" />
 
         </LinearLayout>
 
@@ -57,162 +57,188 @@
 
     <RelativeLayout
         android:id="@+id/branchsterContainer"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:paddingRight="34dp"
+        android:layout_height="@dimen/branchster_container_height"
+        android:layout_centerInParent="true"
         android:paddingLeft="34dp"
-        android:layout_height="@dimen/branchster_container_height">
+        android:paddingRight="34dp">
 
         <io.branch.branchster.util.MonsterImageView
             android:id="@+id/monster_img_view"
             android:layout_width="200dp"
             android:layout_height="270dp"
-            android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/monster_drawable"/>
+            android:layout_centerInParent="true"
+            android:src="@drawable/monster_drawable" />
 
         <!--<View-->
-            <!--android:layout_alignTop="@+id/botLayerThreeFace"-->
+        <!--android:layout_alignTop="@+id/botLayerThreeFace"-->
 
-            <!--android:id="@+id/botLayerOneColor"-->
-            <!--android:layout_width="@dimen/branchster_width"-->
-            <!--android:layout_height="@dimen/branchster_height"-->
-            <!--android:layout_alignLeft="@+id/botLayerTwoBody"-->
-            <!--android:layout_centerHorizontal="true" />-->
+        <!--android:id="@+id/botLayerOneColor"-->
+        <!--android:layout_width="@dimen/branchster_width"-->
+        <!--android:layout_height="@dimen/branchster_height"-->
+        <!--android:layout_alignLeft="@+id/botLayerTwoBody"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
-
-        <!--<ImageView-->
-            <!--android:id="@+id/botLayerTwoBody"-->
-            <!--android:layout_width="@dimen/branchster_width"-->
-            <!--android:layout_height="@dimen/branchster_height"-->
-            <!--android:src="@drawable/body0"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:adjustViewBounds="true"-->
-            <!--android:scaleType="fitXY"/>-->
 
         <!--<ImageView-->
-            <!--android:id="@+id/botLayerThreeFace"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="@dimen/branchster_height"-->
-            <!--android:src="@drawable/face0"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:layout_centerHorizontal="true" />-->
+        <!--android:id="@+id/botLayerTwoBody"-->
+        <!--android:layout_width="@dimen/branchster_width"-->
+        <!--android:layout_height="@dimen/branchster_height"-->
+        <!--android:src="@drawable/body0"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:scaleType="fitXY"/>-->
 
-        </RelativeLayout>
+        <!--<ImageView-->
+        <!--android:id="@+id/botLayerThreeFace"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/branchster_height"-->
+        <!--android:src="@drawable/face0"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/description_background"
-            android:padding="15dp"
-            android:layout_weight="2"
             android:id="@+id/txtDescription"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:background="@drawable/description_background"
             android:gravity="center"
-            android:textSize="@dimen/description_font_size"
-            android:textColor="#474747" />
+            android:padding="15dp"
+            android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
+            android:textColor="#474747"
+            android:textSize="@dimen/description_font_size" />
 
         <!--<TextView-->
-            <!--android:layout_weight="1"-->
-            <!--android:id="@+id/txtURL"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:textSize="15sp"-->
-            <!--android:textColor="#474747" />-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/txtURL"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="15sp"-->
+        <!--android:textColor="#474747" />-->
 
         <!--<LinearLayout-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_weight="2"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:layout_width="match_parent">-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_weight="2"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_width="match_parent">-->
 
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
+        <!--<LinearLayout-->
+        <!--android:gravity="center"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent">-->
 
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdSMS"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_text_selector" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdMail"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_email_selector" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdTwitter"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_twitter_selector" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdFB"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_facebook_selector" />-->
-
-            <!--</LinearLayout>-->
+        <!--<ImageButton-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:id="@+id/cmdSMS"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@drawable/share_text_selector" />-->
 
         <!--</LinearLayout>-->
 
-        <ImageButton
-            android:id="@+id/share_btn"
-            android:layout_width="wrap_content"
+        <!--<LinearLayout-->
+        <!--android:gravity="center"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent">-->
+
+        <!--<ImageButton-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:id="@+id/cmdMail"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@drawable/share_email_selector" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+        <!--android:gravity="center"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent">-->
+
+        <!--<ImageButton-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:id="@+id/cmdTwitter"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@drawable/share_twitter_selector" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+        <!--android:gravity="center"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent">-->
+
+        <!--<ImageButton-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:id="@+id/cmdFB"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@drawable/share_facebook_selector" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--</LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:src="@android:drawable/ic_menu_share"
-            android:background="@null"
-            android:layout_gravity="center"/>
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/share_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:src="@android:drawable/ic_menu_share" />
+
+            <TextView
+                android:id="@+id/shareUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
     </LinearLayout>
-    
+
+    <RelativeLayout
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AAFFFFFF">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
 </RelativeLayout>
     

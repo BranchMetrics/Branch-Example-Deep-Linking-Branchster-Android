@@ -3,6 +3,9 @@ package io.branch.branchster.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by marshall on 3/9/17.
  */
@@ -63,6 +66,32 @@ public class MonsterObject implements Parcelable {
 
     public void setFaceIndex(int faceIndex) {
         this.faceIndex = faceIndex;
+    }
+
+    public Map<String, String> monsterMetaData() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put(MonsterPreferences.KEY_MONSTER_NAME, monsterName);
+        map.put(MonsterPreferences.KEY_COLOR_INDEX, "" + colorIndex);
+        map.put(MonsterPreferences.KEY_BODY_INDEX, "" + bodyIndex);
+        map.put(MonsterPreferences.KEY_FACE_INDEX, "" + faceIndex);
+
+        return map;
+    }
+
+    public Map<String, String> prepareBranchDict() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put(MonsterPreferences.KEY_MONSTER_NAME, String.format("My Branchster: %s", monsterName));
+        map.put(MonsterPreferences.KEY_MONSTER_DESCRIPTION, monsterDescription);
+        map.put(MonsterPreferences.KEY_MONSTER_IMAGE, getMonsterImage());
+        map.put(MonsterPreferences.KEY_COLOR_INDEX, "" + colorIndex);
+        map.put(MonsterPreferences.KEY_BODY_INDEX, "" + bodyIndex);
+        map.put(MonsterPreferences.KEY_FACE_INDEX, "" + faceIndex);
+        map.put("monster", "true");
+        map.put("monster_name", monsterName);
+
+        return map;
     }
 
     //////////////////////////////////////////////

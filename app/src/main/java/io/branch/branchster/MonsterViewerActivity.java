@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.branch.branchster.fragment.InfoFragment;
 import io.branch.branchster.util.MonsterImageView;
@@ -20,10 +19,13 @@ import io.branch.branchster.util.MonsterObject;
 import io.branch.branchster.util.MonsterPreferences;
 
 public class MonsterViewerActivity extends FragmentActivity implements InfoFragment.OnFragmentInteractionListener {
+    static final int SEND_SMS = 12345;
 
     private static String TAG = MonsterViewerActivity.class.getSimpleName();
     public static final String MY_MONSTER_OBJ_KEY = "my_monster_obj_key";
 
+    TextView monsterUrl;
+    View progressBar;
 
     MonsterImageView monsterImageView_;
     MonsterObject myMonsterObject;
@@ -32,34 +34,10 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_viewer);
-        initUI();
-    }
 
-    private void initUI() {
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
-        myMonsterObject = getIntent().getParcelableExtra(MY_MONSTER_OBJ_KEY);
-
-        if (myMonsterObject != null) {
-            String monsterName = getString(R.string.monster_name);
-
-            if (!TextUtils.isEmpty(myMonsterObject.getMonsterName())) {
-                monsterName = myMonsterObject.getMonsterName();
-            }
-
-            ((TextView) findViewById(R.id.txtName)).setText(monsterName);
-            String description = MonsterPreferences.getInstance(this).getMonsterDescription();
-
-            if (!TextUtils.isEmpty(myMonsterObject.getMonsterDescription())) {
-                description = myMonsterObject.getMonsterDescription();
-            }
-
-            ((TextView) findViewById(R.id.txtDescription)).setText(description);
-
-            // set my monster image
-            monsterImageView_.setMonster(myMonsterObject);
-        } else {
-            Log.e(TAG, "Monster is null. Unable to view monster");
-        }
+        monsterUrl = (TextView) findViewById(R.id.shareUrl);
+        progressBar = findViewById(R.id.progress_bar);
 
         // Change monster
         findViewById(R.id.cmdChange).setOnClickListener(new OnClickListener() {
@@ -90,21 +68,60 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
             }
         });
 
+        initUI();
+    }
+
+    private void initUI() {
+        myMonsterObject = getIntent().getParcelableExtra(MY_MONSTER_OBJ_KEY);
+
+        if (myMonsterObject != null) {
+            String monsterName = getString(R.string.monster_name);
+
+            if (!TextUtils.isEmpty(myMonsterObject.getMonsterName())) {
+                monsterName = myMonsterObject.getMonsterName();
+            }
+
+            ((TextView) findViewById(R.id.txtName)).setText(monsterName);
+            String description = MonsterPreferences.getInstance(this).getMonsterDescription();
+
+            if (!TextUtils.isEmpty(myMonsterObject.getMonsterDescription())) {
+                description = myMonsterObject.getMonsterDescription();
+            }
+
+            ((TextView) findViewById(R.id.txtDescription)).setText(description);
+
+            // set my monster image
+            monsterImageView_.setMonster(myMonsterObject);
+
+            progressBar.setVisibility(View.GONE);
+        } else {
+            Log.e(TAG, "Monster is null. Unable to view monster");
+        }
     }
 
     /**
      * Method to share my custom monster with sharing with Branch Share sheet
      */
     private void shareMyMonster() {
-        String monsterName = myMonsterObject.getMonsterName();
-        String shareTitle = "Check out my Branchster named " + monsterName;
-        String shareMessage = "I just created this Branchster named " + monsterName + " in the Branch Monster Factory.\n\nSee it here:\n";
-        String copyUrlMessage = "Save " + monsterName + " url";
-        String copiedUrlMessage = "Added " + monsterName + " url to clipboard";
+        progressBar.setVisibility(View.VISIBLE);
 
-        Toast.makeText(this, "You need to implement this still!", Toast.LENGTH_SHORT).show();
+        String url = "http://example.com"; // TODO: Replace with Branch-generated shortUrl
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_TEXT, String.format("Check out my Branchster named %s at %s", myMonsterObject.getMonsterName(), url));
+        startActivityForResult(i, SEND_SMS);
+
+        progressBar.setVisibility(View.GONE);
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (SEND_SMS == requestCode) {
+            if (RESULT_OK == resultCode) {
+                // TODO: Track successful share via Branch.
+            }
+        }
+    }
 
     @Override
     public void onBackPressed() {
