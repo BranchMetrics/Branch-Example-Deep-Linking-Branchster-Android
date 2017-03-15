@@ -65,6 +65,12 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <receiver android:name="io.branch.referral.InstallListener" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
         <meta-data android:name="io.branch.sdk.TestMode" android:value="false" /> <!-- Set to true to use Branch_Test_Key -->
         <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
         <meta-data android:name="io.branch.sdk.BranchKey.test" android:value="@string/branch_key_test" />
