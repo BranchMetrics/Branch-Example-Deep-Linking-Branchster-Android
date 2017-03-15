@@ -1,4 +1,5 @@
-import android.app.Application;
+package io.branch.branchster;
+
 import android.support.multidex.MultiDexApplication;
 
 import io.branch.referral.Branch;
