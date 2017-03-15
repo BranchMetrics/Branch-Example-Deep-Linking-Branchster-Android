@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.branch.branchster"
-    android:versionCode="14"
+    android:versionCode="17"
     android:versionName="1.4.0" >
 
     <uses-sdk
@@ -17,7 +17,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name="io.branch.referral.BranchApp">
+        android:name=".BranchsterAndroidApplication"
+       >
         <activity
             android:name="io.branch.branchster.SplashActivity"
             android:label="@string/app_name"
