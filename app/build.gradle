@@ -16,10 +16,16 @@ android {
     }
 }
 
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:multidex:1.0.1'
-    compile 'io.branch.sdk.android:library:2.+'
+    compile(name:'Branch-SDK-release', ext:'aar')
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 }
