@@ -44,8 +44,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/your_app_id_obtained form Branch dash board " /> -->
-                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/ALMc" /> <!-- Live App link-->
-                <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/iwZc" /> <!-- Test App link-->
+                <data android:scheme="https" android:host="branchster.app.link" />
+                <data android:scheme="http" android:host="branchster.app.link" />
+
             </intent-filter>
 
         </activity>

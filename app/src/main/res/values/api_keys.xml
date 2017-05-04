@@ -6,9 +6,14 @@
     If you don't have one, see the Branch Android Quick-Start for how to get one:
     https://github.com/BranchMetrics/Branch-Integration-Guides/blob/master/android-quick-start.md
     -->
-    <string name="branch_key">key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>
-    <string name="branch_key_test">key_test_lkhEVOq9sPU9FXgbSAoQthfhqsd5EVaV</string>
 
+    <!-- Old Branch Monster Factory App keys.-->
+    <!--<string name="branch_key">key_live_gchnKkd3l3m9YBPP2d73jmfejkcgVjgM</string>-->
+    <!--<string name="branch_key_test">key_test_lkhEVOq9sPU9FXgbSAoQthfhqsd5EVaV</string>-->
+
+    <!-- Branchster app keys-->
+    <string name="branch_key">key_live_hkDytPACtipny3N9XmnbZlapBDdj4WIL</string>
+    <string name="branch_key_test">key_test_jpAAsHxzDjint6I30mkBZjeewAki21R7</string>
 
     <!--
     Your Twitter Key and Secret Goes Here
