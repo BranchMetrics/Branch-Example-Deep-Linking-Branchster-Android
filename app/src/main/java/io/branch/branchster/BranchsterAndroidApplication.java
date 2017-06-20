@@ -11,7 +11,6 @@ import io.branch.referral.Branch;
 public class BranchsterAndroidApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
-        Branch.enablePlayStoreReferrer(7000L);
         Branch.getAutoInstance(this);
     }
 }
