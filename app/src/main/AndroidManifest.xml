@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.branch.branchster"
           android:targetSandboxVersion="2"
-          android:versionCode="27"
-          android:versionName="1.6.3">
+          android:versionCode="28"
+          android:versionName="1.7.0">
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -53,6 +53,79 @@
                 <data
                     android:host="branchster.app.link"
                     android:scheme="http"/>
+
+                <!--email-bronto.branch.rocks-->
+                <data
+                    android:host="email-bronto.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-bronto.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-mailjet.branch.rocks-->
+                <data
+                    android:host="email-mailjet.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-mailjet.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-mandrill.branch.rocks-->
+                <data
+                    android:host="email-mandrill.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-mandrill.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-sp.branch.rocks-->
+                <data
+                    android:host="email-sp.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-sp.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-cm.branch.rocks-->
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-campmon.branch.rocks-->
+                <data
+                    android:host="email-campmon.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-campmon.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-cm.branch.rocks-->
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--amazon-email.branch.rocks-->
+                <data
+                    android:host="amazon-email.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="amazon-email.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-iterable.branch.rocks-->
+                <data
+                    android:host="email-iterable.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-iterable.branch.rocks"
+                    android:scheme="http"/>
+
             </intent-filter>
 
         </activity>

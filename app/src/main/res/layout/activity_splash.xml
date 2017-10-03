@@ -48,5 +48,10 @@
         android:gravity="center_vertical|right"
         android:textColor="#474747" />
 
+    <WebView
+        android:id="@+id/web_only_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>
     
