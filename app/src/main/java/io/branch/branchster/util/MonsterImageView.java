@@ -59,7 +59,7 @@ public class MonsterImageView extends ImageView {
     }
 
     public void setMonster(BranchUniversalObject monsterObj) {
-        HashMap<String, String> monsterMetadata = monsterObj.getMetadata();
+        HashMap<String, String> monsterMetadata = monsterObj.getContentMetadata().getCustomMetadata();
         int colorIdx = 0;
         int bodyIdx = 0;
         int faceIdx = 0;

@@ -67,7 +67,7 @@ public class SplashActivity extends Activity {
                 /* In case the clicked link has $android_deeplink_path the Branch will launch the MonsterViewer automatically since AutoDeeplinking feature is enabled.
                  * Launch Monster viewer activity if a link clicked without $android_deeplink_path
                  */
-                else if (!branchUniversalObject.getMetadata().containsKey("$android_deeplink_path")) {
+                else if (!branchUniversalObject.getContentMetadata().getCustomMetadata().containsKey("$android_deeplink_path")) {
                     MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
                     prefs.saveMonster(branchUniversalObject);
                     Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);

@@ -25,6 +25,8 @@ import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 import io.branch.referral.SharingHelper;
+import io.branch.referral.util.BRANCH_STANDARD_EVENT;
+import io.branch.referral.util.BranchEvent;
 import io.branch.referral.util.CommerceEvent;
 import io.branch.referral.util.CurrencyType;
 import io.branch.referral.util.LinkProperties;
@@ -37,14 +39,14 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     public static final String MY_MONSTER_OBJ_KEY = "my_monster_obj_key";
     MonsterImageView monsterImageView_;
     BranchUniversalObject myMonsterObject_;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_viewer);
         initUI();
     }
-
+    
     private void initUI() {
         monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
         if (Branch.getInstance().isAutoDeepLinkLaunch(this)) {
@@ -58,8 +60,8 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
             String monsterName = getString(R.string.monster_name);
             if (!TextUtils.isEmpty(myMonsterObject_.getTitle())) {
                 monsterName = myMonsterObject_.getTitle();
-            } else if (myMonsterObject_.getMetadata().containsKey("monster_name")) {
-                monsterName = myMonsterObject_.getMetadata().get("monster_name");
+            } else if (myMonsterObject_.getContentMetadata().getCustomMetadata().containsKey("monster_name")) {
+                monsterName = myMonsterObject_.getContentMetadata().getCustomMetadata().get("monster_name");
             }
             ((TextView) findViewById(R.id.txtName)).setText(monsterName);
             String description = MonsterPreferences.getInstance(this).getMonsterDescription();
@@ -96,17 +98,24 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
             @Override
             public void onClick(View view) {
                 shareMyMonster();
+                new BranchEvent(BRANCH_STANDARD_EVENT.PURCHASE)
+                        .addCustomDataProperty("MonsterName", myMonsterObject_.getTitle())
+                        .setCurrency(CurrencyType.USD)
+                        .setDescription(myMonsterObject_.getDescription())
+                        .addContentItems(myMonsterObject_)
+                        .logEvent(MonsterViewerActivity.this);
+                
             }
         });
     }
-
+    
     /**
      * Method to share my custom monster with sharing with Branch Share sheet
      */
     private void shareMyMonster() {
         LinkProperties linkProperties = new LinkProperties()
                 .addTag("myMonsterTag1")
-                        //.setAlias("myCustomMonsterLink") // In case you need to white label your link
+                //.setAlias("myCustomMonsterLink") // In case you need to white label your link
                 .setFeature("myMonsterSharefeature1")
                 .setStage("1")
                 .addControlParameter("$android_deeplink_path", "monster/view/");
@@ -125,7 +134,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         myMonsterObject_.showShareSheet(MonsterViewerActivity.this, linkProperties, shareSheetStyle, new Branch.BranchLinkShareListener() {
                     Random rnd = new Random(System.currentTimeMillis());
                     Double revenue;
-
+                    
                     @Override
                     public void onShareLinkDialogLaunched() {
                         JSONObject jsonObject = new JSONObject();
@@ -137,15 +146,15 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                         }
                         Branch.getInstance(getApplicationContext()).userCompletedAction("Add to Cart", jsonObject);
                     }
-
+                    
                     @Override
                     public void onShareLinkDialogDismissed() {
                     }
-
+                    
                     @Override
                     public void onLinkShareResponse(String sharedLink, String sharedChannel, BranchError error) {
                     }
-
+                    
                     @Override
                     public void onChannelSelected(String channelName) {
                         Product branchster = new Product();
@@ -170,7 +179,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                                 channel.contains("Slack") ? "title for slack" :
                                         channel.contains("Gmail") ? "title for gmail" : null;
                     }
-
+                    
                     @Override
                     public String getSharingMessageForChannel(String channel) {
                         return channel.contains("Messaging") ? "message for SMS" :
@@ -179,7 +188,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                     }
                 });
     }
-
+    
     @Override
     public void onBackPressed() {
         FragmentManager fm = getFragmentManager();
@@ -198,12 +207,12 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                     }).create().show();
         }
     }
-
+    
     @Override
     public void onFragmentInteraction() {
         //no-op
     }
-
+    
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
