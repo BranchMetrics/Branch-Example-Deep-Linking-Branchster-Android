@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.branch.branchster"
           android:targetSandboxVersion="2"
-          android:versionCode="32"
-          android:versionName="1.8.1">
+          android:versionCode="34"
+          android:versionName="1.8.2">
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -54,13 +54,6 @@
                     android:host="branchster.app.link"
                     android:scheme="http"/>
 
-                <!--email-bronto.branch.rocks-->
-                <data
-                    android:host="email-bronto.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-bronto.branch.rocks"
-                    android:scheme="http"/>
 
                 <!--email-mailjet.branch.rocks-->
                 <data

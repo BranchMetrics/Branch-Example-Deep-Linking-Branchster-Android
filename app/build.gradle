@@ -20,15 +20,16 @@ repositories{
     flatDir{
         dirs 'libs'
     }
+    google()
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:multidex:1.0.1'
-    compile(name:'Branch-SDK-release', ext:'aar')
-//    compile ('io.branch.sdk.android:library:2.+') {
-//        exclude module: 'answers-shim'
-//    }
+    //compile(name:'Branch-SDK-release', ext:'aar')
+    compile ('io.branch.sdk.android:library:2.15.0') {
+        exclude module: 'answers-shim'
+    }
     compile 'com.google.android.gms:play-services:6.5.87'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 }
