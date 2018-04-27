@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.branch.branchster"
           android:targetSandboxVersion="2"
-          android:versionCode="35"
-          android:versionName="1.8.3">
+          android:versionCode="36"
+          android:versionName="1.8.4">
 
     <uses-sdk
         android:minSdkVersion="16"
