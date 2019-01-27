@@ -12,3 +12,6 @@ build/
 # Gradle
 build/*
 .gradle/*
+
+# Misc.
+.DS_Store

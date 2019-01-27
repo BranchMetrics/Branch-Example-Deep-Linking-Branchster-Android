@@ -5,6 +5,9 @@ android {
     buildToolsVersion "26"
 
     defaultConfig {
+        versionName project.VERSION_NAME
+        versionCode Integer.parseInt(project.VERSION_CODE)
+
         multiDexEnabled true
     }
 
