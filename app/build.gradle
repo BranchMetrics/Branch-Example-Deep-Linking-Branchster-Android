@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26"
+    compileSdkVersion 28
+    buildToolsVersion "28"
 
     defaultConfig {
         versionName project.VERSION_NAME
@@ -27,13 +27,13 @@ repositories{
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:multidex:1.0.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:multidex:1.0.1'
     //compile(name:'Branch-SDK-release', ext:'aar')
-    compile ('io.branch.sdk.android:library:3.0.4') {
+    implementation ('io.branch.sdk.android:library:3.1.1') {
         exclude module: 'answers-shim'
     }
-    compile 'com.google.android.gms:play-services:6.5.87'
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-    compile 'com.android.installreferrer:installreferrer:1.0'
+    implementation 'com.google.android.gms:play-services:6.5.87'
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.android.installreferrer:installreferrer:1.0'
 }
