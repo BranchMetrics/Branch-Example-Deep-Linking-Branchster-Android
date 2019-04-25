@@ -1,15 +1,18 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28"
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
 
     defaultConfig {
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         versionName project.VERSION_NAME
         versionCode Integer.parseInt(project.VERSION_CODE)
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_MINIMUM)
 
         multiDexEnabled true
     }
+
 
     buildTypes {
         release {
@@ -30,7 +33,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.1'
     //compile(name:'Branch-SDK-release', ext:'aar')
-    implementation ('io.branch.sdk.android:library:3.1.1') {
+    implementation ('io.branch.sdk.android:library:3.1.2') {
         exclude module: 'answers-shim'
     }
     implementation 'com.google.android.gms:play-services:6.5.87'
