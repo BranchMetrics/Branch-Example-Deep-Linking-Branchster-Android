@@ -33,7 +33,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.1'
     //compile(name:'Branch-SDK-release', ext:'aar')
-    implementation ('io.branch.sdk.android:library:3.1.2') {
+    implementation ('io.branch.sdk.android:library:3.2.0') {
         exclude module: 'answers-shim'
     }
     implementation 'com.google.android.gms:play-services:6.5.87'
