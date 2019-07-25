@@ -3,10 +3,6 @@
           package="io.branch.branchster"
           android:targetSandboxVersion="2" >
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="26"/>
-
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
