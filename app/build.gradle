@@ -32,11 +32,14 @@ repositories{
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.1'
-    //compile(name:'Branch-SDK-release', ext:'aar')
-    implementation ('io.branch.sdk.android:library:3.2.0') {
-        exclude module: 'answers-shim'
-    }
-    implementation 'com.google.android.gms:play-services:6.5.87'
+    implementation(name:'Branch-SDK-release', ext:'aar')
+//    implementation ('io.branch.sdk.android:library:4.1.0') {
+//        exclude module: 'answers-shim'
+//    }
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:leanback-v17:27.0.2'
+
+//    implementation 'com.google.android.gms:play-services:6.5.87'// what is this for? Stubbed out because Fire OS does not support any play services
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'com.android.installreferrer:installreferrer:1.0'
 }

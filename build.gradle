@@ -16,5 +16,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        flatDir {
+            dirs 'app/libs'
+        }
     }
 }
