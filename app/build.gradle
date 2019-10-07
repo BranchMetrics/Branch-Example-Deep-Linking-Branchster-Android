@@ -32,10 +32,8 @@ repositories{
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.1'
-    implementation(name:'Branch-SDK-release', ext:'aar')
-//    implementation ('io.branch.sdk.android:library:4.1.0') {
-//        exclude module: 'answers-shim'
-//    }
+//    implementation(name:'Branch-SDK-release', ext:'aar')
+    implementation ('io.branch.sdk.android:library:4.1.1')
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support:leanback-v17:27.0.2'
 
