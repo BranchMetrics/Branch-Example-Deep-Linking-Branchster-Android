@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.branch.branchster"
-          android:targetSandboxVersion="2" >
+          android:targetSandboxVersion="2"
+          xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-sdk tools:overrideLibrary="android.support.v17.leanback"/>
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
     <application
         android:name=".BranchsterAndroidApplication"
@@ -13,6 +18,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:banner="@drawable/ic_launcher"
         >
         <activity
             android:name="io.branch.branchster.SplashActivity"
@@ -113,6 +119,18 @@
                     android:host="email-iterable.branch.rocks"
                     android:scheme="http"/>
 
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="io.branch.branchster.TvActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Leanback">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
 
         </activity>
