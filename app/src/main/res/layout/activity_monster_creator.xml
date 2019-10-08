@@ -60,7 +60,6 @@
             android:layout_width="200dp"
             android:layout_height="270dp"
             android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
             android:src="@drawable/monster_drawable"/>
 
         <ImageButton
@@ -249,66 +248,6 @@
                 </LinearLayout>
 
             </RadioGroup>
-
-            <!--
-
-            <Button
-                android:id="@+id/cmdColor0"
-                android:tag="0"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor1"
-                android:tag="1"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor2"
-                android:tag="2"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor3"
-                android:tag="3"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor4"
-                android:tag="4"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor5"
-                android:tag="5"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor6"
-                android:tag="6"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-            <Button
-                android:id="@+id/cmdColor7"
-                android:tag="7"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="1dp" />
-
-                -->
 
         </LinearLayout>
 

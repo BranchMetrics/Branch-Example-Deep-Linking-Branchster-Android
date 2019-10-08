@@ -35,7 +35,6 @@
         <activity
             android:name="io.branch.branchster.MonsterViewerActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Default">
             <meta-data
                 android:name="io.branch.sdk.auto_link_path"
@@ -47,7 +46,6 @@
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.Default">
         </activity>
 
