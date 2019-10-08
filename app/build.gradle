@@ -37,7 +37,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support:leanback-v17:27.0.2'
 
-//    implementation 'com.google.android.gms:play-services:6.5.87'// what is this for? Stubbed out because Fire OS does not support any play services
+    implementation 'com.google.android.gms:play-services:6.5.87' // needed to get ad id/LAT value on Android (not Fire OS)
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
     implementation 'com.android.installreferrer:installreferrer:1.0'
 }
