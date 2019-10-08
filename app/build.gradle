@@ -26,10 +26,11 @@ android {
     productFlavors {
         android {
             dimension "os"
+            applicationId = "io.branch.branchster"
         }
         amazon {
             dimension "os"
-            applicationIdSuffix ".amazon"
+            applicationId = "io.branch.branchster.amazon"
         }
     }
 }
