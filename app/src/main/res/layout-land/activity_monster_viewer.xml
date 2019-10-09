@@ -65,6 +65,7 @@
     <RelativeLayout
         android:id="@+id/branchsterContainer"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:paddingRight="34dp"
         android:paddingLeft="34dp"

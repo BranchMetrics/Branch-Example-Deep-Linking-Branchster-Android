@@ -7,6 +7,9 @@
     <!-- Pressed -->
     <item android:drawable="@drawable/left_pressed" android:state_pressed="true"></item>
 
+    <!-- Focused -->
+    <item android:drawable="@drawable/left_pressed" android:state_focused="true"></item>
+
     <!-- Normal -->
     <item android:drawable="@drawable/left"></item>
 

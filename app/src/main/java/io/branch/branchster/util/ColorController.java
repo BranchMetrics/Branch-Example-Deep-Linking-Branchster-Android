@@ -59,13 +59,24 @@ public class ColorController {
 
             // Assign a click listener for each.
             cmdColor.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                @Override public void onClick(View v) {
                     int idx = Integer.parseInt((String)v.getTag());
                     prefs.setColorIndex(idx);
                     monsterImageView_.updateColor(idx);
                     setSelectedColourButton(idx);
 
+                }
+            });
+
+            cmdColor.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override public void onFocusChange(View v, boolean hasFocus) {
+                    int idx = Integer.parseInt((String)v.getTag());
+                    if (idx == prefs.getColorIndex()) {
+                        cmdColorTubs[idx].setBackground(activity_.getResources().getDrawable(R.drawable.colour_button_on));
+                    } else {
+                        cmdColorTubs[idx].setBackground(activity_.getResources().getDrawable(
+                                hasFocus ? R.drawable.colour_button_focused : R.drawable.colour_button_off));
+                    }
                 }
             });
         }
