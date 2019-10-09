@@ -1,57 +1,46 @@
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="io.branch.branchster.fragment.InfoFragment"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:tag="info_container"
+    android:background="@android:color/background_light">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/branch_info_first_paragraph"
+        android:layout_margin="25dp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/branch_info_second_paragraph"
+        android:layout_margin="25dp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Branch!"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/version_name_txt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
-        android:tag="info_container"
-        android:background="@android:color/background_light">
+        android:background="@android:color/transparent"
+        android:textAppearance="@android:style/TextAppearance.Small"
+        android:layout_margin="5dp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:text="@string/branch_info_first_paragraph"
-            android:layout_marginTop="15dp"
-            android:gravity="center_horizontal"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:text="@string/branch_info_second_paragraph"
-            android:layout_marginTop="15dp"
-            android:gravity="center_horizontal"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:textSize="15sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Go to Branch!"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:id="@+id/version_name_txt"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:textAppearance="@android:style/TextAppearance.Small"
-            android:padding="5dp"
-            android:layout_gravity="bottom"
-            android:gravity="bottom"
-            />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
