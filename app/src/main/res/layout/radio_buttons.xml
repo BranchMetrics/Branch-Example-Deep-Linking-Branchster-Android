@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/colourButtons"
+    android:gravity="center">
+
+    <RadioGroup
+        android:gravity="center_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub0"
+            android:background="@drawable/colour_button_on"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                android:background="#ccc"
+                android:checked="true"
+                style="@style/ColourRadioButtonStyle"
+                android:id="@+id/cmdColor0"
+                android:tag="0"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub1"
+            android:background="@drawable/colour_button_on"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor1"
+                android:tag="1"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub2"
+            android:background="@drawable/colour_button_off"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor2"
+                android:tag="2"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub3"
+            android:background="@drawable/colour_button_on"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor3"
+                android:tag="3"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub4"
+            android:background="@drawable/colour_button_off"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor4"
+                android:tag="4"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub5"
+            android:background="@drawable/colour_button_on"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor5"
+                android:tag="5"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub6"
+            android:background="@drawable/colour_button_on"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor6"
+                android:tag="6"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cmdColorTub7"
+            android:background="@drawable/colour_button_on"
+            android:padding="@dimen/selector_tub_padding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:layout_margin="@dimen/radio_button_padding"
+                style="@style/ColourRadioButtonStyle"
+                android:background="#ccc"
+                android:id="@+id/cmdColor7"
+                android:tag="7"
+                android:layout_width="29dp"
+                android:layout_height="29dp"/>
+        </LinearLayout>
+
+    </RadioGroup>
+
+</LinearLayout>
