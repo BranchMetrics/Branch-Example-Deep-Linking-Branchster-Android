@@ -21,7 +21,6 @@ import io.branch.indexing.BranchUniversalObject;
  */
 public class MonsterCreatorActivity extends Activity {
 
-    //
     EditText editName;
     // Image view to show custom monster
     MonsterImageView monsterImageView_;
@@ -32,11 +31,10 @@ public class MonsterCreatorActivity extends Activity {
     MonsterPreferences prefs;
 
 
-    int faceIndex;
-    int bodyIndex;
+    private int faceIndex;
+    private int bodyIndex;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_creator);
 
@@ -108,8 +106,7 @@ public class MonsterCreatorActivity extends Activity {
 
         // Save the monster name to prefs object, then open the MonsterViewerActivity.
         findViewById(R.id.cmdDone).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            @Override public void onClick(View v) {
                 if (editName.getText().toString().length() > 0) {
                     prefs.setMonsterName(editName.getText().toString());
                 } else {
@@ -127,9 +124,7 @@ public class MonsterCreatorActivity extends Activity {
         new ColorController(this, monsterImageView_).start();
     }
 
-
-    @Override
-    public void onBackPressed() {
+    @Override public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Exit")
                 .setMessage("Are you sure you want to exit?")

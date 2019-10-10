@@ -7,7 +7,10 @@
     <dimen name="selector_tub_padding">6dp</dimen>
     <dimen name="radio_button_padding">3dp</dimen>
 
-    <dimen name="activity_creator_name_bottom">0.2</dimen>
+    <dimen name="activity_creator_name_bottom">0.25</dimen>
     <dimen name="activity_creator_monster_bottom">0.7</dimen>
+
+    <dimen name="activity_viewer_name_bottom">0.3</dimen>
+    <dimen name="activity_viewer_monster_bottom">0.7</dimen>
 
 </resources>
