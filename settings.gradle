@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':android-branch-deep-linking-attribution:Branch-SDK'
