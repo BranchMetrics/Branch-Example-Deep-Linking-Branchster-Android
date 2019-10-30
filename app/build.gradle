@@ -25,6 +25,7 @@ android {
     flavorDimensions "os"
     productFlavors {
         android {
+            isDefault = true
             dimension "os"
             applicationId = "io.branch.branchster"
         }
@@ -44,7 +45,7 @@ repositories{
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 //    implementation(name:'Branch-SDK-release', ext:'aar')
 //    implementation ('io.branch.sdk.android:library:4.1.1')
     api project(":BranchSDK-local")
@@ -52,7 +53,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.leanback:leanback:1.0.0'
 
-    androidImplementation 'com.google.android.gms:play-services:6.5.87' // needed to get ad id/LAT value on Android (not Fire OS)
-    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    androidImplementation 'com.google.android.gms:play-services:12.0.1' // needed to get ad id/LAT value on Android (not Fire OS)
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
     implementation 'com.android.installreferrer:installreferrer:1.0'
 }
