@@ -128,22 +128,4 @@ public class SplashActivity extends Activity {
         imgSplash2.setVisibility(View.VISIBLE);
         imgSplash2.startAnimation(animSlideIn);
     }
-
-    @Override public void onBackPressed() {
-        String shortURL = "https://branchster.app.link/purply";
-        Intent intent = new Intent(this, MonsterViewerActivity.class);
-        intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
-        intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
-        PendingIntent pendingIntent =  PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, branchChannelID)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("BranchTest")
-                .setContentText("test notif, fingers crossed")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, builder.build());
-    }
 }

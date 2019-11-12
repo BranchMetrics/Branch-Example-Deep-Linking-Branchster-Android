@@ -1,5 +1,7 @@
 package io.branch.branchster;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,27 +71,12 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         findViewById(R.id.infoButton).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String shortURL = "https://branchster.app.link/purply";
-//                Intent intent = new Intent(MonsterViewerActivity.this, MonsterViewerActivity.class);
-//                intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
-//                intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
-//                PendingIntent pendingIntent =  PendingIntent.getActivity(MonsterViewerActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//                NotificationCompat.Builder builder = new NotificationCompat.Builder(MonsterViewerActivity.this, branchChannelID)
-//                        .setSmallIcon(R.drawable.ic_launcher)
-//                        .setContentTitle("BranchTest")
-//                        .setContentText("test notif, fingers crossed")
-//                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                        .setContentIntent(pendingIntent)
-//                        .setAutoCancel(true);
-//                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MonsterViewerActivity.this);
-//                notificationManager.notify(1, builder.build());
-                Intent intent = new Intent(MonsterViewerActivity.this, InfoActivity.class);
-                startActivity(intent);
-//                FragmentManager fm = getFragmentManager();
-//                FragmentTransaction ft = fm.beginTransaction();
-//                InfoFragment infoFragment = InfoFragment.newInstance();
-//                ft.replace(R.id.container, infoFragment).addToBackStack("info_container").commit();
+//                Intent intent = new Intent(MonsterViewerActivity.this, InfoActivity.class);
+//                startActivity(intent);
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                InfoFragment infoFragment = InfoFragment.newInstance();
+                ft.replace(R.id.container, infoFragment).addToBackStack("info_container").commit();
             }
         });
         //Share monster
@@ -219,9 +206,8 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                     }
                 });
     }
-    
-//    @Override
-//    public void onBackPressed() {
+
+    @Override public void onBackPressed() {
 //        FragmentManager fm = getFragmentManager();
 //        if (fm.getBackStackEntryCount() > 0) {
 //            fm.popBackStack();
@@ -237,8 +223,6 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
 //                        }
 //                    }).create().show();
 //        }
-//    }
-    @Override public void onBackPressed() {
         String shortURL = "https://branchster.app.link/purply";
         Intent intent = new Intent(this, MonsterViewerActivity.class);
         intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
