@@ -1,18 +1,25 @@
 package io.branch.branchster;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.ArrayRes;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import io.branch.branchster.util.ColorController;
 import io.branch.branchster.util.MonsterImageView;
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
+import io.branch.referral.Defines;
+
+import static io.branch.branchster.SplashActivity.branchChannelID;
 
 /**
  * This class is where the user can create their own monster. It is the first that the user sees if
@@ -34,19 +41,20 @@ public class MonsterCreatorActivity extends Activity {
     private int faceIndex;
     private int bodyIndex;
 
+    private int faceArrayLength, bodyArrayLength;
+
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_creator);
 
         prefs = MonsterPreferences.getInstance(getApplicationContext());
-        BranchUniversalObject latestMonsterObj = prefs.getLatestMonsterObj();
 
         // Assign UI items to variables for manipulation later on.
-        editName = (EditText) findViewById(R.id.editName);
-        monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
-        monsterImageView_.setMonster(latestMonsterObj);
-        editName.setText(latestMonsterObj.getTitle());
+        editName = findViewById(R.id.editName);
+        monsterImageView_ = findViewById(R.id.monster_img_view);
 
+        faceArrayLength = getTypedArrayLength(R.array.face_drawable_array);
+        bodyArrayLength = getTypedArrayLength(R.array.body_drawable_array);
 
         // Go to the previous face when the user clicks the up arrow.
         findViewById(R.id.cmdUp).setOnClickListener(new Button.OnClickListener() {
@@ -54,7 +62,7 @@ public class MonsterCreatorActivity extends Activity {
             public void onClick(View v) {
                 faceIndex--;
                 if (faceIndex == -1) {
-                    faceIndex = getResources().obtainTypedArray(R.array.face_drawable_array).length() - 1;
+                    faceIndex = faceArrayLength - 1;
                 }
 
                 prefs.setFaceIndex(faceIndex);
@@ -67,7 +75,7 @@ public class MonsterCreatorActivity extends Activity {
             @Override
             public void onClick(View v) {
                 faceIndex++;
-                if (faceIndex == getResources().obtainTypedArray(R.array.face_drawable_array).length()) {
+                if (faceIndex == faceArrayLength) {
                     faceIndex = 0;
                 }
 
@@ -82,7 +90,7 @@ public class MonsterCreatorActivity extends Activity {
             public void onClick(View v) {
                 bodyIndex--;
                 if (bodyIndex == -1) {
-                    bodyIndex = getResources().obtainTypedArray(R.array.body_drawable_array).length() - 1;
+                    bodyIndex = bodyArrayLength - 1;
                 }
 
                 prefs.setBodyIndex(bodyIndex);
@@ -95,7 +103,7 @@ public class MonsterCreatorActivity extends Activity {
             @Override
             public void onClick(View v) {
                 bodyIndex++;
-                if (bodyIndex == getResources().obtainTypedArray(R.array.body_drawable_array).length()) {
+                if (bodyIndex == bodyArrayLength) {
                     bodyIndex = 0;
                 }
 
@@ -124,16 +132,48 @@ public class MonsterCreatorActivity extends Activity {
         new ColorController(this, monsterImageView_).start();
     }
 
+    private int getTypedArrayLength(@ArrayRes int id) {
+        TypedArray ta = getResources().obtainTypedArray(id);
+        int length = ta.length();
+        ta.recycle();
+        return length;
+    }
+
+//    @Override public void onBackPressed() {
+//        new AlertDialog.Builder(this)
+//                .setTitle("Exit")
+//                .setMessage("Are you sure you want to exit?")
+//                .setNegativeButton(android.R.string.no, null)
+//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                      finish();
+//                    }
+//                }).create().show();
+//    }
     @Override public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Exit")
-                .setMessage("Are you sure you want to exit?")
-                .setNegativeButton(android.R.string.no, null)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                      finish();
-                    }
-                }).create().show();
+        String shortURL = "https://branchster.app.link/purply";
+        Intent intent = new Intent(this, MonsterViewerActivity.class);
+        intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
+        intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
+        PendingIntent pendingIntent =  PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, branchChannelID)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("BranchTest")
+                .setContentText("test notif, fingers crossed")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(1, builder.build());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BranchUniversalObject latestMonsterObj = prefs.getLatestMonsterObj();
+        monsterImageView_.setMonster(latestMonsterObj);
+        editName.setText(latestMonsterObj.getTitle());
     }
 }

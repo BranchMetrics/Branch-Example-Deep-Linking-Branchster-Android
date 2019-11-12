@@ -3,6 +3,7 @@ package io.branch.branchster;
 import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,10 +14,14 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
+import io.branch.referral.Defines;
 import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
@@ -49,47 +54,50 @@ public class SplashActivity extends Activity {
             notificationManager.createNotificationChannel(channel);
         }
     }
-    
+
     @Override protected void onStart() {
         super.onStart();
-        Branch.getInstance().initSession(new Branch.BranchUniversalReferralInitListener() {
-            @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
-                                                 LinkProperties linkProperties, BranchError branchError) {
-                //If not Launched by clicking Branch link
-                if (branchUniversalObject == null) {
-                    proceedToAppTransparent();
-                } else if (linkProperties != null &&
-                        !TextUtils.isEmpty(linkProperties.getControlParams().get("$web_only"))
-                        && !TextUtils.isEmpty(linkProperties.getControlParams().get("$3p"))) {
-                    String webOnlyParam = linkProperties.getControlParams().get("$web_only");
-                    String is3pParam = linkProperties.getControlParams().get("$3p");
-                    if (!TextUtils.isEmpty(webOnlyParam) && !TextUtils.isEmpty(is3pParam)) {
-                        if (Boolean.parseBoolean(webOnlyParam)) {
-                            String url = linkProperties.getControlParams().get("$original_url");
-                            WebView webView = findViewById(R.id.web_only_view);
-                            webView.setVisibility(View.VISIBLE);
-                            webView.loadUrl(url);
-                        }
+        Branch.getInstance().initSession(branchReferralInitListener, this.getIntent().getData(), this);
+    }
+
+    public Branch.BranchUniversalReferralInitListener branchReferralInitListener = new Branch.BranchUniversalReferralInitListener() {
+        @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
+                                             LinkProperties linkProperties, BranchError branchError) {
+            //If not Launched by clicking Branch link
+            if (branchUniversalObject == null) {
+                proceedToAppTransparent();
+            } else if (linkProperties != null &&
+                    !TextUtils.isEmpty(linkProperties.getControlParams().get("$web_only"))
+                    && !TextUtils.isEmpty(linkProperties.getControlParams().get("$3p"))) {
+                String webOnlyParam = linkProperties.getControlParams().get("$web_only");
+                String is3pParam = linkProperties.getControlParams().get("$3p");
+                if (!TextUtils.isEmpty(webOnlyParam) && !TextUtils.isEmpty(is3pParam)) {
+                    if (Boolean.parseBoolean(webOnlyParam)) {
+                        String url = linkProperties.getControlParams().get("$original_url");
+                        WebView webView = findViewById(R.id.web_only_view);
+                        webView.setVisibility(View.VISIBLE);
+                        webView.loadUrl(url);
                     }
                 }
-                /* In case the clicked link has $android_deeplink_path the Branch will launch the MonsterViewer automatically since AutoDeeplinking feature is enabled.
-                 * Launch Monster viewer activity if a link clicked without $android_deeplink_path
-                 */
-                else if (!branchUniversalObject.getContentMetadata().getCustomMetadata().containsKey("$android_deeplink_path")) {
-                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                    prefs.saveMonster(branchUniversalObject);
-                    Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-                    intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                    startActivity(intent);
-                    finish();
-                }
             }
-        }, this.getIntent().getData(), this);
-    }
-    
+            /* In case the clicked link has $android_deeplink_path the Branch will launch the MonsterViewer automatically since AutoDeeplinking feature is enabled.
+             * Launch Monster viewer activity if a link clicked without $android_deeplink_path
+             */
+            else if (!branchUniversalObject.getContentMetadata().getCustomMetadata().containsKey("$android_deeplink_path")) {
+                MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                prefs.saveMonster(branchUniversalObject);
+                Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
+                intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+                startActivity(intent);
+                finish();
+            }
+        }
+    };
+
     @Override public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         this.setIntent(intent);
+        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }
     
     private void proceedToAppTransparent() {
@@ -119,5 +127,23 @@ public class SplashActivity extends Activity {
         imgSplash1.setVisibility(View.VISIBLE);
         imgSplash2.setVisibility(View.VISIBLE);
         imgSplash2.startAnimation(animSlideIn);
+    }
+
+    @Override public void onBackPressed() {
+        String shortURL = "https://branchster.app.link/purply";
+        Intent intent = new Intent(this, MonsterViewerActivity.class);
+        intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
+        intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
+        PendingIntent pendingIntent =  PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, branchChannelID)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("BranchTest")
+                .setContentText("test notif, fingers crossed")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(1, builder.build());
     }
 }

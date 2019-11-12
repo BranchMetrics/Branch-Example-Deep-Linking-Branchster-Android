@@ -42,9 +42,24 @@
             <meta-data
                 android:name="io.branch.sdk.auto_link_request_code"
                 android:value="@integer/AutoDeeplinkRequestCode"/>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="branchsters"/>
+                <data android:scheme="https" android:host="branchster.app.link" />
+                <data android:scheme="https" android:host="branchster-alternate.app.link" />
+                <data android:scheme="http" android:host="branchster.app.link" />
+                <data android:scheme="http" android:host="branchster-alternate.app.link" />
+            </intent-filter>
         </activity>
         <activity
             android:name="io.branch.branchster.MonsterCreatorActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme.Default">
+        </activity>
+
+        <activity
+            android:name="io.branch.branchster.InfoActivity"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Default">
         </activity>

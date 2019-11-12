@@ -1,15 +1,11 @@
 package io.branch.branchster.util;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
+import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import java.util.HashMap;
 
@@ -19,46 +15,47 @@ import io.branch.indexing.BranchUniversalObject;
 /**
  * Created by sojanpr on 11/18/15.
  */
-public class MonsterImageView extends ImageView {
-    Context context_;
-    LayerDrawable monsterDrawable_;
+public class MonsterImageView extends androidx.appcompat.widget.AppCompatImageView {
+    public LayerDrawable monsterDrawable_;
 
     public MonsterImageView(Context context) {
         super(context);
-        init(context);
+        init();
     }
 
     public MonsterImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init();
     }
 
-    private void init(Context context) {
-        context_ = context;
-        monsterDrawable_ = (LayerDrawable) context_.getResources().getDrawable(R.drawable.monster_drawable);
+    private void init() {
+        monsterDrawable_ = (LayerDrawable) getContext().getResources().getDrawable(R.drawable.monster_drawable);
         setBackground(monsterDrawable_);
     }
 
-
-    public MonsterImageView updateColor(int colorIndex) {
-        monsterDrawable_.setDrawableByLayerId(R.id.color_drawable_item, new ColorDrawable(context_.getResources().obtainTypedArray(R.array.colors).getColor(colorIndex, 0x00FF0000)));
+    public void updateColor(int colorIndex) {
+        TypedArray ta = getContext().getResources().obtainTypedArray(R.array.colors);
+        monsterDrawable_.setDrawableByLayerId(R.id.color_drawable_item, new ColorDrawable(ta.getColor(colorIndex, 0x00FF0000)));
+        ta.recycle();
         invalidateDrawable(monsterDrawable_);
-        return this;
     }
 
-    public MonsterImageView updateFace(int faceIndex) {
-        monsterDrawable_.setDrawableByLayerId(R.id.face_drawable_item, context_.getResources().obtainTypedArray(R.array.face_drawable_array).getDrawable(faceIndex));
+    public void updateFace(int faceIndex) {
+        TypedArray ta = getContext().getResources().obtainTypedArray(R.array.face_drawable_array);
+        monsterDrawable_.setDrawableByLayerId(R.id.face_drawable_item, ta.getDrawable(faceIndex));
+        ta.recycle();
         invalidateDrawable(monsterDrawable_);
-        return this;
     }
 
-    public MonsterImageView updateBody(int bodyIndex) {
-        monsterDrawable_.setDrawableByLayerId(R.id.body_drawable_item, context_.getResources().obtainTypedArray(R.array.body_drawable_array).getDrawable(bodyIndex));
+    public void updateBody(int bodyIndex) {
+        TypedArray ta = getContext().getResources().obtainTypedArray(R.array.body_drawable_array);
+        monsterDrawable_.setDrawableByLayerId(R.id.body_drawable_item, ta.getDrawable(bodyIndex));
+        ta.recycle();
         invalidateDrawable(monsterDrawable_);
-        return this;
     }
 
     public void setMonster(BranchUniversalObject monsterObj) {
+        init();// must be reinitialized when viewer activity is relaunched via a push notification
         HashMap<String, String> monsterMetadata = monsterObj.getContentMetadata().getCustomMetadata();
         int colorIdx = 0;
         int bodyIdx = 0;
@@ -76,6 +73,4 @@ public class MonsterImageView extends ImageView {
         updateBody(bodyIdx);
         updateFace(faceIdx);
     }
-
-
 }
