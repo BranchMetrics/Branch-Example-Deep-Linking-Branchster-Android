@@ -1,13 +1,12 @@
 package io.branch.branchster;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,7 +25,6 @@ import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
-import io.branch.referral.Defines;
 import io.branch.referral.PrefHelper;
 import io.branch.referral.SharingHelper;
 import io.branch.referral.util.BRANCH_STANDARD_EVENT;
@@ -37,8 +35,6 @@ import io.branch.referral.util.LinkProperties;
 import io.branch.referral.util.Product;
 import io.branch.referral.util.ProductCategory;
 import io.branch.referral.util.ShareSheetStyle;
-
-import static io.branch.branchster.SplashActivity.branchChannelID;
 
 public class MonsterViewerActivity extends FragmentActivity implements InfoFragment.OnFragmentInteractionListener {
     private static String TAG = MonsterViewerActivity.class.getSimpleName();
@@ -71,8 +67,6 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         findViewById(R.id.infoButton).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MonsterViewerActivity.this, InfoActivity.class);
-//                startActivity(intent);
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 InfoFragment infoFragment = InfoFragment.newInstance();
@@ -208,36 +202,21 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     }
 
     @Override public void onBackPressed() {
-//        FragmentManager fm = getFragmentManager();
-//        if (fm.getBackStackEntryCount() > 0) {
-//            fm.popBackStack();
-//        } else {
-//            new AlertDialog.Builder(this)
-//                    .setTitle("Exit")
-//                    .setMessage("Are you sure you want to exit?")
-//                    .setNegativeButton(android.R.string.no, null)
-//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            finish();
-//                        }
-//                    }).create().show();
-//        }
-        String shortURL = "https://branchster.app.link/purply";
-        Intent intent = new Intent(this, MonsterViewerActivity.class);
-        intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
-        PendingIntent pendingIntent =  PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, branchChannelID)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("BranchTest")
-                .setContentText("test notif, fingers crossed")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, builder.build());
+        FragmentManager fm = getFragmentManager();
+        if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit")
+                    .setMessage("Are you sure you want to exit?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).create().show();
+        }
     }
     
     @Override
@@ -257,7 +236,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         super.onNewIntent(intent);
         setIntent(intent);
         PrefHelper.Debug("MonsterViewerActivity.onNewIntent");
-        Branch.getInstance().reInitSession(this, branchReferralInitListener);
+//        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }
 
     @Override

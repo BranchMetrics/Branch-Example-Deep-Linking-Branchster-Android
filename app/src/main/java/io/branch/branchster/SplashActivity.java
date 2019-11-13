@@ -1,11 +1,7 @@
 package io.branch.branchster;
 
 import android.app.Activity;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,22 +10,16 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
-import io.branch.referral.Defines;
 import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
 
     private ImageView imgSplash1, imgSplash2;
     private final int ANIM_DURATION = 1500;
-
-    public final static String branchChannelID = "BranchChannelID";
     
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,22 +27,6 @@ public class SplashActivity extends Activity {
 
         imgSplash1 = findViewById(R.id.imgSplashFactory1);
         imgSplash2 = findViewById(R.id.imgSplashFactory2);
-
-        createNotificationChannel();
-    }
-
-    private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(branchChannelID, "BranchChannel", NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription("Very interesting description");
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            if (notificationManager == null) return;
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 
     @Override protected void onStart() {
@@ -93,12 +67,6 @@ public class SplashActivity extends Activity {
             }
         }
     };
-
-    @Override public void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        this.setIntent(intent);
-        Branch.getInstance().reInitSession(this, branchReferralInitListener);
-    }
     
     private void proceedToAppTransparent() {
         Animation animSlideIn = AnimationUtils.loadAnimation(this, R.anim.push_down_in);

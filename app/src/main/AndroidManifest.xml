@@ -8,9 +8,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <uses-sdk tools:overrideLibrary="android.support.v17.leanback"/>
+    <uses-sdk tools:overrideLibrary="androidx.leanback"/>
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
 
     <application
         android:name="io.branch.branchster.BranchsterAndroidApplication"
@@ -57,12 +58,6 @@
             android:launchMode="singleInstance"
             android:theme="@style/Theme.Default">
         </activity>
-
-<!--        <activity-->
-<!--            android:name="io.branch.branchster.InfoActivity"-->
-<!--            android:launchMode="singleInstance"-->
-<!--            android:theme="@style/Theme.Translucent">-->
-<!--        </activity>-->
 
         <receiver
             android:name="io.branch.referral.InstallListener"

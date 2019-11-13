@@ -1,7 +1,8 @@
 package io.branch.branchster;
 
 import android.app.Activity;
-import android.app.PendingIntent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -10,16 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.ArrayRes;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import io.branch.branchster.util.ColorController;
 import io.branch.branchster.util.MonsterImageView;
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
-import io.branch.referral.Defines;
-
-import static io.branch.branchster.SplashActivity.branchChannelID;
 
 /**
  * This class is where the user can create their own monster. It is the first that the user sees if
@@ -139,34 +135,17 @@ public class MonsterCreatorActivity extends Activity {
         return length;
     }
 
-//    @Override public void onBackPressed() {
-//        new AlertDialog.Builder(this)
-//                .setTitle("Exit")
-//                .setMessage("Are you sure you want to exit?")
-//                .setNegativeButton(android.R.string.no, null)
-//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                      finish();
-//                    }
-//                }).create().show();
-//    }
     @Override public void onBackPressed() {
-        String shortURL = "https://branchster.app.link/purply";
-        Intent intent = new Intent(this, MonsterViewerActivity.class);
-        intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
-        intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
-        PendingIntent pendingIntent =  PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, branchChannelID)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("BranchTest")
-                .setContentText("test notif, fingers crossed")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, builder.build());
+        new AlertDialog.Builder(this)
+                .setTitle("Exit")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                      finish();
+                    }
+                }).create().show();
     }
 
     @Override
