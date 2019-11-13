@@ -226,7 +226,6 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         String shortURL = "https://branchster.app.link/purply";
         Intent intent = new Intent(this, MonsterViewerActivity.class);
         intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
-        intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
         PendingIntent pendingIntent =  PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 
