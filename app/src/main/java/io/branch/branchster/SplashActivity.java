@@ -22,6 +22,7 @@ import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 import io.branch.referral.Defines;
+import io.branch.referral.PrefHelper;
 import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
@@ -57,7 +58,7 @@ public class SplashActivity extends Activity {
 
     public static void postNotif(Activity from, Class to) {
         String shortURL = "https://branchster.app.link/purply";
-        Intent intent = new Intent(from, to);
+        Intent intent = new Intent(from, SplashActivity.class);
         intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
         intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
         PendingIntent pendingIntent =  PendingIntent.getActivity(from, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -75,12 +76,15 @@ public class SplashActivity extends Activity {
 
     @Override protected void onStart() {
         super.onStart();
+        PrefHelper.Debug("SplashActivity.onStart");
         Branch.getInstance().initSession(branchReferralInitListener, this.getIntent().getData(), this);
     }
 
     public Branch.BranchUniversalReferralInitListener branchReferralInitListener = new Branch.BranchUniversalReferralInitListener() {
         @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
                                              LinkProperties linkProperties, BranchError branchError) {
+            PrefHelper.Debug("MonsterViewerActivity.onInitFinished, branchUniversalObject = " + branchUniversalObject +
+                    ", linkProperties = " + linkProperties + ", branchError = " + branchError);
             //If not Launched by clicking Branch link
             if (branchUniversalObject == null) {
                 proceedToAppTransparent();
@@ -107,7 +111,7 @@ public class SplashActivity extends Activity {
                 Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
                 intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
                 startActivity(intent);
-                finish();
+//                finish();
             }
         }
     };
@@ -130,7 +134,7 @@ public class SplashActivity extends Activity {
                     intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
                 }
                 startActivity(intent);
-                finish();
+//                finish();
             }
 
             @Override public void onAnimationRepeat(Animation animation) { }
@@ -139,5 +143,13 @@ public class SplashActivity extends Activity {
         imgSplash1.setVisibility(View.VISIBLE);
         imgSplash2.setVisibility(View.VISIBLE);
         imgSplash2.startAnimation(animSlideIn);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        PrefHelper.Debug("SplashActivity.onNewIntent");
+//        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }
 }

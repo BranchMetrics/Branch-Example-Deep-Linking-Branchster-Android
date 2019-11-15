@@ -233,8 +233,8 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     @Override public void onStart() {
         super.onStart();
         PrefHelper.Debug("MonsterViewerActivity.onStart");
-        Branch.getInstance().initSession(branchReferralInitListener, getIntent() != null ?
-                getIntent().getData() : null, this);
+//        Branch.getInstance().initSession(branchReferralInitListener, getIntent() != null ?
+//                getIntent().getData() : null, this);
     }
     
     @Override
