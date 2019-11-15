@@ -22,6 +22,7 @@ import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
 import io.branch.referral.Defines;
+import io.branch.referral.PrefHelper;
 import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
@@ -81,6 +82,8 @@ public class SplashActivity extends Activity {
     public Branch.BranchUniversalReferralInitListener branchReferralInitListener = new Branch.BranchUniversalReferralInitListener() {
         @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
                                              LinkProperties linkProperties, BranchError branchError) {
+            PrefHelper.Debug("MonsterViewerActivity.onInitFinished, branchUniversalObject = " + branchUniversalObject +
+                    ", linkProperties = " + linkProperties + ", branchError = " + branchError);
             //If not Launched by clicking Branch link
             if (branchUniversalObject == null) {
                 proceedToAppTransparent();
@@ -139,5 +142,13 @@ public class SplashActivity extends Activity {
         imgSplash1.setVisibility(View.VISIBLE);
         imgSplash2.setVisibility(View.VISIBLE);
         imgSplash2.startAnimation(animSlideIn);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        PrefHelper.Debug("SplashActivity.onNewIntent");
+//        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }
 }
