@@ -36,6 +36,8 @@ import io.branch.referral.util.Product;
 import io.branch.referral.util.ProductCategory;
 import io.branch.referral.util.ShareSheetStyle;
 
+import static io.branch.branchster.SplashActivity.postNotif;
+
 public class MonsterViewerActivity extends FragmentActivity implements InfoFragment.OnFragmentInteractionListener {
     private static String TAG = MonsterViewerActivity.class.getSimpleName();
     public static final String MY_MONSTER_OBJ_KEY = "my_monster_obj_key";
@@ -67,10 +69,11 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         findViewById(R.id.infoButton).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                InfoFragment infoFragment = InfoFragment.newInstance();
-                ft.replace(R.id.container, infoFragment).addToBackStack("info_container").commit();
+                postNotif(MonsterViewerActivity.this, MonsterViewerActivity.class);
+//                FragmentManager fm = getFragmentManager();
+//                FragmentTransaction ft = fm.beginTransaction();
+//                InfoFragment infoFragment = InfoFragment.newInstance();
+//                ft.replace(R.id.container, infoFragment).addToBackStack("info_container").commit();
             }
         });
         //Share monster
@@ -206,16 +209,17 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         if (fm.getBackStackEntryCount() > 0) {
             fm.popBackStack();
         } else {
-            new AlertDialog.Builder(this)
-                    .setTitle("Exit")
-                    .setMessage("Are you sure you want to exit?")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    }).create().show();
+            postNotif(this, MonsterCreatorActivity.class);
+//            new AlertDialog.Builder(this)
+//                    .setTitle("Exit")
+//                    .setMessage("Are you sure you want to exit?")
+//                    .setNegativeButton(android.R.string.no, null)
+//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            finish();
+//                        }
+//                    }).create().show();
         }
     }
     

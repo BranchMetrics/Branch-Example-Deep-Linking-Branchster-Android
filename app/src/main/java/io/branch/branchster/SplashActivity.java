@@ -1,7 +1,11 @@
 package io.branch.branchster;
 
 import android.app.Activity;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,16 +14,22 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
+import io.branch.referral.Defines;
 import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
 
     private ImageView imgSplash1, imgSplash2;
     private final int ANIM_DURATION = 1500;
+
+    public final static String branchChannelID = "BranchChannelID";
     
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +37,40 @@ public class SplashActivity extends Activity {
 
         imgSplash1 = findViewById(R.id.imgSplashFactory1);
         imgSplash2 = findViewById(R.id.imgSplashFactory2);
+
+        createNotificationChannel();
+    }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(branchChannelID, "BranchChannel", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("Very interesting description");
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            if (notificationManager == null) return;
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    public static void postNotif(Activity from, Class to) {
+        String shortURL = "https://branchster.app.link/purply";
+        Intent intent = new Intent(from, to);
+        intent.putExtra(Defines.Jsonkey.AndroidPushNotificationKey.getKey(),shortURL);
+        intent.putExtra(Defines.Jsonkey.ForceNewBranchSession.getKey(), true);
+        PendingIntent pendingIntent =  PendingIntent.getActivity(from, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(from, branchChannelID)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setContentTitle("BranchTest")
+                .setContentText("test notif, fingers crossed")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(from);
+        notificationManager.notify(1, builder.build());
     }
 
     @Override protected void onStart() {

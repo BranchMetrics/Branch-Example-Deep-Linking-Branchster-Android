@@ -17,6 +17,8 @@ import io.branch.branchster.util.MonsterImageView;
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 
+import static io.branch.branchster.SplashActivity.postNotif;
+
 /**
  * This class is where the user can create their own monster. It is the first that the user sees if
  * they are opening the app for the first time, assuming that they haven't installed the app as a
@@ -136,16 +138,17 @@ public class MonsterCreatorActivity extends Activity {
     }
 
     @Override public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Exit")
-                .setMessage("Are you sure you want to exit?")
-                .setNegativeButton(android.R.string.no, null)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                      finish();
-                    }
-                }).create().show();
+        postNotif(this, MonsterViewerActivity.class);
+//        new AlertDialog.Builder(this)
+//                .setTitle("Exit")
+//                .setMessage("Are you sure you want to exit?")
+//                .setNegativeButton(android.R.string.no, null)
+//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                      finish();
+//                    }
+//                }).create().show();
     }
 
     @Override
