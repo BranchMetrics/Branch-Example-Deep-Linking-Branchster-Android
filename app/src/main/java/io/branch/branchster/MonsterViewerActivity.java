@@ -69,7 +69,9 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         findViewById(R.id.infoButton).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                postNotif(MonsterViewerActivity.this, MonsterViewerActivity.class);
+                Intent i = new Intent(MonsterViewerActivity.this, InfoActivity.class);
+                startActivity(i);
+//                finish();
 //                FragmentManager fm = getFragmentManager();
 //                FragmentTransaction ft = fm.beginTransaction();
 //                InfoFragment infoFragment = InfoFragment.newInstance();
@@ -205,11 +207,11 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     }
 
     @Override public void onBackPressed() {
-        FragmentManager fm = getFragmentManager();
-        if (fm.getBackStackEntryCount() > 0) {
-            fm.popBackStack();
-        } else {
-            postNotif(this, MonsterCreatorActivity.class);
+        postNotif(this, MonsterViewerActivity.class);
+//        FragmentManager fm = getFragmentManager();
+//        if (fm.getBackStackEntryCount() > 0) {
+//            fm.popBackStack();
+//        } else {
 //            new AlertDialog.Builder(this)
 //                    .setTitle("Exit")
 //                    .setMessage("Are you sure you want to exit?")
@@ -220,7 +222,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
 //                            finish();
 //                        }
 //                    }).create().show();
-        }
+//        }
     }
     
     @Override
