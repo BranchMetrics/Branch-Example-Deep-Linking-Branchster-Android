@@ -1,218 +1,103 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="@dimen/activity_margin">
 
     <LinearLayout
-        android:layout_alignParentTop="true"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/branchsterContainer"
-        android:orientation="vertical">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/txtName"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/cmdChange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textSize="18sp"
-                android:text="Change" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Info"
-                android:id="@+id/infoButton" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/txtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/monster_name"
-                android:gravity="center"
-                android:textSize="@dimen/name_font_size"
-                android:textColor="#474747" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/branchsterContainer"
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:paddingRight="34dp"
-        android:paddingLeft="34dp"
-        android:layout_height="@dimen/branchster_container_height">
-
-        <io.branch.branchster.util.MonsterImageView
-            android:id="@+id/monster_img_view"
-            android:layout_width="200dp"
-            android:layout_height="270dp"
-            android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/monster_drawable"/>
-
-        <!--<View-->
-            <!--android:layout_alignTop="@+id/botLayerThreeFace"-->
-
-            <!--android:id="@+id/botLayerOneColor"-->
-            <!--android:layout_width="@dimen/branchster_width"-->
-            <!--android:layout_height="@dimen/branchster_height"-->
-            <!--android:layout_alignLeft="@+id/botLayerTwoBody"-->
-            <!--android:layout_centerHorizontal="true" />-->
-
-
-        <!--<ImageView-->
-            <!--android:id="@+id/botLayerTwoBody"-->
-            <!--android:layout_width="@dimen/branchster_width"-->
-            <!--android:layout_height="@dimen/branchster_height"-->
-            <!--android:src="@drawable/body0"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:adjustViewBounds="true"-->
-            <!--android:scaleType="fitXY"/>-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/botLayerThreeFace"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="@dimen/branchster_height"-->
-            <!--android:src="@drawable/face0"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--android:layout_centerHorizontal="true" />-->
-
-        </RelativeLayout>
-
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/description_background"
-            android:padding="15dp"
-            android:layout_weight="2"
-            android:id="@+id/txtDescription"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
-            android:gravity="center"
-            android:textSize="@dimen/description_font_size"
-            android:textColor="#474747" />
-
-        <!--<TextView-->
-            <!--android:layout_weight="1"-->
-            <!--android:id="@+id/txtURL"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:textSize="15sp"-->
-            <!--android:textColor="#474747" />-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:gravity="center"-->
-            <!--android:layout_weight="2"-->
-            <!--android:layout_height="fill_parent"-->
-            <!--android:layout_width="match_parent">-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdSMS"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_text_selector" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdMail"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_email_selector" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdTwitter"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_twitter_selector" />-->
-
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-                <!--android:gravity="center"-->
-                <!--android:layout_weight="1"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="fill_parent">-->
-
-                <!--<ImageButton-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:id="@+id/cmdFB"-->
-                    <!--android:layout_width="50dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_alignParentBottom="true"-->
-                    <!--android:background="@drawable/share_facebook_selector" />-->
-
-            <!--</LinearLayout>-->
-
-        <!--</LinearLayout>-->
-
-        <ImageButton
-            android:id="@+id/share_btn"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/cmdChange"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:src="@android:drawable/ic_menu_share"
-            android:background="@null"
-            android:layout_gravity="center"/>
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Change" />
+
+        <Button
+            android:id="@+id/infoButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:text="Info"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/monster_name"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#474747"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/activity_viewer_name_bottom"/>
+
+    <io.branch.branchster.util.MonsterImageView
+        android:id="@+id/monster_img_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/monster_drawable"
+        app:layout_constraintDimensionRatio="48:65"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_viewer_name_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/activity_viewer_monster_bottom"/>
+
+    <TextView
+        android:background="@drawable/description_background"
+        android:id="@+id/txtDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer Bingles Jingleheimer"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#474747"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_viewer_monster_bottom"/>
+
+    <ImageButton
+        android:id="@+id/share_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:src="@android:drawable/ic_menu_share"
+        android:background="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_viewer_name_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/activity_viewer_name_bottom"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_viewer_monster_bottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="@dimen/activity_viewer_monster_bottom"/>
     
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
     

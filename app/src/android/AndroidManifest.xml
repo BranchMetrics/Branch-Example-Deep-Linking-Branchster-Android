@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="io.branch.branchster"
+          android:targetSandboxVersion="2">
+
+    <application
+        android:name="io.branch.branchster.BranchsterAndroidApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:banner="@drawable/ic_launcher"
+        >
+        <activity
+            android:name="io.branch.branchster.SplashActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <data android:scheme="branchsters"/>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+
+            <!-- AppLink config -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/your_app_id_obtained form Branch dash board " /> -->
+                <data
+                    android:host="branchster.app.link"
+                    android:scheme="https"/>
+                <data
+                    android:host="branchster.app.link"
+                    android:scheme="http"/>
+
+
+                <!--email-mailjet.branch.rocks-->
+                <data
+                    android:host="email-mailjet.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-mailjet.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-mandrill.branch.rocks-->
+                <data
+                    android:host="email-mandrill.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-mandrill.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-sp.branch.rocks-->
+                <data
+                    android:host="email-sp.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-sp.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-cm.branch.rocks-->
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-campmon.branch.rocks-->
+                <data
+                    android:host="email-campmon.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-campmon.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-cm.branch.rocks-->
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-cm.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--amazon-email.branch.rocks-->
+                <data
+                    android:host="amazon-email.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="amazon-email.branch.rocks"
+                    android:scheme="http"/>
+
+                <!--email-iterable.branch.rocks-->
+                <data
+                    android:host="email-iterable.branch.rocks"
+                    android:scheme="https"/>
+                <data
+                    android:host="email-iterable.branch.rocks"
+                    android:scheme="http"/>
+
+            </intent-filter>
+
+        </activity>
+
+        <meta-data
+            android:name="io.branch.sdk.TestMode"
+            android:value="false"/> <!-- Set to true to use Branch_Test_Key -->
+        <meta-data
+            android:name="io.branch.sdk.BranchKey"
+            android:value="@string/branch_key"/>
+        <meta-data
+            android:name="io.branch.sdk.BranchKey.test"
+            android:value="@string/branch_key_test"/>
+
+    </application>
+
+</manifest>

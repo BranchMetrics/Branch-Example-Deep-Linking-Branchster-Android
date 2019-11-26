@@ -17,13 +17,11 @@ public class MonsterPreferences {
     
     private static MonsterPreferences prefHelper_;
     private SharedPreferences appSharedPrefs_;
-    private Editor prefsEditor_;
     private Context context_;
     
     private MonsterPreferences(Context context) {
         this.context_ = context;
         this.appSharedPrefs_ = context.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE);
-        this.prefsEditor_ = this.appSharedPrefs_.edit();
     }
     
     public static MonsterPreferences getInstance(Context context) {
@@ -93,19 +91,16 @@ public class MonsterPreferences {
     }
     
     private void writeIntegerToPrefs(String key, int value) {
-        prefHelper_.prefsEditor_.putInt(key, value);
-        prefHelper_.prefsEditor_.commit();
+        prefHelper_.appSharedPrefs_.edit().putInt(key, value).apply();
     }
     
     @SuppressWarnings("unused")
     private void writeBoolToPrefs(String key, boolean value) {
-        prefHelper_.prefsEditor_.putBoolean(key, value);
-        prefHelper_.prefsEditor_.commit();
+        prefHelper_.appSharedPrefs_.edit().putBoolean(key, value).apply();
     }
     
     private void writeStringToPrefs(String key, String value) {
-        prefHelper_.prefsEditor_.putString(key, value);
-        prefHelper_.prefsEditor_.commit();
+        prefHelper_.appSharedPrefs_.edit().putString(key, value).apply();
     }
     
     private Object readStringFromPrefs(String key) {
@@ -142,7 +137,7 @@ public class MonsterPreferences {
     }
     
     public BranchUniversalObject getLatestMonsterObj() {
-        BranchUniversalObject myMonsterObject = new BranchUniversalObject()
+        return new BranchUniversalObject()
                 .setTitle(getMonsterName())
                 .setContentDescription(getMonsterDescription())
                 .setContentImageUrl("https://s3-us-west-1.amazonaws.com/branchmonsterfactory/" + (short) getColorIndex() + (short) getBodyIndex() + (short) getFaceIndex() + ".png")
@@ -153,8 +148,6 @@ public class MonsterPreferences {
                         .addCustomMetadata("monster", "true")
                         .addCustomMetadata("monster_name", getMonsterName())
                 );
-        
-        return myMonsterObject;
     }
     
 }

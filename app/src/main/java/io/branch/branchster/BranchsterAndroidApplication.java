@@ -1,8 +1,7 @@
 package io.branch.branchster;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
-import java.util.Random;
 import java.util.UUID;
 
 import io.branch.referral.Branch;

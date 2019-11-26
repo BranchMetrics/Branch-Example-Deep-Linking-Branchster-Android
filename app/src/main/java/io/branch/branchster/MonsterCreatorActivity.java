@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.ArrayRes;
 
 import io.branch.branchster.util.ColorController;
 import io.branch.branchster.util.MonsterImageView;
@@ -21,7 +24,6 @@ import io.branch.indexing.BranchUniversalObject;
  */
 public class MonsterCreatorActivity extends Activity {
 
-    //
     EditText editName;
     // Image view to show custom monster
     MonsterImageView monsterImageView_;
@@ -32,23 +34,23 @@ public class MonsterCreatorActivity extends Activity {
     MonsterPreferences prefs;
 
 
-    int faceIndex;
-    int bodyIndex;
+    private int faceIndex;
+    private int bodyIndex;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    private int faceArrayLength, bodyArrayLength;
+
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monster_creator);
 
         prefs = MonsterPreferences.getInstance(getApplicationContext());
-        BranchUniversalObject latestMonsterObj = prefs.getLatestMonsterObj();
 
         // Assign UI items to variables for manipulation later on.
-        editName = (EditText) findViewById(R.id.editName);
-        monsterImageView_ = (MonsterImageView) findViewById(R.id.monster_img_view);
-        monsterImageView_.setMonster(latestMonsterObj);
-        editName.setText(latestMonsterObj.getTitle());
+        editName = findViewById(R.id.editName);
+        monsterImageView_ = findViewById(R.id.monster_img_view);
 
+        faceArrayLength = getTypedArrayLength(R.array.face_drawable_array);
+        bodyArrayLength = getTypedArrayLength(R.array.body_drawable_array);
 
         // Go to the previous face when the user clicks the up arrow.
         findViewById(R.id.cmdUp).setOnClickListener(new Button.OnClickListener() {
@@ -56,7 +58,7 @@ public class MonsterCreatorActivity extends Activity {
             public void onClick(View v) {
                 faceIndex--;
                 if (faceIndex == -1) {
-                    faceIndex = getResources().obtainTypedArray(R.array.face_drawable_array).length() - 1;
+                    faceIndex = faceArrayLength - 1;
                 }
 
                 prefs.setFaceIndex(faceIndex);
@@ -69,7 +71,7 @@ public class MonsterCreatorActivity extends Activity {
             @Override
             public void onClick(View v) {
                 faceIndex++;
-                if (faceIndex == getResources().obtainTypedArray(R.array.face_drawable_array).length()) {
+                if (faceIndex == faceArrayLength) {
                     faceIndex = 0;
                 }
 
@@ -84,7 +86,7 @@ public class MonsterCreatorActivity extends Activity {
             public void onClick(View v) {
                 bodyIndex--;
                 if (bodyIndex == -1) {
-                    bodyIndex = getResources().obtainTypedArray(R.array.body_drawable_array).length() - 1;
+                    bodyIndex = bodyArrayLength - 1;
                 }
 
                 prefs.setBodyIndex(bodyIndex);
@@ -97,7 +99,7 @@ public class MonsterCreatorActivity extends Activity {
             @Override
             public void onClick(View v) {
                 bodyIndex++;
-                if (bodyIndex == getResources().obtainTypedArray(R.array.body_drawable_array).length()) {
+                if (bodyIndex == bodyArrayLength) {
                     bodyIndex = 0;
                 }
 
@@ -108,8 +110,7 @@ public class MonsterCreatorActivity extends Activity {
 
         // Save the monster name to prefs object, then open the MonsterViewerActivity.
         findViewById(R.id.cmdDone).setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            @Override public void onClick(View v) {
                 if (editName.getText().toString().length() > 0) {
                     prefs.setMonsterName(editName.getText().toString());
                 } else {
@@ -127,9 +128,14 @@ public class MonsterCreatorActivity extends Activity {
         new ColorController(this, monsterImageView_).start();
     }
 
+    private int getTypedArrayLength(@ArrayRes int id) {
+        TypedArray ta = getResources().obtainTypedArray(id);
+        int length = ta.length();
+        ta.recycle();
+        return length;
+    }
 
-    @Override
-    public void onBackPressed() {
+    @Override public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Exit")
                 .setMessage("Are you sure you want to exit?")
@@ -140,5 +146,13 @@ public class MonsterCreatorActivity extends Activity {
                       finish();
                     }
                 }).create().show();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        BranchUniversalObject latestMonsterObj = prefs.getLatestMonsterObj();
+        monsterImageView_.setMonster(latestMonsterObj);
+        editName.setText(latestMonsterObj.getTitle());
     }
 }

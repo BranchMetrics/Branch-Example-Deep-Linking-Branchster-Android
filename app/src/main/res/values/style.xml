@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="ColourRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/colours_radio_button</item>
     </style>
 
     <style name="Theme.Default" parent="android:Theme.Holo.Light.DarkActionBar"/>
-
-    <style name="Theme.Transparent" parent="android:style/Theme.Translucent.NoTitleBar">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
-    </style>
+<!--    <style name="Theme.Translucent" parent="Theme.Default">-->
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        <item name="android:backgroundDimEnabled">true</item>-->
+<!--        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>-->
+<!--        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">false</item>-->
+<!--        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">false</item>-->
+<!--        <item name="android:windowContentOverlay">@null</item>-->
+<!--        <item name="colorControlActivated">?attr/colorControlHighlight</item>-->
+<!--        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>-->
+<!--        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>-->
+<!--    </style>-->
 
 </resources>

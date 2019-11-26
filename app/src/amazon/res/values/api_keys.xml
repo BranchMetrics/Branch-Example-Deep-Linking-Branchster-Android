@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Branchster app keys-->
+    <string name="branch_key">key_live_kfNq5xQ0anKoLpL0RU6ripgdrCoDLLP0</string>
+    <string name="branch_key_test">key_test_lbHr8ERYdpTlJcOZRGZtpaklEuhBQHGM</string>
+
+    <!--
+    Your Twitter Key and Secret Goes Here
+    If you don't have these, see the Twitter Kit for Android documentation:
+    https://dev.twitter.com/twitter-kit/android
+    -->
+    <string name="twitter_key">YOUR TWITTER APP KEY</string>
+    <string name="twitter_secret">YOUR TWITTER APP SECRET</string>
+
+</resources>
