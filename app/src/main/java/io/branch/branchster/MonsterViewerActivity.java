@@ -227,6 +227,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     @Override public void onStart() {
         super.onStart();
         PrefHelper.Debug("MonsterViewerActivity.onStart");
+        //For testing
 //        Branch.getInstance().initSession(branchReferralInitListener, getIntent() != null ?
 //                getIntent().getData() : null, this);
     }
@@ -236,6 +237,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         super.onNewIntent(intent);
         setIntent(intent);
         PrefHelper.Debug("MonsterViewerActivity.onNewIntent");
+        // For testing
 //        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }
 
@@ -245,18 +247,19 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
         refreshMonsterView();
     }
 
-    private Branch.BranchUniversalReferralInitListener branchReferralInitListener =
-            new Branch.BranchUniversalReferralInitListener() {
-        @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
-                                             LinkProperties linkProperties, BranchError branchError) {
-            PrefHelper.Debug("MonsterViewerActivity.onInitFinished, branchUniversalObject = " + branchUniversalObject +
-                    ", linkProperties = " + linkProperties + ", branchError = " + branchError);
-            if (branchUniversalObject != null && !branchUniversalObject.getContentMetadata().
-                    getCustomMetadata().containsKey("$android_deeplink_path")) {
-                prefs.saveMonster(branchUniversalObject);
-            }
-
-            refreshMonsterView();
-        }
-    };
+    // For testing when initSession is being called in ViewerActivity/testing push notifications
+//    private Branch.BranchUniversalReferralInitListener branchReferralInitListener =
+//            new Branch.BranchUniversalReferralInitListener() {
+//        @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
+//                                             LinkProperties linkProperties, BranchError branchError) {
+//            PrefHelper.Debug("MonsterViewerActivity.onInitFinished, branchUniversalObject = " + branchUniversalObject +
+//                    ", linkProperties = " + linkProperties + ", branchError = " + branchError);
+//            if (branchUniversalObject != null && !branchUniversalObject.getContentMetadata().
+//                    getCustomMetadata().containsKey("$android_deeplink_path")) {
+//                prefs.saveMonster(branchUniversalObject);
+//            }
+//
+//            refreshMonsterView();
+//        }
+//    };
 }
