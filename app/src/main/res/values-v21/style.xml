@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="Theme.Default" parent="android:Theme.Material.Light.DarkActionBar"/>
+    <style name="Theme.Default" parent="android:Theme.Material.Light.DarkActionBar">
+        <!--    For Android  OS animation when launching the app    -->
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+    </style>
 </resources>
