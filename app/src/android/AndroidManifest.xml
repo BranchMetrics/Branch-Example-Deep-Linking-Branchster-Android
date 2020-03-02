@@ -12,7 +12,7 @@
         android:banner="@drawable/ic_launcher_tv"
         >
 
-        <activity android:name=".fragment.DeepLinkActivity">
+        <activity android:name="io.branch.branchster.fragment.DeeplinkingActivity">
             <intent-filter>
                 <data android:scheme="branchsters"/>
                 <action android:name="android.intent.action.VIEW"/>

@@ -37,12 +37,12 @@
             android:name="io.branch.branchster.MonsterViewerActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.Default">
-            <meta-data
-                android:name="io.branch.sdk.auto_link_path"
-                android:value="monster/view/"/>
-            <meta-data
-                android:name="io.branch.sdk.auto_link_request_code"
-                android:value="@integer/AutoDeeplinkRequestCode"/>
+<!--            <meta-data-->
+<!--                android:name="io.branch.sdk.auto_link_path"-->
+<!--                android:value="monster/view/"/>-->
+<!--            <meta-data-->
+<!--                android:name="io.branch.sdk.auto_link_request_code"-->
+<!--                android:value="@integer/AutoDeeplinkRequestCode"/>-->
                 <!--For testing when initSession is being called in ViewerActivity-->
 <!--            <intent-filter android:autoVerify="true">-->
 <!--                <action android:name="android.intent.action.VIEW"/>-->
