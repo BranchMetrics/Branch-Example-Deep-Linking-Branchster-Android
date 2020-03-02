@@ -2,8 +2,6 @@ package io.branch.branchster;
 
 import androidx.multidex.MultiDexApplication;
 
-import java.util.UUID;
-
 import io.branch.referral.Branch;
 
 /**
@@ -13,9 +11,10 @@ import io.branch.referral.Branch;
 public class BranchsterAndroidApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
-        Branch branch = Branch.getAutoInstance(this);
+        Branch.getAutoInstance(this);
         Branch.enableLogging();
-        Branch.setPlayStoreReferrerCheckTimeout(3000);
-        branch.setIdentity(UUID.randomUUID().toString());
+//        Branch.setPlayStoreReferrerCheckTimeout(3000);
+//        Branch.disableInstantDeepLinking(false);
+//        branch.setIdentity(UUID.randomUUID().toString());
     }
 }

@@ -14,6 +14,7 @@ import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
+import io.branch.referral.PrefHelper;
 import io.branch.referral.util.LinkProperties;
 
 public class SplashActivity extends Activity {
@@ -24,6 +25,7 @@ public class SplashActivity extends Activity {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        PrefHelper.Debug("BranchSDK", "SplashActivity.onCreate");
 
         imgSplash1 = findViewById(R.id.imgSplashFactory1);
         imgSplash2 = findViewById(R.id.imgSplashFactory2);
@@ -31,13 +33,21 @@ public class SplashActivity extends Activity {
 
     @Override protected void onStart() {
         super.onStart();
+        PrefHelper.Debug("BranchSDK", "SplashActivity.onStart");
         Branch.getInstance().initSession(branchReferralInitListener, this.getIntent().getData(), this);
     }
+
+    @Override protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        PrefHelper.Debug("BranchSDK", "SplashActivity.onNewIntent");
+//        Branch.getInstance().reInitSession(this, branchReferralInitListener);
+        }
 
     public Branch.BranchUniversalReferralInitListener branchReferralInitListener = new Branch.BranchUniversalReferralInitListener() {
         @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
                                              LinkProperties linkProperties, BranchError branchError) {
             //If not Launched by clicking Branch link
+            PrefHelper.Debug("BranchSDK", "SplashActivity.onStart, onInitFinished, branchUniversalObject = " + branchUniversalObject + ", linkProperties = " + linkProperties + ", branchError = " + branchError);
             if (branchUniversalObject == null) {
                 proceedToAppTransparent();
             } else if (linkProperties != null &&

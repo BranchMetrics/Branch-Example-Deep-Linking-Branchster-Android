@@ -11,10 +11,22 @@
         android:largeHeap="true"
         android:banner="@drawable/ic_launcher_tv"
         >
+
+        <activity android:name=".fragment.DeepLinkActivity">
+            <intent-filter>
+                <data android:scheme="branchsters"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+
+
         <activity
             android:name="io.branch.branchster.SplashActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true"
             android:theme="@android:style/Theme.Light.NoTitleBar">
 
             <intent-filter>
@@ -22,94 +34,94 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
 
-            <intent-filter>
-                <data android:scheme="branchsters"/>
-                <action android:name="android.intent.action.VIEW"/>
+<!--            <intent-filter>-->
+<!--                <data android:scheme="branchsters"/>-->
+<!--                <action android:name="android.intent.action.VIEW"/>-->
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-            </intent-filter>
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--                <category android:name="android.intent.category.BROWSABLE"/>-->
+<!--            </intent-filter>-->
 
-            <!-- AppLink config -->
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW"/>
+<!--            &lt;!&ndash; AppLink config &ndash;&gt;-->
+<!--            <intent-filter android:autoVerify="true">-->
+<!--                <action android:name="android.intent.action.VIEW"/>-->
 
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <!-- <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/your_app_id_obtained form Branch dash board " /> -->
-                <data
-                    android:host="branchster.app.link"
-                    android:scheme="https"/>
-                <data
-                    android:host="branchster.app.link"
-                    android:scheme="http"/>
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--                <category android:name="android.intent.category.BROWSABLE"/>-->
+<!--                &lt;!&ndash; <data android:scheme="https" android:host="bnc.lt" android:pathPrefix="/your_app_id_obtained form Branch dash board " /> &ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="branchster.app.link"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="branchster.app.link"-->
+<!--                    android:scheme="http"/>-->
 
 
-                <!--email-mailjet.branch.rocks-->
-                <data
-                    android:host="email-mailjet.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-mailjet.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-mailjet.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-mailjet.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-mailjet.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--email-mandrill.branch.rocks-->
-                <data
-                    android:host="email-mandrill.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-mandrill.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-mandrill.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-mandrill.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-mandrill.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--email-sp.branch.rocks-->
-                <data
-                    android:host="email-sp.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-sp.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-sp.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-sp.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-sp.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--email-cm.branch.rocks-->
-                <data
-                    android:host="email-cm.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-cm.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-cm.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-cm.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-cm.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--email-campmon.branch.rocks-->
-                <data
-                    android:host="email-campmon.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-campmon.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-campmon.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-campmon.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-campmon.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--email-cm.branch.rocks-->
-                <data
-                    android:host="email-cm.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-cm.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-cm.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-cm.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-cm.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--amazon-email.branch.rocks-->
-                <data
-                    android:host="amazon-email.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="amazon-email.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;amazon-email.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="amazon-email.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="amazon-email.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-                <!--email-iterable.branch.rocks-->
-                <data
-                    android:host="email-iterable.branch.rocks"
-                    android:scheme="https"/>
-                <data
-                    android:host="email-iterable.branch.rocks"
-                    android:scheme="http"/>
+<!--                &lt;!&ndash;email-iterable.branch.rocks&ndash;&gt;-->
+<!--                <data-->
+<!--                    android:host="email-iterable.branch.rocks"-->
+<!--                    android:scheme="https"/>-->
+<!--                <data-->
+<!--                    android:host="email-iterable.branch.rocks"-->
+<!--                    android:scheme="http"/>-->
 
-            </intent-filter>
+<!--            </intent-filter>-->
 
         </activity>
 
