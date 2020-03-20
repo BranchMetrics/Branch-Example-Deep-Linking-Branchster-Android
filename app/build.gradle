@@ -52,7 +52,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.leanback:leanback:1.0.0'
 
-    androidImplementation 'com.google.android.gms:play-services:12.0.1' // needed to get ad id/LAT value on Android (not Fire OS)
+    androidImplementation 'com.google.android.gms:play-services-ads-identifier:16+'
     implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
-    implementation 'com.android.installreferrer:installreferrer:1.0'
 }
