@@ -15,7 +15,7 @@ public class BranchsterAndroidApplication extends MultiDexApplication {
         super.onCreate();
         Branch branch = Branch.getAutoInstance(this);
         Branch.enableLogging();
-        Branch.setPlayStoreReferrerCheckTimeout(3000);
+//        Branch.setPlayStoreReferrerCheckTimeout(3000);
 //        branch.setIdentity(UUID.randomUUID().toString());
     }
 }
