@@ -24,6 +24,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "InfoFragment";
     private OnFragmentInteractionListener mListener;
     private Button mButton;
+    private Button mButtonPrivacyPolicy;
 
 
     public static InfoFragment newInstance() {
@@ -46,6 +47,8 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.fragment_info, container, false);
         mButton = (Button) v.findViewById(R.id.button);
         mButton.setOnClickListener(this);
+        mButtonPrivacyPolicy = (Button) v.findViewById(R.id.buttonPrivacyPolicy);
+        mButtonPrivacyPolicy.setOnClickListener(this);
         try {
             String versionName = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
             ((TextView)v.findViewById(R.id.version_name_txt)).setText(String.format(getString(R.string.version_name),versionName));
@@ -84,9 +87,21 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Uri webpage = Uri.parse("http://branch.io?bmp=branchster-android");
+        String url;
+        switch (view.getId()) {
+            case R.id.button:
+                url = "http://branch.io?bmp=branchster-android";
+                break;
+            case R.id.buttonPrivacyPolicy:
+                url = "https://branch.io/policies/privacy-policy/";
+                break;
+            default:
+                return;
+        }
+        Uri webpage = Uri.parse(url);
         Intent i = new Intent(Intent.ACTION_VIEW, webpage);
         startActivity(i);
     }
 
 }
+
