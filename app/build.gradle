@@ -35,6 +35,10 @@ android {
             applicationId = "io.branch.branchster.amazon"
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/com.android.tools/proguard/coroutines.pro'
+    }
 }
 
 repositories{
@@ -47,7 +51,7 @@ repositories{
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation ('io.branch.sdk.android:library:5.0.15')
+    implementation ('io.branch.sdk.android:library:5.7.1')
 //    api project(":BranchSDK-local")
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.appcompat:appcompat:1.1.0'

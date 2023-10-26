@@ -117,11 +117,11 @@ public class MonsterCreatorActivity extends Activity {
                     prefs.setMonsterName(getString(R.string.monster_name));
                 }
                 // List this monster on google search
-                prefs.getLatestMonsterObj().listOnGoogleSearch(MonsterCreatorActivity.this);
-                Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
-                i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                startActivity(i);
-                finish();
+//                prefs.getLatestMonsterObj().listOnGoogleSearch(MonsterCreatorActivity.this);
+//                Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
+//                i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+//                startActivity(i);
+//                finish();
             }
         });
 

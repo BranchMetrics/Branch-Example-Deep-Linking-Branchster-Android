@@ -17,6 +17,7 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.Random;
 
 import io.branch.branchster.fragment.InfoFragment;
@@ -30,6 +31,7 @@ import io.branch.referral.SharingHelper;
 import io.branch.referral.util.BRANCH_STANDARD_EVENT;
 import io.branch.referral.util.BranchEvent;
 import io.branch.referral.util.CommerceEvent;
+import io.branch.referral.util.ContentMetadata;
 import io.branch.referral.util.CurrencyType;
 import io.branch.referral.util.LinkProperties;
 import io.branch.referral.util.Product;
@@ -149,14 +151,20 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                     
                     @Override
                     public void onShareLinkDialogLaunched() {
-                        JSONObject jsonObject = new JSONObject();
+//                        JSONObject jsonObject = new JSONObject();
+//                        revenue = rnd.nextInt(4) + 1D;
+//                        try {
+//                            jsonObject.put("sku", monsterName);
+//                            jsonObject.put("price", revenue);
+//                        } catch (JSONException e) {
+//                        }
+//                        Branch.getInstance().userCompletedAction("Add to Cart", jsonObject);
                         revenue = rnd.nextInt(4) + 1D;
-                        try {
-                            jsonObject.put("sku", monsterName);
-                            jsonObject.put("price", revenue);
-                        } catch (JSONException e) {
-                        }
-                        Branch.getInstance(getApplicationContext()).userCompletedAction("Add to Cart", jsonObject);
+                        BranchEvent event = new BranchEvent(BRANCH_STANDARD_EVENT.ADD_TO_CART);
+                        event.addCustomDataProperty("sku", monsterName);
+                        event.addCustomDataProperty("price", String.valueOf(revenue));
+                        event.logEvent(getApplicationContext());
+
                     }
                     
                     @Override
@@ -169,19 +177,22 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                     
                     @Override
                     public void onChannelSelected(String channelName) {
-                        Product branchster = new Product();
+                        ContentMetadata branchster = new ContentMetadata();
                         branchster.setSku(monsterName);
-                        branchster.setPrice(revenue);
-                        branchster.setQuantity(1);
-                        branchster.setVariant("X-Tra Hairy");
-                        branchster.setBrand("Branch");
-                        branchster.setCategory(ProductCategory.ANIMALS_AND_PET_SUPPLIES);
-                        branchster.setName(monsterName);
-                        CommerceEvent commerceEvent = new CommerceEvent();
-                        commerceEvent.setRevenue(revenue);
-                        commerceEvent.setCurrencyType(CurrencyType.USD);
-                        commerceEvent.addProduct(branchster);
-                        Branch.getInstance().sendCommerceEvent(commerceEvent, null, null);
+                        branchster.setPrice(revenue, CurrencyType.USD);
+                        branchster.setQuantity(1.0);
+                        branchster.setProductVariant("X-Tra Hairy");
+                        branchster.setProductBrand("Branch");
+                        branchster.setProductCategory(ProductCategory.ANIMALS_AND_PET_SUPPLIES);
+                        branchster.setProductName(monsterName);
+
+                        BranchUniversalObject buo = new BranchUniversalObject();
+                        buo.setTitle("product");
+                        buo.setContentMetadata(branchster);
+
+                        BranchEvent event = new BranchEvent(BRANCH_STANDARD_EVENT.PURCHASE);
+                        event.addContentItems(buo);
+                        event.logEvent(getApplicationContext());
                     }
                 },
                 new Branch.IChannelProperties() {
@@ -226,7 +237,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
 
     @Override public void onStart() {
         super.onStart();
-        PrefHelper.Debug("MonsterViewerActivity.onStart");
+        Log.d("Test","MonsterViewerActivity.onStart");
         //For testing
 //        Branch.getInstance().initSession(branchReferralInitListener, getIntent() != null ?
 //                getIntent().getData() : null, this);
@@ -236,7 +247,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        PrefHelper.Debug("MonsterViewerActivity.onNewIntent");
+        Log.d("Test","MonsterViewerActivity.onNewIntent");
         // For testing
 //        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }

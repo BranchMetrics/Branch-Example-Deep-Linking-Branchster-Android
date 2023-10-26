@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ImageView;
+
+import org.json.JSONObject;
 
 import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
@@ -31,7 +34,7 @@ public class SplashActivity extends Activity {
 
     @Override protected void onStart() {
         super.onStart();
-        Branch.getInstance().initSession(branchReferralInitListener, this.getIntent().getData(), this);
+        Branch.sessionBuilder(this).withCallback(branchReferralInitListener).withData(this.getIntent().getData());
     }
 
     public Branch.BranchUniversalReferralInitListener branchReferralInitListener = new Branch.BranchUniversalReferralInitListener() {
@@ -95,5 +98,23 @@ public class SplashActivity extends Activity {
         imgSplash1.setVisibility(View.VISIBLE);
         imgSplash2.setVisibility(View.VISIBLE);
         imgSplash2.startAnimation(animSlideIn);
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        this.setIntent(intent);
+        if (intent != null && intent.hasExtra("branch_force_new_session") && intent.getBooleanExtra("branch_force_new_session",false)) {
+            Branch.sessionBuilder(this).withCallback(new Branch.BranchReferralInitListener() {
+                @Override
+                public void onInitFinished(JSONObject referringParams, BranchError error) {
+                    if (error != null) {
+                        Log.e("BranchSDK_Tester", error.getMessage());
+                    } else if (referringParams != null) {
+                        Log.i("BranchSDK_Tester", referringParams.toString());
+                    }
+                }
+            }).reInit();
+        }
     }
 }
