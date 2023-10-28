@@ -57,6 +57,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.leanback:leanback:1.0.0'
 
-    androidImplementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+    androidImplementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
     implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
 }
