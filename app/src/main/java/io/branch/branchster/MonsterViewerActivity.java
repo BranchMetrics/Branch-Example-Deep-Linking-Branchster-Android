@@ -14,10 +14,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.List;
 import java.util.Random;
 
 import io.branch.branchster.fragment.InfoFragment;
@@ -26,15 +22,12 @@ import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
-import io.branch.referral.PrefHelper;
 import io.branch.referral.SharingHelper;
 import io.branch.referral.util.BRANCH_STANDARD_EVENT;
 import io.branch.referral.util.BranchEvent;
-import io.branch.referral.util.CommerceEvent;
 import io.branch.referral.util.ContentMetadata;
 import io.branch.referral.util.CurrencyType;
 import io.branch.referral.util.LinkProperties;
-import io.branch.referral.util.Product;
 import io.branch.referral.util.ProductCategory;
 import io.branch.referral.util.ShareSheetStyle;
 
