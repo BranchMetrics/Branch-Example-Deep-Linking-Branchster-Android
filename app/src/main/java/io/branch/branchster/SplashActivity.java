@@ -34,43 +34,42 @@ public class SplashActivity extends Activity {
 
     @Override protected void onStart() {
         super.onStart();
-        Branch.sessionBuilder(this).withCallback(branchReferralInitListener).withData(this.getIntent().getData());
-    }
+        Branch.sessionBuilder(this).withCallback(new Branch.BranchUniversalReferralInitListener() {
+            @Override
+            public void onInitFinished(BranchUniversalObject branchUniversalObject, LinkProperties linkProperties, BranchError branchError) {
+                if (branchUniversalObject == null) {
+                    proceedToAppTransparent();
+                } else if (linkProperties != null &&
+                        !TextUtils.isEmpty(linkProperties.getControlParams().get("$web_only"))
+                        && !TextUtils.isEmpty(linkProperties.getControlParams().get("$3p"))) {
 
-    public Branch.BranchUniversalReferralInitListener branchReferralInitListener = new Branch.BranchUniversalReferralInitListener() {
-        @Override public void onInitFinished(BranchUniversalObject branchUniversalObject,
-                                             LinkProperties linkProperties, BranchError branchError) {
-            //If not Launched by clicking Branch link
-            if (branchUniversalObject == null) {
-                proceedToAppTransparent();
-            } else if (linkProperties != null &&
-                    !TextUtils.isEmpty(linkProperties.getControlParams().get("$web_only"))
-                    && !TextUtils.isEmpty(linkProperties.getControlParams().get("$3p"))) {
-                String webOnlyParam = linkProperties.getControlParams().get("$web_only");
-                String is3pParam = linkProperties.getControlParams().get("$3p");
-                if (!TextUtils.isEmpty(webOnlyParam) && !TextUtils.isEmpty(is3pParam)) {
-                    if (Boolean.parseBoolean(webOnlyParam)) {
-                        String url = linkProperties.getControlParams().get("$original_url");
-                        WebView webView = findViewById(R.id.web_only_view);
-                        webView.setVisibility(View.VISIBLE);
-                        webView.loadUrl(url);
+                    String webOnlyParam = linkProperties.getControlParams().get("$web_only");
+                    String is3pParam = linkProperties.getControlParams().get("$3p");
+                    if (!TextUtils.isEmpty(webOnlyParam) && !TextUtils.isEmpty(is3pParam)) {
+                        if (Boolean.parseBoolean(webOnlyParam)) {
+                            String url = linkProperties.getControlParams().get("$original_url");
+                            WebView webView = findViewById(R.id.web_only_view);
+                            webView.setVisibility(View.VISIBLE);
+                            webView.loadUrl(url);
+                        }
                     }
                 }
+                /* In case the clicked link has $android_deeplink_path the Branch will launch the MonsterViewer automatically since AutoDeeplinking feature is enabled.
+                 * Launch Monster viewer activity if a link clicked without $android_deeplink_path
+                 */
+                else if (!branchUniversalObject.getContentMetadata().getCustomMetadata().containsKey("android_deeplink_path")) {
+                    MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
+                    prefs.saveMonster(branchUniversalObject);
+                    Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
+                    intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
+                    startActivity(intent);
+                    finish();
+                }
             }
-            /* In case the clicked link has $android_deeplink_path the Branch will launch the MonsterViewer automatically since AutoDeeplinking feature is enabled.
-             * Launch Monster viewer activity if a link clicked without $android_deeplink_path
-             */
-            else if (!branchUniversalObject.getContentMetadata().getCustomMetadata().containsKey("$android_deeplink_path")) {
-                MonsterPreferences prefs = MonsterPreferences.getInstance(getApplicationContext());
-                prefs.saveMonster(branchUniversalObject);
-                Intent intent = new Intent(SplashActivity.this, MonsterViewerActivity.class);
-                intent.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
-                startActivity(intent);
-                finish();
-            }
-        }
-    };
-    
+        }).withData(this.getIntent().getData()).init();
+
+    }
+
     private void proceedToAppTransparent() {
         Animation animSlideIn = AnimationUtils.loadAnimation(this, R.anim.push_down_in);
         animSlideIn.setDuration(ANIM_DURATION);

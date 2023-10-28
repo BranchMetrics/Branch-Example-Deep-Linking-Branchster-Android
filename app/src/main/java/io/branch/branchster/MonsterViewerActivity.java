@@ -151,14 +151,6 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
                     
                     @Override
                     public void onShareLinkDialogLaunched() {
-//                        JSONObject jsonObject = new JSONObject();
-//                        revenue = rnd.nextInt(4) + 1D;
-//                        try {
-//                            jsonObject.put("sku", monsterName);
-//                            jsonObject.put("price", revenue);
-//                        } catch (JSONException e) {
-//                        }
-//                        Branch.getInstance().userCompletedAction("Add to Cart", jsonObject);
                         revenue = rnd.nextInt(4) + 1D;
                         BranchEvent event = new BranchEvent(BRANCH_STANDARD_EVENT.ADD_TO_CART);
                         event.addCustomDataProperty("sku", monsterName);
