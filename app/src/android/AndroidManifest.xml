@@ -12,7 +12,16 @@
         android:banner="@drawable/ic_launcher_tv"
         >
         <activity
+            android:name="io.branch.branchster.MonsterCreatorActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name="io.branch.branchster.MonsterViewerActivity"
+            android:exported="false">
+        </activity>
+        <activity
             android:name="io.branch.branchster.SplashActivity"
+            android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Light.NoTitleBar">
