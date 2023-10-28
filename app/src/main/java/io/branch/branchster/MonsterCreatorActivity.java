@@ -116,8 +116,6 @@ public class MonsterCreatorActivity extends Activity {
                 } else {
                     prefs.setMonsterName(getString(R.string.monster_name));
                 }
-                // Make this monster publicly indexable
-                prefs.getLatestMonsterObj().setContentIndexingMode(BranchUniversalObject.CONTENT_INDEX_MODE.PUBLIC);
                 Intent i = new Intent(getApplicationContext(), MonsterViewerActivity.class);
                 i.putExtra(MonsterViewerActivity.MY_MONSTER_OBJ_KEY, prefs.getLatestMonsterObj());
                 startActivity(i);

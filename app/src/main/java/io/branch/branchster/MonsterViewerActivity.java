@@ -22,6 +22,7 @@ import io.branch.branchster.util.MonsterPreferences;
 import io.branch.indexing.BranchUniversalObject;
 import io.branch.referral.Branch;
 import io.branch.referral.BranchError;
+import io.branch.referral.BranchLogger;
 import io.branch.referral.SharingHelper;
 import io.branch.referral.util.BRANCH_STANDARD_EVENT;
 import io.branch.referral.util.BranchEvent;
@@ -222,7 +223,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
 
     @Override public void onStart() {
         super.onStart();
-        Log.d("Test","MonsterViewerActivity.onStart");
+        BranchLogger.d("MonsterViewerActivity.onStart");
         //For testing
 //        Branch.getInstance().initSession(branchReferralInitListener, getIntent() != null ?
 //                getIntent().getData() : null, this);
@@ -232,7 +233,7 @@ public class MonsterViewerActivity extends FragmentActivity implements InfoFragm
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-        Log.d("Test","MonsterViewerActivity.onNewIntent");
+        BranchLogger.d("MonsterViewerActivity.onNewIntent");
         // For testing
 //        Branch.getInstance().reInitSession(this, branchReferralInitListener);
     }
