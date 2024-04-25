@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Branchster app keys-->
-    <string name="branch_key">key_live_kfNq5xQ0anKoLpL0RU6ripgdrCoDLLP0</string>
+    <string name="branch_key">key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP</string>
     <string name="branch_key_test">key_test_lbHr8ERYdpTlJcOZRGZtpaklEuhBQHGM</string>
 
     <!--
