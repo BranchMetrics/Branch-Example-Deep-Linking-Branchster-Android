@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "io.branch.branchsters.app-merged_res-51:/xml_backup_rules.xml.flat",
+        "source": "io.branch.branchsters.app-main-53:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "io.branch.branchsters.app-merged_res-51:/xml_data_extraction_rules.xml.flat",
+        "source": "io.branch.branchsters.app-main-53:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "io.branch.branchsters.app-merged_res-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "io.branch.branchsters.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "io.branch.branchsters.app-merged_res-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "io.branch.branchsters.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]

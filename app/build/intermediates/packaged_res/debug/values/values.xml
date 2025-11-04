@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#6C63FF</color>
+    <string name="app_name">Branchsters</string>
+    <string name="home_description">Your monster factory adventure starts here</string>
+    <string name="home_title">Home</string>
+    <string name="home_welcome">Welcome to Branchsters!</string>
+    <string name="splash_title">Welcome to Branchsters</string>
+    <style name="Theme.Branchsters" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>
