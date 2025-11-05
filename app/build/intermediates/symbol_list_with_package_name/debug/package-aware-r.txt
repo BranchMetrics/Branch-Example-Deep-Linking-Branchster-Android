@@ -913,6 +913,7 @@ drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable monster_factory_icon
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -928,6 +929,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font ibm_plex_mono_regular
 id ALT
 id CTRL
 id FUNCTION
@@ -1345,7 +1347,8 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
-mipmap ic_launcher_round
+mipmap ic_launcher_adaptive_back
+mipmap ic_launcher_adaptive_fore
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

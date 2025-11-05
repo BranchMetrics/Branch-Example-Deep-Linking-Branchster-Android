@@ -4,7 +4,7 @@
             "outputFile": "io.branch.branchsters.app-mergeDebugResources-54:/values-ro/values-ro.xml",
             "map": [
                 {
-                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/9a549c33b10fdb35fc6129c5d1683c19/transformed/appcompat-1.2.0/res/values-ro/values-ro.xml",
+                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/9a549c33b10fdb35fc6129c5d1683c19/transformed/appcompat-1.2.0/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/2ccd268e0ca2e1cd10ec650ac8067a3e/transformed/core-1.12.0/res/values-ro/values-ro.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,355,454,556,665,782",
-                        "endColumns": "97,101,99,98,101,108,116,100",
-                        "endOffsets": "148,250,350,449,551,660,777,878"
-                    },
-                    "to": {
-                        "startLines": "33,34,35,36,37,38,39,91",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3335,3433,3535,3635,3734,3836,3945,9320",
-                        "endColumns": "97,101,99,98,101,108,116,100",
-                        "endOffsets": "3428,3530,3630,3729,3831,3940,4057,9416"
-                    }
-                },
-                {
-                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/c631ad058edf0b463b84315a903e8c75/transformed/jetified-ui-release/res/values-ro/values-ro.xml",
+                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/c631ad058edf0b463b84315a903e8c75/transformed/jetified-ui-release/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/4d2c9d8f283404e6cbdd5a6f7bc2310f/transformed/jetified-material3-1.1.2/res/values-ro/values-ro.xml",
+                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/4d2c9d8f283404e6cbdd5a6f7bc2310f/transformed/jetified-material3-1.1.2/res/values-ro/values-ro.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -69,6 +52,23 @@
                         "startOffsets": "2851,2977,3100,3213,4243,4320,4413,4524,4657,4773,4912,4992,5087,5178,5272,5388,5511,5611,5744,5875,6012,6184,6317,6432,6552,6675,6767,6859,6982,7119,7215,7316,7423,7558,7700,7808,8106,8266,8997,9236,9421,9777,9855,9934,10029,10129,10220,10320,10403,10510,10606,10715,10836,10914,11025",
                         "endColumns": "125,122,112,121,76,92,110,132,115,138,79,94,90,93,115,122,99,132,130,136,171,132,114,119,122,91,91,122,136,95,100,106,134,141,107,98,71,73,81,83,96,77,78,94,99,90,99,82,106,95,108,120,77,110,99",
                         "endOffsets": "2972,3095,3208,3330,4315,4408,4519,4652,4768,4907,4987,5082,5173,5267,5383,5506,5606,5739,5870,6007,6179,6312,6427,6547,6670,6762,6854,6977,7114,7210,7311,7418,7553,7695,7803,7902,8173,8335,9074,9315,9513,9850,9929,10024,10124,10215,10315,10398,10505,10601,10710,10831,10909,11020,11120"
+                    }
+                },
+                {
+                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/2ccd268e0ca2e1cd10ec650ac8067a3e/transformed/core-1.12.0/res/values-ro/values-ro.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,355,454,556,665,782",
+                        "endColumns": "97,101,99,98,101,108,116,100",
+                        "endOffsets": "148,250,350,449,551,660,777,878"
+                    },
+                    "to": {
+                        "startLines": "33,34,35,36,37,38,39,91",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3335,3433,3535,3635,3734,3836,3945,9320",
+                        "endColumns": "97,101,99,98,101,108,116,100",
+                        "endOffsets": "3428,3530,3630,3729,3831,3940,4057,9416"
                     }
                 }
             ]

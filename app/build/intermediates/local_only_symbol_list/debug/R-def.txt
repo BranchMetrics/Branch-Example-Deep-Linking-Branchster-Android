@@ -1,8 +1,11 @@
 R_DEF: Internal format may change without notice
 local
 color ic_launcher_background
+drawable monster_factory_icon
+font ibm_plex_mono_regular
 mipmap ic_launcher
-mipmap ic_launcher_round
+mipmap ic_launcher_adaptive_back
+mipmap ic_launcher_adaptive_fore
 string app_name
 string branch_key
 string branch_test_key

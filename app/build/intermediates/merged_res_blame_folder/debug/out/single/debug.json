@@ -1,18 +1,82 @@
 [
     {
-        "merged": "io.branch.branchsters.app-merged_res-56:/xml_data_extraction_rules.xml.flat",
-        "source": "io.branch.branchsters.app-main-58:/xml/data_extraction_rules.xml"
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xxhdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-56:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "io.branch.branchsters.app-main-58:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xhdpi/ic_launcher_adaptive_fore.png"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-56:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "io.branch.branchsters.app-main-58:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-56:/xml_backup_rules.xml.flat",
-        "source": "io.branch.branchsters.app-main-58:/xml/backup_rules.xml"
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xxhdpi/ic_launcher_adaptive_fore.png"
+    },
+    {
+        "merged": "io.branch.branchsters.app-merged_res-56:/font_ibm_plex_mono_regular.ttf.flat",
+        "source": "io.branch.branchsters.app-main-58:/font/ibm_plex_mono_regular.ttf"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-hdpi/ic_launcher_adaptive_back.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xhdpi/ic_launcher_adaptive_back.png"
+    },
+    {
+        "merged": "io.branch.branchsters.app-merged_res-56:/drawable_monster_factory_icon.png.flat",
+        "source": "io.branch.branchsters.app-main-58:/drawable/monster_factory_icon.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-hdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-hdpi/ic_launcher_adaptive_fore.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/xml_backup_rules.xml.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xxxhdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xxxhdpi/ic_launcher_adaptive_back.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xxxhdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xxxhdpi/ic_launcher_adaptive_fore.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-mdpi_ic_launcher_adaptive_back.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-mdpi/ic_launcher_adaptive_back.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-mdpi_ic_launcher_adaptive_fore.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-mdpi/ic_launcher_adaptive_fore.png"
+    },
+    {
+        "merged": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-56:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/guru.prasadh/.gradle/daemon/8.2/io.branch.branchsters.app-main-58:/mipmap-xxxhdpi/ic_launcher.png"
     }
 ]
