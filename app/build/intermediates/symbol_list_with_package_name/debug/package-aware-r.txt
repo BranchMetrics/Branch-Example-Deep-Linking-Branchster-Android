@@ -914,6 +914,7 @@ drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
 drawable monster_factory_icon
+drawable monster_truck
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -927,8 +928,11 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable qr_code
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font ibm_plex_mono_bold
+font ibm_plex_mono_medium
 font ibm_plex_mono_regular
 id ALT
 id CTRL

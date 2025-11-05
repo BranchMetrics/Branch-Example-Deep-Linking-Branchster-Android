@@ -1,94 +1,119 @@
-package io.branch.branchsters.views
-
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import io.branch.branchsters.R
-import io.branch.branchsters.viewmodels.HomeViewModel
+import io.branch.branchsters.ui.theme.ibmPlexMono
 
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = viewModel()
-) {
-    val uiState by viewModel.uiState.collectAsState()
+fun HomepageScreen(navController: NavController) { // Added NavController for navigation
 
+    // Replaces the base Container with gradient
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = stringResource(id = R.string.home_title),
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.primary,
-                fontSize = 48.sp,
-                fontWeight = FontWeight.Bold
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(Color(0xFF2A2D32), Color(0xFF1D1D1D)),
+                    start = Offset.Zero, // Top-Left
+                    end = Offset.Infinite // Bottom-Right
+                )
             )
-            
-            Spacer(modifier = Modifier.height(32.dp))
-            
-            Card(
+    ) {
+        // Replaces SafeArea + ListView
+        // .verticalScroll makes the Column scrollable, replacing ListView
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .safeDrawingPadding() // Replaces SafeArea
+                .padding(horizontal = 18.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
+
+            Spacer(Modifier.height(16.dp))
+
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surface
-                ),
-                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = uiState.welcomeMessage,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center
+                    .border( // Replaces border: Border.all()
+                        width = 2.dp,
+                        color = Color.White,
+                        shape = RoundedCornerShape(10.dp)
                     )
-                    
-                    Spacer(modifier = Modifier.height(16.dp))
-                    
-                    Text(
-                        text = uiState.description,
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                        textAlign = TextAlign.Center
+                    .clip(RoundedCornerShape(10.dp)) // Ensures background respects the border radius
+                    .background(Color.White.copy(alpha = 0.1f)) // Replaces color: Colors.white10
+                    .padding(20.dp), // Replaces padding: EdgeInsets.all(20)
+                horizontalAlignment = Alignment.CenterHorizontally // To center the image
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.monster_truck),
+                    contentDescription = "Monster Truck",
+                    modifier = Modifier.height(200.dp),
+                    contentScale = ContentScale.Fit
+                )
+
+                // This Column replaces Align + Column
+                Column(
+                    modifier = Modifier.fillMaxWidth() // Ensures children fill the width
+                ) {
+                    // Replaces Row for Level and XP
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Level 1",
+                            style = TextStyle(
+                                fontFamily = ibmPlexMono,
+                                color = Color.White.copy(alpha = 0.7f),
+                                fontSize = 14.sp
+                            )
+                        )
+                        Spacer(Modifier.weight(1f)) // Replaces Spacer()
+                        Text(
+                            text = "XP 250/500",
+                            style = TextStyle(
+                                fontFamily = ibmPlexMono,
+                                color = Color.White.copy(alpha = 0.7f),
+                                fontSize = 14.sp
+                            )
+                        )
+                    }
+
+                    Spacer(Modifier.height(8.dp))
+
+                    LinearProgressIndicator(
+                        progress =  0.5f ,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(8.dp) // It's good practice to set a height
+                            .clip(RoundedCornerShape(4.dp)), // Makes the progress bar rounded
+                        color = Color(0xffEA2D7F),
+                        trackColor = Color.White.copy(alpha = 0.3f) // Sets the background of the bar
                     )
                 }
             }
+
+
+            Spacer(Modifier.height(16.dp))
         }
     }
 }

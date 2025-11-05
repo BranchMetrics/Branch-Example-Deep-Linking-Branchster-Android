@@ -13,7 +13,11 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.core.view.WindowCompat
+import io.branch.branchsters.R
 
 private val DarkColorScheme = darkColorScheme(
     primary = BranchPrimary,
@@ -28,7 +32,12 @@ private val LightColorScheme = lightColorScheme(
     secondary = PurpleGrey40,
     tertiary = Pink40
 )
-
+val ibmPlexMono = FontFamily(
+    Font(R.font.ibm_plex_mono_regular, FontWeight.Normal),
+    Font(R.font.ibm_plex_mono_medium, FontWeight.Medium),
+    Font(R.font.ibm_plex_mono_bold, FontWeight.Bold),
+//    Font(R.font.ibm_plex_mono_semibold, FontWeight.SemiBold)
+)
 @Composable
 fun BranchstersTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

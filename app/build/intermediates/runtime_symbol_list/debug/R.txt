@@ -913,6 +913,7 @@ int drawable ic_call_answer_video_low 0x7f060062
 int drawable ic_call_decline 0x7f060063
 int drawable ic_call_decline_low 0x7f060064
 int drawable monster_factory_icon 0x7f060074
+int drawable monster_truck 0x7f060075
 int drawable notification_action_background 0x7f060065
 int drawable notification_bg 0x7f060066
 int drawable notification_bg_low 0x7f060067
@@ -926,8 +927,11 @@ int drawable notification_template_icon_bg 0x7f06006e
 int drawable notification_template_icon_low_bg 0x7f06006f
 int drawable notification_tile_bg 0x7f060070
 int drawable notify_panel_notification_icon_bg 0x7f060071
+int drawable qr_code 0x7f060076
 int drawable tooltip_frame_dark 0x7f060072
 int drawable tooltip_frame_light 0x7f060073
+int font ibm_plex_mono_bold 0x7f100001
+int font ibm_plex_mono_medium 0x7f100002
 int font ibm_plex_mono_regular 0x7f100000
 int id ALT 0x7f070000
 int id CTRL 0x7f070001

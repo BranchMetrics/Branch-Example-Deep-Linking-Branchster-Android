@@ -1,10 +1,11 @@
 package io.branch.branchsters.navigation
 
+import HomepageScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import io.branch.branchsters.views.HomeScreen
+
 import io.branch.branchsters.views.SplashScreen
 
 sealed class Screen(val route: String) {
@@ -29,7 +30,11 @@ fun NavGraph(navController: NavHostController) {
         }
         
         composable(route = Screen.Home.route) {
-            HomeScreen()
+            HomepageScreen(
+                 navController = navController
+            )
         }
     }
 }
+
+
