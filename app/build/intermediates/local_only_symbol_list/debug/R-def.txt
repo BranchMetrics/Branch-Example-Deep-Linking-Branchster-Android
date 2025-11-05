@@ -4,6 +4,8 @@ color ic_launcher_background
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string branch_key
+string branch_test_key
 string home_description
 string home_title
 string home_welcome

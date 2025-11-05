@@ -2,6 +2,8 @@
 <resources>
     <color name="ic_launcher_background">#6C63FF</color>
     <string name="app_name">Branchsters</string>
+    <string name="branch_key">key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP</string>
+    <string name="branch_test_key">key_test_jpAAsHxzDjint6I30mkBZjeewAki21R7</string>
     <string name="home_description">Your monster factory adventure starts here</string>
     <string name="home_title">Home</string>
     <string name="home_welcome">Welcome to Branchsters!</string>

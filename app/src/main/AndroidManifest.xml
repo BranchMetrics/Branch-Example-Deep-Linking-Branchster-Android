@@ -41,7 +41,7 @@
                 <!-- REPLACE `android:host` with your `app.link` domain -->
                 <data android:scheme="https" />
                 <data android:host="monster-factory.app.link" />
-                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and Deepviews) -->
+                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
                 <data android:scheme="https" />
                 <data android:host="monster-factory-alternate.app.link" />
             </intent-filter>
@@ -53,7 +53,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" />
                 <data android:host="monster-factory.test-app.link" />
-                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and Deepviews) -->
+                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
                 <data android:scheme="https" />
                 <data android:host="monster-factory-alternate.test-app.link" />
             </intent-filter>

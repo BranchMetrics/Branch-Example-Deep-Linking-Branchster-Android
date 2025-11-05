@@ -8,13 +8,17 @@
         android:minSdkVersion="24"
         android:targetSdkVersion="36" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <permission
         android:name="io.branch.branchsters.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="io.branch.branchsters.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
     <application
+        android:name="io.branch.branchsters.ApplicationClass"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -36,7 +40,60 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <data
+                    android:host="open"
+                    android:scheme="branchsters" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+
+            <!-- Branch App Links - Live App -->
+            <intent-filter android:autoVerify="true" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- REPLACE `android:host` with your `app.link` domain -->
+                <data android:scheme="https" />
+                <data android:host="monster-factory.app.link" />
+                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
+                <data android:scheme="https" />
+                <data android:host="monster-factory-alternate.app.link" />
+            </intent-filter>
+
+            <!-- Branch App Links - Test App -->
+            <intent-filter android:autoVerify="true" >
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https" />
+                <data android:host="monster-factory.test-app.link" />
+                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
+                <data android:scheme="https" />
+                <data android:host="monster-factory-alternate.test-app.link" />
+            </intent-filter>
         </activity>
+
+        <!-- Branch init -->
+        <!-- REPLACE `BranchKey` with the value from your Branch Dashboard -->
+        <meta-data
+            android:name="io.branch.sdk.BranchKey"
+            android:value="@string/branch_key" />
+        <!-- REPLACE `BranchKey.test` with the value from your Branch Dashboard -->
+        <meta-data
+            android:name="io.branch.sdk.BranchKey.test"
+            android:value="@string/branch_test_key" />
+        <!-- Set to `true` to use `BranchKey.test` -->
+        <meta-data
+            android:name="io.branch.sdk.TestMode"
+            android:value="false" />
+
         <activity
             android:name="androidx.activity.ComponentActivity"
             android:exported="true" />
