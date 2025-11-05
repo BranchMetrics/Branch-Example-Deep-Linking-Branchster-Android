@@ -5,4 +5,6 @@
     <string name="home_title">Home</string>
     <string name="home_welcome">Welcome to Branchsters!</string>
     <string name="home_description">Your monster factory adventure starts here</string>
+    <string name="branch_key">key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP</string>
+    <string name="branch_test_key">key_test_jpAAsHxzDjint6I30mkBZjeewAki21R7</string>
 </resources>

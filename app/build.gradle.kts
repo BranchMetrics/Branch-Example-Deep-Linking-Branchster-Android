@@ -56,6 +56,10 @@ android {
 
 //noinspection GradleDependency
 dependencies {
+
+    // Branch SDK
+    implementation("io.branch.sdk.android:library:5.20.3")
+
     // Core Android
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
