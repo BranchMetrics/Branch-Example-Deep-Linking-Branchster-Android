@@ -45,17 +45,57 @@ class HomeViewModel(
     fun toggleQuestCompletion(questId: Int) {
         viewModelScope.launch {
             val quest = questRepository.getQuestById(questId)
+            val currentMonster = _uiState.value.currentMonster
+            
             quest?.let {
-                questRepository.updateQuestCompletion(questId, !it.isCompleted)
+                if (!it.isCompleted) {
+                    // Mark quest as completed
+                    questRepository.updateQuestCompletion(questId, true)
+                    
+                    // Add XP and update level
+                    currentMonster?.let { monster ->
+                        val newXp = monster.xp + 50 // Each quest = 50 XP
+                        val completedQuests = _uiState.value.quests.count { q -> q.isCompleted } + 1
+                        val newLevel = calculateLevel(completedQuests)
+                        val newImage = getMonsterImageForLevel(monster.monsterName, newLevel)
+                        
+                        val updatedMonster = monster.copy(
+                            xp = newXp,
+                            level = newLevel,
+                            monsterImage = newImage
+                        )
+                        monsterRepository.updateMonster(updatedMonster)
+                    }
+                }
             }
         }
     }
-
-    fun addQuest(quest: Quest) {
-        viewModelScope.launch {
-            questRepository.insertQuest(quest)
+    
+    private fun calculateLevel(completedQuests: Int): Int {
+        return when {
+            completedQuests >= 6 -> 4
+            completedQuests >= 4 -> 3
+            completedQuests >= 2 -> 2
+            else -> 1
         }
     }
+    
+    private fun getMonsterImageForLevel(monsterName: String, level: Int): Int {
+        // Extract color from monsterName (e.g., "black_monster_level_1" -> "black")
+        // Format: {color}_monster_level_{level}
+        val colorPrefix = monsterName.substringBefore("_monster_level_")
+        val resourceName = "${colorPrefix}_monster_level_${level}"
+        
+        return try {
+            val context = io.branch.branchsters.R.drawable::class.java
+            val field = context.getField(resourceName)
+            field.getInt(null)
+        } catch (e: Exception) {
+            // Fallback to current image if resource not found
+            _uiState.value.currentMonster?.monsterImage ?: io.branch.branchsters.R.drawable.onboard_monster_1
+        }
+    }
+
 }
 
 class HomeViewModelFactory(

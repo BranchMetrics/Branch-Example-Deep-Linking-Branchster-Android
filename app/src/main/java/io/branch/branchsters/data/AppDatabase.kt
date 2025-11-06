@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import io.branch.branchsters.R
 import io.branch.branchsters.data.dao.MonsterDao
 import io.branch.branchsters.data.dao.QuestDao
 import io.branch.branchsters.data.entity.Monster
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [Quest::class, Monster::class],
-    version = 2,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -56,36 +57,37 @@ abstract class AppDatabase : RoomDatabase() {
             // Prepopulate 6 quests
             val initialQuests = listOf(
                 Quest(
-                    name = "First Steps",
-                    description = "Complete your profile setup and explore the app features"
+                    name = "Create Branch Link",
+                    description = "Generate a link to earn some XP for your monster."
                 ),
                 Quest(
-                    name = "Monster Collector",
-                    description = "Generate your first monster using Gemini AI"
+                    name = "Share Branch Link",
+                    description = "Share a link to earn some XP for your monster."
                 ),
                 Quest(
-                    name = "Quest Master",
-                    description = "Complete 3 daily challenges to unlock special rewards"
+                    name = "Trigger Branch Event",
+                    description = "Trigger an event to earn some XP for your monster."
                 ),
                 Quest(
-                    name = "Social Butterfly",
-                    description = "Share your monster with friends using Branch deep links"
+                    name = "View Branch Event Data",
+                    description = "View event data to earn some XP for your monster."
                 ),
                 Quest(
-                    name = "Power Leveler",
-                    description = "Reach level 5 by completing various tasks and challenges"
+                    name = "Generate Branch QR Code",
+                    description = "Generate QR code to earn some XP for your monster"
                 ),
                 Quest(
-                    name = "Ultimate Champion",
-                    description = "Complete all quests and become the ultimate Branchster master"
+                    name = "Share Branch QR Code",
+                    description = "Share QR code to earn some XP for your monster"
                 )
             )
             questDao.insertQuests(initialQuests)
 
             // Prepopulate a default monster
             val defaultMonster = Monster(
-                monsterName = "Starter Branchster",
-                monsterImage = "default_monster" // This can be a drawable resource or URL
+                monsterName = "Starter Monster",
+                monsterTitle = "Beginner",
+                monsterImage = R.drawable.onboard_monster_1 // This can be a drawable resource or URL
             )
             monsterDao.insertMonster(defaultMonster)
         }

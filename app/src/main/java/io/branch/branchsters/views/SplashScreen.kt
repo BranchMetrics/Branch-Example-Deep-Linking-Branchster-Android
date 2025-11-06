@@ -34,19 +34,25 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import io.branch.branchsters.ApplicationClass
 import io.branch.branchsters.R
+import io.branch.branchsters.ui.theme.ibmPlexMono
 import io.branch.branchsters.viewmodels.SplashViewModel
-val ibmPlexMono = FontFamily(
-    Font(R.font.ibm_plex_mono_regular)
-    // You can add more weights here if you have them, e.g.:
-    // Font(R.font.ibm_plex_mono_bold, FontWeight.Bold)
-)
+import io.branch.branchsters.viewmodels.SplashViewModelFactory
+
 @Composable
 fun SplashScreen(
     onNavigateToHome: () -> Unit,
-    viewModel: SplashViewModel = viewModel()
+    onNavigateToOnboarding: () -> Unit
 ) {
+    val context = LocalContext.current
+    val application = context.applicationContext as ApplicationClass
+    val viewModel: SplashViewModel = viewModel(
+        factory = SplashViewModelFactory(application.monsterRepository)
+    )
+    
     val uiState by viewModel.uiState.collectAsState()
     val alpha = remember { Animatable(0f) }
 
@@ -59,16 +65,18 @@ fun SplashScreen(
 
     LaunchedEffect(uiState.isLoading) {
         if (!uiState.isLoading) {
-            onNavigateToHome()
+            if (uiState.shouldNavigateToOnboarding) {
+                onNavigateToOnboarding()
+            } else {
+                onNavigateToHome()
+            }
         }
     }
 
     Box(
         modifier = Modifier.fillMaxSize().background(
-            brush = Brush.linearGradient(
+            brush = Brush.verticalGradient(
                 colors = listOf(Color(0xFF2A2D32), Color(0xFF1D1D1D)),
-                start = Offset.Zero,
-                end = Offset.Infinite
             ),
         ),
         contentAlignment = Alignment.Center,
@@ -84,15 +92,16 @@ fun SplashScreen(
                 modifier = Modifier.size(100.dp),
                 contentScale = ContentScale.Fit
             )
-            val textGradient = Brush.linearGradient(
+            val textGradient = Brush.verticalGradient(
                 colors = listOf(Color(0xFF2FB8FF), Color(0xFF9EECD9)),
             )
             Text(
                 text = "Monster Factory",
                 style = TextStyle(
                     brush = textGradient,
-                    fontSize = 20.sp,
-                    fontFamily = ibmPlexMono
+                    fontSize = 24.sp,
+                    fontFamily = ibmPlexMono,
+                    fontWeight = FontWeight.Medium
                 )
             )
         }
