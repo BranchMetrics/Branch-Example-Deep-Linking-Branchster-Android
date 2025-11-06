@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "923305782912",
+    "project_id": "branch-monsters-factory-2",
+    "storage_bucket": "branch-monsters-factory-2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923305782912:android:58d1eca47913b1396dc065",
+        "android_client_info": {
+          "package_name": "io.branch.branchsters"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7dcqzRxwNXsmUQgMeMkMbi7GfjRqQs-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

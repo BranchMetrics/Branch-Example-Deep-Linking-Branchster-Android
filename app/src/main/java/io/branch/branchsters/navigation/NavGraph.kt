@@ -4,12 +4,16 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import io.branch.branchsters.views.SimpleImageGenerationExample
 import io.branch.branchsters.views.HomeScreen
 import io.branch.branchsters.views.SplashScreen
+import io.branch.branchsters.views.OnboardingScreen
 
 sealed class Screen(val route: String) {
     object Splash : Screen("splash")
+    object Onboarding : Screen("onboarding")
     object Home : Screen("home")
+    object GeminiExample : Screen("gemini_example")
 }
 
 @Composable
@@ -21,15 +25,33 @@ fun NavGraph(navController: NavHostController) {
         composable(route = Screen.Splash.route) {
             SplashScreen(
                 onNavigateToHome = {
-                    navController.navigate(Screen.Home.route) {
+                    navController.navigate(Screen.Onboarding.route) {
                         popUpTo(Screen.Splash.route) { inclusive = true }
                     }
                 }
             )
         }
         
+        composable(route = Screen.Onboarding.route) {
+            OnboardingScreen(
+                onFinish = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Onboarding.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+        
         composable(route = Screen.Home.route) {
-            HomeScreen()
+            HomeScreen(
+                onNavigateToGemini = {
+                    navController.navigate(Screen.GeminiExample.route)
+                }
+            )
+        }
+        
+        composable(route = Screen.GeminiExample.route) {
+            SimpleImageGenerationExample()
         }
     }
 }

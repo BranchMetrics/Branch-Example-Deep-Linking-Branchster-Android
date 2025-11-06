@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "io.branch.branchsters.app-mergeDebugResources-54:/values-v16/values-v16.xml",
+            "outputFile": "io.branch.branchsters.app-mergeDebugResources-66:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/2ccd268e0ca2e1cd10ec650ac8067a3e/transformed/core-1.12.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
-                    }
-                },
-                {
-                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/9a549c33b10fdb35fc6129c5d1683c19/transformed/appcompat-1.2.0/res/values-v16/values-v16.xml",
+                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/b6a1901c8e32bd6b9485be69a34d3f15/transformed/appcompat-1.2.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -22,14 +12,6 @@
                         "endLines": "5",
                         "endColumns": "12",
                         "endOffsets": "223"
-                    },
-                    "to": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "121",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "289"
                     }
                 }
             ]
