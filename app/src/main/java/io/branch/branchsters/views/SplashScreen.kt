@@ -36,12 +36,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.branch.branchsters.R
+import io.branch.branchsters.ui.theme.imbPlexMonoFamily
 import io.branch.branchsters.viewmodels.SplashViewModel
-val ibmPlexMono = FontFamily(
-    Font(R.font.ibm_plex_mono_regular)
-    // You can add more weights here if you have them, e.g.:
-    // Font(R.font.ibm_plex_mono_bold, FontWeight.Bold)
-)
+
 @Composable
 fun SplashScreen(
     onNavigateToHome: () -> Unit,
@@ -92,7 +89,7 @@ fun SplashScreen(
                 style = TextStyle(
                     brush = textGradient,
                     fontSize = 20.sp,
-                    fontFamily = ibmPlexMono
+                    fontFamily = imbPlexMonoFamily
                 )
             )
         }

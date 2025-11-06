@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import io.branch.branchsters.R
-import io.branch.branchsters.views.ibmPlexMono
+import io.branch.branchsters.ui.theme.imbPlexMonoFamily
 
 @Composable
 fun HomepageScreen(navController: NavController) { // Added NavController for navigation
@@ -83,7 +83,7 @@ fun HomepageScreen(navController: NavController) { // Added NavController for na
                         Text(
                             text = "Level 1",
                             style = TextStyle(
-                                fontFamily = ibmPlexMono,
+                                fontFamily = imbPlexMonoFamily,
                                 fontWeight = FontWeight.Medium,
                                 color = Color.White.copy(alpha = 0.7f),
                                 fontSize = 14.sp
@@ -93,7 +93,7 @@ fun HomepageScreen(navController: NavController) { // Added NavController for na
                         Text(
                             text = "XP 250/500",
                             style = TextStyle(
-                                fontFamily = ibmPlexMono,
+                                fontFamily = imbPlexMonoFamily,
                                 fontWeight = FontWeight.Medium,
                                 color = Color.White.copy(alpha = 0.7f),
                                 fontSize = 14.sp
