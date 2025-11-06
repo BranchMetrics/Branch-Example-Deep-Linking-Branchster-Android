@@ -17,11 +17,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import io.branch.branchsters.R
-import io.branch.branchsters.ui.theme.ibmPlexMono
+import io.branch.branchsters.views.ibmPlexMono
 
 @Composable
 fun HomepageScreen(navController: NavController) { // Added NavController for navigation
@@ -83,6 +84,7 @@ fun HomepageScreen(navController: NavController) { // Added NavController for na
                             text = "Level 1",
                             style = TextStyle(
                                 fontFamily = ibmPlexMono,
+                                fontWeight = FontWeight.Medium,
                                 color = Color.White.copy(alpha = 0.7f),
                                 fontSize = 14.sp
                             )
@@ -92,6 +94,7 @@ fun HomepageScreen(navController: NavController) { // Added NavController for na
                             text = "XP 250/500",
                             style = TextStyle(
                                 fontFamily = ibmPlexMono,
+                                fontWeight = FontWeight.Medium,
                                 color = Color.White.copy(alpha = 0.7f),
                                 fontSize = 14.sp
                             )
