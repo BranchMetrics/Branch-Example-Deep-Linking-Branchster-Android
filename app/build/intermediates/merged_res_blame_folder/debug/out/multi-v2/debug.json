@@ -2767,23 +2767,6 @@
             "outputFile": "io.branch.branchsters.app-merged_res-68:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/res/values/themes.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "88",
-                        "endOffsets": "139"
-                    },
-                    "to": {
-                        "startLines": "2187",
-                        "startColumns": "4",
-                        "startOffsets": "138127",
-                        "endColumns": "87",
-                        "endOffsets": "138210"
-                    }
-                },
-                {
                     "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/3ce7ae8c9bc5ac13ee07931814fd4bfc/transformed/jetified-customview-poolingcontainer-1.0.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3",
@@ -2875,6 +2858,23 @@
                     }
                 },
                 {
+                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/build/generated/res/processDebugGoogleServices/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,137,241,350,470,587",
+                        "endColumns": "81,103,108,119,116,85",
+                        "endOffsets": "132,236,345,465,582,668"
+                    },
+                    "to": {
+                        "startLines": "748,749,750,751,752,763",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "42675,42757,42861,42970,43090,43771",
+                        "endColumns": "81,103,108,119,116,85",
+                        "endOffsets": "42752,42856,42965,43085,43202,43852"
+                    }
+                },
+                {
                     "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/e30a3280aa5f42e2f1ca16e3118db2d2/transformed/jetified-appcompat-resources-1.2.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,29,36,47,74",
@@ -2911,23 +2911,6 @@
                     }
                 },
                 {
-                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/res/values/colors.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "56",
-                        "endOffsets": "107"
-                    },
-                    "to": {
-                        "startLines": "409",
-                        "startColumns": "4",
-                        "startOffsets": "19342",
-                        "endColumns": "56",
-                        "endOffsets": "19394"
-                    }
-                },
-                {
                     "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/d4a363f59a8bd630017279c1f6ff8652/transformed/constraintlayout-2.1.4/res/values/values.xml",
                     "from": {
                         "startLines": "2,9,10,15,16,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,42,43,44,45,55,63,64,65,70,71,76,81,82,83,88,89,94,95,100,101,102,108,109,110,115,121,122,123,124,130,131,132,133,136,139,142,143,146,149,150,151,152,153,156,159,160,161,162,168,173,176,179,180,181,186,187,188,191,194,195,198,201,204,207,208,209,212,215,216,221,222,228,233,236,239,240,241,242,243,244,245,246,247,248,249,250,266,272,273,274,275,276,283,289,290,291,294,299,300,308,309,310,311,312,313,314,315,324,325,326,332,333,339,343,344,345,346,347,356,360,361,362,380,566,694,700,704,874,1026,1039,1055,1080,1103,1106,1109,1112,1141,1168,1185,1271,1279,1292,1308,1312,1342,1355,1359,1369,1379,1423,1436,1440,1443,1459,1500,1535,1542,1559",
@@ -2944,6 +2927,40 @@
                         "endLines": "8,9,14,15,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,41,42,43,44,54,62,64,65,70,71,76,81,82,83,88,89,94,95,100,101,102,108,109,110,115,121,122,123,126,132,133,134,135,138,141,144,145,148,151,152,153,154,155,158,161,162,163,164,170,175,178,181,182,183,188,189,190,193,196,197,200,203,206,209,210,211,214,217,218,223,224,230,235,238,241,242,243,244,245,246,247,248,249,250,251,252,268,274,275,276,277,278,286,292,293,294,297,302,303,311,312,313,314,315,316,317,319,328,329,330,336,337,343,347,348,349,350,351,360,364,609,633,2963,3166,3294,3300,3304,3453,3598,3611,3738,3763,3786,3789,3792,3795,3822,3849,3866,3952,4174,4187,4203,4207,4237,4250,4254,4264,4313,4357,4379,4455,4478,4580,4672,4707,4714,4776,4779",
                         "endColumns": "11,55,11,60,11,51,49,52,47,50,54,59,64,58,61,51,60,61,45,11,51,49,50,11,11,44,58,11,56,11,11,53,56,11,57,11,55,11,56,50,11,51,54,11,11,49,51,55,11,60,59,69,11,11,11,67,11,11,61,62,67,66,11,11,66,64,64,11,11,11,11,65,66,11,68,65,11,11,66,11,11,11,11,55,64,11,11,64,11,66,11,11,11,11,64,61,61,63,61,58,59,60,60,58,59,11,11,50,48,47,57,11,11,46,59,11,11,53,11,53,55,45,46,50,58,51,11,58,53,11,54,11,11,45,54,44,43,11,11,40,44,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24",
                         "endOffsets": "429,485,671,732,1023,1075,1125,1178,1226,1277,1332,1392,1457,1516,1578,1630,1691,1753,1799,1932,1984,2034,2085,2492,2804,2904,2963,3160,3217,3412,3593,3647,3704,3896,3954,4150,4206,4400,4457,4508,4730,4782,4837,5027,5243,5293,5345,5495,5701,5762,5822,5892,6025,6156,6284,6352,6481,6607,6669,6732,6800,6867,6990,7115,7182,7247,7312,7601,7782,7903,8024,8090,8157,8367,8436,8502,8627,8753,8820,8946,9073,9198,9325,9381,9446,9572,9695,9760,9968,10035,10323,10503,10623,10743,10808,10870,10932,10996,11058,11117,11177,11238,11299,11358,11418,12078,12329,12380,12429,12477,12535,12887,13117,13164,13224,13330,13510,13564,13899,13953,14009,14055,14102,14153,14212,14305,14635,14694,14748,14986,15041,15243,15382,15428,15483,15528,15572,15920,16057,32439,33679,169286,177062,182727,183102,183269,188499,194625,195322,199906,200760,201630,201696,201775,201850,202634,203525,204344,208281,215477,215948,216739,216902,218263,218827,218980,219439,221532,223545,224221,226398,227056,231473,234347,235768,236121,238717,238818"
+                    }
+                },
+                {
+                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "56",
+                        "endOffsets": "107"
+                    },
+                    "to": {
+                        "startLines": "409",
+                        "startColumns": "4",
+                        "startOffsets": "19342",
+                        "endColumns": "56",
+                        "endOffsets": "19394"
+                    }
+                },
+                {
+                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "2,7,8,6,4,5,3",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,365,446,277,168,212,104",
+                        "endColumns": "48,80,85,87,43,64,63",
+                        "endOffsets": "99,441,527,360,207,272,163"
+                    },
+                    "to": {
+                        "startLines": "673,678,679,753,754,755,770",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "36274,36646,36727,43207,43295,43339,44166",
+                        "endColumns": "48,80,85,87,43,64,63",
+                        "endOffsets": "36318,36722,36808,43290,43334,43399,44225"
                     }
                 },
                 {
@@ -2964,6 +2981,23 @@
                     }
                 },
                 {
+                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/res/values/themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "88",
+                        "endOffsets": "139"
+                    },
+                    "to": {
+                        "startLines": "2187",
+                        "startColumns": "4",
+                        "startOffsets": "138127",
+                        "endColumns": "87",
+                        "endOffsets": "138210"
+                    }
+                },
+                {
                     "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/89fbd453a8eaee2252584d4e4eed09c2/transformed/navigation-common-2.7.5/res/values/values.xml",
                     "from": {
                         "startLines": "2,15,21,27,30",
@@ -2980,23 +3014,6 @@
                         "endLines": "4277,4283,4289,4292,4303",
                         "endColumns": "24,24,24,24,24",
                         "endOffsets": "220078,220322,220569,220702,221114"
-                    }
-                },
-                {
-                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "2,7,8,6,4,5,3",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,365,446,277,168,212,104",
-                        "endColumns": "48,80,85,87,43,64,63",
-                        "endOffsets": "99,441,527,360,207,272,163"
-                    },
-                    "to": {
-                        "startLines": "673,678,679,753,754,755,770",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "36274,36646,36727,43207,43295,43339,44166",
-                        "endColumns": "48,80,85,87,43,64,63",
-                        "endOffsets": "36318,36722,36808,43290,43334,43399,44225"
                     }
                 },
                 {
@@ -3105,23 +3122,6 @@
                         "startOffsets": "33787",
                         "endColumns": "53",
                         "endOffsets": "33836"
-                    }
-                },
-                {
-                    "source": "/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/build/generated/res/processDebugGoogleServices/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,137,241,350,470,587",
-                        "endColumns": "81,103,108,119,116,85",
-                        "endOffsets": "132,236,345,465,582,668"
-                    },
-                    "to": {
-                        "startLines": "748,749,750,751,752,763",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "42675,42757,42861,42970,43090,43771",
-                        "endColumns": "81,103,108,119,116,85",
-                        "endOffsets": "42752,42856,42965,43085,43202,43852"
                     }
                 }
             ]

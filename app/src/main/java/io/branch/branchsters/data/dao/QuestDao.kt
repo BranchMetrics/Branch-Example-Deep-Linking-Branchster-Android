@@ -9,6 +9,9 @@ interface QuestDao {
     @Query("SELECT * FROM quests ORDER BY id ASC")
     fun getAllQuests(): Flow<List<Quest>>
     
+    @Query("SELECT * FROM quests ORDER BY id ASC")
+    suspend fun getAllQuestsSync(): List<Quest>
+    
     @Query("SELECT * FROM quests WHERE id = :questId")
     suspend fun getQuestById(questId: Int): Quest?
     
@@ -29,6 +32,9 @@ interface QuestDao {
     
     @Query("UPDATE quests SET isCompleted = :isCompleted WHERE id = :questId")
     suspend fun updateQuestCompletion(questId: Int, isCompleted: Boolean)
+    
+    @Query("UPDATE quests SET isLocked = 0 WHERE dependsOnQuestId = :questId")
+    suspend fun unlockDependentQuests(questId: Int)
     
     @Delete
     suspend fun deleteQuest(quest: Quest)

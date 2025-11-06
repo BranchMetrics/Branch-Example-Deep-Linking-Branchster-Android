@@ -20,6 +20,10 @@ class MonsterRepository(private val monsterDao: MonsterDao) {
         monsterDao.updateOnboardingStatus(monsterId, isOnboarded)
     }
     
+    suspend fun updateBranchLink(monsterId: Int, branchLink: String) {
+        monsterDao.updateBranchLink(monsterId, branchLink)
+    }
+    
     suspend fun insertMonster(monster: Monster) {
         monsterDao.insertMonster(monster)
     }

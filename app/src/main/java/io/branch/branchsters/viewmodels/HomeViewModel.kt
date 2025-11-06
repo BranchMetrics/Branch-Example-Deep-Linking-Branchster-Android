@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -20,6 +21,8 @@ class HomeViewModel(
     
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
+
+    var currentQuestID = 0;
 
     init {
         loadData()
@@ -48,9 +51,12 @@ class HomeViewModel(
             val currentMonster = _uiState.value.currentMonster
             
             quest?.let {
-                if (!it.isCompleted) {
+                if (!it.isCompleted && !it.isLocked) {
                     // Mark quest as completed
                     questRepository.updateQuestCompletion(questId, true)
+                    
+                    // Unlock any quests that depend on this quest
+                    questRepository.unlockDependentQuests(questId)
                     
                     // Add XP and update level
                     currentMonster?.let { monster ->
@@ -65,11 +71,59 @@ class HomeViewModel(
                             monsterImage = newImage
                         )
                         monsterRepository.updateMonster(updatedMonster)
+                        currentQuestID = 0;
                     }
                 }
             }
         }
     }
+
+
+    fun refreshProgress(questId: Int) {
+        viewModelScope.launch {
+            val quest = questRepository.getQuestById(questId)
+            val currentMonster = _uiState.value.currentMonster
+
+            quest?.let {
+                if (it.isCompleted) {
+                    // Unlock any quests that depend on this quest
+                    questRepository.unlockDependentQuests(questId)
+
+                    // Add XP and update level
+                    currentMonster?.let { monster ->
+                        val newXp = monster.xp + 50 // Each quest = 50 XP
+                        val completedQuests = _uiState.value.quests.count { q -> q.isCompleted }
+                        val newLevel = calculateLevel(completedQuests)
+                        val newImage = getMonsterImageForLevel(monster.monsterName, newLevel)
+
+                        val updatedMonster = monster.copy(
+                            xp = newXp,
+                            level = newLevel,
+                            monsterImage = newImage
+                        )
+                        monsterRepository.updateMonster(updatedMonster)
+                        currentQuestID = 0;
+                    }
+                }
+            }
+        }
+    }
+
+    fun openOverlayForLinkShare(questId: Int){
+        currentQuestID = questId
+        val branchLink = _uiState.value.currentMonster?.branchLink
+        val shouldShowOverlay = !branchLink.isNullOrEmpty() && (_uiState.value.quests.find { it.id == questId }?.isCompleted == false)
+       _uiState.update { it.copy(showOverlay = shouldShowOverlay, branchLink = branchLink ?: "") }
+    }
+    
+    fun onLinkShared() {
+        viewModelScope.launch {
+            _uiState.update { it.copy(showOverlay = false) }
+            toggleQuestCompletion(currentQuestID)
+        }
+    }
+
+
     
     private fun calculateLevel(completedQuests: Int): Int {
         return when {

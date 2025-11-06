@@ -61,10 +61,10 @@ io.branch.branchsters.app-jetified-activity-compose-1.8.1-59 /Users/bradley.pick
 io.branch.branchsters.app-jetified-startup-runtime-1.1.1-60 /Users/bradley.pickard/.gradle/caches/transforms-3/edbb4a4caa47121acb77a8ae727d62f9/transformed/jetified-startup-runtime-1.1.1/res
 io.branch.branchsters.app-lifecycle-viewmodel-2.6.2-61 /Users/bradley.pickard/.gradle/caches/transforms-3/f3207df04fd40dcda6ff7994c1e855ed/transformed/lifecycle-viewmodel-2.6.2/res
 io.branch.branchsters.app-jetified-ui-text-release-62 /Users/bradley.pickard/.gradle/caches/transforms-3/f9901e9e9b3db5ccb3cd5260bad634a6/transformed/jetified-ui-text-release/res
-io.branch.branchsters.app-res-63 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/build/generated/res/processDebugGoogleServices
-io.branch.branchsters.app-resValues-64 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/build/generated/res/resValues/debug
-io.branch.branchsters.app-packageDebugResources-65 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
-io.branch.branchsters.app-packageDebugResources-66 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
-io.branch.branchsters.app-merged_res-67 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/build/intermediates/merged_res/debug
-io.branch.branchsters.app-debug-68 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/debug/res
-io.branch.branchsters.app-main-69 /Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/res
+io.branch.branchsters.app-res-63 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/build/generated/res/processDebugGoogleServices
+io.branch.branchsters.app-resValues-64 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/build/generated/res/resValues/debug
+io.branch.branchsters.app-packageDebugResources-65 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+io.branch.branchsters.app-packageDebugResources-66 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+io.branch.branchsters.app-merged_res-67 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/build/intermediates/merged_res/debug
+io.branch.branchsters.app-debug-68 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/debug/res
+io.branch.branchsters.app-main-69 /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/res

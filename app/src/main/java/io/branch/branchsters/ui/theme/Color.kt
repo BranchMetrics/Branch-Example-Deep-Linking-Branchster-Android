@@ -15,3 +15,7 @@ val BranchPrimary = Color(0xFF6C63FF)
 val BranchSecondary = Color(0xFF00D9FF)
 val BranchBackground = Color(0xFF1A1A2E)
 val BranchSurface = Color(0xFF16213E)
+
+val Blue = Color(0xFF2FB8FF)
+val LightBlue = Color(0xFF9EECD9)
+val BgBlack = Color.Black

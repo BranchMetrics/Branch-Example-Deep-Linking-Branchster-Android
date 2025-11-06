@@ -26,7 +26,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.outlined.CheckCircle
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -40,6 +45,10 @@ import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -57,6 +66,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import android.content.Intent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -65,6 +75,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import io.branch.branchsters.ApplicationClass
 import io.branch.branchsters.R
 import io.branch.branchsters.data.entity.Quest
@@ -74,7 +85,10 @@ import io.branch.branchsters.viewmodels.HomeViewModelFactory
 
 @Composable
 fun HomeScreen(
-    onNavigateToGemini: () -> Unit = {}
+    navController: NavController,
+    onNavigateToGemini: () -> Unit = {},
+    onNavigateToCreateLink: (Int) -> Unit = {},
+    onNavigateToLogs: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val application = context.applicationContext as ApplicationClass
@@ -85,6 +99,18 @@ fun HomeScreen(
         )
     )
     val uiState by viewModel.uiState.collectAsState()
+
+
+    LaunchedEffect(Unit) {
+        // This flow emits whenever the current destination changes
+        navController.currentBackStackEntryFlow.collect { entry ->
+            if (entry.destination.route == "home") {
+                // Trigger your method whenever user returns to Home
+                viewModel.refreshProgress(viewModel.currentQuestID)
+            }
+        }
+    }
+
 
     if (uiState.isLoading) {
         Box(
@@ -340,7 +366,16 @@ fun HomeScreen(
                             QuestItem(
                                 quest = quest,
                                 onToggleCompletion = {
-                                    viewModel.toggleQuestCompletion(quest.id)
+                                    // For Create Link quest (ID 1), navigate to screen
+                                    if (quest.id == 1) {
+                                        viewModel.currentQuestID = quest.id
+                                        onNavigateToCreateLink(quest.id)
+                                    } else if(quest.id ==2) {
+                                        viewModel.openOverlayForLinkShare(quest.id)
+                                    } else {
+                                        viewModel.toggleQuestCompletion(quest.id)
+
+                                    }
                                 }
                             )
                         }
@@ -350,9 +385,143 @@ fun HomeScreen(
                 Spacer(Modifier.height(16.dp))
             }
 
-
+            // Bottom overlay for link sharing
+            
+            AnimatedVisibility(
+                visible = uiState.showOverlay,
+                enter = slideInVertically(initialOffsetY = { it }),
+                exit = slideOutVertically(targetOffsetY = { it }),
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                LinkShareOverlay(
+                    link = uiState.branchLink,
+                    onShare = {
+                        shareLink(context, uiState.branchLink)
+                        viewModel.onLinkShared() // Quest 1 is link creation, so share is quest 2
+                    },
+                    onDismiss = {
+                        // Optional: Add dismiss functionality if needed
+                    }
+                )
+            }
         }
     }
+}
+
+@Composable
+fun LinkShareOverlay(
+    link: String,
+    onShare: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        shape = RoundedCornerShape(10.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFF2A2D32)
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "🎉 Link Created!",
+                    style = TextStyle(
+                        fontFamily = ibmPlexMono,
+                        color = Color.White,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+            }
+            
+            Spacer(Modifier.height(12.dp))
+            
+            Text(
+                text = "Share your Branch link to complete the next quest!",
+                style = TextStyle(
+                    fontFamily = ibmPlexMono,
+                    color = Color.White.copy(alpha = 0.7f),
+                    fontSize = 14.sp
+                )
+            )
+            
+            Spacer(Modifier.height(16.dp))
+            
+            // Link display
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .border(1.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(12.dp))
+                    .background(Color(0xFF1E1E1E))
+                    .padding(12.dp)
+            ) {
+                SelectionContainer {
+                    Text(
+                        text = link,
+                        style = TextStyle(
+                            fontFamily = ibmPlexMono,
+                            color = Color(0xFF2FB8FF),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Medium
+                        ),
+                        maxLines = 2
+                    )
+                }
+            }
+            
+            Spacer(Modifier.height(16.dp))
+            
+            // Share button
+            Button(
+                onClick = onShare,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp),
+                shape = RoundedCornerShape(12.dp),
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF111213)
+                )
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Share,
+                    contentDescription = "Share",
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = "Share Link",
+                    style = TextStyle(
+                        fontFamily = ibmPlexMono,
+                        color = Color.White,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                )
+            }
+        }
+    }
+}
+
+fun shareLink(context: android.content.Context, link: String) {
+    val sendIntent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, link)
+        type = "text/plain"
+    }
+    context.startActivity(Intent.createChooser(sendIntent, "Share Branch Link"))
 }
 
 @Composable
@@ -378,7 +547,7 @@ fun QuestItem(
                 )
             )
             .then(
-                if (!quest.isCompleted) {
+                if (!quest.isCompleted && !quest.isLocked) {
                     Modifier.clickable { onToggleCompletion() }
                 } else {
                     Modifier
@@ -390,19 +559,15 @@ fun QuestItem(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Check icon on the left
-            Icon(
-                imageVector = if (quest.isCompleted)
-                    Icons.Filled.CheckCircle
-                else
-                    Icons.Outlined.CheckCircle,
-                contentDescription = if (quest.isCompleted) "Completed" else "Incomplete",
-                tint = if (quest.isCompleted)
-                    Color.Gray
-                else
-                    Color.White,
-                modifier = Modifier.size(24.dp)
-            )
+            // Quest icon on the left
+            if (quest.icon != 0) {
+                Image(
+                    painter = painterResource(quest.icon),
+                    contentDescription = quest.name,
+                    modifier = Modifier.size(32.dp),
+                    contentScale = ContentScale.Fit
+                )
+            }
 
             Spacer(modifier = Modifier.width(12.dp))
 
@@ -440,13 +605,20 @@ fun QuestItem(
             
             Spacer(modifier = Modifier.width(12.dp))
             
-            // Lock icon on the right (only show if locked)
+            // Right side icons - Lock icon or Check icon (only when completed)
             if (quest.isLocked) {
                 Icon(
                     imageVector = Icons.Filled.Lock,
                     contentDescription = "Locked",
                     tint = Color.White.copy(alpha = 0.6f),
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(24.dp)
+                )
+            } else if (quest.isCompleted) {
+                Icon(
+                    imageVector = Icons.Filled.CheckCircle,
+                    contentDescription = "Completed",
+                    tint = Color(0xFF4CAF50),
+                    modifier = Modifier.size(24.dp)
                 )
             }
         }

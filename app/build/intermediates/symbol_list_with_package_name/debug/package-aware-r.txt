@@ -915,6 +915,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable activity
 drawable arrow_forward
 drawable black_monster_level_1
 drawable black_monster_level_2
@@ -924,6 +925,7 @@ drawable blue_monster_level_1
 drawable blue_monster_level_2
 drawable blue_monster_level_3
 drawable blue_monster_level_4
+drawable braces
 drawable branch_icon
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -964,6 +966,7 @@ drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable link
 drawable monster_factory_icon
 drawable monster_truck
 drawable notification_action_background
@@ -994,12 +997,14 @@ drawable purple_monster_level_2
 drawable purple_monster_level_3
 drawable purple_monster_level_4
 drawable qr_code
+drawable qr_code_white
 drawable red_monster_level_1
 drawable red_monster_level_2
 drawable red_monster_level_3
 drawable red_monster_level_4
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable upload
 drawable white_monster_level_1
 drawable white_monster_level_2
 drawable white_monster_level_3

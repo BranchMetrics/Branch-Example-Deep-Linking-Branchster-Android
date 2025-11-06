@@ -9,8 +9,8 @@
 9        android:targetSdkVersion="36" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:5:5-66
-11-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:5:22-64
+11-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:5:5-66
+11-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:5:22-64
 12
 13    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 14    <!-- <uses-sdk android:minSdkVersion="21"/> -->
@@ -33,152 +33,152 @@
 22-->[com.android.installreferrer:installreferrer:2.2] /Users/bradley.pickard/.gradle/caches/transforms-3/1b8eafaa98d91874bbb7da2579726976/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:22-107
 23
 24    <application
-24-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-70:19
+24-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-70:19
 25        android:name="io.branch.branchsters.ApplicationClass"
-25-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:8:9-41
+25-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:8:9-41
 26        android:allowBackup="true"
-26-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:9:9-35
+26-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:9:9-35
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.13.1] /Users/bradley.pickard/.gradle/caches/transforms-3/823d4f47e4c4bf98f536ab0eede32a9c/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 28        android:dataExtractionRules="@xml/data_extraction_rules"
-28-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:10:9-65
+28-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:10:9-65
 29        android:debuggable="true"
 30        android:extractNativeLibs="false"
 31        android:fullBackupContent="@xml/backup_rules"
-31-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:11:9-54
+31-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:11:9-54
 32        android:icon="@mipmap/ic_launcher"
-32-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:12:9-43
+32-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:12:9-43
 33        android:label="@string/app_name"
-33-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:13:9-41
+33-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:13:9-41
 34        android:roundIcon="@mipmap/ic_launcher"
-34-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:14:9-48
+34-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:14:9-48
 35        android:supportsRtl="true"
-35-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:15:9-35
+35-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:15:9-35
 36        android:testOnly="true"
 37        android:theme="@style/Theme.Branchsters" >
-37-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:16:9-49
+37-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:16:9-49
 38        <activity
-38-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:18:9-60:20
+38-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:18:9-60:20
 39            android:name="io.branch.branchsters.MainActivity"
-39-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:19:13-41
+39-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:19:13-41
 40            android:exported="true"
-40-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:20:13-36
+40-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:20:13-36
 41            android:theme="@style/Theme.Branchsters" >
-41-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:21:13-53
+41-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:21:13-53
 42            <intent-filter>
-42-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:22:13-25:29
+42-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:22:13-25:29
 43                <action android:name="android.intent.action.MAIN" />
-43-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:23:17-69
-43-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:23:25-66
+43-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:23:17-69
+43-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:23:25-66
 44
 45                <category android:name="android.intent.category.LAUNCHER" />
-45-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:24:17-77
-45-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:24:27-74
+45-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:24:17-77
+45-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:24:27-74
 46            </intent-filter>
 47            <intent-filter>
-47-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:26:13-34:29
+47-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:26:13-34:29
 48                <data
-48-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+48-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
 49                    android:host="open"
-49-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
+49-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
 50                    android:scheme="branchsters" />
-50-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
+50-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
 51
 52                <category android:name="android.intent.category.DEFAULT" />
-52-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:17-76
-52-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:27-73
+52-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:17-76
+52-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:27-73
 53                <category android:name="android.intent.category.BROWSABLE" />
-53-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:17-78
-53-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:27-75
+53-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:17-78
+53-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:27-75
 54
 55                <action android:name="android.intent.action.VIEW" />
-55-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:17-69
-55-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:25-66
+55-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:17-69
+55-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:25-66
 56            </intent-filter>
 57
 58            <!-- Branch App Links - Live App -->
 59            <intent-filter android:autoVerify="true" >
-59-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:37:13-47:29
-59-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:37:28-53
+59-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:37:13-47:29
+59-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:37:28-53
 60                <action android:name="android.intent.action.VIEW" />
-60-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:17-69
-60-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:25-66
+60-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:17-69
+60-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:25-66
 61
 62                <category android:name="android.intent.category.DEFAULT" />
-62-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:17-76
-62-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:27-73
+62-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:17-76
+62-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:27-73
 63                <category android:name="android.intent.category.BROWSABLE" />
-63-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:17-78
-63-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:27-75
+63-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:17-78
+63-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:27-75
 64                <!-- REPLACE `android:host` with your `app.link` domain -->
 65                <data android:scheme="https" />
-65-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-65-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
+65-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+65-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
 66                <data android:host="monster-factory.app.link" />
-66-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-66-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
+66-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+66-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
 67                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
 68                <data android:scheme="https" />
-68-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-68-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
+68-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+68-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
 69                <data android:host="monster-factory-alternate.app.link" />
-69-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-69-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
+69-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+69-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
 70            </intent-filter>
 71
 72            <!-- Branch App Links - Test App -->
 73            <intent-filter android:autoVerify="true" >
-73-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:50:13-59:29
-73-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:50:28-53
+73-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:50:13-59:29
+73-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:50:28-53
 74                <action android:name="android.intent.action.VIEW" />
-74-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:17-69
-74-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:25-66
+74-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:17-69
+74-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:33:25-66
 75
 76                <category android:name="android.intent.category.DEFAULT" />
-76-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:17-76
-76-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:27-73
+76-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:17-76
+76-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:31:27-73
 77                <category android:name="android.intent.category.BROWSABLE" />
-77-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:17-78
-77-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:27-75
+77-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:17-78
+77-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:32:27-75
 78
 79                <data android:scheme="https" />
-79-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-79-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
+79-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+79-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
 80                <data android:host="monster-factory.test-app.link" />
-80-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-80-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
+80-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+80-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
 81                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
 82                <data android:scheme="https" />
-82-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-82-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
+82-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+82-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:29:21-49
 83                <data android:host="monster-factory-alternate.test-app.link" />
-83-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
-83-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
+83-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:27:17-29:52
+83-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:28:21-40
 84            </intent-filter>
 85        </activity>
 86
 87        <!-- Branch init -->
 88        <!-- REPLACE `BranchKey` with the value from your Branch Dashboard -->
 89        <meta-data
-89-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:64:9-96
+89-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:64:9-96
 90            android:name="io.branch.sdk.BranchKey"
-90-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:64:20-58
+90-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:64:20-58
 91            android:value="@string/branch_key" />
-91-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:64:59-93
+91-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:64:59-93
 92        <!-- REPLACE `BranchKey.test` with the value from your Branch Dashboard -->
 93        <meta-data
-93-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:66:9-106
+93-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:66:9-106
 94            android:name="io.branch.sdk.BranchKey.test"
-94-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:66:20-63
+94-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:66:20-63
 95            android:value="@string/branch_test_key" />
-95-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:66:64-103
+95-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:66:64-103
 96        <!-- Set to `true` to use `BranchKey.test` -->
 97        <meta-data
-97-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:9-82
+97-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:9-82
 98            android:name="io.branch.sdk.TestMode"
-98-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:20-57
+98-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:20-57
 99            android:value="false" />
-99-->/Users/bradley.pickard/BranchProjects/Hackathon-2025/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:58-79
+99-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:58-79
 100
 101        <activity
 101-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39

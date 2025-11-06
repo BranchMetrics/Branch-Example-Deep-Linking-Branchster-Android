@@ -10,5 +10,7 @@ data class Quest(
     val name: String,
     val description: String,
     val isCompleted: Boolean = false,
-    val isLocked: Boolean = false
+    val isLocked: Boolean = false,
+    val dependsOnQuestId: Int? = null, // ID of the quest this quest depends on
+    val icon: Int = 0 // Drawable resource ID for the quest icon
 )
