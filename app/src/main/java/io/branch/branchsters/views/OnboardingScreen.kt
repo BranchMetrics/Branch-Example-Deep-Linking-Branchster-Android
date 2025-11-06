@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -33,6 +34,7 @@ import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import io.branch.branchsters.ApplicationClass
 import io.branch.branchsters.R
+import io.branch.branchsters.ui.theme.ibmPlexMono
 import io.branch.branchsters.viewmodels.OnboardingViewModel
 import io.branch.branchsters.viewmodels.OnboardingViewModelFactory
 import kotlinx.coroutines.CoroutineScope
@@ -58,9 +60,10 @@ sealed class OnboardingPage {
 }
 
 data class ListItem(
+    val name: String,
     val imageRes: Int,
     val title: String,
-    val description: String
+    val description: String,
 )
 
 // Theme constants
@@ -108,46 +111,55 @@ fun OnboardingScreen(
             items = listOf(
                 ListItem(
                     title = "Black - Grave Whisper",
+                    name = "black_monster_level_1",
                     description = "A being that speaks through the mouths of the dead; its voice sounds like distant thunder under the ground.",
                     imageRes = R.drawable.black_monster_level_1
                 ),
                 ListItem(
                     title = "Blue - Abyss Caller",
+                    name = "blue_monster_level_1",
                     description = "Summons echoes from the deep ocean — voices that twist sailors’ minds into madness.",
                     imageRes = R.drawable.blue_monster_level_1
                 ),
                 ListItem(
                     title = "Green - Rot Weaver",
+                    name = "green_monster_level_1",
                     description = "Spins fungal threads through soil and corpses, knitting decay into new lifeforms.",
                     imageRes = R.drawable.green_monster_level_1
                 ),
                 ListItem(
                     title = "Orange - Cinder Howl",
+                    name = "orange_monster_level_1",
                     description = "A molten beast whose roar ignites the air; its breath smells like burning stone.",
                     imageRes = R.drawable.orange_monster_level_1
                 ),
                 ListItem(
                     title = "Pink - Bliss Warden",
+                    name = "pink_monster_level_1",
                     description = "Guards the border between pleasure and pain — its smile makes mortals forget which side they’re on.",
                     imageRes = R.drawable.pink_monster_level_1
                 ),
                 ListItem(
                     title = "Purple – Mind Shiver",
+                    name = "purple_monster_level_1",
                     description = "SA psychic predator that freezes thoughts mid-sentence; its presence feels like déjà vu and static.",
                     imageRes = R.drawable.purple_monster_level_1
                 ),
                 ListItem(
                     title = "Red – Rage Bastion",
+                    name = "red_monster_level_1",
                     description = "A fortress-shaped creature fueled by fury; every wound it takes turns into armor.",
                     imageRes = R.drawable.red_monster_level_1
                 ),
                 ListItem(
                     title = "White – Halo Scorn",
+                    name = "white_monster_level_1",
                     description = "An angelic horror with a broken crown of light; it hunts purity in the name of perfection.",
                     imageRes = R.drawable.white_monster_level_1
                 ),
                 ListItem(
                     title = "Yellow – Dusk Gleam",
+                    name = "yellow_monster_level_1",
                     description = "A radiant trickster that appears at sunset; those who chase its glow vanish into mirages.",
                     imageRes = R.drawable.yellow_monster_level_1
                 ),
@@ -166,10 +178,12 @@ fun OnboardingScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(24.dp),
+                .safeDrawingPadding() // Replaces SafeArea
+                .padding(horizontal = 18.dp)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(25.dp))
 
             // Horizontal Pager
             HorizontalPager(
@@ -184,14 +198,16 @@ fun OnboardingScreen(
                         pagerState = pagerState,
                         pagesCount = pages.size,
                         coroutineScope = coroutineScope,
-                        onFinish = onFinish
+                        onFinish = onFinish,
+                        viewModel = viewModel
                     )
                     is OnboardingPage.WithList -> OnboardingPageContent(
                         page = page,
                         pagerState = pagerState,
                         pagesCount = pages.size,
                         coroutineScope = coroutineScope,
-                        onFinish = { viewModel.completeOnboarding(onFinish) }
+                        onFinish = onFinish,
+                        viewModel = viewModel
                     )
                 }
             }
@@ -215,7 +231,8 @@ fun OnboardingPageContent(
     pagerState: PagerState,
     pagesCount: Int,
     coroutineScope: CoroutineScope,
-    onFinish: () -> Unit
+    onFinish: () -> Unit,
+    viewModel: OnboardingViewModel
 ) {
     Column(
         modifier = Modifier
@@ -247,7 +264,8 @@ fun OnboardingPageContent(
                 MonsterSelectionList(
                     items = page.items,
                     pageImageRes = page.imageRes,
-                    onFinish = onFinish
+                    onFinish = onFinish,
+                    viewModel = viewModel
                 )
             }
         }
@@ -263,11 +281,13 @@ private fun OnboardingImageCard(
         modifier = Modifier
             .fillMaxWidth()
             .height(325.dp)
-            .background(
-                brush = Brush.verticalGradient(OnboardingTheme.CardGradient),
+            .border( // Replaces border: Border.all()
+                width = 1.dp,
+                color = Color.White,
                 shape = RoundedCornerShape(5.dp)
             )
-            .border(0.5.dp, OnboardingTheme.BorderColor, shape = RoundedCornerShape(5.dp))
+            .clip(RoundedCornerShape(5.dp)) // Ensures background respects the border radius
+            .background(brush = Brush.verticalGradient(OnboardingTheme.CardGradient))
     ) {
         Box(
             modifier = Modifier
@@ -296,7 +316,8 @@ private fun OnboardingTitle(text: String) {
         fontWeight = FontWeight.Bold,
         color = OnboardingTheme.TextColor,
         textAlign = TextAlign.Start,
-        lineHeight = 50.sp
+        lineHeight = 50.sp,
+        fontFamily = ibmPlexMono,
     )
 }
 
@@ -304,10 +325,12 @@ private fun OnboardingTitle(text: String) {
 private fun OnboardingDescription(text: String) {
     Text(
         text = text,
-        fontSize = 24.sp,
+        fontSize = 22.sp,
         color = OnboardingTheme.TextColor,
         textAlign = TextAlign.Start,
-        lineHeight = 40.sp
+        lineHeight = 40.sp,
+        fontFamily = ibmPlexMono,
+        fontWeight = FontWeight.Normal
     )
 }
 
@@ -315,7 +338,8 @@ private fun OnboardingDescription(text: String) {
 private fun MonsterSelectionList(
     items: List<ListItem>,
     pageImageRes: Int,
-    onFinish: () -> Unit
+    onFinish: () -> Unit,
+    viewModel: OnboardingViewModel
 ) {
     val scrollState = rememberScrollState()
     Column(
@@ -326,7 +350,14 @@ private fun MonsterSelectionList(
             MonsterListItem(
                 item = item,
                 imageRes = item.imageRes,
-                onClick = onFinish
+                onClick = {
+                    viewModel.completeOnboarding(
+                        onComplete = onFinish,
+                        title = item.title,
+                        name = item.name,
+                        image = item.imageRes
+                    )
+                }
             )
         }
     }
@@ -342,12 +373,14 @@ private fun MonsterListItem(
         modifier = Modifier
             .fillMaxWidth()
             .height(75.dp)
-            .background(
-                brush = Brush.verticalGradient(OnboardingTheme.CardGradient),
+            .clickable(onClick = onClick)
+            .border( // Replaces border: Border.all()
+                width = 1.dp,
+                color = Color.White,
                 shape = RoundedCornerShape(5.dp)
             )
-            .clickable(onClick = onClick)
-            .border(0.5.dp, OnboardingTheme.BorderColor, shape = RoundedCornerShape(5.dp)),
+            .clip(RoundedCornerShape(5.dp)) // Ensures background respects the border radius
+            .background(brush = Brush.verticalGradient(OnboardingTheme.CardGradient)),
         contentAlignment = Alignment.Center
     ) {
         Row(
@@ -361,14 +394,15 @@ private fun MonsterListItem(
                 contentDescription = item.title,
                 modifier = Modifier.size(70.dp)
             )
-            Spacer(Modifier.width(15.dp))
+            Spacer(Modifier.width(10.dp))
             Text(
                 text = item.title,
-                fontSize = 20.sp,
+                fontSize = 18.sp,
                 color = OnboardingTheme.TextColor,
                 fontWeight = FontWeight.Normal,
                 textAlign = TextAlign.Start,
-                lineHeight = 40.sp
+                lineHeight = 40.sp,
+                fontFamily = ibmPlexMono,
             )
         }
     }

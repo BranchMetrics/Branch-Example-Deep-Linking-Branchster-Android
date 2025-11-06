@@ -1,15 +1,17 @@
 package io.branch.branchsters.navigation
 
-import HomepageScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import io.branch.branchsters.views.HomeScreen
 
 import io.branch.branchsters.views.SplashScreen
+import io.branch.branchsters.views.OnboardingScreen
 
 sealed class Screen(val route: String) {
     object Splash : Screen("splash")
+    object Onboarding : Screen("onboarding")
     object Home : Screen("home")
 }
 
@@ -25,13 +27,28 @@ fun NavGraph(navController: NavHostController) {
                     navController.navigate(Screen.Home.route) {
                         popUpTo(Screen.Splash.route) { inclusive = true }
                     }
+                },
+                onNavigateToOnboarding = {
+                    navController.navigate(Screen.Onboarding.route) {
+                        popUpTo(Screen.Splash.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable(route = Screen.Onboarding.route) {
+            OnboardingScreen(
+                onFinish = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Onboarding.route) { inclusive = true }
+                    }
                 }
             )
         }
         
         composable(route = Screen.Home.route) {
-            HomepageScreen(
-                 navController = navController
+            HomeScreen(
+                onNavigateToGemini = {}
             )
         }
     }

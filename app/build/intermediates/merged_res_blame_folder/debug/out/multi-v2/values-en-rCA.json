@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "io.branch.branchsters.app-mergeDebugResources-54:/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "io.branch.branchsters.app-mergeDebugResources-66:/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
-                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/2ccd268e0ca2e1cd10ec650ac8067a3e/transformed/core-1.12.0/res/values-en-rCA/values-en-rCA.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,151,253,352,451,555,657,773",
-                        "endColumns": "95,101,98,98,103,101,115,100",
-                        "endOffsets": "146,248,347,446,550,652,768,869"
-                    },
-                    "to": {
-                        "startLines": "33,34,35,36,37,38,39,91",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3205,3301,3403,3502,3601,3705,3807,8980",
-                        "endColumns": "95,101,98,98,103,101,115,100",
-                        "endOffsets": "3296,3398,3497,3596,3700,3802,3918,9076"
-                    }
-                },
-                {
-                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/4d2c9d8f283404e6cbdd5a6f7bc2310f/transformed/jetified-material3-1.1.2/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/2ac6d8720382978bc7319ca73792f011/transformed/jetified-material3-1.1.2/res/values-en-rCA/values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/c631ad058edf0b463b84315a903e8c75/transformed/jetified-ui-release/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/823d4f47e4c4bf98f536ab0eede32a9c/transformed/core-1.13.1/res/values-en-rCA/values-en-rCA.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,253,352,451,555,657,773",
+                        "endColumns": "95,101,98,98,103,101,115,100",
+                        "endOffsets": "146,248,347,446,550,652,768,869"
+                    },
+                    "to": {
+                        "startLines": "33,34,35,36,37,38,39,91",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3205,3301,3403,3502,3601,3705,3807,8980",
+                        "endColumns": "95,101,98,98,103,101,115,100",
+                        "endOffsets": "3296,3398,3497,3596,3700,3802,3918,9076"
+                    }
+                },
+                {
+                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/8a37737e6abc0693a80dd903d1a3836c/transformed/jetified-ui-release/res/values-en-rCA/values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/guru.prasadh/.gradle/caches/transforms-3/9a549c33b10fdb35fc6129c5d1683c19/transformed/appcompat-1.2.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "/Users/bradley.pickard/.gradle/caches/transforms-3/b6a1901c8e32bd6b9485be69a34d3f15/transformed/appcompat-1.2.0/res/values-en-rCA/values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

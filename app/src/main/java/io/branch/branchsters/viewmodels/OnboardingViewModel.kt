@@ -3,6 +3,7 @@ package io.branch.branchsters.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import io.branch.branchsters.R
 import io.branch.branchsters.data.entity.Monster
 import io.branch.branchsters.data.repository.MonsterRepository
 import io.branch.branchsters.data.repository.QuestRepository
@@ -13,8 +14,7 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 data class OnboardingUiState(
-    val currentMonster: Monster? = null,
-    val selectedMonsterName: String = "",
+    var currentMonster: Monster? = null,
     val isOnboardingComplete: Boolean = false
 )
 
@@ -22,7 +22,6 @@ class OnboardingViewModel(
     private val monsterRepository: MonsterRepository,
     private val questRepository: QuestRepository
 ) : ViewModel() {
-    
     private val _uiState = MutableStateFlow(OnboardingUiState())
     val uiState: StateFlow<OnboardingUiState> = _uiState.asStateFlow()
 
@@ -35,51 +34,26 @@ class OnboardingViewModel(
             monsterRepository.currentMonster.collect { monster ->
                 _uiState.value = _uiState.value.copy(
                     currentMonster = monster,
-                    selectedMonsterName = monster?.monsterName ?: ""
                 )
             }
         }
     }
 
-    fun selectMonsterName(name: String) {
-        _uiState.value = _uiState.value.copy(selectedMonsterName = name)
-    }
-
-    fun completeOnboarding(onComplete: () -> Unit) {
+    fun completeOnboarding(onComplete: () -> Unit, title: String, name: String, image: Int) {
         viewModelScope.launch {
             val monster = _uiState.value.currentMonster
-            
-            if (monster != null) {
+
                 // Update existing monster
-                val updatedMonster = monster.copy(
-                    monsterName = _uiState.value.selectedMonsterName.ifEmpty { monster.monsterName },
+                val updatedMonster = monster?.copy(
+                    monsterName = name,
+                    monsterTitle = title,
+                    monsterImage = image,
                     isOnboarded = true
                 )
-                monsterRepository.updateMonster(updatedMonster)
-            } else {
-                // Create new monster if none exists
-                val newMonster = Monster(
-                    monsterName = _uiState.value.selectedMonsterName.ifEmpty { "Starter Branchster" },
-                    monsterImage = "default_monster",
-                    isOnboarded = true
-                )
-                monsterRepository.insertMonster(newMonster)
-            }
-            
-            // Mark first quest as completed (onboarding quest)
-            val firstQuest = questRepository.allQuests.firstOrNull()?.firstOrNull()
-            firstQuest?.let {
-                questRepository.updateQuestCompletion(it.id, true)
-            }
-            
+                monsterRepository.updateMonster(updatedMonster!!)
+
             _uiState.value = _uiState.value.copy(isOnboardingComplete = true)
             onComplete()
-        }
-    }
-
-    fun updateMonsterOnboardingStatus(monsterId: Int, isOnboarded: Boolean) {
-        viewModelScope.launch {
-            monsterRepository.updateOnboardingStatus(monsterId, isOnboarded)
         }
     }
 }
