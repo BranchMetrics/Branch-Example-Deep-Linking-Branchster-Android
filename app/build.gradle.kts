@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "io.branch.branchsters"
+    namespace = "io.branch.branchster"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.branch.branchsters"
+        applicationId = "io.branch.branchster"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
