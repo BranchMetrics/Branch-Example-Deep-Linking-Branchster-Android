@@ -27,6 +27,12 @@ interface MonsterDao {
     @Query("UPDATE monsters SET isOnboarded = :isOnboarded WHERE id = :monsterId")
     suspend fun updateOnboardingStatus(monsterId: Int, isOnboarded: Boolean)
     
+    @Query("UPDATE monsters SET branchLink = :branchLink WHERE id = :monsterId")
+    suspend fun updateBranchLink(monsterId: Int, branchLink: String)
+    
+    @Query("UPDATE monsters SET qrCodePath = :qrCodePath WHERE id = :monsterId")
+    suspend fun updateQrCodePath(monsterId: Int, qrCodePath: String)
+    
     @Query("SELECT * FROM monsters WHERE isOnboarded = 1 LIMIT 1")
     fun getOnboardedMonster(): Flow<Monster?>
     

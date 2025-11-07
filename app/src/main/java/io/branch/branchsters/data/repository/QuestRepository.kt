@@ -12,6 +12,10 @@ class QuestRepository(private val questDao: QuestDao) {
     
     val completedQuests: Flow<List<Quest>> = questDao.getCompletedQuests()
     
+    suspend fun getAllQuestsSync(): List<Quest> {
+        return questDao.getAllQuestsSync()
+    }
+    
     suspend fun getQuestById(questId: Int): Quest? {
         return questDao.getQuestById(questId)
     }
@@ -30,6 +34,10 @@ class QuestRepository(private val questDao: QuestDao) {
     
     suspend fun updateQuestCompletion(questId: Int, isCompleted: Boolean) {
         questDao.updateQuestCompletion(questId, isCompleted)
+    }
+    
+    suspend fun unlockDependentQuests(questId: Int) {
+        questDao.unlockDependentQuests(questId)
     }
     
     suspend fun deleteQuest(quest: Quest) {
