@@ -13,5 +13,6 @@ data class Monster(
     val isOnboarded: Boolean = false, // Tracks if user has completed onboarding
     val level: Int = 1, // Monster's current level
     val xp: Int = 0, // Monster's current XP
-    val branchLink: String? = null // Branch link associated with this monster
+    val branchLink: String? = null, // Branch link associated with this monster
+    val qrCodePath: String? = null // File path to persisted QR code image
 )

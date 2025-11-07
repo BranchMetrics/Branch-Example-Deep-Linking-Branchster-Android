@@ -24,6 +24,10 @@ class MonsterRepository(private val monsterDao: MonsterDao) {
         monsterDao.updateBranchLink(monsterId, branchLink)
     }
     
+    suspend fun updateQrCodePath(monsterId: Int, qrCodePath: String) {
+        monsterDao.updateQrCodePath(monsterId, qrCodePath)
+    }
+    
     suspend fun insertMonster(monster: Monster) {
         monsterDao.insertMonster(monster)
     }

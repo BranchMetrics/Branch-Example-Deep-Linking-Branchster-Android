@@ -54,6 +54,8 @@ font ibm_plex_mono_regular
 mipmap ic_launcher
 mipmap ic_launcher_adaptive_back
 mipmap ic_launcher_adaptive_fore
+raw level_up
+raw progress_upgrade
 string app_name
 string branch_key
 string branch_test_key
@@ -70,3 +72,4 @@ string splash_title
 style Theme.Branchsters
 xml backup_rules
 xml data_extraction_rules
+xml file_paths

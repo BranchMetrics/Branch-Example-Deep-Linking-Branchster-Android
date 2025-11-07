@@ -16,12 +16,20 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/mipmap-xhdpi/ic_launcher_adaptive_fore.png"
     },
     {
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_qr_code_white.png.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/qr_code_white.png"
+    },
+    {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/mipmap-xxhdpi_ic_launcher_adaptive_back.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/mipmap-xxhdpi/ic_launcher_adaptive_back.png"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/mipmap-hdpi_ic_launcher_adaptive_back.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/mipmap-hdpi/ic_launcher_adaptive_back.png"
+    },
+    {
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_link.png.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/link.png"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_qr_code.png.flat",
@@ -32,8 +40,8 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/black_monster_level_2.png"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-68:/drawable_activity.png.flat",
-        "source": "io.branch.branchsters.app-main-70:/drawable/activity.png"
+        "merged": "io.branch.branchsters.app-merged_res-68:/raw_progress_upgrade.mp3.flat",
+        "source": "io.branch.branchsters.app-main-70:/raw/progress_upgrade.mp3"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_blue_monster_level_3.png.flat",
@@ -84,6 +92,10 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/mipmap-mdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/xml_file_paths.xml.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/xml/file_paths.xml"
+    },
+    {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_pink_monster_level_4.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/pink_monster_level_4.png"
     },
@@ -104,8 +116,8 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/monster_truck.png"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-68:/drawable_upload.png.flat",
-        "source": "io.branch.branchsters.app-main-70:/drawable/upload.png"
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_braces.png.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/braces.png"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_green_monster_level_3.png.flat",
@@ -120,12 +132,12 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/xml/backup_rules.xml"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-68:/drawable_qr_code_white.png.flat",
-        "source": "io.branch.branchsters.app-main-70:/drawable/qr_code_white.png"
-    },
-    {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_white_monster_level_2.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/white_monster_level_2.png"
+    },
+    {
+        "merged": "io.branch.branchsters.app-merged_res-68:/raw_level_up.mp3.flat",
+        "source": "io.branch.branchsters.app-main-70:/raw/level_up.mp3"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_orange_monster_level_1.png.flat",
@@ -160,6 +172,10 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/font/ibm_plex_mono_bold.ttf"
     },
     {
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/raw_sparkle.mp3.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/raw/sparkle.mp3"
+    },
+    {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_black_monster_level_3.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/black_monster_level_3.png"
     },
@@ -192,8 +208,8 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/mipmap-mdpi/ic_launcher_adaptive_back.png"
     },
     {
-        "merged": "io.branch.branchsters.app-merged_res-68:/drawable_link.png.flat",
-        "source": "io.branch.branchsters.app-main-70:/drawable/link.png"
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_upload.png.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/upload.png"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/mipmap-xhdpi_ic_launcher_adaptive_back.png.flat",
@@ -218,6 +234,10 @@
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_red_monster_level_3.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/red_monster_level_3.png"
+    },
+    {
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_activity.png.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/activity.png"
     },
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_white_monster_level_1.png.flat",
@@ -252,6 +272,10 @@
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/mipmap-xhdpi/ic_launcher.png"
     },
     {
+        "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/raw_evolve.mp3.flat",
+        "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/raw/evolve.mp3"
+    },
+    {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_onboard_monster_2.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/onboard_monster_2.png"
     },
@@ -266,9 +290,5 @@
     {
         "merged": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-merged_res-68:/drawable_pink_monster_level_2.png.flat",
         "source": "/Users/bradley.pickard/.gradle/daemon/8.2/io.branch.branchsters.app-main-70:/drawable/pink_monster_level_2.png"
-    },
-    {
-        "merged": "io.branch.branchsters.app-merged_res-68:/drawable_braces.png.flat",
-        "source": "io.branch.branchsters.app-main-70:/drawable/braces.png"
     }
 ]

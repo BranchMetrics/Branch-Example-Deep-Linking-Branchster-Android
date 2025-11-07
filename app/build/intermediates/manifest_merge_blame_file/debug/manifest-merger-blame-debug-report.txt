@@ -33,7 +33,7 @@
 22-->[com.android.installreferrer:installreferrer:2.2] /Users/bradley.pickard/.gradle/caches/transforms-3/1b8eafaa98d91874bbb7da2579726976/transformed/jetified-installreferrer-2.2/AndroidManifest.xml:9:22-107
 23
 24    <application
-24-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-70:19
+24-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-81:19
 25        android:name="io.branch.branchsters.ApplicationClass"
 25-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:8:9-41
 26        android:allowBackup="true"
@@ -180,144 +180,162 @@
 99            android:value="false" />
 99-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:58-79
 100
-101        <activity
-101-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39
-102            android:name="androidx.compose.ui.tooling.PreviewActivity"
-102-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:24:13-71
-103            android:exported="true" />
-103-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:25:13-36
-104        <activity
-104-->[androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:23:9-25:39
-105            android:name="androidx.activity.ComponentActivity"
-105-->[androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:24:13-63
-106            android:exported="true" />
-106-->[androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:25:13-36
-107
-108        <service
-108-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:28:9-34:19
-109            android:name="com.google.firebase.components.ComponentDiscoveryService"
-109-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:29:13-84
-110            android:directBootAware="true"
-110-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:32:13-43
-111            android:exported="false" >
-111-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:30:13-37
-112            <meta-data
-112-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:31:13-33:85
-113                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
-113-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:32:17-105
-114                android:value="com.google.firebase.components.ComponentRegistrar" />
-114-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:33:17-82
-115            <meta-data
-115-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:35:13-37:85
-116                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-116-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:36:17-109
-117                android:value="com.google.firebase.components.ComponentRegistrar" />
-117-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:37:17-82
-118        </service>
-119
-120        <activity
-120-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-121            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-121-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-122            android:exported="false"
-122-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-123            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-123-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-124
-125        <provider
-125-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:23:9-28:39
-126            android:name="com.google.firebase.provider.FirebaseInitProvider"
-126-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:24:13-77
-127            android:authorities="io.branch.branchsters.firebaseinitprovider"
-127-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:25:13-72
-128            android:directBootAware="true"
-128-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:26:13-43
-129            android:exported="false"
-129-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:27:13-37
-130            android:initOrder="100" />
-130-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:28:13-36
-131
-132        <service
-132-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
-133            android:name="androidx.room.MultiInstanceInvalidationService"
-133-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
-134            android:directBootAware="true"
-134-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
-135            android:exported="false" />
-135-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
-136
-137        <provider
-137-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
-138            android:name="androidx.startup.InitializationProvider"
-138-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:25:13-67
-139            android:authorities="io.branch.branchsters.androidx-startup"
-139-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:26:13-68
-140            android:exported="false" >
-140-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:27:13-37
-141            <meta-data
-141-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
-142                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-142-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:30:17-75
-143                android:value="androidx.startup" />
-143-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:31:17-49
-144            <meta-data
-144-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/bradley.pickard/.gradle/caches/transforms-3/d96c0e5cbdf29897466092e856428b58/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
-145                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-145-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/bradley.pickard/.gradle/caches/transforms-3/d96c0e5cbdf29897466092e856428b58/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
-146                android:value="androidx.startup" />
-146-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/bradley.pickard/.gradle/caches/transforms-3/d96c0e5cbdf29897466092e856428b58/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
-147            <meta-data
-147-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-148                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-148-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-149                android:value="androidx.startup" />
-149-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-150        </provider>
-151
-152        <receiver
-152-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-153            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-153-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-154            android:directBootAware="false"
-154-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-155            android:enabled="true"
-155-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-156            android:exported="true"
-156-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-157            android:permission="android.permission.DUMP" >
-157-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-158            <intent-filter>
-158-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-159                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-159-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-159-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-160            </intent-filter>
-161            <intent-filter>
-161-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-162                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-162-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-162-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-163            </intent-filter>
-164            <intent-filter>
-164-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-165                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-165-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-165-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-166            </intent-filter>
-167            <intent-filter>
-167-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-168                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-168-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-168-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-169            </intent-filter>
-170        </receiver>
-171
-172        <meta-data
-172-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/034cd97b729252d8f6ef4f293cf7b8d3/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
-173            android:name="com.google.android.gms.version"
-173-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/034cd97b729252d8f6ef4f293cf7b8d3/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
-174            android:value="@integer/google_play_services_version" />
-174-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/034cd97b729252d8f6ef4f293cf7b8d3/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
-175    </application>
-176
-177</manifest>
+101        <!-- FileProvider for sharing QR codes -->
+102        <provider
+103            android:name="androidx.core.content.FileProvider"
+103-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:72:13-62
+104            android:authorities="io.branch.branchsters.fileprovider"
+104-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:73:13-64
+105            android:exported="false"
+105-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:74:13-37
+106            android:grantUriPermissions="true" >
+106-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:75:13-47
+107            <meta-data
+107-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:76:13-78:54
+108                android:name="android.support.FILE_PROVIDER_PATHS"
+108-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:77:17-67
+109                android:resource="@xml/file_paths" />
+109-->/Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:78:17-51
+110        </provider>
+111
+112        <activity
+112-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:23:9-25:39
+113            android:name="androidx.compose.ui.tooling.PreviewActivity"
+113-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:24:13-71
+114            android:exported="true" />
+114-->[androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:25:13-36
+115        <activity
+115-->[androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:23:9-25:39
+116            android:name="androidx.activity.ComponentActivity"
+116-->[androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:24:13-63
+117            android:exported="true" />
+117-->[androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:25:13-36
+118
+119        <service
+119-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:28:9-34:19
+120            android:name="com.google.firebase.components.ComponentDiscoveryService"
+120-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:29:13-84
+121            android:directBootAware="true"
+121-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:32:13-43
+122            android:exported="false" >
+122-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:30:13-37
+123            <meta-data
+123-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:31:13-33:85
+124                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
+124-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:32:17-105
+125                android:value="com.google.firebase.components.ComponentRegistrar" />
+125-->[com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gradle/caches/transforms-3/cdbba368e56772b4b7cb1f83cfd1bc8c/transformed/jetified-firebase-ai-17.5.0/AndroidManifest.xml:33:17-82
+126            <meta-data
+126-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:35:13-37:85
+127                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+127-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:36:17-109
+128                android:value="com.google.firebase.components.ComponentRegistrar" />
+128-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:37:17-82
+129        </service>
+130
+131        <activity
+131-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+132            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+132-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+133            android:exported="false"
+133-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+134            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+134-->[com.google.android.gms:play-services-base:18.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/e82f98aa9384039495fb010159e2de9f/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+135
+136        <provider
+136-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:23:9-28:39
+137            android:name="com.google.firebase.provider.FirebaseInitProvider"
+137-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:24:13-77
+138            android:authorities="io.branch.branchsters.firebaseinitprovider"
+138-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:25:13-72
+139            android:directBootAware="true"
+139-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:26:13-43
+140            android:exported="false"
+140-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:27:13-37
+141            android:initOrder="100" />
+141-->[com.google.firebase:firebase-common:22.0.1] /Users/bradley.pickard/.gradle/caches/transforms-3/b74fea7f444daa7997653ef1f80e386b/transformed/jetified-firebase-common-22.0.1/AndroidManifest.xml:28:13-36
+142
+143        <service
+143-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+144            android:name="androidx.room.MultiInstanceInvalidationService"
+144-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+145            android:directBootAware="true"
+145-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+146            android:exported="false" />
+146-->[androidx.room:room-runtime:2.6.1] /Users/bradley.pickard/.gradle/caches/transforms-3/bd0d4b103a82a782669e6f2a5ff1868a/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+147
+148        <provider
+148-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+149            android:name="androidx.startup.InitializationProvider"
+149-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:25:13-67
+150            android:authorities="io.branch.branchsters.androidx-startup"
+150-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:26:13-68
+151            android:exported="false" >
+151-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:27:13-37
+152            <meta-data
+152-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+153                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+153-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:30:17-75
+154                android:value="androidx.startup" />
+154-->[androidx.emoji2:emoji2:1.4.0] /Users/bradley.pickard/.gradle/caches/transforms-3/09cce548b283ca9cad9537b9c465ff81/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:31:17-49
+155            <meta-data
+155-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/bradley.pickard/.gradle/caches/transforms-3/d96c0e5cbdf29897466092e856428b58/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+156                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+156-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/bradley.pickard/.gradle/caches/transforms-3/d96c0e5cbdf29897466092e856428b58/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+157                android:value="androidx.startup" />
+157-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/bradley.pickard/.gradle/caches/transforms-3/d96c0e5cbdf29897466092e856428b58/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+158            <meta-data
+158-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+159                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+159-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+160                android:value="androidx.startup" />
+160-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+161        </provider>
+162
+163        <receiver
+163-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+164            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+164-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+165            android:directBootAware="false"
+165-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+166            android:enabled="true"
+166-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+167            android:exported="true"
+167-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+168            android:permission="android.permission.DUMP" >
+168-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+169            <intent-filter>
+169-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+170                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+170-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+170-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+171            </intent-filter>
+172            <intent-filter>
+172-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+173                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+173-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+173-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+174            </intent-filter>
+175            <intent-filter>
+175-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+176                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+176-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+176-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+177            </intent-filter>
+178            <intent-filter>
+178-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+179                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+179-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+179-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/66930a681272c8261bd0ababb6e02e75/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+180            </intent-filter>
+181        </receiver>
+182
+183        <meta-data
+183-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/034cd97b729252d8f6ef4f293cf7b8d3/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+184            android:name="com.google.android.gms.version"
+184-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/034cd97b729252d8f6ef4f293cf7b8d3/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+185            android:value="@integer/google_play_services_version" />
+185-->[com.google.android.gms:play-services-basement:18.3.0] /Users/bradley.pickard/.gradle/caches/transforms-3/034cd97b729252d8f6ef4f293cf7b8d3/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+186    </application>
+187
+188</manifest>

@@ -6,8 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import io.branch.branchsters.R
+import io.branch.branchsters.data.dao.BranchEventDao
 import io.branch.branchsters.data.dao.MonsterDao
 import io.branch.branchsters.data.dao.QuestDao
+import io.branch.branchsters.data.entity.BranchEventData
 import io.branch.branchsters.data.entity.Monster
 import io.branch.branchsters.data.entity.Quest
 import kotlinx.coroutines.CoroutineScope
@@ -15,13 +17,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Database(
-    entities = [Quest::class, Monster::class],
-    version = 8,
+    entities = [Quest::class, Monster::class, BranchEventData::class],
+    version = 9,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun questDao(): QuestDao
     abstract fun monsterDao(): MonsterDao
+    abstract fun branchEventDao(): BranchEventDao
 
     companion object {
         @Volatile

@@ -1,5 +1,6 @@
 package io.branch.branchsters.views
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -50,12 +51,16 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -77,11 +82,17 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import io.branch.branchsters.ApplicationClass
+import io.branch.branchsters.MainActivity
 import io.branch.branchsters.R
 import io.branch.branchsters.data.entity.Quest
 import io.branch.branchsters.ui.theme.ibmPlexMono
 import io.branch.branchsters.viewmodels.HomeViewModel
 import io.branch.branchsters.viewmodels.HomeViewModelFactory
+import io.branch.branchsters.views.homeComponents.LinkShareOverlay
+import io.branch.branchsters.views.homeComponents.QrCodeOverlay
+import io.branch.branchsters.views.homeComponents.TriggerEventOverlay
+import io.branch.branchsters.views.homeComponents.ViewBranchDataOverlay
+import kotlinx.coroutines.delay
 
 @Composable
 fun HomeScreen(
@@ -95,11 +106,28 @@ fun HomeScreen(
     val viewModel: HomeViewModel = viewModel(
         factory = HomeViewModelFactory(
             application.questRepository,
-            application.monsterRepository
+            application.monsterRepository,
+            application.branchEventRepository,
+            application.soundManager
         )
     )
     val uiState by viewModel.uiState.collectAsState()
+    val lifecycleOwner = LocalLifecycleOwner.current
 
+    // Observe lifecycle to detect when user returns from share sheet
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                // Called when app resumes (e.g., after share sheet is closed)
+                viewModel.onAppResumed()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
+    }
 
     LaunchedEffect(Unit) {
         // This flow emits whenever the current destination changes
@@ -185,7 +213,7 @@ fun HomeScreen(
                         if (currentLevel != previousLevel) {
                             // Scale up animation
                             imageScale = 1.2f
-                            kotlinx.coroutines.delay(300)
+                            delay(300)
                             imageScale = 1f
                             previousLevel = currentLevel
                         }
@@ -204,7 +232,7 @@ fun HomeScreen(
                     // Crossfade animation for image transition
                     Crossfade(
                         targetState = currentMonsterImage,
-                        animationSpec = tween(durationMillis = 1500),
+                        animationSpec = tween(durationMillis = 2000),
                         label = "monster_image_crossfade"
                     ) { imageRes ->
                         Image(
@@ -372,9 +400,24 @@ fun HomeScreen(
                                         onNavigateToCreateLink(quest.id)
                                     } else if(quest.id ==2) {
                                         viewModel.openOverlayForLinkShare(quest.id)
-                                    } else {
-                                        viewModel.toggleQuestCompletion(quest.id)
+                                    } else if(quest.id == 3) {
+                                        viewModel.openOverlayForTriggerEvent(quest.id)
+                                    } else if (quest.id == 4){
+                                        viewModel.openOverlayForViewBranchData(quest.id)
+                                    }else if(quest.id == 5){
+                                        viewModel.generateQrCode(
+                                            monsterName = uiState.currentMonster?.monsterTitle
+                                                ?: "",
+                                            monsterColor = uiState.currentMonster?.monsterTitle?.split(
+                                                " "
+                                            )?.first() ?: "",
+                                            monsterLevel = uiState.currentMonster?.level ?: 0,
+                                            context = context,
+                                            questId = quest.id
+                                        )
 
+                                    } else {
+                                        viewModel.shareQrCode(quest.id,context)
                                     }
                                 }
                             )
@@ -386,7 +429,6 @@ fun HomeScreen(
             }
 
             // Bottom overlay for link sharing
-            
             AnimatedVisibility(
                 visible = uiState.showOverlay,
                 enter = slideInVertically(initialOffsetY = { it }),
@@ -400,7 +442,66 @@ fun HomeScreen(
                         viewModel.onLinkShared() // Quest 1 is link creation, so share is quest 2
                     },
                     onDismiss = {
-                        // Optional: Add dismiss functionality if needed
+                       viewModel.dismissShareOverlay()
+                    }
+                )
+            }
+
+            // Bottom overlay for trigger event
+            AnimatedVisibility(
+                visible = uiState.showTriggerEventOverlay,
+                enter = slideInVertically(initialOffsetY = { it }),
+                exit = slideOutVertically(targetOffsetY = { it }),
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                TriggerEventOverlay (
+                    monsterName = uiState.currentMonster?.monsterTitle ?: "",
+                    monsterColor = uiState.currentMonster?.monsterTitle?.split(" ")?.first() ?: "",
+                    monsterLevel =  uiState.currentMonster?.level ?: 0,
+                    monsterExp =  uiState.currentMonster?.xp ?: 0,
+                    onCreateEvent = {
+                        viewModel.createBranchEvent(context)
+                    },
+                    onDismiss = {
+                        viewModel.dismissEventOverlay()
+                    }
+                )
+            }
+
+            // Bottom overlay for Qr Code
+            AnimatedVisibility(
+                visible = uiState.showQrCodeOverlay,
+                enter = slideInVertically(initialOffsetY = { it }),
+                exit = slideOutVertically(targetOffsetY = { it }),
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                QrCodeOverlay (
+                    qrCode = uiState.qrCodeImage!!,
+                    onClose = {
+                        viewModel.completeQrCode()
+                    },
+                    onDismiss = {
+                        viewModel.dismissQrCodeOverlay()
+                    }
+                )
+            }
+
+            // Bottom overlay for View Branch Data
+            AnimatedVisibility(
+                visible = uiState.showViewBranchDataOverlay,
+                enter = slideInVertically(initialOffsetY = { it }),
+                exit = slideOutVertically(targetOffsetY = { it }),
+                modifier = Modifier.align(Alignment.BottomCenter)
+            ) {
+                ViewBranchDataOverlay(
+                    onGetLatestEvent = {
+                        viewModel.getLatestBranchEvent()
+                    },
+                    onComplete = {
+                        viewModel.completeViewBranchData()
+                    },
+                    onDismiss = {
+                        viewModel.dismissViewBranchDataOverlay()
                     }
                 )
             }
@@ -408,114 +509,9 @@ fun HomeScreen(
     }
 }
 
-@Composable
-fun LinkShareOverlay(
-    link: String,
-    onShare: () -> Unit,
-    onDismiss: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        shape = RoundedCornerShape(10.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF2A2D32)
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "🎉 Link Created!",
-                    style = TextStyle(
-                        fontFamily = ibmPlexMono,
-                        color = Color.White,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            }
-            
-            Spacer(Modifier.height(12.dp))
-            
-            Text(
-                text = "Share your Branch link to complete the next quest!",
-                style = TextStyle(
-                    fontFamily = ibmPlexMono,
-                    color = Color.White.copy(alpha = 0.7f),
-                    fontSize = 14.sp
-                )
-            )
-            
-            Spacer(Modifier.height(16.dp))
-            
-            // Link display
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-                    .border(1.dp, Color.White.copy(alpha = 0.4f), RoundedCornerShape(12.dp))
-                    .background(Color(0xFF1E1E1E))
-                    .padding(12.dp)
-            ) {
-                SelectionContainer {
-                    Text(
-                        text = link,
-                        style = TextStyle(
-                            fontFamily = ibmPlexMono,
-                            color = Color(0xFF2FB8FF),
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Medium
-                        ),
-                        maxLines = 2
-                    )
-                }
-            }
-            
-            Spacer(Modifier.height(16.dp))
-            
-            // Share button
-            Button(
-                onClick = onShare,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF111213)
-                )
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Share,
-                    contentDescription = "Share",
-                    tint = Color.White,
-                    modifier = Modifier.size(20.dp)
-                )
-                Spacer(Modifier.width(8.dp))
-                Text(
-                    text = "Share Link",
-                    style = TextStyle(
-                        fontFamily = ibmPlexMono,
-                        color = Color.White,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-            }
-        }
-    }
-}
 
-fun shareLink(context: android.content.Context, link: String) {
+
+fun shareLink(context: Context, link: String) {
     val sendIntent = Intent().apply {
         action = Intent.ACTION_SEND
         putExtra(Intent.EXTRA_TEXT, link)

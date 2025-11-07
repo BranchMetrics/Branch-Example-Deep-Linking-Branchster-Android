@@ -1,9 +1,20 @@
 -- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:71:9-79:20
+	android:grantUriPermissions
+		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:75:13-47
+	android:authorities
+		INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:73:13-64
+	android:exported
+		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:74:13-37
+	android:name
+		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:72:13-62
 manifest
-ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-72:12
-INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-72:12
-INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-72:12
-INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-72:12
+ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-83:12
+INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:2:1-83:12
 MERGED from [io.branch.sdk.android:library:5.20.3] /Users/bradley.pickard/.gradle/caches/transforms-3/9c433cecf42b3c16d506cd94832aaa55/transformed/jetified-library-5.20.3/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.compose.material3:material3:1.1.2] /Users/bradley.pickard/.gradle/caches/transforms-3/2ac6d8720382978bc7319ca73792f011/transformed/jetified-material3-1.1.2/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common:2.7.5] /Users/bradley.pickard/.gradle/caches/transforms-3/89fbd453a8eaee2252584d4e4eed09c2/transformed/navigation-common-2.7.5/AndroidManifest.xml:17:1-22:12
@@ -106,8 +117,8 @@ MERGED from [com.google.firebase:firebase-ai:17.5.0] /Users/bradley.pickard/.gra
 	android:name
 		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-70:19
-INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-70:19
+ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-81:19
+INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:7:5-81:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/e652db147fe268bca45a404b3e9ff2c8/transformed/jetified-ui-tooling-release/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.5.4] /Users/bradley.pickard/.gradle/caches/transforms-3/921bb83413c0c95031337ea7be0e9914/transformed/jetified-ui-test-manifest-1.5.4/AndroidManifest.xml:22:5-26:19
@@ -232,6 +243,12 @@ ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Br
 		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:58-79
 	android:name
 		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:68:20-57
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:76:13-78:54
+	android:resource
+		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:78:17-51
+	android:name
+		ADDED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml:77:17-67
 uses-sdk
 INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/bradley.pickard/BranchProjects/Hackathon-25-Monster-Factory/Branch-Monster-Factory-2-Android/app/src/main/AndroidManifest.xml
