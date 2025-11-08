@@ -95,7 +95,7 @@ fun OnboardingScreen(
     val pages = listOf(
         OnboardingPage.Basic(
             title = "See what Branch\ncan do for you",
-            description = "Complete challenges to\nlearn about Branch\nfunctionality and\ncapabilities.",
+            description = "Complete challenges to\nlearn about Branch \ncapabilities.",
             imageRes = io.branch.branchster.R.drawable.qr_code
         ),
         OnboardingPage.Basic(

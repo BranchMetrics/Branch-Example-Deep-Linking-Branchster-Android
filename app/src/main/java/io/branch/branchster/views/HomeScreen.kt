@@ -81,7 +81,7 @@ import kotlinx.coroutines.delay
 fun HomeScreen(
     navController: NavController,
     onNavigateToGemini: () -> Unit = {},
-    onNavigateToCreateLink: (Int) -> Unit = {},
+    onNavigateToCreateLink: (Int, String, Int)  -> Unit = { _, _, _ -> },
     onNavigateToLogs: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -380,7 +380,8 @@ fun HomeScreen(
                                     // For Create Link quest (ID 1), navigate to screen
                                     if (quest.id == 1) {
                                         viewModel.currentQuestID = quest.id
-                                        onNavigateToCreateLink(quest.id)
+                                        onNavigateToCreateLink(quest.id, uiState.currentMonster?.monsterTitle?.split(" ")?.first() ?: "",
+                                            uiState.currentMonster?.level ?: 0)
                                     } else if(quest.id ==2) {
                                         viewModel.openOverlayForLinkShare(quest.id)
                                     } else if(quest.id == 3) {

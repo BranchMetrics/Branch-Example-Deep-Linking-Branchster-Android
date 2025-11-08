@@ -1,12 +1,20 @@
 package io.branch.branchster.views
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.branch.branchster.ApplicationClass
 import io.branch.branchster.viewmodels.HomeViewModel
@@ -27,15 +35,29 @@ fun DetailsScreen(
         )
     )
     val uiState by viewModel.uiState.collectAsState()
+    val gradientColors = listOf(
+        Color(0xFF2A2D32),
+        Color(0xFF1D1D1D)
+    )
 
     // Use branchData (log or decode)
-    Text(text = "Branch Data: $branchData")
+    //Text(text = "Branch Data: $branchData")
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = gradientColors
+                    )
+                )
+                .padding(16.dp)
+    ){
 
-    uiState.currentMonster?.let {
+            uiState.currentMonster?.let {
         Image(
             painter = painterResource(it.monsterImage),
             contentDescription = null
         )
-        Text(text = it.monsterName)
-    }
+       // Text(text = it.monsterName)
+    }}
 }
