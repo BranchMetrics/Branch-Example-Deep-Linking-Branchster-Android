@@ -43,7 +43,7 @@ sealed class OnboardingPage {
     abstract val imageRes: Int
     abstract val title: String
     abstract val description: String
-    
+
     data class Basic(
         override val imageRes: Int,
         override val title: String,
@@ -177,9 +177,10 @@ fun OnboardingScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .safeDrawingPadding() // Replaces SafeArea
-                .padding(horizontal = 18.dp)
-                .verticalScroll(rememberScrollState()),
+                .safeDrawingPadding()
+                .padding(horizontal = 18.dp),
+            // FIXED: Removed .verticalScroll(rememberScrollState()) from this parent Column
+            // so weight(1f) calculations can accurately resolve available device space.
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(25.dp))
@@ -241,30 +242,35 @@ fun OnboardingPageContent(
         verticalArrangement = Arrangement.Top
     ) {
         OnboardingImageCard(imageRes = page.imageRes, contentDescription = page.title)
-        
-        Spacer(modifier = Modifier.height(48.dp))
-        
+
+        Spacer(modifier = Modifier.height(24.dp))
+
         OnboardingTitle(text = page.title)
-        
-        Spacer(modifier = Modifier.height(25.dp))
-        
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         when (page) {
             is OnboardingPage.Basic -> {
-                OnboardingDescription(text = page.description)
-                Spacer(modifier = Modifier.height(35.dp))
-                ArrowButton(
-                    pagerState = pagerState,
-                    pagesCount = pagesCount,
-                    coroutineScope = coroutineScope,
-                    onFinish = onFinish
-                )
+                Column(modifier = Modifier.weight(1f)) {
+                    OnboardingDescription(text = page.description)
+                    Spacer(modifier = Modifier.height(35.dp))
+                    ArrowButton(
+                        pagerState = pagerState,
+                        pagesCount = pagesCount,
+                        coroutineScope = coroutineScope,
+                        onFinish = onFinish
+                    )
+                }
             }
             is OnboardingPage.WithList -> {
+                // FIXED: Passing Modifier.weight(1f) down to the list view
+                // to force it to stretch into the remaining area of the screen.
                 MonsterSelectionList(
                     items = page.items,
                     pageImageRes = page.imageRes,
                     onFinish = onFinish,
-                    viewModel = viewModel
+                    viewModel = viewModel,
+                    modifier = Modifier.weight(1f)
                 )
             }
         }
@@ -279,19 +285,19 @@ private fun OnboardingImageCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(325.dp)
-            .border( // Replaces border: Border.all()
+            .height(220.dp)
+            .border(
                 width = 1.dp,
                 color = Color.White,
                 shape = RoundedCornerShape(5.dp)
             )
-            .clip(RoundedCornerShape(5.dp)) // Ensures background respects the border radius
+            .clip(RoundedCornerShape(5.dp))
             .background(brush = Brush.verticalGradient(OnboardingTheme.CardGradient))
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(24.dp)
+                .padding(16.dp)
                 .background(
                     brush = Brush.verticalGradient(OnboardingTheme.ImageGradient),
                     shape = RoundedCornerShape(1.dp)
@@ -301,7 +307,7 @@ private fun OnboardingImageCard(
             Image(
                 painter = painterResource(imageRes),
                 contentDescription = contentDescription,
-                modifier = Modifier.size(175.dp)
+                modifier = Modifier.size(130.dp)
             )
         }
     }
@@ -338,11 +344,13 @@ private fun MonsterSelectionList(
     items: List<ListItem>,
     pageImageRes: Int,
     onFinish: () -> Unit,
-    viewModel: OnboardingViewModel
+    viewModel: OnboardingViewModel,
+    modifier: Modifier = Modifier // FIXED: Added modifier parameter here
 ) {
     val scrollState = rememberScrollState()
     Column(
-        modifier = Modifier.verticalScroll(scrollState),
+        // FIXED: Combined incoming layout modifier with the local vertical scroll
+        modifier = modifier.verticalScroll(scrollState),
         verticalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         items.forEach { item ->
@@ -373,12 +381,12 @@ private fun MonsterListItem(
             .fillMaxWidth()
             .height(75.dp)
             .clickable(onClick = onClick)
-            .border( // Replaces border: Border.all()
+            .border(
                 width = 1.dp,
                 color = Color.White,
                 shape = RoundedCornerShape(5.dp)
             )
-            .clip(RoundedCornerShape(5.dp)) // Ensures background respects the border radius
+            .clip(RoundedCornerShape(5.dp))
             .background(brush = Brush.verticalGradient(OnboardingTheme.CardGradient)),
         contentAlignment = Alignment.Center
     ) {
@@ -424,7 +432,7 @@ private fun CarouselIndicators(
             } else {
                 OnboardingTheme.BackgroundGradient
             }
-            
+
             Box(
                 modifier = Modifier
                     .size(18.dp)
@@ -436,7 +444,7 @@ private fun CarouselIndicators(
                         shape = CircleShape
                     )
             )
-            
+
             if (index < pageCount - 1) {
                 Spacer(modifier = Modifier.width(8.dp))
             }
