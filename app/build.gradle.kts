@@ -112,6 +112,8 @@ dependencies {
     // Accompanist for Pager
     implementation("com.google.accompanist:accompanist-pager:0.32.0")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.32.0")
+
+    implementation("androidx.core:core-splashscreen:1.0.1")
     
     // Testing
     testImplementation("junit:junit:4.13.2")

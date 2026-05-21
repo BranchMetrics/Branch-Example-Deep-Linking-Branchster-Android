@@ -22,6 +22,7 @@ import io.branch.referral.Branch
 import io.branch.referral.validators.IntegrationValidator
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -29,21 +30,27 @@ class MainActivity : ComponentActivity() {
     private var isBranchInitialized by mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // 1. Install the splash screen BEFORE super.onCreate()
+        val splashScreen = installSplashScreen()
+
         super.onCreate(savedInstanceState)
 
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        // 2. Keep the native splash screen visible until Branch finishes loading
+        splashScreen.setKeepOnScreenCondition {
+            !isBranchInitialized
+        }
 
-        // ✅ Don't launch Compose until Branch is initialized
         setContent {
             BranchstersTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    // Because of the condition above, this block will only render
+                    // when it's ready, making the 'else' condition completely unnecessary!
                     if (isBranchInitialized) {
                         val navController = rememberNavController()
 
-                        // Navigate to deep link only after Branch init
                         LaunchedEffect(branchData) {
                             branchData?.let {
                                 val encoded =
@@ -53,14 +60,6 @@ class MainActivity : ComponentActivity() {
                         }
 
                         NavGraph(navController = navController)
-                    } else {
-//                        // Optional loading UI while Branch initializes
-//                        Box(
-//                            modifier = Modifier.fillMaxSize(),
-//                            contentAlignment = Alignment.Center
-//                        ) {
-//                            CircularProgressIndicator()
-//                        }
                     }
                 }
             }
