@@ -75,6 +75,7 @@ import io.branch.branchster.views.homeComponents.LinkShareOverlay
 import io.branch.branchster.views.homeComponents.QrCodeOverlay
 import io.branch.branchster.views.homeComponents.TriggerEventOverlay
 import io.branch.branchster.views.homeComponents.ViewBranchDataOverlay
+import androidx.compose.ui.graphics.asImageBitmap
 import kotlinx.coroutines.delay
 
 @Composable
@@ -215,8 +216,55 @@ fun HomeScreen(
                         animationSpec = tween(durationMillis = 2000),
                         label = "monster_image_crossfade"
                     ) { imageRes ->
+
+                        // Safely parse the layout resource structure at runtime
+                        val safePainter = remember(imageRes) {
+                            var isInvalidComposeAsset = false
+                            try {
+                                val typeName = context.resources.getResourceTypeName(imageRes)
+                                val entryName = context.resources.getResourceEntryName(imageRes)
+
+                                // Catch adaptive icon tags or anything containing launcher naming conventions
+                                if (typeName == "layout" || entryName.contains("ic_launcher")) {
+                                    isInvalidComposeAsset = true
+                                }
+                            } catch (e: Exception) {
+                                // Resource ID is completely invalid or dead; treat it as an adaptive intercept asset
+                                isInvalidComposeAsset = true
+                            }
+
+                            if (isInvalidComposeAsset) {
+                                try {
+                                    // Flatten the composite system layers into a single raw canvas bitmap
+                                    val systemDrawable = context.createPackageContext(context.packageName, 0)
+                                        .let { androidx.core.content.ContextCompat.getDrawable(it, imageRes) }
+
+                                    if (systemDrawable != null) {
+                                        androidx.compose.ui.graphics.painter.BitmapPainter(
+                                            android.graphics.Bitmap.createBitmap(
+                                                systemDrawable.intrinsicWidth.coerceAtLeast(1),
+                                                systemDrawable.intrinsicHeight.coerceAtLeast(1),
+                                                android.graphics.Bitmap.Config.ARGB_8888
+                                            ).apply {
+                                                val canvas = android.graphics.Canvas(this)
+                                                systemDrawable.setBounds(0, 0, canvas.width, canvas.height)
+                                                systemDrawable.draw(canvas)
+                                            }.asImageBitmap()
+                                        )
+                                    } else {
+                                        androidx.compose.ui.graphics.painter.ColorPainter(Color.Transparent)
+                                    }
+                                } catch (e: Exception) {
+                                    androidx.compose.ui.graphics.painter.ColorPainter(Color.Transparent)
+                                }
+                            } else {
+                                // High-performance image path for true vectors, JPGs, and PNGs
+                                null
+                            }
+                        } ?: painterResource(imageRes) // Use standard painterResource if runtime validation passes
+
                         Image(
-                            painter = painterResource(imageRes),
+                            painter = safePainter,
                             contentDescription = uiState.currentMonster?.monsterName ?: "Monster",
                             modifier = Modifier
                                 .height(250.dp)
