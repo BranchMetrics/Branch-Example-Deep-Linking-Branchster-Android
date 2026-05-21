@@ -133,7 +133,7 @@ fun NavGraph(navController: NavHostController) {
         ) { backStackEntry ->
             val encodedBranchData = backStackEntry.arguments?.getString("branchData") ?: ""
             val branchData = Uri.decode(encodedBranchData)
-            DetailsScreen(branchData = branchData)
+            DetailsScreen(branchData = branchData, onDismiss = { navController.popBackStack() })
         }
 
     }
