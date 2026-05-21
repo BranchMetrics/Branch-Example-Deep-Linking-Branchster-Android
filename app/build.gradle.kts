@@ -27,10 +27,20 @@ android {
 
     buildTypes {
         release {
+            manifestPlaceholders += mapOf(
+                "branchDomain" to "monster-factory.app.link",
+                "branchAlternateDomain" to "monster-factory-alternate.app.link"
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
+            )
+        }
+        debug {
+            manifestPlaceholders += mapOf(
+                "branchDomain" to "monster-factory.test-app.link",
+                "branchAlternateDomain" to "monster-factory-alternate.test-app.link"
             )
         }
     }

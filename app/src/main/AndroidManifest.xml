@@ -34,29 +34,22 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
 
-            <!-- Branch App Links - Live App -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!-- REPLACE `android:host` with your `app.link` domain -->
+
                 <data android:scheme="https" />
-                <data android:host="monster-factory.app.link" />
-                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
-                <data android:scheme="https" />
-                <data android:host="monster-factory-alternate.app.link" />
+                <data android:host="${branchDomain}" />
             </intent-filter>
 
-            <!-- Branch App Links - Test App -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="https" />
-                <data android:host="monster-factory.test-app.link" />
-                <!-- REPLACE `android:host` with your `-alternate` domain (required for proper functioning of App Links and DeepViews) -->
-                <data android:scheme="https" />
-                <data android:host="monster-factory-alternate.test-app.link" />
+                <data android:host="${branchAlternateDomain}" />
             </intent-filter>
         </activity>
 
