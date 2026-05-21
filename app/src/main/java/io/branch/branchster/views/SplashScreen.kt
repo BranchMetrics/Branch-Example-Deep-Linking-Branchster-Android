@@ -84,7 +84,7 @@ fun SplashScreen(
                 contentScale = ContentScale.Fit
             )
             val textGradient = Brush.verticalGradient(
-                colors = listOf(Color(0xFF2FB8FF), Color(0xFF9EECD9)),
+                colors = listOf(Color(0xFF8A3FFC), Color(0xFF5D04E5)),
             )
             Text(
                 text = "Monster Factory",
