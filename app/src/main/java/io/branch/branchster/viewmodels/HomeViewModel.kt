@@ -86,7 +86,7 @@ class HomeViewModel(
                         val completedQuests = _uiState.value.quests.count { q -> q.isCompleted } + 1
                         val newLevel = calculateLevel(completedQuests)
                         val newImage = getMonsterImageForLevel(monster.monsterName, newLevel)
-                        
+
                         // Check if level changed
                         val leveledUp = newLevel > monster.level
 
@@ -94,7 +94,7 @@ class HomeViewModel(
                             // First update XP only (no visual change yet)
                             val xpOnlyUpdate = monster.copy(xp = newXp)
                             monsterRepository.updateMonster(xpOnlyUpdate)
-                            
+
                             // Play progress sound, then level-up sound with callback to update visual
                             soundManager.playProgressThenLevelUp(
                                 onLevelUpStart = {
@@ -119,7 +119,7 @@ class HomeViewModel(
                             monsterRepository.updateMonster(updatedMonster)
                             soundManager.playProgressSound()
                         }
-                        
+
                         currentQuestID = 0;
                     }
                 }
@@ -144,7 +144,7 @@ class HomeViewModel(
                         val completedQuests = _uiState.value.quests.count { q -> q.isCompleted }
                         val newLevel = calculateLevel(completedQuests)
                         val newImage = getMonsterImageForLevel(monster.monsterName, newLevel)
-                        
+
                         // Check if level changed
                         val leveledUp = newLevel > monster.level
 
@@ -152,7 +152,7 @@ class HomeViewModel(
                             // First update XP only (no visual change yet)
                             val xpOnlyUpdate = monster.copy(xp = newXp)
                             monsterRepository.updateMonster(xpOnlyUpdate)
-                            
+
                             // Play progress sound, then level-up sound with callback to update visual
                             soundManager.playProgressThenLevelUp(
                                 onLevelUpStart = {
@@ -177,7 +177,7 @@ class HomeViewModel(
                             monsterRepository.updateMonster(updatedMonster)
                             soundManager.playProgressSound()
                         }
-                        
+
                         currentQuestID = 0;
                     }
                 }
@@ -188,20 +188,18 @@ class HomeViewModel(
     fun generateBranchLinkInline(context: Context, questId: Int) {
         val monster = _uiState.value.currentMonster ?: return
 
-        // Split monsterTitle to match your existing color-name parsing format
         val monsterTitle = monster.monsterTitle
         val monsterColor = monsterTitle.split(" ").firstOrNull() ?: ""
-        val formattedMonsterString = "$monsterColor - ${monster.monsterName}"
 
         _uiState.update { it.copy(isLoading = true) }
 
-        // Call the generation logic (using default/fallback parameters since we have no UI inputs now)
+        // Generate the Branch Link using the human-readable entity properties
         createDynamicBranchLink(
             context = context,
-            alias = "monster/${monsterColor.lowercase()}-${System.currentTimeMillis()}", // Generates unique alias automatically
+            alias = "monster/${monsterColor.lowercase()}-${System.currentTimeMillis()}",
             canonicalId = "content/monster_${monster.id}",
             title = "Check out my $monsterTitle!",
-            desc = "Level: ${monster.level} | Monster: ${monster.monsterName}",
+            desc = "Level: ${monster.level}",
             imageUrl = "",
             channel = "app_generation",
             feature = "inline_creation",
@@ -209,18 +207,18 @@ class HomeViewModel(
             stage = "active_user",
             metaKey = "monster_id",
             metaValue = monster.id.toString(),
-            monster = formattedMonsterString,
+            monster = monsterTitle, // Passes "Green Monster Truck" instead of snake_case strings
             level = monster.level
         ) { link ->
             _uiState.update { it.copy(isLoading = false) }
 
             link?.let { generatedUrl ->
                 viewModelScope.launch {
-                    // Save the link to the monster's repository
+                    // Save the link to the monster repository
                     monsterRepository.updateBranchLink(monster.id, generatedUrl)
                     Log.d("InlineBranchLink", "Saved link to monster: $generatedUrl")
 
-                    // Mark the quest as completed
+                    // Mark the link generation challenge as completed
                     val quest = questRepository.getQuestById(questId)
                     quest?.let {
                         if (!it.isCompleted && !it.isLocked) {
@@ -239,7 +237,7 @@ class HomeViewModel(
         canonicalId: String?,
         title: String?,
         desc: String?,
-        monster: String,
+        monster: String, // Expects full pristine monsterTitle (e.g. "Green Monster Truck")
         level: Int,
         imageUrl: String?,
         channel: String?,
@@ -273,11 +271,12 @@ class HomeViewModel(
                 if (!stage.isNullOrBlank()) setStage(stage)
             }
 
-        val monsterParts = monster.split("-").map { it.trim() }
-        val monsterColor = monsterParts.getOrNull(0) ?: ""
-        val monsterName = monsterParts.getOrNull(1) ?: ""
+        // Parse human-readable monster title safely
+        val words = monster.split(" ").map { it.trim() }
+        val monsterColor = words.getOrNull(0) ?: "" // Extract color (e.g. "Green")
+        val monsterName = words.drop(1).joinToString(" ") // Reassemble name (e.g. "Monster Truck")
 
-        // Add control parameters
+        // Attach control parameters safely to the Branch payload
         lp.addControlParameter("monster_color", monsterColor)
         lp.addControlParameter("monster_name", monsterName)
         lp.addControlParameter("monster_level", level.toString())
@@ -362,7 +361,7 @@ class HomeViewModel(
             val monsterColor = _uiState.value.currentMonster?.monsterTitle?.split(" ")?.first() ?: ""
             val monsterLevel = _uiState.value.currentMonster?.level ?: 0
             val monsterExp = _uiState.value.currentMonster?.xp ?: 0
-            
+
             val result  = trackEvent(
                 monsterName = monsterName,
                 monsterColor = monsterColor,
@@ -381,7 +380,7 @@ class HomeViewModel(
                     monsterExp = monsterExp
                 )
                 branchEventRepository.insertBranchEvent(eventData)
-                
+
                 _uiState.update { it.copy(showTriggerEventOverlay = false) }
                 val quest = questRepository.getQuestById(currentQuestID)
                 quest?.let {
@@ -482,10 +481,6 @@ class HomeViewModel(
             .setContentImageUrl(imageUrl)
 
         val lp = LinkProperties()
-//        .setChannel("qr")
-//        .setFeature("sharing")
-//        .setCampaign("monster_launch")
-//        .setStage("new_user")
 
         val activity = context as? Activity
         if (activity == null) {
@@ -527,7 +522,7 @@ class HomeViewModel(
             }
         }
     }
-    
+
     /**
      * Saves QR code bitmap to internal storage and updates the monster's qrCodePath
      */
@@ -536,11 +531,11 @@ class HomeViewModel(
             try {
                 val fileName = "qr_code_${monsterName.replace(" ", "_")}.png"
                 val file = File(context.filesDir, fileName)
-                
+
                 FileOutputStream(file).use { out ->
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
                 }
-                
+
                 // Update the monster's QR code path in database
                 _uiState.value.currentMonster?.let { monster ->
                     monsterRepository.updateQrCodePath(monster.id, file.absolutePath)
@@ -551,7 +546,7 @@ class HomeViewModel(
             }
         }
     }
-    
+
     /**
      * Loads a persisted QR code from storage
      * Returns the bitmap if found, null otherwise
@@ -588,30 +583,30 @@ class HomeViewModel(
             try {
                 // Get the persisted QR code path from the current monster
                 val qrCodePath = _uiState.value.currentMonster?.qrCodePath
-                
+
                 if (qrCodePath.isNullOrEmpty()) {
                     Toast.makeText(context, "No QR code found. Please generate one first.", Toast.LENGTH_SHORT).show()
                     Log.w("ShareBranchQrCode", "No QR code path stored for current monster")
                     return@launch
                 }
-                
+
                 val qrCodeFile = File(qrCodePath)
-                
+
                 if (!qrCodeFile.exists()) {
                     Toast.makeText(context, "QR code file not found. Please regenerate.", Toast.LENGTH_SHORT).show()
                     Log.w("ShareBranchQrCode", "QR code file not found at: $qrCodePath")
                     return@launch
                 }
-                
+
                 val shareText = "Scan my QR code to view my Level ${_uiState.value.currentMonster?.level} monster, '${_uiState.value.currentMonster?.monsterTitle}'!"
-                
+
                 // Get URI for the persisted file using FileProvider
                 val imageUri: Uri = FileProvider.getUriForFile(
                     context,
                     "${context.packageName}.fileprovider",
                     qrCodeFile
                 )
-                
+
                 // Create share intent
                 val shareIntent = Intent(Intent.ACTION_SEND).apply {
                     type = "image/png"
@@ -619,24 +614,24 @@ class HomeViewModel(
                     putExtra(Intent.EXTRA_TEXT, shareText)
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 }
-                
+
                 // Set pending share quest ID before launching share sheet
                 pendingShareQuestId = currentQuestID
-                
+
                 // Launch share sheet
                 context.startActivity(
                     Intent.createChooser(shareIntent, "Share QR Code")
                 )
-                
+
                 Log.d("ShareBranchQrCode", "Share sheet opened for quest $currentQuestID")
-                
+
             } catch (e: Exception) {
                 Toast.makeText(context, "QR Code share failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 Log.e("ShareBranchQrCode", "Error sharing QR code", e)
             }
         }
     }
-    
+
     /**
      * Call this method when the app resumes (e.g., after share sheet is closed)
      * to complete the pending share quest
@@ -646,30 +641,30 @@ class HomeViewModel(
             viewModelScope.launch {
                 val quest = questRepository.getQuestById(questId)
                 val currentMonster = _uiState.value.currentMonster
-                
+
                 quest?.let {
                     if (!it.isCompleted && !it.isLocked) {
                         // Mark quest as completed
                         questRepository.updateQuestCompletion(questId, true)
-                        
+
                         // Unlock any quests that depend on this quest
                         questRepository.unlockDependentQuests(questId)
-                        
+
                         // Add XP and update level
                         currentMonster?.let { monster ->
                             val newXp = monster.xp + 50 // Each quest = 50 XP
                             val completedQuests = _uiState.value.quests.count { q -> q.isCompleted } + 1
                             val newLevel = calculateLevel(completedQuests)
                             val newImage = getMonsterImageForLevel(monster.monsterName, newLevel)
-                            
+
                             // Check if level changed
                             val leveledUp = newLevel > monster.level
-                            
+
                             if (leveledUp) {
                                 // First update XP only (no visual change yet)
                                 val xpOnlyUpdate = monster.copy(xp = newXp)
                                 monsterRepository.updateMonster(xpOnlyUpdate)
-                                
+
                                 // Play progress sound, then level-up sound with callback to update visual
                                 soundManager.playProgressThenLevelUp(
                                     onLevelUpStart = {
@@ -695,7 +690,7 @@ class HomeViewModel(
                                 soundManager.playProgressSound()
                             }
                         }
-                        
+
                         Log.d("ShareQuest", "Quest $questId marked as completed after share")
                     }
                 }
@@ -705,8 +700,6 @@ class HomeViewModel(
             }
         }
     }
-
-
 
     private fun calculateLevel(completedQuests: Int): Int {
         return when {
@@ -718,8 +711,6 @@ class HomeViewModel(
     }
 
     private fun getMonsterImageForLevel(monsterName: String, level: Int): Int {
-        // Extract color from monsterName (e.g., "black_monster_level_1" -> "black")
-        // Format: {color}_monster_level_{level}
         val colorPrefix = monsterName.substringBefore("_monster_level_")
         val resourceName = "${colorPrefix}_monster_level_${level}"
 
@@ -728,13 +719,10 @@ class HomeViewModel(
             val field = context.getField(resourceName)
             field.getInt(null)
         } catch (e: Exception) {
-            // Fallback to current image if resource not found
             _uiState.value.currentMonster?.monsterImage ?: io.branch.branchster.R.drawable.onboard_monster_1
         }
     }
-
 }
-
 
 class HomeViewModelFactory(
     private val questRepository: QuestRepository,
