@@ -108,14 +108,7 @@ fun NavGraph(navController: NavHostController) {
 
         composable(route = Screen.Home.route) {
             HomeScreen(
-                navController = navController,
-                onNavigateToGemini = {},
-                onNavigateToCreateLink = { questId, monster, level ->
-                    navController.navigate(Screen.CreateLink.createRoute(questId, monster, level))
-                },
-                onNavigateToLogs = {
-                    navController.navigate(Screen.Logs.route)
-                }
+                navController = navController
             )
         }
 

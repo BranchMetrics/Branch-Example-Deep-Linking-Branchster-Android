@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.content.FileProvider
+import io.branch.referral.util.ContentMetadata
 import java.io.File
 import java.io.FileOutputStream
 
@@ -180,6 +181,114 @@ class HomeViewModel(
                         currentQuestID = 0;
                     }
                 }
+            }
+        }
+    }
+
+    fun generateBranchLinkInline(context: Context, questId: Int) {
+        val monster = _uiState.value.currentMonster ?: return
+
+        // Split monsterTitle to match your existing color-name parsing format
+        val monsterTitle = monster.monsterTitle
+        val monsterColor = monsterTitle.split(" ").firstOrNull() ?: ""
+        val formattedMonsterString = "$monsterColor - ${monster.monsterName}"
+
+        _uiState.update { it.copy(isLoading = true) }
+
+        // Call the generation logic (using default/fallback parameters since we have no UI inputs now)
+        createDynamicBranchLink(
+            context = context,
+            alias = "monster/${monsterColor.lowercase()}-${System.currentTimeMillis()}", // Generates unique alias automatically
+            canonicalId = "content/monster_${monster.id}",
+            title = "Check out my $monsterTitle!",
+            desc = "Level: ${monster.level} | Monster: ${monster.monsterName}",
+            imageUrl = "",
+            channel = "app_generation",
+            feature = "inline_creation",
+            campaign = "monster_quest",
+            stage = "active_user",
+            metaKey = "monster_id",
+            metaValue = monster.id.toString(),
+            monster = formattedMonsterString,
+            level = monster.level
+        ) { link ->
+            _uiState.update { it.copy(isLoading = false) }
+
+            link?.let { generatedUrl ->
+                viewModelScope.launch {
+                    // Save the link to the monster's repository
+                    monsterRepository.updateBranchLink(monster.id, generatedUrl)
+                    Log.d("InlineBranchLink", "Saved link to monster: $generatedUrl")
+
+                    // Mark the quest as completed
+                    val quest = questRepository.getQuestById(questId)
+                    quest?.let {
+                        if (!it.isCompleted && !it.isLocked) {
+                            questRepository.updateQuestCompletion(questId, true)
+                            refreshProgress(questId)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun createDynamicBranchLink(
+        context: Context,
+        alias: String,
+        canonicalId: String?,
+        title: String?,
+        desc: String?,
+        monster: String,
+        level: Int,
+        imageUrl: String?,
+        channel: String?,
+        feature: String?,
+        campaign: String?,
+        stage: String?,
+        metaKey: String?,
+        metaValue: String?,
+        callback: (String?) -> Unit
+    ) {
+        val buo = BranchUniversalObject()
+            .setCanonicalIdentifier(canonicalId ?: "content/${System.currentTimeMillis()}")
+            .setTitle(title ?: "Default Title")
+            .setContentDescription(desc ?: "No description provided.")
+            .setContentImageUrl(imageUrl ?: "")
+            .setContentIndexingMode(BranchUniversalObject.CONTENT_INDEX_MODE.PUBLIC)
+            .setContentMetadata(
+                ContentMetadata().apply {
+                    if (!metaKey.isNullOrBlank() && !metaValue.isNullOrBlank()) {
+                        addCustomMetadata(metaKey, metaValue)
+                    }
+                }
+            )
+
+        val lp = LinkProperties()
+            .setAlias(alias)
+            .apply {
+                if (!channel.isNullOrBlank()) setChannel(channel)
+                if (!feature.isNullOrBlank()) setFeature(feature)
+                if (!campaign.isNullOrBlank()) setCampaign(campaign)
+                if (!stage.isNullOrBlank()) setStage(stage)
+            }
+
+        val monsterParts = monster.split("-").map { it.trim() }
+        val monsterColor = monsterParts.getOrNull(0) ?: ""
+        val monsterName = monsterParts.getOrNull(1) ?: ""
+
+        // Add control parameters
+        lp.addControlParameter("monster_color", monsterColor)
+        lp.addControlParameter("monster_name", monsterName)
+        lp.addControlParameter("monster_level", level.toString())
+
+        buo.generateShortUrl(context, lp) { url, error ->
+            if (error == null) {
+                Log.d("BranchSDK", "Generated Link: $url")
+                callback(url)
+            } else {
+                Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                callback(null)
             }
         }
     }
