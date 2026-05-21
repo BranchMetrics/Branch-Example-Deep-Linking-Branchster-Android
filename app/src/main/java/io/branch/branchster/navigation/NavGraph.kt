@@ -9,7 +9,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import io.branch.branchster.views.SplashScreen
 import io.branch.branchster.views.OnboardingScreen
-import io.branch.branchster.views.CreateBranchLinkScreen
 import io.branch.branchster.views.DetailsScreen
 import io.branch.branchster.views.HomeScreen
 import io.branch.branchster.views.LogsScreen
@@ -123,15 +122,6 @@ fun NavGraph(navController: NavHostController) {
             val questId = backStackEntry.arguments?.getInt("questId") ?: 1
             val monster = backStackEntry.arguments?.getString("monster") ?: ""
             val level = backStackEntry.arguments?.getInt("level") ?: 1
-
-            CreateBranchLinkScreen(
-                questId = questId,
-                monster = monster,
-                level = level,
-                onBack = {
-                    navController.popBackStack()
-                }
-            )
         }
 
         composable(route = Screen.Logs.route) {
