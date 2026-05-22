@@ -321,7 +321,7 @@ private fun OnboardingTitle(text: String) {
         fontWeight = FontWeight.Bold,
         color = OnboardingTheme.TextColor,
         textAlign = TextAlign.Start,
-        lineHeight = 50.sp,
+        lineHeight = 40.sp,
         fontFamily = imbPlexMonoFamily,
     )
 }
@@ -333,7 +333,7 @@ private fun OnboardingDescription(text: String) {
         fontSize = 22.sp,
         color = OnboardingTheme.TextColor,
         textAlign = TextAlign.Start,
-        lineHeight = 40.sp,
+        lineHeight = 30.sp,
         fontFamily = imbPlexMonoFamily,
         fontWeight = FontWeight.Normal
     )
