@@ -3,10 +3,10 @@
 ## Context
 - Began as a hackathon project during Branch's H2 2025 hackathon with the goal of making the Branch Monster Factory apps more modern, usable, and gamified in introducing customers to Branch features. Performing events like creating a link, scanning a QR code, or tracking an event provide experience points to level up monsters and make it fun to explore the features of the Branch SDK, while providing production-ready sample code that customers can refer to when integrating Branch into their own applications.
 
-<img width="269" height="594" alt="Android_1" src="https://github.com/user-attachments/assets/a6233f3e-79e8-417a-8e51-00ece8bcbb56" />
-<img width="263" height="594" alt="Android_2" src="https://github.com/user-attachments/assets/54eaecbf-7fef-4709-9fc0-bfac68aec7c5" />
-<img width="259" height="594" alt="Android_3" src="https://github.com/user-attachments/assets/53340ec8-6411-49ce-b8f7-65a197ed2e94" />
-<img width="272" height="598" alt="Android_4" src="https://github.com/user-attachments/assets/ac465707-2462-4acc-a639-c09b606fe321" />
+<img width="260" height="580" alt="Android_1" src="https://github.com/user-attachments/assets/a6233f3e-79e8-417a-8e51-00ece8bcbb56" />
+<img width="260" height="580" alt="Android_2" src="https://github.com/user-attachments/assets/54eaecbf-7fef-4709-9fc0-bfac68aec7c5" />
+<img width="260" height="580" alt="Android_3" src="https://github.com/user-attachments/assets/53340ec8-6411-49ce-b8f7-65a197ed2e94" />
+<img width="260" height="580" alt="Android_4" src="https://github.com/user-attachments/assets/ac465707-2462-4acc-a639-c09b606fe321" />
 
 ## Features
 
