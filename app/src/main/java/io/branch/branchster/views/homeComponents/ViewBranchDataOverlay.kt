@@ -135,7 +135,7 @@ fun ViewBranchDataOverlay(
                         contentAlignment = Alignment.Center
                     ) {
                         CircularProgressIndicator(
-                            color = Color(0xFF2FB8FF),
+                            color = Color(0xFF8A3FFC),
                             modifier = Modifier.size(40.dp)
                         )
                     }
@@ -148,7 +148,7 @@ fun ViewBranchDataOverlay(
                             overflow = TextOverflow.Clip,
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold
                             ),
@@ -162,7 +162,7 @@ fun ViewBranchDataOverlay(
                             overflow = TextOverflow.Clip,
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold
                             ),
@@ -176,7 +176,7 @@ fun ViewBranchDataOverlay(
                             overflow = TextOverflow.Clip,
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold
                             ),
@@ -190,7 +190,7 @@ fun ViewBranchDataOverlay(
                             overflow = TextOverflow.Clip,
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold
                             ),
@@ -204,7 +204,7 @@ fun ViewBranchDataOverlay(
                             overflow = TextOverflow.Clip,
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold
                             ),
@@ -221,7 +221,7 @@ fun ViewBranchDataOverlay(
                             overflow = TextOverflow.Clip,
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Bold
                             ),

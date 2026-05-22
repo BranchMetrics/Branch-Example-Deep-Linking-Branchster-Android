@@ -109,7 +109,7 @@ fun LinkShareOverlay(
                         text = link,
                         style = TextStyle(
                             fontFamily = imbPlexMonoFamily,
-                            color = Color(0xFF2FB8FF),
+                            color = Color(0xFF8A3FFC),
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium
                         ),

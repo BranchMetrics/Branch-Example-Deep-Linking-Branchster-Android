@@ -72,7 +72,7 @@ private object OnboardingTheme {
         Color(0xFFFFFFFF).copy(alpha = 0.1f),
         Color(0xFFFFFFFF).copy(alpha = 0.05f)
     )
-    val ImageGradient = listOf(Color(0xFF2FB8FF), Color(0xFF9EECD9))
+    val ImageGradient = listOf(Color(0xFF8A3FFC), Color(0xFF5D04E5))
     val BorderColor = Color.White
     val TextColor = Color.White
 }

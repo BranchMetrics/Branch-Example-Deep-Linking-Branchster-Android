@@ -32,7 +32,7 @@ fun DetailsScreen(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
-    val gradientColors = listOf(Color(0xFF2A2D32), Color(0xFF1D1D1D))
+    val gradientColors = listOf(Color(0xFF8A3FFC), Color(0xFF5D04E5))
 
     // 1. Parse the incoming branch link metadata
     var monsterColor = ""

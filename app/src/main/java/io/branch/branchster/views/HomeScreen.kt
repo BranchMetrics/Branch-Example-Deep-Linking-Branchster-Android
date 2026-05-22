@@ -77,6 +77,7 @@ import io.branch.branchster.views.homeComponents.TriggerEventOverlay
 import io.branch.branchster.views.homeComponents.ViewBranchDataOverlay
 import androidx.compose.ui.graphics.asImageBitmap
 import kotlinx.coroutines.delay
+import kotlin.collections.listOf
 
 @Composable
 fun HomeScreen(
@@ -134,7 +135,7 @@ fun HomeScreen(
                 .fillMaxSize()
                 .background(
                     brush = Brush.verticalGradient(
-                        colors = listOf(Color(0xFF2A2D32), Color(0xFF1D1D1D)),
+                    colors = listOf(Color(0xFF2A2D32), Color(0xFF1D1D1D)),
                     )
                 )
         ) {
@@ -341,7 +342,7 @@ fun HomeScreen(
                                 .fillMaxWidth()
                                 .height(8.dp)
                                 .clip(RoundedCornerShape(4.dp)),
-                            color = Color(0xffEA2D7F),
+                            color = Color(0xFF8A3FFC),
                             trackColor = Color.White.copy(alpha = 0.3f)
                         )
                     }
@@ -376,7 +377,7 @@ fun HomeScreen(
                             text = "$completedCount/$totalCount",
                             style = TextStyle(
                                 fontFamily = imbPlexMonoFamily,
-                                color = Color(0xFF2FB8FF),
+                                color = Color(0xFF8A3FFC),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -553,6 +554,8 @@ fun QuestItem(
     quest: Quest,
     onToggleCompletion: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -583,10 +586,36 @@ fun QuestItem(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Quest icon on the left
+            // Quest icon on the left (100% stable runtime safe loader framework)
             if (quest.icon != 0) {
+                val safeQuestPainter = remember(quest.icon) {
+                    try {
+                        // Dynamically pull the asset out via Core Android framework layer contexts
+                        val systemDrawable = androidx.core.content.ContextCompat.getDrawable(context, quest.icon)
+
+                        if (systemDrawable != null) {
+                            // Convert anything (Vector, XML, PNG, Adaptive Layer) into a flat Bitmap painter layout cleanly
+                            val bitmap = android.graphics.Bitmap.createBitmap(
+                                systemDrawable.intrinsicWidth.coerceAtLeast(1),
+                                systemDrawable.intrinsicHeight.coerceAtLeast(1),
+                                android.graphics.Bitmap.Config.ARGB_8888
+                            )
+                            val canvas = android.graphics.Canvas(bitmap)
+                            systemDrawable.setBounds(0, 0, canvas.width, canvas.height)
+                            systemDrawable.draw(canvas)
+
+                            androidx.compose.ui.graphics.painter.BitmapPainter(bitmap.asImageBitmap())
+                        } else {
+                            androidx.compose.ui.graphics.painter.ColorPainter(Color.Transparent)
+                        }
+                    } catch (e: Exception) {
+                        // Ultimate fallback safety net so your list view items never crash the main loop
+                        androidx.compose.ui.graphics.painter.ColorPainter(Color.Transparent)
+                    }
+                }
+
                 Image(
-                    painter = painterResource(quest.icon),
+                    painter = safeQuestPainter,
                     contentDescription = quest.name,
                     modifier = Modifier.size(32.dp),
                     contentScale = ContentScale.Fit
@@ -641,7 +670,7 @@ fun QuestItem(
                 Icon(
                     imageVector = Icons.Filled.CheckCircle,
                     contentDescription = "Completed",
-                    tint = Color(0xFF4CAF50),
+                    tint = Color(0xFF8A3FFC),
                     modifier = Modifier.size(24.dp)
                 )
             }

@@ -115,7 +115,7 @@ fun TriggerEventOverlay(
                         overflow = TextOverflow.Clip,
                         style = TextStyle(
                             fontFamily = imbPlexMonoFamily,
-                            color = Color(0xFF2FB8FF),
+                            color = Color(0xFF8A3FFC),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
 
@@ -130,7 +130,7 @@ fun TriggerEventOverlay(
                         overflow = TextOverflow.Clip,
                         style = TextStyle(
                             fontFamily = imbPlexMonoFamily,
-                            color = Color(0xFF2FB8FF),
+                            color = Color(0xFF8A3FFC),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold
                         ),
@@ -144,7 +144,7 @@ fun TriggerEventOverlay(
                         overflow = TextOverflow.Clip,
                         style = TextStyle(
                             fontFamily = imbPlexMonoFamily,
-                            color = Color(0xFF2FB8FF),
+                            color = Color(0xFF8A3FFC),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold
                         ),
@@ -158,7 +158,7 @@ fun TriggerEventOverlay(
                         overflow = TextOverflow.Clip,
                         style = TextStyle(
                             fontFamily = imbPlexMonoFamily,
-                            color = Color(0xFF2FB8FF),
+                            color = Color(0xFF8A3FFC),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold
                         ),
