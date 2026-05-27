@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.Branchsters" parent="android:Theme.DeviceDefault.NoActionBar">
+    </style>
+
+    <style name="Theme.App.Starting" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">#1E2229</item>
+        <item name="android:statusBarColor">#1E2229</item>
+    </style>
+</resources>

@@ -1,0 +1,111 @@
+package io.branch.branchster
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import io.branch.branchster.navigation.NavGraph
+import io.branch.branchster.navigation.Screen
+import io.branch.branchster.ui.theme.BranchstersTheme
+import io.branch.referral.Branch
+import io.branch.referral.validators.IntegrationValidator
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+
+class MainActivity : ComponentActivity() {
+
+    private var branchData by mutableStateOf<String?>(null)
+    private var isBranchInitialized by mutableStateOf(false)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
+
+        super.onCreate(savedInstanceState)
+        splashScreen.setKeepOnScreenCondition {
+            !isBranchInitialized
+        }
+
+        setContent {
+            BranchstersTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    // Because of the condition above, this block will only render
+                    // when it's ready, making the 'else' condition completely unnecessary!
+                    if (isBranchInitialized) {
+                        val navController = rememberNavController()
+
+                        LaunchedEffect(branchData) {
+                            branchData?.let {
+                                val encoded =
+                                    URLEncoder.encode(it, StandardCharsets.UTF_8.toString())
+                                navController.navigate(Screen.Details.createRoute(encoded))
+                            }
+                        }
+
+                        NavGraph(navController = navController)
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        // ✅ Initialize Branch before UI navigation decisions
+        Branch.sessionBuilder(this)
+            .withCallback { referringParams, error ->
+                if (error == null && referringParams != null) {
+                    val clicked = referringParams.optBoolean("+clicked_branch_link", false)
+                    if (clicked) {
+                        Log.d("BranchSDK", "Deep link data: $referringParams")
+                        branchData = referringParams.toString()
+                    } else {
+                        Log.d("BranchSDK", "Opened app normally (no deep link)")
+                    }
+                } else {
+                    Log.e("BranchSDK", "Branch init error: ${error?.message}")
+                }
+
+                // ✅ Mark initialization complete so UI can load
+                isBranchInitialized = true
+            }
+            .withData(intent?.data)
+            .init()
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+
+        if (intent == null || intent.data == null) return
+
+        if (intent.hasExtra("branch_force_new_session") &&
+            intent.getBooleanExtra("branch_force_new_session", false)
+        ) {
+            Branch.sessionBuilder(this)
+                .withCallback { referringParams, error ->
+                    if (error == null && referringParams != null) {
+                        branchData = referringParams.toString()
+                        Log.i("BranchSDK_Tester", "ReInit: $referringParams")
+                    } else {
+                        Log.e("BranchSDK_Tester", error?.message ?: "Unknown error")
+                    }
+                }
+                .reInit()
+        }
+    }
+}
