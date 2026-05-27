@@ -5,7 +5,6 @@ buildscript {
         kotlin_version = '2.2.20'
     }
     repositories {
-        mavenLocal()
         mavenCentral()
         google()
     }
@@ -20,7 +19,6 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenLocal()
         mavenCentral()
         google()
     }
