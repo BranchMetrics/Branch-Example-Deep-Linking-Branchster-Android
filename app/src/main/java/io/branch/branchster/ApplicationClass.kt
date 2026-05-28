@@ -5,7 +5,6 @@ import io.branch.branchster.data.AppDatabase
 import io.branch.branchster.data.repository.BranchEventRepository
 import io.branch.branchster.data.repository.MonsterRepository
 import io.branch.branchster.data.repository.QuestRepository
-import io.branch.branchster.manager.GeminiImagenManager
 import io.branch.branchster.manager.SoundManager
 import io.branch.referral.Branch
 import io.branch.referral.BranchLogger
@@ -30,8 +29,5 @@ class ApplicationClass: Application() {
 
         // Branch object initialization
         Branch.getAutoInstance(this)
-
-        // Initialize Gemini Imagen Manager for global access
-        GeminiImagenManager.initialize(this)
     }
 }
