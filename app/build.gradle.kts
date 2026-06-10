@@ -21,9 +21,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        
-        // Add Gemini API Key from gradle.properties
-        buildConfigField("String", "GEMINI_API_KEY", "\"${project.findProperty("GEMINI_API_KEY") ?: ""}\"")
     }
 
     buildTypes {
