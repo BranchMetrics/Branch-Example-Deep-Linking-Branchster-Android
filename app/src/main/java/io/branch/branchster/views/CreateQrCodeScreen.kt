@@ -128,10 +128,6 @@ fun createQRCode(
         .setContentImageUrl(imageUrl)
 
     val lp = LinkProperties()
-//        .setChannel("qr")
-//        .setFeature("sharing")
-//        .setCampaign("monster_launch")
-//        .setStage("new_user")
 
     val activity = context as? Activity
     if (activity == null) {

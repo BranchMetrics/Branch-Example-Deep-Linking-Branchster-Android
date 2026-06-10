@@ -95,15 +95,6 @@ fun LogsScreen(branchData: String) {
                 )
             }
         }
-
-//        Text(
-//            text = branchData.ifEmpty { "No Branch data available." },
-//            fontFamily = imbPlexMonoFamily,
-//            fontWeight = FontWeight.SemiBold,
-//            color = Color(0xFFCCCCCC),
-//            fontSize = 14.sp,
-//            lineHeight = 20.sp
-//        )
     }
 }
 

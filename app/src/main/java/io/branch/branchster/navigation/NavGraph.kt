@@ -59,52 +59,6 @@ fun NavGraph(navController: NavHostController) {
             )
         }
 
-//        composable(route = Screen.Home.route) {
-//            HomeScreen(
-//                navController = navController,
-//                onNavigateToGemini = {},
-//                onNavigateToCreateLink = { questId ->
-//                    navController.navigate(Screen.CreateLink.createRoute(questId, ))
-//                },
-//                onNavigateToLogs = {
-//                    navController.navigate(Screen.Logs.route)
-//                }
-//            )
-//        }
-
-//        composable(
-//            route = "create_link/{questId}/{monster}/{level}",
-//            arguments = listOf(
-//                navArgument("questId") { type = NavType.IntType },
-//                navArgument("monster") { type = NavType.StringType },
-//                navArgument("level") { type = NavType.IntType }
-//            )
-//        ) { backStackEntry ->
-//            val questId = backStackEntry.arguments?.getInt("questId") ?: 1
-//            val monster = backStackEntry.arguments?.getString("monster") ?: ""
-//            val level = backStackEntry.arguments?.getInt("level") ?: 1
-//
-//            CreateBranchLinkScreen(
-//                questId = questId,
-//                monster = monster,
-//                level = level,
-//                onBack = { navController.popBackStack() }
-//            )
-//        }
-
-//        composable(
-//            route = Screen.CreateLink.route,
-//            arguments = listOf(navArgument("questId") { type = NavType.IntType })
-//        ) { backStackEntry ->
-//            val questId = backStackEntry.arguments?.getInt("questId") ?: 1
-//            CreateBranchLinkScreen(
-//                questId = questId,
-//                onBack = {
-//                    navController.popBackStack()
-//                }
-//            )
-//        }
-
         composable(route = Screen.Home.route) {
             HomeScreen(
                 navController = navController
