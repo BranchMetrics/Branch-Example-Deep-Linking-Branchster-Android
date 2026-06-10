@@ -120,7 +120,7 @@ class HomeViewModel(
                             soundManager.playProgressSound()
                         }
 
-                        currentQuestID = 0;
+                        currentQuestID = 0
                     }
                 }
             }
