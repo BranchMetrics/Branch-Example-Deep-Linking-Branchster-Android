@@ -4,7 +4,7 @@ gen/*
 bin/*
 
 # Android Studio
-.idea
+.idea/
 *.iml
 local.properties
 build/

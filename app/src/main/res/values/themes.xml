@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#1E2229</item>
+        <item name="android:statusBarColor">#1E2229</item>
+        <item name="postSplashScreenTheme">@style/Theme.Branchsters</item>
+    </style>
+
+    <style name="Theme.Branchsters" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">#1E2229</item>
+        <item name="android:statusBarColor">#1E2229</item>
+    </style>
+</resources>

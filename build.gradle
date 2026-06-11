@@ -1,23 +1,28 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext {
+        kotlin_version = '2.2.20'
+    }
     repositories {
-        mavenLocal()
-        mavenCentral()
         google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        // 1. The Missing Piece: Teach Gradle what 'com.android.application' is
+        classpath "com.android.tools.build:gradle:7.4.2"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        // 2. The Bytecode Fix: Use the stable R8/D8 patch for Java 17 compatibility
+        classpath "com.android.tools:r8:8.2.42"
+
+        // 3. Your Kotlin compiler platform anchor
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     repositories {
-        mavenLocal()
-        mavenCentral()
         google()
+        mavenCentral()
     }
 }

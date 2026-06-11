@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="io.branch.branchster"
-          android:targetSandboxVersion="2"
-          xmlns:tools="http://schemas.android.com/tools">
+    package="io.branch.branchster"
+    android:targetSandboxVersion="2"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -12,45 +12,95 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
-
     <application
-        android:name="io.branch.branchster.BranchsterAndroidApplication"
+        android:name=".ApplicationClass"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Branchsters"
+        android:screenOrientation="portrait"
         android:largeHeap="true"
-        android:banner="@drawable/ic_launcher_tv">
+        android:banner="@drawable/ic_launcher_tv"
+        tools:targetApi="31"
+        tools:replace="android:icon">
 
         <activity
-            android:name="io.branch.branchster.MonsterViewerActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/Theme.Default">
-            <meta-data
-                android:name="io.branch.sdk.auto_link_path"
-                android:value="monster/view/"/>
-            <meta-data
-                android:name="io.branch.sdk.auto_link_request_code"
-                android:value="@integer/AutoDeeplinkRequestCode"/>
-                <!--For testing when initSession is being called in ViewerActivity-->
-<!--            <intent-filter android:autoVerify="true">-->
-<!--                <action android:name="android.intent.action.VIEW"/>-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <data android:scheme="branchsters"/>-->
-<!--                <data android:scheme="https" android:host="branchster.app.link" />-->
-<!--                <data android:scheme="https" android:host="branchster-alternate.app.link" />-->
-<!--                <data android:scheme="http" android:host="branchster.app.link" />-->
-<!--                <data android:scheme="http" android:host="branchster-alternate.app.link" />-->
-<!--            </intent-filter>-->
+            android:name="io.branch.branchster.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <data
+                    android:host="open"
+                    android:scheme="branchsters" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="monster-factory.app.link" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="monster-factory-alternate.app.link" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="monster-factory.test-app.link" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" />
+                <data android:host="monster-factory-alternate.test-app.link" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name="io.branch.branchster.MonsterCreatorActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/Theme.Default">
-        </activity>
+
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
+
+        <meta-data
+            android:name="io.branch.sdk.BranchKey.test"
+            android:value="@string/branch_test_key"
+            tools:replace="android:value" />
+
+        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 
