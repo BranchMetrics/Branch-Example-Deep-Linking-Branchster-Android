@@ -8,14 +8,14 @@ plugins {
 
 android {
     namespace = "io.branch.branchster"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "io.branch.branchster"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 35
+        versionCode = 20002
+        versionName = "2.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
