@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        kotlin_version = '2.2.20'
+        kotlin_version = '2.0.20'
     }
     repositories {
         google()
@@ -10,12 +10,9 @@ buildscript {
     }
     dependencies {
         // 1. The Missing Piece: Teach Gradle what 'com.android.application' is
-        classpath 'com.android.tools.build:gradle:8.13.2'
+        classpath 'com.android.tools.build:gradle:8.5.2'
 
-        // 2. The Bytecode Fix: Use the stable R8/D8 patch for Java 17 compatibility
-        classpath "com.android.tools:r8:8.2.42"
-
-        // 3. Your Kotlin compiler platform anchor
+        // 2. Your Kotlin compiler platform anchor
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
