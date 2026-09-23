@@ -6,8 +6,7 @@ import io.branch.branchster.data.repository.BranchEventRepository
 import io.branch.branchster.data.repository.MonsterRepository
 import io.branch.branchster.data.repository.QuestRepository
 import io.branch.branchster.manager.SoundManager
-import io.branch.referral.Branch
-import io.branch.referral.BranchLogger
+import io.branch.referral.BranchConfiguration
 
 class ApplicationClass: Application() {
     
@@ -25,9 +24,14 @@ class ApplicationClass: Application() {
     override fun onCreate() {
         super.onCreate()
         // Branch logging for debugging
-        Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
+        //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
 
         // Branch object initialization
-        Branch.getAutoInstance(this)
+        val key: String? = if (BuildConfig.DEBUG)
+            BuildConfig.BRANCH_KEY_TEST
+        else
+            BuildConfig.BRANCH_KEY
+
+        val config : BranchConfiguration = BranchConfiguration.Builder(key).build()
     }
 }

@@ -79,15 +79,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="io.branch.sdk.BranchKey" android:value="@string/branch_key" />
-
-        <meta-data
-            android:name="io.branch.sdk.BranchKey.test"
-            android:value="@string/branch_test_key"
-            tools:replace="android:value" />
-
-        <meta-data android:name="io.branch.sdk.TestMode" android:value="false" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
