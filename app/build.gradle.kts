@@ -59,7 +59,7 @@ android {
 dependencies {
 
     // Branch SDK
-    implementation("io.branch.sdk.android:library:5.20.3")
+    implementation("io.branch.sdk.android:library:5.20.999")
     
     // Firebase AI Logic SDK (Gemini Developer API - Free Tier)
     implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
