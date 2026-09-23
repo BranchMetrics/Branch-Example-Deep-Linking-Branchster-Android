@@ -27,7 +27,7 @@ class ApplicationClass: Application() {
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
 
         // Branch object initialization
-        val key: String? = if (BuildConfig.DEBUG)
+        val key: String = if (BuildConfig.DEBUG)
             BuildConfig.BRANCH_KEY_TEST
         else
             BuildConfig.BRANCH_KEY
