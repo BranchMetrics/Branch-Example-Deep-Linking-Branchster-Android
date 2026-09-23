@@ -253,7 +253,7 @@ class HomeViewModel(
             .setTitle(title ?: "Default Title")
             .setContentDescription(desc ?: "No description provided.")
             .setContentImageUrl(imageUrl ?: "")
-            .setContentIndexingMode(BranchUniversalObject.CONTENT_INDEX_MODE.PUBLIC)
+            //.setContentIndexingMode(BranchUniversalObject.CONTENT_INDEX_MODE.PUBLIC)
             .setContentMetadata(
                 ContentMetadata().apply {
                     if (!metaKey.isNullOrBlank() && !metaValue.isNullOrBlank()) {

@@ -64,27 +64,27 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-
+        isBranchInitialized = true
         // ✅ Initialize Branch before UI navigation decisions
-        Branch.sessionBuilder(this)
-            .withCallback { referringParams, error ->
-                if (error == null && referringParams != null) {
-                    val clicked = referringParams.optBoolean("+clicked_branch_link", false)
-                    if (clicked) {
-                        Log.d("BranchSDK", "Deep link data: $referringParams")
-                        branchData = referringParams.toString()
-                    } else {
-                        Log.d("BranchSDK", "Opened app normally (no deep link)")
-                    }
-                } else {
-                    Log.e("BranchSDK", "Branch init error: ${error?.message}")
-                }
-
-                // ✅ Mark initialization complete so UI can load
-                isBranchInitialized = true
-            }
-            .withData(intent?.data)
-            .init()
+//        Branch.sessionBuilder(this)
+//            .withCallback { referringParams, error ->
+//                if (error == null && referringParams != null) {
+//                    val clicked = referringParams.optBoolean("+clicked_branch_link", false)
+//                    if (clicked) {
+//                        Log.d("BranchSDK", "Deep link data: $referringParams")
+//                        branchData = referringParams.toString()
+//                    } else {
+//                        Log.d("BranchSDK", "Opened app normally (no deep link)")
+//                    }
+//                } else {
+//                    Log.e("BranchSDK", "Branch init error: ${error?.message}")
+//                }
+//
+//                // ✅ Mark initialization complete so UI can load
+//                isBranchInitialized = true
+//            }
+//            .withData(intent?.data)
+//            .init()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -93,19 +93,19 @@ class MainActivity : ComponentActivity() {
 
         if (intent == null || intent.data == null) return
 
-        if (intent.hasExtra("branch_force_new_session") &&
-            intent.getBooleanExtra("branch_force_new_session", false)
-        ) {
-            Branch.sessionBuilder(this)
-                .withCallback { referringParams, error ->
-                    if (error == null && referringParams != null) {
-                        branchData = referringParams.toString()
-                        Log.i("BranchSDK_Tester", "ReInit: $referringParams")
-                    } else {
-                        Log.e("BranchSDK_Tester", error?.message ?: "Unknown error")
-                    }
-                }
-                .reInit()
-        }
+//        if (intent.hasExtra("branch_force_new_session") &&
+//            intent.getBooleanExtra("branch_force_new_session", false)
+//        ) {
+//            Branch.sessionBuilder(this)
+//                .withCallback { referringParams, error ->
+//                    if (error == null && referringParams != null) {
+//                        branchData = referringParams.toString()
+//                        Log.i("BranchSDK_Tester", "ReInit: $referringParams")
+//                    } else {
+//                        Log.e("BranchSDK_Tester", error?.message ?: "Unknown error")
+//                    }
+//                }
+//                .reInit()
+//        }
     }
 }

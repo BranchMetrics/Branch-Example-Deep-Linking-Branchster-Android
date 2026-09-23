@@ -26,12 +26,6 @@ class ApplicationClass: Application() {
         // Branch logging for debugging
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
 
-        // Branch object initialization
-        val key: String = if (BuildConfig.DEBUG)
-            BuildConfig.BRANCH_KEY_TEST
-        else
-            BuildConfig.BRANCH_KEY
-
-        val config : BranchConfiguration = BranchConfiguration.Builder(key).build()
+        BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
     }
 }
