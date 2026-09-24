@@ -6,6 +6,7 @@ import io.branch.branchster.data.repository.BranchEventRepository
 import io.branch.branchster.data.repository.MonsterRepository
 import io.branch.branchster.data.repository.QuestRepository
 import io.branch.branchster.manager.SoundManager
+import io.branch.referral.Branch
 import io.branch.referral.BranchConfiguration
 
 class ApplicationClass: Application() {
@@ -25,7 +26,7 @@ class ApplicationClass: Application() {
         super.onCreate()
         // Branch logging for debugging
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
-
-        BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
+        val config = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
+        Branch.initialize(this, config)
     }
 }
