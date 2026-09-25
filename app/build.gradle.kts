@@ -102,6 +102,10 @@ dependencies {
     
     // Testing
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    // android.jar's org.json classes are stubs that throw at runtime in plain JVM unit
+    // tests; pull in the real implementation so JSONObject usage in tests actually works.
+    testImplementation("org.json:json:20240303")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.10.01"))

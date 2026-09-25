@@ -28,9 +28,17 @@ import kotlin.coroutines.resumeWithException
  * start / onNewIntent call, but don't assume mid-flight cancellation cancels the
  * network request too.
  */
-suspend fun requestDeepLinkDataNullable(uri: Uri?): JSONObject =
+/**
+ * [requestFn] defaults to the real SDK call; tests override it with a fake to avoid
+ * touching the live Branch singleton, and to observe exactly when it's invoked
+ * relative to coroutine cancellation.
+ */
+suspend fun requestDeepLinkDataNullable(
+    uri: Uri?,
+    requestFn: (Uri?, BranchDeepLinkShim.Callback) -> Unit = BranchDeepLinkShim::requestDeepLinkData
+): JSONObject =
     suspendCancellableCoroutine { cont ->
-        BranchDeepLinkShim.requestDeepLinkData(uri, object : BranchDeepLinkShim.Callback {
+        requestFn(uri, object : BranchDeepLinkShim.Callback {
             override fun onResult(params: JSONObject?, error: BranchError?) {
                 if (cont.isCancelled) return
                 when {
