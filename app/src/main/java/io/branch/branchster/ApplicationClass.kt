@@ -1,13 +1,18 @@
 package io.branch.branchster
 
 import android.app.Application
+import android.util.Log
 import io.branch.branchster.data.AppDatabase
 import io.branch.branchster.data.repository.BranchEventRepository
 import io.branch.branchster.data.repository.MonsterRepository
 import io.branch.branchster.data.repository.QuestRepository
 import io.branch.branchster.manager.SoundManager
+import io.branch.interfaces.IBranchLoggingCallbacks
 import io.branch.referral.Branch
 import io.branch.referral.BranchConfiguration
+import io.branch.referral.BranchLogger
+import io.branch.referral.BranchLogger.BranchLogLevel
+
 
 class ApplicationClass: Application() {
     
@@ -26,7 +31,22 @@ class ApplicationClass: Application() {
         super.onCreate()
         // Branch logging for debugging
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
-        val config = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
+
+        val config = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP")
+            .setLogLevel(BranchLogLevel.VERBOSE)
+            .setLoggingCallback(IBranchLoggingCallbacks { message: String?, tag: String? ->
+                Log.d(
+                    "Branch",
+                    message!!
+                )
+            })
+            .setUserAgentFetchSync(true)
+            .setNetworkTimeout(5000)
+            .build()
+
         Branch.initialize(this, config)
+
+//        val config2 = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
+//        Branch.initialize(this, config2)
     }
 }

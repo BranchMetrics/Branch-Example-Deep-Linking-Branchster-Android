@@ -2,6 +2,7 @@ package io.branch.branchster.navigation
 
 import android.net.Uri
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,6 +13,8 @@ import io.branch.branchster.views.OnboardingScreen
 import io.branch.branchster.views.DetailsScreen
 import io.branch.branchster.views.HomeScreen
 import io.branch.branchster.views.LogsScreen
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 sealed class Screen(val route: String) {
     object Splash : Screen("splash")
@@ -29,7 +32,11 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(
+    navController: NavHostController,
+    pendingDeepLink: String? = null,
+    onDeepLinkConsumed: () -> Unit = {}
+) {
     NavHost(
         navController = navController,
         startDestination = Screen.Splash.route
@@ -60,6 +67,17 @@ fun NavGraph(navController: NavHostController) {
         }
 
         composable(route = Screen.Home.route) {
+            // Onboarding is guaranteed complete by the time Home is reached (either the user just
+            // finished it, or they were already onboarded and Splash routed here directly), so it's
+            // now safe to act on a deferred deep link.
+            LaunchedEffect(pendingDeepLink) {
+                pendingDeepLink?.let {
+                    val encoded = URLEncoder.encode(it, StandardCharsets.UTF_8.toString())
+                    navController.navigate(Screen.Details.createRoute(encoded))
+                    onDeepLinkConsumed()
+                }
+            }
+
             HomeScreen(
                 navController = navController
             )
