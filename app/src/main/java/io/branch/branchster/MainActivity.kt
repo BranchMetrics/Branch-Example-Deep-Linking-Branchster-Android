@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import io.branch.branchster.navigation.NavGraph
 import io.branch.branchster.ui.theme.BranchstersTheme
+import io.branch.referral.Branch
 import io.branch.referral.BranchException
 import io.branch.referral.shim.requestDeepLinkDataNullable
 import io.branch.referral.validators.IntegrationValidator
@@ -78,7 +79,25 @@ class MainActivity : ComponentActivity() {
 
     override fun onStart() {
         super.onStart()
-        IntegrationValidator.validate(this)
+//        IntegrationValidator.validate(this)
+
+        Branch.sessionBuilder(this).withCallback { branchUniversalObject, linkProperties, error ->
+            if (error != null) {
+                Log.e("BranchSDK_Tester", "branch init failed. Caused by -" + error.message)
+            } else {
+                Log.i("BranchSDK_Tester", "branch init complete!")
+                if (branchUniversalObject != null) {
+                    Log.i("BranchSDK_Tester", "title " + branchUniversalObject.title)
+                    Log.i("BranchSDK_Tester", "CanonicalIdentifier " + branchUniversalObject.canonicalIdentifier)
+                    Log.i("BranchSDK_Tester", "metadata " + branchUniversalObject.contentMetadata.convertToJson())
+                }
+                if (linkProperties != null) {
+                    Log.i("BranchSDK_Tester", "Channel " + linkProperties.channel)
+                    Log.i("BranchSDK_Tester", "control params " + linkProperties.controlParams)
+                }
+            }
+        }.withData(this.intent.data).init()
+
     }
 
     override fun onNewIntent(intent: Intent?) {
