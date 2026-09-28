@@ -10,8 +10,8 @@ import io.branch.branchster.manager.SoundManager
 import io.branch.interfaces.IBranchLoggingCallbacks
 import io.branch.referral.Branch
 import io.branch.referral.BranchConfiguration
-import io.branch.referral.BranchLogger
 import io.branch.referral.BranchLogger.BranchLogLevel
+import io.branch.referral.DMAParameters
 
 
 class ApplicationClass: Application() {
@@ -32,6 +32,12 @@ class ApplicationClass: Application() {
         // Branch logging for debugging
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
 
+        val dma = DMAParameters.Builder()
+            .setEeaRegion(true)
+            .setAdPersonalizationConsent(true)
+            .setAdUserDataUsageConsent(true)
+            .build()
+
         val config = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP")
             .setLogLevel(BranchLogLevel.VERBOSE)
             .setLoggingCallback(IBranchLoggingCallbacks { message: String?, tag: String? ->
@@ -42,6 +48,7 @@ class ApplicationClass: Application() {
             })
             .setUserAgentFetchSync(true)
             .setNetworkTimeout(5000)
+            .setDMAParameters(dma)
             .build()
 
         Branch.initialize(this, config)
