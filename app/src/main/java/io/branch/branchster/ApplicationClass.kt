@@ -33,8 +33,7 @@ class ApplicationClass: Application() {
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
 
         val dma = DMAParameters.Builder()
-            .setEeaRegion(true)
-            .setAdPersonalizationConsent(true)
+            .setEeaRegion(false)
             .setAdUserDataUsageConsent(true)
             .build()
 
@@ -52,6 +51,11 @@ class ApplicationClass: Application() {
             .build()
 
         Branch.initialize(this, config)
+
+        Branch.getInstance().setDMAParameters(
+            dma.toBuilder()
+                .setAdPersonalizationConsent(true)
+                .build());
 
 //        val config2 = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
 //        Branch.initialize(this, config2)
