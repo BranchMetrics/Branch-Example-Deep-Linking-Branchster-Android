@@ -12,6 +12,7 @@ import io.branch.referral.Branch
 import io.branch.referral.BranchConfiguration
 import io.branch.referral.BranchLogger.BranchLogLevel
 import io.branch.referral.DMAParameters
+import io.branch.referral.Defines
 
 
 class ApplicationClass: Application() {
@@ -32,10 +33,10 @@ class ApplicationClass: Application() {
         // Branch logging for debugging
         //Branch.enableLogging(BranchLogger.BranchLogLevel.VERBOSE)
 
-        val dma = DMAParameters.Builder()
-            .setEeaRegion(false)
-            .setAdUserDataUsageConsent(true)
-            .build()
+//        val dma = DMAParameters.Builder()
+//            .setEeaRegion(false)
+//            .setAdUserDataUsageConsent(true)
+//            .build()
 
         val config = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP")
             .setLogLevel(BranchLogLevel.VERBOSE)
@@ -47,15 +48,15 @@ class ApplicationClass: Application() {
             })
             .setUserAgentFetchSync(true)
             .setNetworkTimeout(5000)
-            .setDMAParameters(dma)
+//            .setDMAParameters(dma)
             .build()
 
         Branch.initialize(this, config)
 
-        Branch.getInstance().setDMAParameters(
-            dma.toBuilder()
-                .setAdPersonalizationConsent(true)
-                .build());
+//        Branch.getInstance().setDMAParameters(
+//            dma.toBuilder()
+//                .setAdPersonalizationConsent(true)
+//                .build());
 
 //        val config2 = BranchConfiguration.Builder("key_live_mbErCMtrzeheAWS0Xagg7hjbwDkaZ6SP").build()
 //        Branch.initialize(this, config2)
