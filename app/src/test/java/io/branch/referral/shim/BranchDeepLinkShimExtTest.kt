@@ -1,6 +1,5 @@
 package io.branch.referral.shim
 
-import io.branch.branchster.BranchDeepLinkShim
 import io.branch.referral.BranchError
 import io.branch.referral.BranchException
 import kotlinx.coroutines.CancellationException

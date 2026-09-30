@@ -51,7 +51,10 @@ class ApplicationClass: Application() {
 //            .setDMAParameters(dma)
             .build()
 
+        val config2 = BranchConfiguration.Builder("key_test_jpAAsHxzDjint6I30mkBZjeewAki21R7").build()
+
         Branch.initialize(this, config)
+        Branch.initialize(this, config2)
 
 //        Branch.getInstance().setDMAParameters(
 //            dma.toBuilder()

@@ -19,8 +19,6 @@ import io.branch.branchster.navigation.NavGraph
 import io.branch.branchster.ui.theme.BranchstersTheme
 import io.branch.referral.Branch
 import io.branch.referral.BranchException
-import io.branch.referral.shim.requestDeepLinkDataNullable
-import io.branch.referral.validators.IntegrationValidator
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -62,13 +60,19 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch {
             try {
-                val params = requestDeepLinkDataNullable(intent?.data)
-                val clicked = params.optBoolean("+clicked_branch_link", false)
-                if (clicked) {
-                    Log.d("BranchSDK", "Deep link data: $params")
-                    branchData = params.toString()
-                } else {
-                    Log.d("BranchSDK", "Opened app normally (no deep link)")
+                Branch.getInstance().requestDeepLinkData(intent?.data) { params, error ->
+                    if (error != null) {
+                        Log.e("Branch", error.message)
+                        return@requestDeepLinkData
+                    }
+                    if (params == null || params.length() == 0) return@requestDeepLinkData // genuinely organic
+                    val clicked = params.optBoolean("+clicked_branch_link", false)
+                    if (clicked) {
+                        Log.d("BranchSDK", "Deep link data: $params")
+                        branchData = params.toString()
+                    } else {
+                        Log.d("BranchSDK", "Opened app normally (no deep link)")
+                    }
                 }
             } catch (e: BranchException) {
                 Log.e("BranchSDK", "Branch init error: ${e.branchError?.message}")
@@ -89,16 +93,22 @@ class MainActivity : ComponentActivity() {
         val link = intent?.data ?: return
         lifecycleScope.launch {
             try {
-                val params = requestDeepLinkDataNullable(link)
-                val clicked = params.optBoolean("+clicked_branch_link", false)
-                if (clicked) {
-                    Log.d("BranchSDK", "Deep link data: $params")
-                    branchData = params.toString()
-                } else {
-                    Log.d("BranchSDK", "Opened app normally (no deep link)")
+                Branch.getInstance().requestDeepLinkData(intent?.data) { params, error ->
+                    if (error != null) {
+                        Log.e("Branch", error.message)
+                        return@requestDeepLinkData
+                    }
+                    if (params == null || params.length() == 0) return@requestDeepLinkData // genuinely organic
+                    val clicked = params.optBoolean("+clicked_branch_link", false)
+                    if (clicked) {
+                        Log.d("BranchSDK", "Deep link data: $params")
+                        branchData = params.toString()
+                    } else {
+                        Log.d("BranchSDK", "Opened app normally (no deep link)")
+                    }
                 }
             } catch (e: BranchException) {
-                Log.e("BranchSDK", "Branch init error: ${e.branchError.message}")
+                Log.e("BranchSDK", "Branch init error: ${e.branchError?.message}")
             }
         }
     }
